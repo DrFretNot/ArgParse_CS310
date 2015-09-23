@@ -1,4 +1,4 @@
-public void Parser(string{} args){
+public abstract Parser(string[] args){
 
     for(int i = 0;i < args.length; i++){
         args[i];   
@@ -8,4 +8,9 @@ public void Parser(string{} args){
         }    
     }
 
+}
+
+private abstract String getHelpUsageInfo(){
+
+    String
 }
