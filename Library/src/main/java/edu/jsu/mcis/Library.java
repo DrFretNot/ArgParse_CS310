@@ -20,7 +20,20 @@ public class Library {
    public String getArgValue(String argName){
    		int index = argNameList.indexOf(argName);
    		return argValueList.get(index);
-   		//return "false";
+   }
+   
+   public void addArgsFromCLI(String[] args){
+   		for(int i = 0; i < args.length; i++){
+   			argValueList.add(i, args[i]);
+   		}
+   }
+   
+   public String checkNumOfArgs(String[] args){
+   		int numOfArgNames = argNameList.size();
+   		if(args.length < numOfArgNames){
+   			return "Error";
+   		}
+   		return "";
    }
     
 }

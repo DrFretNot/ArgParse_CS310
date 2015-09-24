@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-24T18:26:47" hostname="Katies-MacBook-Air-2.local" time="0.004">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-09-24T22:11:57" hostname="Katies-MacBook-Air-2.local" time="0.007">
   <properties/>
-  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.004"/>
+  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.006"/>
+  <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
