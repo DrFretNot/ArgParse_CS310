@@ -10,13 +10,8 @@ public class LibraryUnitTests {
     	Library l = new Library();
     	l.addArgName("length");
         assertEquals("", l.getArgValue("length"));
-        //assert(false);
     }
     
-    /*@Test
-    public void testReverseIt() {
-        HelloWorld h = new HelloWorld();
-        assertEquals("dlrow olleh", h.reverseIt());
-    }*/
+    
         
 }
