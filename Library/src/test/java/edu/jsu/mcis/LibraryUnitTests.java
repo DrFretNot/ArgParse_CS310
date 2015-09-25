@@ -37,4 +37,14 @@ public class LibraryUnitTests {
     }
 //    "usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height"
  
+ 	 @Test
+    public void testErrorThrownWhenGivenMoreArgsThanSpecified(){
+    	String[] args = {"7", "3", "2", "10"};
+    	Library lib = new Library();
+    	lib.addArgName("length");
+    	lib.addArgName("width");
+    	lib.addArgName("height");
+    	lib.addArgsFromCLI(args);
+    	assertEquals("Error", lib.checkNumOfArgs(args));
+    }
 }

@@ -33,7 +33,10 @@ public class Library {
    		if(args.length < numOfArgNames){
    			return "Error";
    		}
-   		return "";
+   		else if(args.length > numOfArgNames){
+   			return "Error";
+   		}
+   		else return "";
    }
     
 }
