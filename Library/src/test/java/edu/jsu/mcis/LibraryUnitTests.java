@@ -47,4 +47,15 @@ public class LibraryUnitTests {
     	lib.addArgsFromCLI(args);
     	assertEquals("Error", lib.checkNumOfArgs(args));
     }
+    
+    @Test
+    public void testForAddProgramNameAndReturnCorrectProgramName(){
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        assertEquals("VolumeCalculator", lib.getProgramName());
+        
+        
+        
+    }
 }
+    

@@ -6,6 +6,7 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
+    private String programName;
 	
 	public Library(){
 		argNameList = new ArrayList<String>();
@@ -38,6 +39,17 @@ public class Library {
    		}
    		else return "";
    }
+    
+    public void addProgramName(String inputProgramName){
+        
+        programName = inputProgramName;
+        
+           
+    }
+    
+    public String getProgramName(){
+        return programName;   
+    }
     
 }
 
