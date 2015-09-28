@@ -83,6 +83,17 @@ public class Library {
    		}
    		else return "";
    }
+    
+    public String checkForHelpArg(String args){
+        if(args == "-h"){
+            return "usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n"; 
+        }
+        
+        else{
+            return "-bash:" + args + " command not found";   
+        }
+    }
+    
    
     
 }

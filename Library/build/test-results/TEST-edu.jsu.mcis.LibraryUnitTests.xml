@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-09-28T17:11:50" hostname="Prefontaine" time="0.006">
   <properties/>
   <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.005"/>
   <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+=======
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-09-28T16:58:35" hostname="Roberts-MacBook-Pro.local" time="0.007">
+  <properties/>
+  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.005"/>
+  <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+>>>>>>> origin/master
   <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
