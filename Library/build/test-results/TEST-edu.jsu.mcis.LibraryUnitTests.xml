@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-09-28T18:11:52" hostname="Katies-MacBook-Air-2.local" time="0.01">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-09-28T19:45:26" hostname="Katies-MacBook-Air-2.local" time="0.01">
   <properties/>
   <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.008"/>
   <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>

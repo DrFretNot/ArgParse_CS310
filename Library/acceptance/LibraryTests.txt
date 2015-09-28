@@ -19,7 +19,7 @@ Library           LibraryKeywords
     |                                        | Should Be Equal                       | ${output}          | 70           |            |            |
     | Test Unrecognized Argument             | Start Volume Calculator With Arguments| 7                  | 5            | 2          | 43         |
     |                                        | ${output}=                            | Get Program Output |              |            |            |
-    |                                        | Should Be Equal                       | ${output}          | message      |            |            |
+    |                                        | Should Be Equal                       | ${output}          | ${expected}  |            |            |
     | Test Absurd Program Normal Function    | Start Absurd Program With Arguments   | dog                | 2            | true       | 3.5        |
     |                                        | ${pet}=                               | Get Pet            |              |            |            |
     |                                        | Should Be Equal                       | dog                | ${pet}       |            |            |

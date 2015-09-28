@@ -3,6 +3,7 @@ import edu.jsu.mcis.*;
 public class LibraryKeywords 
 {
     private Library lib = new Library();
+    private String check;
     
     public void startVolumeCalculatorWithArguments(String[] args) 
     {
@@ -11,6 +12,8 @@ public class LibraryKeywords
         lib.addArgName("width");
         lib.addArgName("height");
         lib.addArgsFromCLI(args);
+        check = lib.checkNumOfArgs(args);
+        
     }
     
     public String getLength() 
@@ -28,12 +31,18 @@ public class LibraryKeywords
         return lib.getArgValue("height");
     }
     
-    public float getProgramOutput() 
+    public String getProgramOutput() 
     {
-        float len = Float.parseFloat(lib.getArgValue("length"));
-        float wid = Float.parseFloat(lib.getArgValue("width"));
-        float hei = Float.parseFloat(lib.getArgValue("height"));
-        return len * wid * hei;
+    	String output;
+    	if (check == ""){
+        	float len = Float.parseFloat(lib.getArgValue("length"));
+        	float wid = Float.parseFloat(lib.getArgValue("width"));
+        	float hei = Float.parseFloat(lib.getArgValue("height"));
+        	float total = len * wid * hei;
+        	output = String.parseString(total);
+        }
+        else output = check;
+        return output;
     }
     
 }
