@@ -56,5 +56,35 @@ public class LibraryUnitTests {
     	lib.addArgsFromCLI(args);
     	assertEquals("usage: java VolumeCalculator length width height \nVolumeCalculator.java: error: unrecognized arguments: 10 ", lib.checkNumOfArgs(args));
     }
+    
+    @Test
+    public void testHelpInformation(){
+        String[] args = {"-h"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addArgName("length");
+        //lib.addArgName("width");
+        //lib.addArgName("height");
+        lib.addArgsFromCLI(args);
+        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n", lib.checkForHelpArg("-h")); 
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
     
