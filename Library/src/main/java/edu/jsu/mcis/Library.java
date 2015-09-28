@@ -17,7 +17,9 @@ public class Library {
 	}
 	
 	//Stores the name of the program using the library
-	//This name is given by the product owner.
+	//This name is given by the product owner
+    //possibly change to setprogramname for readability
+    
     public void addProgramName(String inputProgramName){
         programName = inputProgramName;       
     }
