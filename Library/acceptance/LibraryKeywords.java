@@ -1,4 +1,5 @@
 import edu.jsu.mcis.*;
+import java.lang.String.*;
 
 public class LibraryKeywords 
 {
@@ -39,10 +40,40 @@ public class LibraryKeywords
         	float wid = Float.parseFloat(lib.getArgValue("width"));
         	float hei = Float.parseFloat(lib.getArgValue("height"));
         	float total = len * wid * hei;
-        	output = String.parseString(total);
+        	output = Float.toString(total);
         }
         else output = check;
         return output;
     }
     
+    public void startAbsurdProgramWithArguments(String[] args)
+    {
+    	lib.addProgramName("Absurd Program");
+        lib.addArgName("pet");
+        lib.addArgName("number");
+        lib.addArgName("rainy");
+        lib.addArgName("bathrooms");
+        lib.addArgsFromCLI(args);
+        check = lib.checkNumOfArgs(args);
+    }
+    
+    public String getPet()
+    {
+    	return lib.getArgValue("pet");
+    }
+    
+    public String getNumber()
+    {
+    	return lib.getArgValue("number");
+    }
+    
+    public String getRainy()
+    {
+    	return lib.getArgValue("rainy");
+    }
+    
+    public String getBathrooms()
+    {
+    	return lib.getArgValue("bathrooms");
+    }
 }
