@@ -7,6 +7,7 @@ public class Library {
 	private List<String> argNameList;
 	private List<String> argValueList;
     private String programName = "";
+	private enum Types { INTEGER, STRING, BOOLEAN, FLOAT };
 	
 	//constructor
 	//Adds 2 ArrayLists to store the name of each argument given by the product owner
@@ -93,6 +94,25 @@ public class Library {
             return "-bash:" + args + " command not found";   
         }
     }
+	
+	public void setDataType(enum t){
+		
+		
+		
+	}
+	
+	
+	public enum getDataType(){
+		return Types.INTEGER;
+		
+		
+	}
+	
+	public String checkDataType(String[] args){
+		return "error";
+		
+		
+	}
     
    
     

@@ -69,6 +69,28 @@ public class LibraryUnitTests {
         assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n", lib.checkForHelpArg("-h")); 
         
     }
+	
+	@Test
+	public void testGetDataType(){
+		
+		String[] args = {"7", "something", "2"};
+		Library lib = new Library();
+        lib.addArgName("length");
+        lib.addArgName("width");
+        lib.addArgName("height");
+		lib.addArgsFromCLI(args);
+		assertEquals("error", lib.);
+		//Sinh and Andrew got to here.
+		
+	}
+	
+	@Test
+	public void testSetDataTypes(){
+		
+		assertEquals( , );
+	}
+	
+
     
     
     

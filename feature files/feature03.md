@@ -2,11 +2,13 @@
 
 ## Additional Information
 
-Failure of arguments to match specified datatypes results in program exit and usage information. The following datatypes should be supported: int, float, boolean, and string, which is the default value if type is left unspecified.
+Failure of arguments to match specified datatypes results in program exit and usage information. 
+The following datatypes should be supported: int, float, boolean, and string, which is the default value if type is left unspecified.
 
 ## Use Cases
 
-Assume VolumeCalculator.java allows for three positional arguments, named `length`, `width`, and `height`, respectively. Each should be a floating-point number.
+Assume VolumeCalculator.java allows for three positional arguments, named `length`, 
+`width`, and `height`, respectively. Each should be a floating-point number.
 
     java VolumeCalculator 7 something 2
 
