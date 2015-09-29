@@ -83,6 +83,17 @@ public class Library {
    		}
 <span class="fc" id="L84">   		else return &quot;&quot;;</span>
    }
+    
+    public String checkForHelpArg(String args){
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        if(args == &quot;-h&quot;){</span>
+<span class="fc" id="L89">            return &quot;usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n&quot;; </span>
+        }
+        
+        else{
+<span class="nc" id="L93">            return &quot;-bash:&quot; + args + &quot; command not found&quot;;   </span>
+        }
+    }
+    
    
     
 }
