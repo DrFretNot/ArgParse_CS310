@@ -2,7 +2,7 @@
 | Library   | LibraryKeywords |
 
 | *Variable*  | *Value*                                                                                                   |
-| ${expected} | usage: java Volume Calculator length width height \nVolume Calculator.java: error: unrecognized arguments: 43 |
+| ${expected} | usage: java Volume Calculator length width height\nVolume Calculator.java: error: unrecognized arguments: 43 |
 
 
 | *Test Case*                            | *Action*                              | *Argument*         | *Argument*   | *Argument* | *Argument* |

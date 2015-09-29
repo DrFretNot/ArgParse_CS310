@@ -42,7 +42,7 @@ public class LibraryUnitTests {
     	lib.addArgName("width");
     	lib.addArgName("height");
     	lib.addArgsFromCLI(args);
-    	assertEquals("usage: java VolumeCalculator length width height \nVolumeCalculator.java: error: the following arguments are required: height ", lib.checkNumOfArgs(args));
+    	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", lib.checkNumOfArgs(args));
     }
 
  	@Test
@@ -54,7 +54,7 @@ public class LibraryUnitTests {
     	lib.addArgName("width");
     	lib.addArgName("height");
     	lib.addArgsFromCLI(args);
-    	assertEquals("usage: java VolumeCalculator length width height \nVolumeCalculator.java: error: unrecognized arguments: 10 ", lib.checkNumOfArgs(args));
+    	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.checkNumOfArgs(args));
     }
     
     @Test

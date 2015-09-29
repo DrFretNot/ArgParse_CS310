@@ -58,26 +58,26 @@ public class Library {
    public String checkNumOfArgs(String[] args){
    		int numOfArgNames = argNameList.size();
    		if(args.length < numOfArgNames){
-            String message = "usage: java " + programName + " ";
+            String message = "usage: java " + programName;
             for(int i = 0; i < argNameList.size(); i++) {
-                message += argNameList.get(i) + " ";   
+                message += " " + argNameList.get(i);   
             }
-            message += "\n" + programName + ".java: error: the following arguments are required: ";
+            message += "\n" + programName + ".java: error: the following arguments are required:";
             int numOfArgsMissing = numOfArgNames - args.length;
             for(int j = args.length; j < numOfArgNames; j++){
-            	message += argNameList.get(j) + " ";
+            	message += " " + argNameList.get(j);
             }
    			return message;
    		}
    		else if(args.length > numOfArgNames){
-   			String message = "usage: java " + programName + " ";
+   			String message = "usage: java " + programName;
             for(int i = 0; i < argNameList.size(); i++) {
-                message += argNameList.get(i) + " ";   
+                message += " " + argNameList.get(i);   
             }
-            message += "\n" + programName + ".java: error: unrecognized arguments: ";
+            message += "\n" + programName + ".java: error: unrecognized arguments:";
             int numOfArgsUnrecognized = args.length - numOfArgNames;
             for(int j = numOfArgNames; j < args.length; j++){
-            	message += args[j] + " ";
+            	message += " " + args[j];
             }
    			return message;
    		}

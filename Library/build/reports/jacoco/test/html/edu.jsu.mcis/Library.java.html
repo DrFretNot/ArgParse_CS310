@@ -58,26 +58,26 @@ public class Library {
    public String checkNumOfArgs(String[] args){
 <span class="fc" id="L59">   		int numOfArgNames = argNameList.size();</span>
 <span class="fc bfc" id="L60" title="All 2 branches covered.">   		if(args.length &lt; numOfArgNames){</span>
-<span class="fc" id="L61">            String message = &quot;usage: java &quot; + programName + &quot; &quot;;</span>
+<span class="fc" id="L61">            String message = &quot;usage: java &quot; + programName;</span>
 <span class="fc bfc" id="L62" title="All 2 branches covered.">            for(int i = 0; i &lt; argNameList.size(); i++) {</span>
-<span class="fc" id="L63">                message += argNameList.get(i) + &quot; &quot;;   </span>
+<span class="fc" id="L63">                message += &quot; &quot; + argNameList.get(i);   </span>
             }
-<span class="fc" id="L65">            message += &quot;\n&quot; + programName + &quot;.java: error: the following arguments are required: &quot;;</span>
+<span class="fc" id="L65">            message += &quot;\n&quot; + programName + &quot;.java: error: the following arguments are required:&quot;;</span>
 <span class="fc" id="L66">            int numOfArgsMissing = numOfArgNames - args.length;</span>
 <span class="fc bfc" id="L67" title="All 2 branches covered.">            for(int j = args.length; j &lt; numOfArgNames; j++){</span>
-<span class="fc" id="L68">            	message += argNameList.get(j) + &quot; &quot;;</span>
+<span class="fc" id="L68">            	message += &quot; &quot; + argNameList.get(j);</span>
             }
 <span class="fc" id="L70">   			return message;</span>
    		}
 <span class="fc bfc" id="L72" title="All 2 branches covered.">   		else if(args.length &gt; numOfArgNames){</span>
-<span class="fc" id="L73">   			String message = &quot;usage: java &quot; + programName + &quot; &quot;;</span>
+<span class="fc" id="L73">   			String message = &quot;usage: java &quot; + programName;</span>
 <span class="fc bfc" id="L74" title="All 2 branches covered.">            for(int i = 0; i &lt; argNameList.size(); i++) {</span>
-<span class="fc" id="L75">                message += argNameList.get(i) + &quot; &quot;;   </span>
+<span class="fc" id="L75">                message += &quot; &quot; + argNameList.get(i);   </span>
             }
-<span class="fc" id="L77">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments: &quot;;</span>
+<span class="fc" id="L77">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments:&quot;;</span>
 <span class="fc" id="L78">            int numOfArgsUnrecognized = args.length - numOfArgNames;</span>
 <span class="fc bfc" id="L79" title="All 2 branches covered.">            for(int j = numOfArgNames; j &lt; args.length; j++){</span>
-<span class="fc" id="L80">            	message += args[j] + &quot; &quot;;</span>
+<span class="fc" id="L80">            	message += &quot; &quot; + args[j];</span>
             }
 <span class="fc" id="L82">   			return message;</span>
    		}
