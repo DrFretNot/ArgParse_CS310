@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150928 23:02:57.105">
+<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150929 17:29:35.409">
 <suite source="/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
 <test id="s1-t1" name="Test Volume Calculator Normal Function">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -8,14 +8,14 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.010" endtime="20150928 23:02:58.022"></status>
+<status status="PASS" starttime="20150929 17:29:36.208" endtime="20150929 17:29:36.217"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.034" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20150928 23:02:58.027" endtime="20150928 23:02:58.036"></status>
+<msg timestamp="20150929 17:29:36.228" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20150929 17:29:36.222" endtime="20150929 17:29:36.230"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -23,14 +23,14 @@
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.040" endtime="20150928 23:02:58.049"></status>
+<status status="PASS" starttime="20150929 17:29:36.234" endtime="20150929 17:29:36.245"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.058" level="INFO">${width} = 5</msg>
-<status status="PASS" starttime="20150928 23:02:58.052" endtime="20150928 23:02:58.060"></status>
+<msg timestamp="20150929 17:29:36.256" level="INFO">${width} = 5</msg>
+<status status="PASS" starttime="20150929 17:29:36.250" endtime="20150929 17:29:36.258"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -38,14 +38,14 @@
 <arg>5</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.063" endtime="20150928 23:02:58.071"></status>
+<status status="PASS" starttime="20150929 17:29:36.261" endtime="20150929 17:29:36.269"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.081" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20150928 23:02:58.075" endtime="20150928 23:02:58.083"></status>
+<msg timestamp="20150929 17:29:36.279" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20150929 17:29:36.273" endtime="20150929 17:29:36.281"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -53,14 +53,14 @@
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.087" endtime="20150928 23:02:58.095"></status>
+<status status="PASS" starttime="20150929 17:29:36.285" endtime="20150929 17:29:36.294"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.103" level="INFO">${output} = 70.0</msg>
-<status status="PASS" starttime="20150928 23:02:58.099" endtime="20150928 23:02:58.104"></status>
+<msg timestamp="20150929 17:29:36.303" level="INFO">${output} = 70.0</msg>
+<status status="PASS" starttime="20150929 17:29:36.298" endtime="20150929 17:29:36.304"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -68,9 +68,9 @@
 <arg>${output}</arg>
 <arg>70.0</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.106" endtime="20150928 23:02:58.113"></status>
+<status status="PASS" starttime="20150929 17:29:36.306" endtime="20150929 17:29:36.312"></status>
 </kw>
-<status status="PASS" starttime="20150928 23:02:57.997" endtime="20150928 23:02:58.116" critical="yes"></status>
+<status status="PASS" starttime="20150929 17:29:36.196" endtime="20150929 17:29:36.314" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Test Unrecognized Argument">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -80,15 +80,15 @@
 <arg>2</arg>
 <arg>43</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.130" endtime="20150928 23:02:58.137"></status>
+<status status="PASS" starttime="20150929 17:29:36.328" endtime="20150929 17:29:36.335"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.143" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20150929 17:29:36.342" level="INFO">${output} = usage: java Volume Calculator length width height
 Volume Calculator.java: error: unrecognized arguments: 43</msg>
-<status status="PASS" starttime="20150928 23:02:58.139" endtime="20150928 23:02:58.144"></status>
+<status status="PASS" starttime="20150929 17:29:36.338" endtime="20150929 17:29:36.343"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -96,9 +96,9 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>${output}</arg>
 <arg>${expected}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.146" endtime="20150928 23:02:58.155"></status>
+<status status="PASS" starttime="20150929 17:29:36.346" endtime="20150929 17:29:36.352"></status>
 </kw>
-<status status="PASS" starttime="20150928 23:02:58.119" endtime="20150928 23:02:58.157" critical="yes"></status>
+<status status="PASS" starttime="20150929 17:29:36.317" endtime="20150929 17:29:36.355" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Test Absurd Program Normal Function">
 <kw library="LibraryKeywords" name="Start Absurd Program With Arguments">
@@ -108,14 +108,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.168" endtime="20150928 23:02:58.173"></status>
+<status status="PASS" starttime="20150929 17:29:36.368" endtime="20150929 17:29:36.373"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Pet">
 <assign>
 <var>${pet}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.179" level="INFO">${pet} = dog</msg>
-<status status="PASS" starttime="20150928 23:02:58.176" endtime="20150928 23:02:58.180"></status>
+<msg timestamp="20150929 17:29:36.380" level="INFO">${pet} = dog</msg>
+<status status="PASS" starttime="20150929 17:29:36.376" endtime="20150929 17:29:36.382"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -123,14 +123,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>dog</arg>
 <arg>${pet}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.183" endtime="20150928 23:02:58.188"></status>
+<status status="PASS" starttime="20150929 17:29:36.384" endtime="20150929 17:29:36.390"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Number">
 <assign>
 <var>${number}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.196" level="INFO">${number} = 2</msg>
-<status status="PASS" starttime="20150928 23:02:58.191" endtime="20150928 23:02:58.197"></status>
+<msg timestamp="20150929 17:29:36.398" level="INFO">${number} = 2</msg>
+<status status="PASS" starttime="20150929 17:29:36.393" endtime="20150929 17:29:36.399"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -138,14 +138,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>2</arg>
 <arg>${number}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.199" endtime="20150928 23:02:58.204"></status>
+<status status="PASS" starttime="20150929 17:29:36.401" endtime="20150929 17:29:36.406"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Rainy">
 <assign>
 <var>${rainy}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.213" level="INFO">${rainy} = true</msg>
-<status status="PASS" starttime="20150928 23:02:58.207" endtime="20150928 23:02:58.215"></status>
+<msg timestamp="20150929 17:29:36.413" level="INFO">${rainy} = true</msg>
+<status status="PASS" starttime="20150929 17:29:36.409" endtime="20150929 17:29:36.414"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -153,14 +153,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>${rainy}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.219" endtime="20150928 23:02:58.226"></status>
+<status status="PASS" starttime="20150929 17:29:36.418" endtime="20150929 17:29:36.427"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Bathrooms">
 <assign>
 <var>${bathrooms}</var>
 </assign>
-<msg timestamp="20150928 23:02:58.233" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" starttime="20150928 23:02:58.229" endtime="20150928 23:02:58.235"></status>
+<msg timestamp="20150929 17:29:36.434" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" starttime="20150929 17:29:36.430" endtime="20150929 17:29:36.435"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -168,11 +168,11 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>3.5</arg>
 <arg>${bathrooms}</arg>
 </arguments>
-<status status="PASS" starttime="20150928 23:02:58.237" endtime="20150928 23:02:58.243"></status>
+<status status="PASS" starttime="20150929 17:29:36.438" endtime="20150929 17:29:36.444"></status>
 </kw>
-<status status="PASS" starttime="20150928 23:02:58.161" endtime="20150928 23:02:58.245" critical="yes"></status>
+<status status="PASS" starttime="20150929 17:29:36.360" endtime="20150929 17:29:36.446" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20150928 23:02:57.133" endtime="20150928 23:02:58.253"></status>
+<status status="PASS" starttime="20150929 17:29:35.442" endtime="20150929 17:29:36.451"></status>
 </suite>
 <statistics>
 <total>
