@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-09-29T04:02:38" hostname="Katies-MacBook-Air-2.local" time="0.01">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-09-29T22:16:42" hostname="Trents-MacBook-Air.local" time="0.023">
   <properties/>
-  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.008"/>
-  <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testGetDataType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.021"/>
+  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

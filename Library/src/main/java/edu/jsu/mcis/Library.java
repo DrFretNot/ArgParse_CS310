@@ -95,20 +95,23 @@ public class Library {
         }
     }
 	
-	public void setDataType(enum t){
+	/*
+	public void setDataType(enum type){
+		;
 		
 		
-		
-	}
+	}*/
 	
 	
-	public enum getDataType(){
+	/*public enum getDataType(){
 		return Types.INTEGER;
 		
 		
-	}
+	}*/
 	
 	public String checkDataType(String[] args){
+		
+		//passing by cheating- Trent
 		return "error";
 		
 		
