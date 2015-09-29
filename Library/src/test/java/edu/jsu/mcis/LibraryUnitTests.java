@@ -13,6 +13,12 @@ public class LibraryUnitTests {
     }
     
     @Test
+    public void testForAddProgramDescriptionAndReturnCorrectProgramDescription(){
+        Library lib = new Library();
+        lib.addProgramDescription("Calculate the volume of a box");
+        assertEquals("Calculate the volume of a box", lib.getProgramDescription());   
+    }
+    @Test
     public void testAddArgumentAndReturnDefault() {
     	Library lib = new Library();
     	lib.addArgName("length");
@@ -62,11 +68,15 @@ public class LibraryUnitTests {
         String[] args = {"-h"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
         lib.addArgName("length");
-        //lib.addArgName("width");
-        //lib.addArgName("height");
+        lib.addArgDescription("the length of the box");
+        lib.addArgName("width");
+        lib.addArgDescription("the width of the box");
+        lib.addArgName("height");
+        lib.addArgDescription("the height of the box");
         lib.addArgsFromCLI(args);
-        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n", lib.checkForHelpArg("-h")); 
+        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n", lib.checkForHelpArg(args)); 
         
     }
 	
@@ -78,7 +88,7 @@ public class LibraryUnitTests {
         lib.addArgName("length");
         lib.addArgName("width");
         lib.addArgName("height");
-		lib.addArgsFromCLI(args);//why do we have this?
+		lib.addArgsFromCLI(args);
 		assertEquals("error", lib.checkDataType(args));//Trent fixed this. Passes by cheating
 		//should be able to write the checkDataType() method now
 		//Sinh and Andrew got to here.
@@ -88,8 +98,10 @@ public class LibraryUnitTests {
 	//@Test
 	public void testSetDataTypes(){
 		
+
 		//assertEquals( , );
 	}
+
 	
 
     

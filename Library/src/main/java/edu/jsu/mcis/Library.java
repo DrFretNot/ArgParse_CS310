@@ -6,15 +6,18 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
+	private List<String> argDescriptionList;
     private String programName = "";
+    private String programDescription = "";
 	private enum Types { INTEGER, STRING, BOOLEAN, FLOAT };
 	
 	//constructor
-	//Adds 2 ArrayLists to store the name of each argument given by the product owner
-	//and the values given for each argument 
+	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
+	//the values given for each argument, and the description of each argument. 
 	public Library(){ 
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
+		argDescriptionList = new ArrayList<String>();
 	}
 	
 	//Stores the name of the program using the library
@@ -25,11 +28,17 @@ public class Library {
         programName = inputProgramName;       
     }
     
+    public void addProgramDescription(String inputProgramDescription){
+        programDescription = inputProgramDescription;       
+    }
     //Returns the program name
     public String getProgramName(){
         return programName;   
     }
     
+    public String getProgramDescription(){
+        return programDescription;   
+    }
     //Adds the name of the argument given by the PO to the list of arg names
     //Adds the empty string as the value for each argument in list of arg values
     //Each value in argValueList corresponds to the arg name in argNameList because names 
@@ -37,6 +46,10 @@ public class Library {
 	public void addArgName(String argName){
 		argNameList.add(argName);
 		argValueList.add("");
+	}
+	
+	public void addArgDescription(String argDescription){
+		argDescriptionList.add(argDescription);
 	}
     
     //Returns the value corresponding to the arg name passed to the function
@@ -85,19 +98,37 @@ public class Library {
    		else return "";
    }
     
-    public String checkForHelpArg(String args){
-        if(args == "-h"){
-            return "usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n"; 
+    public String checkForHelpArg(String[] args){
+        if(argValueList.get(0) == "-h"){
+        	String helpMessage = "usage: java " + programName;
+        	for(int i = 0; i < argNameList.size(); i++) {
+                helpMessage += " " + argNameList.get(i);   
+            }
+            helpMessage += "\n" + programDescription + "\npositional arguments:\n";
+            for(int i = 0; i < argNameList.size(); i++) {
+                helpMessage += "    " + argNameList.get(i) + " " + argDescriptionList.get(i) + "\n";   
+            }
+            return helpMessage;
         }
         
         else{
-            return "-bash:" + args + " command not found";   
+        	String errorMessage = "-bash: ";
+        	for(int i = 0; i < args.length; i++){
+        		errorMessage += args[i];
+        	}
+        	errorMessage += ": command not found";
+            return errorMessage;  
         }
     }
 	
+
 	/*
 	public void setDataType(enum type){
 		;
+
+	
+	
+
 		
 		
 	}*/
