@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150929 17:29:35.409">
+<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150929 20:06:47.654">
 <suite source="/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
 <test id="s1-t1" name="Test Volume Calculator Normal Function">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -8,14 +8,15 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.208" endtime="20150929 17:29:36.217"></status>
+<status status="PASS" starttime="20150929 20:06:48.524" endtime="20150929 20:06:48.533"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.228" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20150929 17:29:36.222" endtime="20150929 17:29:36.230"></status>
+<msg timestamp="20150929 20:06:48.537" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20150929 20:06:48.549" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20150929 20:06:48.539" endtime="20150929 20:06:48.551"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -23,14 +24,14 @@
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.234" endtime="20150929 17:29:36.245"></status>
+<status status="PASS" starttime="20150929 20:06:48.555" endtime="20150929 20:06:48.566"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.256" level="INFO">${width} = 5</msg>
-<status status="PASS" starttime="20150929 17:29:36.250" endtime="20150929 17:29:36.258"></status>
+<msg timestamp="20150929 20:06:48.575" level="INFO">${width} = 5</msg>
+<status status="PASS" starttime="20150929 20:06:48.570" endtime="20150929 20:06:48.577"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -38,14 +39,14 @@
 <arg>5</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.261" endtime="20150929 17:29:36.269"></status>
+<status status="PASS" starttime="20150929 20:06:48.581" endtime="20150929 20:06:48.590"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.279" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20150929 17:29:36.273" endtime="20150929 17:29:36.281"></status>
+<msg timestamp="20150929 20:06:48.601" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20150929 20:06:48.594" endtime="20150929 20:06:48.602"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -53,14 +54,14 @@
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.285" endtime="20150929 17:29:36.294"></status>
+<status status="PASS" starttime="20150929 20:06:48.606" endtime="20150929 20:06:48.611"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.303" level="INFO">${output} = 70.0</msg>
-<status status="PASS" starttime="20150929 17:29:36.298" endtime="20150929 17:29:36.304"></status>
+<msg timestamp="20150929 20:06:48.621" level="INFO">${output} = 70.0</msg>
+<status status="PASS" starttime="20150929 20:06:48.616" endtime="20150929 20:06:48.623"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -68,9 +69,9 @@
 <arg>${output}</arg>
 <arg>70.0</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.306" endtime="20150929 17:29:36.312"></status>
+<status status="PASS" starttime="20150929 20:06:48.627" endtime="20150929 20:06:48.633"></status>
 </kw>
-<status status="PASS" starttime="20150929 17:29:36.196" endtime="20150929 17:29:36.314" critical="yes"></status>
+<status status="PASS" starttime="20150929 20:06:48.515" endtime="20150929 20:06:48.635" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Test Unrecognized Argument">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -80,25 +81,25 @@
 <arg>2</arg>
 <arg>43</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.328" endtime="20150929 17:29:36.335"></status>
+<status status="PASS" starttime="20150929 20:06:48.646" endtime="20150929 20:06:48.653"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.342" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20150929 20:06:48.660" level="INFO">${output} = usage: java Volume Calculator length width height
 Volume Calculator.java: error: unrecognized arguments: 43</msg>
-<status status="PASS" starttime="20150929 17:29:36.338" endtime="20150929 17:29:36.343"></status>
+<status status="PASS" starttime="20150929 20:06:48.656" endtime="20150929 20:06:48.662"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
 <arguments>
 <arg>${output}</arg>
-<arg>${expected}</arg>
+<arg>${expected1}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.346" endtime="20150929 17:29:36.352"></status>
+<status status="PASS" starttime="20150929 20:06:48.664" endtime="20150929 20:06:48.675"></status>
 </kw>
-<status status="PASS" starttime="20150929 17:29:36.317" endtime="20150929 17:29:36.355" critical="yes"></status>
+<status status="PASS" starttime="20150929 20:06:48.638" endtime="20150929 20:06:48.677" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Test Absurd Program Normal Function">
 <kw library="LibraryKeywords" name="Start Absurd Program With Arguments">
@@ -108,14 +109,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.368" endtime="20150929 17:29:36.373"></status>
+<status status="PASS" starttime="20150929 20:06:48.688" endtime="20150929 20:06:48.694"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Pet">
 <assign>
 <var>${pet}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.380" level="INFO">${pet} = dog</msg>
-<status status="PASS" starttime="20150929 17:29:36.376" endtime="20150929 17:29:36.382"></status>
+<msg timestamp="20150929 20:06:48.702" level="INFO">${pet} = dog</msg>
+<status status="PASS" starttime="20150929 20:06:48.697" endtime="20150929 20:06:48.703"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -123,14 +124,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>dog</arg>
 <arg>${pet}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.384" endtime="20150929 17:29:36.390"></status>
+<status status="PASS" starttime="20150929 20:06:48.707" endtime="20150929 20:06:48.715"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Number">
 <assign>
 <var>${number}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.398" level="INFO">${number} = 2</msg>
-<status status="PASS" starttime="20150929 17:29:36.393" endtime="20150929 17:29:36.399"></status>
+<msg timestamp="20150929 20:06:48.724" level="INFO">${number} = 2</msg>
+<status status="PASS" starttime="20150929 20:06:48.718" endtime="20150929 20:06:48.725"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -138,14 +139,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>2</arg>
 <arg>${number}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.401" endtime="20150929 17:29:36.406"></status>
+<status status="PASS" starttime="20150929 20:06:48.728" endtime="20150929 20:06:48.734"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Rainy">
 <assign>
 <var>${rainy}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.413" level="INFO">${rainy} = true</msg>
-<status status="PASS" starttime="20150929 17:29:36.409" endtime="20150929 17:29:36.414"></status>
+<msg timestamp="20150929 20:06:48.741" level="INFO">${rainy} = true</msg>
+<status status="PASS" starttime="20150929 20:06:48.737" endtime="20150929 20:06:48.742"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -153,14 +154,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>${rainy}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.418" endtime="20150929 17:29:36.427"></status>
+<status status="PASS" starttime="20150929 20:06:48.744" endtime="20150929 20:06:48.749"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Bathrooms">
 <assign>
 <var>${bathrooms}</var>
 </assign>
-<msg timestamp="20150929 17:29:36.434" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" starttime="20150929 17:29:36.430" endtime="20150929 17:29:36.435"></status>
+<msg timestamp="20150929 20:06:48.755" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" starttime="20150929 20:06:48.752" endtime="20150929 20:06:48.756"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -168,23 +169,59 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>3.5</arg>
 <arg>${bathrooms}</arg>
 </arguments>
-<status status="PASS" starttime="20150929 17:29:36.438" endtime="20150929 17:29:36.444"></status>
+<status status="PASS" starttime="20150929 20:06:48.759" endtime="20150929 20:06:48.772"></status>
 </kw>
-<status status="PASS" starttime="20150929 17:29:36.360" endtime="20150929 17:29:36.446" critical="yes"></status>
+<status status="PASS" starttime="20150929 20:06:48.681" endtime="20150929 20:06:48.775" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20150929 17:29:35.442" endtime="20150929 17:29:36.451"></status>
+<test id="s1-t4" name="Test Usage Message">
+<kw library="LibraryKeywords" name="Start Program With Arguments">
+<arguments>
+<arg>-h</arg>
+</arguments>
+<status status="PASS" starttime="20150929 20:06:48.787" endtime="20150929 20:06:48.792"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20150929 20:06:48.800" level="INFO">${output} = -h</msg>
+<status status="PASS" starttime="20150929 20:06:48.796" endtime="20150929 20:06:48.801"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${expected2}</arg>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20150929 20:06:48.811" level="FAIL">usage: java Volume Calculator length width height
+Calculate the volume of a box.
+positional arguments:
+length the length of the box (float)
+width the width of the box (float)
+height the height of the box (float) != -h</msg>
+<status status="FAIL" starttime="20150929 20:06:48.804" endtime="20150929 20:06:48.814"></status>
+</kw>
+<status status="FAIL" starttime="20150929 20:06:48.779" endtime="20150929 20:06:48.817" critical="yes">usage: java Volume Calculator length width height
+Calculate the volume of a box.
+positional arguments:
+length the length of the box (float)
+width the width of the box (float)
+height the height of the box (float) != -h</status>
+</test>
+<status status="FAIL" starttime="20150929 20:06:47.779" endtime="20150929 20:06:48.826"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0">Critical Tests</stat>
-<stat pass="3" fail="0">All Tests</stat>
+<stat pass="3" fail="1">Critical Tests</stat>
+<stat pass="3" fail="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="3" id="s1" fail="0" name="LibraryTests">LibraryTests</stat>
+<stat pass="3" id="s1" fail="1" name="LibraryTests">LibraryTests</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20150929 20:06:48.537" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
 </errors>
 </robot>

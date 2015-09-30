@@ -16,16 +16,12 @@ public class LibraryKeywords
         lib.addArgsFromCLI(args);
 
         output = lib.checkNumOfArgs(args);
-        if (output != ""){}
-        else
-        {
-            float len = Float.parseFloat(lib.getArgValue("length"));
+        if (output == ""){
+        	float len = Float.parseFloat(lib.getArgValue("length"));
             float wid = Float.parseFloat(lib.getArgValue("width"));
             float hei = Float.parseFloat(lib.getArgValue("height"));
             output = String.valueOf(len * wid * hei);
         }
-        
-
     }
     
     public String getLength() 
@@ -45,11 +41,6 @@ public class LibraryKeywords
     
     public String getProgramOutput() 
     {
-        //float len = Float.parseFloat(lib.getArgValue("length"));
-        //float wid = Float.parseFloat(lib.getArgValue("width"));
-        //float hei = Float.parseFloat(lib.getArgValue("height"));
-        //String.valueOf(len * wid * hei);
-
         return output;
     }
     
@@ -81,6 +72,21 @@ public class LibraryKeywords
     public String getBathrooms()
     {
         return lib.getArgValue("bathrooms");
+    }
+    
+    public void startProgramWithArguments(String[] args)
+    {
+    	lib = new Library();
+        lib.addProgramName("Volume Calculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgName("length");
+        lib.addArgDescription("the length of the box (float)");
+        lib.addArgName("width");
+    	lib.addArgDescription("the width of the box (float)");
+        lib.addArgName("height");
+        lib.addArgDescription("the height of the box (float)");
+        lib.addArgsFromCLI(args);
+        output = lib.checkForHelpArg();
     }
 
 }

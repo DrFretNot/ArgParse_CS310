@@ -98,7 +98,7 @@ public class Library {
    		else return "";
    }
     
-    public String checkForHelpArg(String[] args){
+    public String checkForHelpArg(){
         if(argValueList.get(0) == "-h"){
         	String helpMessage = "usage: java " + programName;
         	for(int i = 0; i < argNameList.size(); i++) {
@@ -106,18 +106,19 @@ public class Library {
             }
             helpMessage += "\n" + programDescription + "\npositional arguments:\n";
             for(int i = 0; i < argNameList.size(); i++) {
-                helpMessage += "    " + argNameList.get(i) + " " + argDescriptionList.get(i) + "\n";   
+                helpMessage += "   " + argNameList.get(i) + " " + argDescriptionList.get(i) + "\n";   
             }
             return helpMessage;
         }
         
         else{
-        	String errorMessage = "-bash: ";
+        	/*String errorMessage = "-bash: ";
         	for(int i = 0; i < args.length; i++){
         		errorMessage += args[i];
         	}
         	errorMessage += ": command not found";
-            return errorMessage;  
+            return errorMessage; */
+            return argValueList.get(0); 
         }
     }
 	

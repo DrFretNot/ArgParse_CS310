@@ -76,7 +76,7 @@ public class LibraryUnitTests {
         lib.addArgName("height");
         lib.addArgDescription("the height of the box");
         lib.addArgsFromCLI(args);
-        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n    length the length of the box\n    width the width of the box\n    height the height of the box\n", lib.checkForHelpArg(args)); 
+        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\n   length the length of the box\n   width the width of the box\n   height the height of the box\n", lib.checkForHelpArg()); 
         
     }
 	

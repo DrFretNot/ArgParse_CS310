@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-09-29T22:29:17" hostname="Katies-MacBook-Air-2.local" time="0.013">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-09-30T01:06:30" hostname="Katies-MacBook-Air-2.local" time="0.013">
   <properties/>
-  <testcase name="testGetDataType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.009"/>
-  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
-  <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testGetDataType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.008"/>
+  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
