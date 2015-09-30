@@ -6,15 +6,15 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
-    private List<Enumeration>
+   // private List<Enumeration>
 	private List<String> argDescriptionList;
     private String programName = "";
     private String programDescription = "";
-	private enum Types {
+	/*private enum Types {
                 INTEGER{ int number = Float.parseFloat(String x){return number}},
                 STRING { 
                 BOOLEAN{ 
-                FLOAT  { };
+                FLOAT  { };*/
 	
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
@@ -106,13 +106,13 @@ public class Library {
     
     public String checkForHelpArg(){
         if(argValueList.get(0).equals("-h")){
-        	String helpMessage = " usage: java " + programName;
+        	String helpMessage = "usage: java " + programName;
         	for(int i = 0; i < argNameList.size(); i++) {
                 helpMessage += " " + argNameList.get(i);   
             }
-            helpMessage += "\n" + programDescription + "\npositional arguments:\n";
+            helpMessage += "\n" + programDescription + "\npositional arguments:";
             for(int i = 0; i < argNameList.size(); i++) {
-                helpMessage += "   " + argNameList.get(i) + " " + argDescriptionList.get(i) + "\n";   
+                helpMessage += "\n" + argNameList.get(i) + " " + argDescriptionList.get(i);   
             }
             return helpMessage;
         }
@@ -128,7 +128,7 @@ public class Library {
         }
     }
 	
-	public void setDataType(enum type){
+	/*public void setDataType(enum type){
 
 	}
 	
@@ -140,7 +140,7 @@ public class Library {
 	public String checkDataType(String[] args){
 		//passing by cheating- Trent
 		return "error";	
-	}
+	}*/
 
 }
 
