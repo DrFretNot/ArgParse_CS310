@@ -6,10 +6,15 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
+    private List<Enumeration>
 	private List<String> argDescriptionList;
     private String programName = "";
     private String programDescription = "";
-	private enum Types { INTEGER, STRING, BOOLEAN, FLOAT };
+	private enum Types {
+                INTEGER{ int number = Float.parseFloat(String x){return number}},
+                STRING { 
+                BOOLEAN{ 
+                FLOAT  { };
 	
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
@@ -18,6 +23,7 @@ public class Library {
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
 		argDescriptionList = new ArrayList<String>();
+        
 	}
 	
 	//Stores the name of the program using the library
@@ -122,35 +128,20 @@ public class Library {
         }
     }
 	
-
-	/*
 	public void setDataType(enum type){
-		;
 
+	}
 	
-	
-
-		
-		
-	}*/
-	
-	
-	/*public enum getDataType(){
+	public enum getDataType()
+    {
 		return Types.INTEGER;
-		
-		
-	}*/
+	}
 	
 	public String checkDataType(String[] args){
-		
 		//passing by cheating- Trent
-		return "error";
-		
-		
+		return "error";	
 	}
-    
-   
-    
+
 }
 
 

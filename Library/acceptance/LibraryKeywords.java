@@ -16,7 +16,8 @@ public class LibraryKeywords
         lib.addArgsFromCLI(args);
 
         output = lib.checkNumOfArgs(args);
-        if (output == ""){
+        if (output == "")
+        {
         	float len = Float.parseFloat(lib.getArgValue("length"));
             float wid = Float.parseFloat(lib.getArgValue("width"));
             float hei = Float.parseFloat(lib.getArgValue("height"));
