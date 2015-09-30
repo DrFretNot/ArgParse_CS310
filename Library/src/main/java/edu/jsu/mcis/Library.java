@@ -99,8 +99,8 @@ public class Library {
    }
     
     public String checkForHelpArg(){
-        if(argValueList.get(0) == "-h"){
-        	String helpMessage = "usage: java " + programName;
+        if(argValueList.get(0).equals("-h")){
+        	String helpMessage = " usage: java " + programName;
         	for(int i = 0; i < argNameList.size(); i++) {
                 helpMessage += " " + argNameList.get(i);   
             }
