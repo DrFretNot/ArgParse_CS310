@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-09-30T19:14:22" hostname="Katies-MacBook-Air-2.local" time="0.009">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-10-01T00:12:12" hostname="Trents-MacBook-Air.local" time="0.034">
   <properties/>
-  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.006"/>
+  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.029"/>
   <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testArgumentPlacedInCorrectIndex" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testHelpInformation" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
