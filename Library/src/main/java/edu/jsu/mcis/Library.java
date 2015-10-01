@@ -9,18 +9,6 @@ public class Library {
 	private List<String> argDescriptionList;
     private String programName = "";
     private String programDescription = "";
-	/*private enum argType 
-                {
-                INTEGER{ int stringIntParser(String x){return Integer.parseInt(x);}},
-                FLOAT  { float stringFloatParser(String x){return Float.parseFloat(x);}},
-                STRING { boolean stringBooleanParser(String x) {return Boolean.parseBoolean(x);}},
-                BOOLEAN{ String stringStringParser(String x) {return x ;}};
-                
-                abstract int stringIntParser ( String x );
-                abstract float stringFloatParser(String x);
-                abstract boolean stringBooleanParser(String x);
-                abstract String stringStringParser(String x);
-                }*/
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     private HashMap<String, argType> hmap;
 	
