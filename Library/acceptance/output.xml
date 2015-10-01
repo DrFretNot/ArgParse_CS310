@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150930 14:14:40.048">
-<suite source="/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
+<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20150930 20:48:10.495">
+<suite source="/Users/robertwarren/GitHub/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
 <test id="s1-t1" name="Test Volume Calculator Normal Function">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
 <arguments>
@@ -8,70 +8,10 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20150930 14:14:41.065" endtime="20150930 14:14:41.077"></status>
+<msg timestamp="20150930 20:48:11.227" level="FAIL">NoClassDefFoundError: edu/jsu/mcis/Library</msg>
+<status status="FAIL" starttime="20150930 20:48:11.191" endtime="20150930 20:48:11.229"></status>
 </kw>
-<kw library="LibraryKeywords" name="Get Length">
-<assign>
-<var>${length}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.080" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20150930 14:14:41.092" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20150930 14:14:41.082" endtime="20150930 14:14:41.094"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>7</arg>
-<arg>${length}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.099" endtime="20150930 14:14:41.108"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Width">
-<assign>
-<var>${width}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.118" level="INFO">${width} = 5</msg>
-<status status="PASS" starttime="20150930 14:14:41.112" endtime="20150930 14:14:41.119"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>5</arg>
-<arg>${width}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.124" endtime="20150930 14:14:41.134"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Height">
-<assign>
-<var>${height}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.143" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20150930 14:14:41.138" endtime="20150930 14:14:41.145"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>2</arg>
-<arg>${height}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.150" endtime="20150930 14:14:41.160"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Program Output">
-<assign>
-<var>${output}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.171" level="INFO">${output} = 70.0</msg>
-<status status="PASS" starttime="20150930 14:14:41.165" endtime="20150930 14:14:41.172"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${output}</arg>
-<arg>70.0</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.177" endtime="20150930 14:14:41.186"></status>
-</kw>
-<status status="PASS" starttime="20150930 14:14:41.051" endtime="20150930 14:14:41.190" critical="yes"></status>
+<status status="FAIL" starttime="20150930 20:48:11.181" endtime="20150930 20:48:11.232" critical="yes">NoClassDefFoundError: edu/jsu/mcis/Library</status>
 </test>
 <test id="s1-t2" name="Test Unrecognized Argument">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -81,25 +21,10 @@
 <arg>2</arg>
 <arg>43</arg>
 </arguments>
-<status status="PASS" starttime="20150930 14:14:41.205" endtime="20150930 14:14:41.214"></status>
+<msg timestamp="20150930 20:48:11.265" level="FAIL">NoClassDefFoundError: edu/jsu/mcis/Library</msg>
+<status status="FAIL" starttime="20150930 20:48:11.243" endtime="20150930 20:48:11.269"></status>
 </kw>
-<kw library="LibraryKeywords" name="Get Program Output">
-<assign>
-<var>${output}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.225" level="INFO">${output} = usage: java Volume Calculator length width height
-Volume Calculator.java: error: unrecognized arguments: 43</msg>
-<status status="PASS" starttime="20150930 14:14:41.218" endtime="20150930 14:14:41.227"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${output}</arg>
-<arg>${expected1}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.232" endtime="20150930 14:14:41.242"></status>
-</kw>
-<status status="PASS" starttime="20150930 14:14:41.195" endtime="20150930 14:14:41.246" critical="yes"></status>
+<status status="FAIL" starttime="20150930 20:48:11.236" endtime="20150930 20:48:11.273" critical="yes">NoClassDefFoundError: edu/jsu/mcis/Library</status>
 </test>
 <test id="s1-t3" name="Test Absurd Program Normal Function">
 <kw library="LibraryKeywords" name="Start Absurd Program With Arguments">
@@ -109,113 +34,34 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<status status="PASS" starttime="20150930 14:14:41.262" endtime="20150930 14:14:41.270"></status>
+<msg timestamp="20150930 20:48:11.307" level="FAIL">NoClassDefFoundError: edu/jsu/mcis/Library</msg>
+<status status="FAIL" starttime="20150930 20:48:11.285" endtime="20150930 20:48:11.309"></status>
 </kw>
-<kw library="LibraryKeywords" name="Get Pet">
-<assign>
-<var>${pet}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.278" level="INFO">${pet} = dog</msg>
-<status status="PASS" starttime="20150930 14:14:41.273" endtime="20150930 14:14:41.279"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>dog</arg>
-<arg>${pet}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.283" endtime="20150930 14:14:41.289"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Number">
-<assign>
-<var>${number}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.298" level="INFO">${number} = 2</msg>
-<status status="PASS" starttime="20150930 14:14:41.292" endtime="20150930 14:14:41.300"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>2</arg>
-<arg>${number}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.304" endtime="20150930 14:14:41.313"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Rainy">
-<assign>
-<var>${rainy}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.324" level="INFO">${rainy} = true</msg>
-<status status="PASS" starttime="20150930 14:14:41.318" endtime="20150930 14:14:41.326"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>true</arg>
-<arg>${rainy}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.330" endtime="20150930 14:14:41.340"></status>
-</kw>
-<kw library="LibraryKeywords" name="Get Bathrooms">
-<assign>
-<var>${bathrooms}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.350" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" starttime="20150930 14:14:41.344" endtime="20150930 14:14:41.351"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>3.5</arg>
-<arg>${bathrooms}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.355" endtime="20150930 14:14:41.361"></status>
-</kw>
-<status status="PASS" starttime="20150930 14:14:41.252" endtime="20150930 14:14:41.364" critical="yes"></status>
+<status status="FAIL" starttime="20150930 20:48:11.278" endtime="20150930 20:48:11.311" critical="yes">NoClassDefFoundError: edu/jsu/mcis/Library</status>
 </test>
 <test id="s1-t4" name="Test Usage Message">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
 <arguments>
 <arg>-h</arg>
 </arguments>
-<status status="PASS" starttime="20150930 14:14:41.376" endtime="20150930 14:14:41.383"></status>
+<msg timestamp="20150930 20:48:11.348" level="FAIL">NoClassDefFoundError: edu/jsu/mcis/Library</msg>
+<status status="FAIL" starttime="20150930 20:48:11.322" endtime="20150930 20:48:11.350"></status>
 </kw>
-<kw library="LibraryKeywords" name="Get Program Output">
-<assign>
-<var>${output}</var>
-</assign>
-<msg timestamp="20150930 14:14:41.395" level="INFO">${output} = usage: java Volume Calculator length width height
-Calculate the volume of a box.
-positional arguments:
-length the length of the box (float)
-width the width of the box (float)
-height the height of the ...</msg>
-<status status="PASS" starttime="20150930 14:14:41.388" endtime="20150930 14:14:41.397"></status>
-</kw>
-<kw library="BuiltIn" name="Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${expected2}</arg>
-<arg>${output}</arg>
-</arguments>
-<status status="PASS" starttime="20150930 14:14:41.401" endtime="20150930 14:14:41.410"></status>
-</kw>
-<status status="PASS" starttime="20150930 14:14:41.368" endtime="20150930 14:14:41.413" critical="yes"></status>
+<status status="FAIL" starttime="20150930 20:48:11.315" endtime="20150930 20:48:11.352" critical="yes">NoClassDefFoundError: edu/jsu/mcis/Library</status>
 </test>
-<status status="PASS" starttime="20150930 14:14:40.085" endtime="20150930 14:14:41.422"></status>
+<status status="FAIL" starttime="20150930 20:48:10.515" endtime="20150930 20:48:11.360"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0">Critical Tests</stat>
-<stat pass="4" fail="0">All Tests</stat>
+<stat pass="0" fail="4">Critical Tests</stat>
+<stat pass="0" fail="4">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" id="s1" fail="0" name="LibraryTests">LibraryTests</stat>
+<stat pass="0" id="s1" fail="4" name="LibraryTests">LibraryTests</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20150930 14:14:41.080" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
 </errors>
 </robot>
