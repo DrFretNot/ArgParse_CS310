@@ -10,11 +10,12 @@ public class Library {
 	private List<String> argDescriptionList;
     private String programName = "";
     private String programDescription = "";
-	/*private enum Types {
+	private enum Types {
                 INTEGER{ int number = Float.parseFloat(String x){return number}},
-                STRING { 
-                BOOLEAN{ 
-                FLOAT  { };*/
+                STRING {   },
+                BOOLEAN{  },
+                FLOAT  {  }
+                }
 	
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
