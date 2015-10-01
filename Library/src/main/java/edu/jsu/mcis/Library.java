@@ -6,9 +6,12 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
+    private List<Object> parsedValueList;
 	private List<String> argDescriptionList;
+    
     private String programName = "";
     private String programDescription = "";
+    
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     private HashMap<String, argType> hmap;
 	
@@ -60,19 +63,31 @@ public class Library {
 		argDescriptionList.add(argDescription);
 	}
     
+    
     //Returns the value corresponding to the arg name passed to the function
-   public String getArgValue(String argName){
+    public String getArgValue(String argName){
    		int index = argNameList.indexOf(argName);
    		return argValueList.get(index);
-   }
+    }
+
+   
+    public Object getParsedArgValue(String argName){
+   		//int index = argNameList.indexOf(argName);    
+   		return "";
+    }
    
    //Takes the array of strings from the command line and matches each value with the 
    //correct argument
-   public void addArgsFromCLI(String[] args){
+    public void addArgsFromCLI(String[] args){
    		for(int i = 0; i < args.length; i++){
    			argValueList.add(i, args[i]);
    		}
-   }
+    }
+    
+    public void parseDataType(String[] args)
+    {
+        
+    }
    
    //Checks if the number of arguments given from the command line matches the number of 
    //arguments expected

@@ -99,10 +99,10 @@ public class LibraryUnitTests {
         
 	}
 	
-	//@Test
-	/* public void testParseToCorrectDataType()
+	@Test
+	public void testParseToCorrectDataType()
     {
-        String[] args = {1, 2, 3};
+        String[] args = {"1", "2", "3"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -113,9 +113,11 @@ public class LibraryUnitTests {
         lib.addArgWithDataType("height", Library.argType.FLOAT);
         lib.addArgDescription("the height of the box");
         lib.addArgsFromCLI(args);
-        lib.parseDataType();
-		
-	} */
+        lib.parseDataType(args);
+        assertEquals(1.0, lib.getParsedArgValue("length"));
+        assertEquals(2.0, lib.getParsedArgValue("width"));
+        assertEquals(3.0, lib.getParsedArgValue("height"));
+	} 
   
 }
     
