@@ -99,9 +99,10 @@ public class LibraryUnitTests {
         
 	}
 	
-	@Test
-	public void testParseToCorrectDataType()
+	//@Test
+	/* public void testParseToCorrectDataType()
     {
+        String[] args = {1, 2, 3};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -111,28 +112,10 @@ public class LibraryUnitTests {
         lib.addArgDescription("the width of the box");
         lib.addArgWithDataType("height", Library.argType.FLOAT);
         lib.addArgDescription("the height of the box");
-        lib.parseDataType()
+        lib.addArgsFromCLI(args);
+        lib.parseDataType();
 		
-	}
-
-	
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	} */
+  
 }
     

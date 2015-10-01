@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-10-01T01:55:57" hostname="Prefontaine" time="0.01">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-10-01T02:05:12" hostname="Prefontaine" time="0.008">
   <properties/>
-  <testcase name="testSetDataTypes" classname="edu.jsu.mcis.LibraryUnitTests" time="0.002"/>
-  <testcase name="testDataTypeOfAllArgsIsFloat" classname="edu.jsu.mcis.LibraryUnitTests" time="0.005"/>
+  <testcase name="testDataTypeOfAllArgsIsFloat" classname="edu.jsu.mcis.LibraryUnitTests" time="0.006"/>
   <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
