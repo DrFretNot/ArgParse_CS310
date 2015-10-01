@@ -89,17 +89,22 @@ public class Library {
     public String parseDataType(String[] args)
     {
         String errorMessage = "";
+        int indexHolder = 0;
+        String currentTypeError = "";
         try{
-        	for (int i = 0; i < args.length; i++){
-        		Object currentArgument = args[i];
-        		argType currentArgType = hmap.get(argNameList.get(i));
+        	for (int index = 0; index < args.length; index++){
+        		indexHolder = index;
+        		Object currentArgument = args[index];
+        		argType currentArgType = hmap.get(argNameList.get(index));
         		if (currentArgType == argType.INTEGER){
-        			currentArgument = Integer.parseInt(args[i]);
+        			currentTypeError = "integer";
+        			currentArgument = Integer.parseInt(args[index]);
         			parsedValueList.add(currentArgument);
         			//return errorMessage;
         		}
         		else if (currentArgType == argType.FLOAT){
-        			currentArgument = Float.parseFloat(args[i]);
+        			currentTypeError = "float";
+        			currentArgument = Float.parseFloat(args[index]);
         			parsedValueList.add(currentArgument);
         			//return errorMessage;
         		}
@@ -109,7 +114,8 @@ public class Library {
         		}
         		//boolean
         		else{
-        			currentArgument = Boolean.parseBoolean(args[i]);
+        			currentTypeError = "boolean";
+        			currentArgument = Boolean.parseBoolean(args[index]);
         			parsedValueList.add(currentArgument);
         			//return errorMessage;
         		}
@@ -121,9 +127,22 @@ public class Library {
 			for(int i = 0; i < argNameList.size(); i++) {
                 errorMessage += " " + argNameList.get(i);   
             } 
-            errorMessage += "\n" + programName + ".java: error: argument width: invalid float value: something";
+            errorMessage += "\n" + programName + ".java: error: argument " + argNameList.get(indexHolder) + ": invalid ";
+            errorMessage += currentTypeError + " value: " + args[indexHolder];
             //return errorMessage;       	
         }
+        /*catch(IllegalArgumentException e){
+            errorMessage = "usage: java " + programName;
+			for(int i = 0; i < argNameList.size(); i++) {
+                errorMessage += " " + argNameList.get(i);   
+            } 
+            errorMessage += "\n" + programName + ".java: error: argument " + argNameList.get(indexHolder) + ": invalid ";
+            errorMessage += currentTypeError + " value: " + args[indexHolder];
+        
+        
+        }*/
+        //	There exists no method to test whether a String encodes a Boolean; 
+        //	for all practical effects, any non-"true"-String is false
         return errorMessage;
     }
    
