@@ -118,6 +118,22 @@ public class LibraryUnitTests {
         assertEquals((float)2, lib.getParsedArgValue("width"));
         assertEquals((float)3, lib.getParsedArgValue("height"));
 	} 
+	
+	@Test
+	public void testEnterInvalidDataTypeForArgumentAndReturnErrorMessage(){
+		String[] args = {"1", "something", "3"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgWithDataType("length", Library.argType.FLOAT);
+        lib.addArgDescription("the length of the box");
+        lib.addArgWithDataType("width", Library.argType.FLOAT);
+        lib.addArgDescription("the width of the box");
+        lib.addArgWithDataType("height", Library.argType.FLOAT);
+        lib.addArgDescription("the height of the box");
+        lib.addArgsFromCLI(args);
+        assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", lib.parseDataType(args));
+	}
   
 }
     

@@ -86,28 +86,45 @@ public class Library {
    		}
     }
     
-    public void parseDataType(String[] args)
+    public String parseDataType(String[] args)
     {
-        for (int i = 0; i < args.length; i++){
-        	Object currentArgument = args[i];
-        	argType currentArgType = hmap.get(argNameList.get(i));
-        	if (currentArgType == argType.INTEGER){
-        		currentArgument = Integer.parseInt(args[i]);
-        		parsedValueList.add(currentArgument);
+        String errorMessage = "";
+        try{
+        	for (int i = 0; i < args.length; i++){
+        		Object currentArgument = args[i];
+        		argType currentArgType = hmap.get(argNameList.get(i));
+        		if (currentArgType == argType.INTEGER){
+        			currentArgument = Integer.parseInt(args[i]);
+        			parsedValueList.add(currentArgument);
+        			//return errorMessage;
+        		}
+        		else if (currentArgType == argType.FLOAT){
+        			currentArgument = Float.parseFloat(args[i]);
+        			parsedValueList.add(currentArgument);
+        			//return errorMessage;
+        		}
+        		else if (currentArgType == argType.STRING){
+        			parsedValueList.add(currentArgument);
+        			//return errorMessage;
+        		}
+        		//boolean
+        		else{
+        			currentArgument = Boolean.parseBoolean(args[i]);
+        			parsedValueList.add(currentArgument);
+        			//return errorMessage;
+        		}
+        		//else return "Error\n"
         	}
-        	else if (currentArgType == argType.FLOAT){
-        		currentArgument = Float.parseFloat(args[i]);
-        		parsedValueList.add(currentArgument);
-        	}
-        	else if (currentArgType == argType.STRING){
-        		parsedValueList.add(currentArgument);
-        	}
-        	else if (currentArgType == argType.BOOLEAN){
-        		currentArgument = Boolean.parseBoolean(args[i]);
-        		parsedValueList.add(currentArgument);
-        	}
-        	
         }
+        catch(NumberFormatException e){
+			errorMessage = "usage: java " + programName;
+			for(int i = 0; i < argNameList.size(); i++) {
+                errorMessage += " " + argNameList.get(i);   
+            } 
+            errorMessage += "\n" + programName + ".java: error: argument width: invalid float value: something";
+            //return errorMessage;       	
+        }
+        return errorMessage;
     }
    
    //Checks if the number of arguments given from the command line matches the number of 
