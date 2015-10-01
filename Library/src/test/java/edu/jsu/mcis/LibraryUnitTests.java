@@ -80,28 +80,40 @@ public class LibraryUnitTests {
         
     }
 	
-	/*@Test
-	public void testGetDataType(){
+	@Test
+	public void testDataTypeOfAllArgsIsFloat(){
 		
-		String[] args = {"7", "something", "2"};
 		Library lib = new Library();
-        lib.addArgName("length");
-        lib.addArgName("width");
-        lib.addArgName("height");
-		lib.addArgsFromCLI(args);
-		assertEquals("error", lib.checkDataType(args));//Trent fixed this. Passes by cheating
-		//should be able to write the checkDataType() method now
-		//Sinh and Andrew got to here.
-		
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgWithDataType("length", Library.argType.FLOAT);
+        lib.addArgDescription("the length of the box");
+        lib.addArgWithDataType("width", Library.argType.FLOAT);
+        lib.addArgDescription("the width of the box");
+        lib.addArgWithDataType("height", Library.argType.FLOAT);
+        lib.addArgDescription("the height of the box");
+		assertEquals(Library.argType.FLOAT, lib.getArgDataType("length"));
+        assertEquals(Library.argType.FLOAT, lib.getArgDataType("width"));
+        assertEquals(Library.argType.FLOAT, lib.getArgDataType("height"));
+        
+        
 	}
 	
-	//@Test
-	public void testSetDataTypes()
+	@Test
+	public void testParseToCorrectDataType()
     {
-        
-
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgWithDataType("length", Library.argType.FLOAT);
+        lib.addArgDescription("the length of the box");
+        lib.addArgWithDataType("width", Library.argType.FLOAT);
+        lib.addArgDescription("the width of the box");
+        lib.addArgWithDataType("height", Library.argType.FLOAT);
+        lib.addArgDescription("the height of the box");
+        lib.parseDataType()
 		
-	}*/
+	}
 
 	
 

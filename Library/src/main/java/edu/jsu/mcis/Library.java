@@ -6,16 +6,23 @@ public class Library {
 
 	private List<String> argNameList;
 	private List<String> argValueList;
-   // private List<Enumeration>
 	private List<String> argDescriptionList;
     private String programName = "";
     private String programDescription = "";
-	private enum Types {
-                INTEGER{ int number = Float.parseFloat(String x){return number}},
-                STRING {   },
-                BOOLEAN{  },
-                FLOAT  {  }
-                }
+	/*private enum argType 
+                {
+                INTEGER{ int stringIntParser(String x){return Integer.parseInt(x);}},
+                FLOAT  { float stringFloatParser(String x){return Float.parseFloat(x);}},
+                STRING { boolean stringBooleanParser(String x) {return Boolean.parseBoolean(x);}},
+                BOOLEAN{ String stringStringParser(String x) {return x ;}};
+                
+                abstract int stringIntParser ( String x );
+                abstract float stringFloatParser(String x);
+                abstract boolean stringBooleanParser(String x);
+                abstract String stringStringParser(String x);
+                }*/
+    public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
+    private HashMap<String, argType> hmap;
 	
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
@@ -24,7 +31,7 @@ public class Library {
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
 		argDescriptionList = new ArrayList<String>();
-        
+        hmap = new HashMap<String, argType>();
 	}
 	
 	//Stores the name of the program using the library
@@ -54,6 +61,12 @@ public class Library {
 		argNameList.add(argName);
 		argValueList.add("");
 	}
+    
+    public void addArgWithDataType(String argName, argType dataType)
+    {
+        hmap.put(argName, dataType);
+        argValueList.add("");
+    }
 	
 	public void addArgDescription(String argDescription){
 		argDescriptionList.add(argDescription);
@@ -129,20 +142,10 @@ public class Library {
         }
     }
 	
-	/*public void setDataType(enum type){
-
+	public argType getArgDataType(String arg){
+		return hmap.get(arg);
 	}
-	
-	public enum getDataType()
-    {
-		return Types.INTEGER;
-	}
-	
-	public String checkDataType(String[] args){
-		//passing by cheating- Trent
-		return "error";	
-	}*/
-
+    
 }
 
 
