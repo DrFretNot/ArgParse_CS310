@@ -22,6 +22,7 @@ public class Library {
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
 		argDescriptionList = new ArrayList<String>();
+		parsedValueList = new ArrayList<Object>();
         hmap = new HashMap<String, argType>();
 	}
 	
@@ -56,6 +57,7 @@ public class Library {
     public void addArgWithDataType(String argName, argType dataType)
     {
         hmap.put(argName, dataType);
+        argNameList.add(argName);
         argValueList.add("");
     }
 	
@@ -72,8 +74,8 @@ public class Library {
 
    
     public Object getParsedArgValue(String argName){
-   		//int index = argNameList.indexOf(argName);    
-   		return "";
+   		int index = argNameList.indexOf(argName);    
+   		return parsedValueList.get(index);
     }
    
    //Takes the array of strings from the command line and matches each value with the 
@@ -86,7 +88,26 @@ public class Library {
     
     public void parseDataType(String[] args)
     {
-        
+        for (int i = 0; i < args.length; i++){
+        	Object currentArgument = args[i];
+        	argType currentArgType = hmap.get(argNameList.get(i));
+        	if (currentArgType == argType.INTEGER){
+        		currentArgument = Integer.parseInt(args[i]);
+        		parsedValueList.add(currentArgument);
+        	}
+        	else if (currentArgType == argType.FLOAT){
+        		currentArgument = Float.parseFloat(args[i]);
+        		parsedValueList.add(currentArgument);
+        	}
+        	else if (currentArgType == argType.STRING){
+        		parsedValueList.add(currentArgument);
+        	}
+        	else if (currentArgType == argType.BOOLEAN){
+        		currentArgument = Boolean.parseBoolean(args[i]);
+        		parsedValueList.add(currentArgument);
+        	}
+        	
+        }
     }
    
    //Checks if the number of arguments given from the command line matches the number of 

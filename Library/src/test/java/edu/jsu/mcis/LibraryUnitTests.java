@@ -114,9 +114,9 @@ public class LibraryUnitTests {
         lib.addArgDescription("the height of the box");
         lib.addArgsFromCLI(args);
         lib.parseDataType(args);
-        assertEquals(1.0, lib.getParsedArgValue("length"));
-        assertEquals(2.0, lib.getParsedArgValue("width"));
-        assertEquals(3.0, lib.getParsedArgValue("height"));
+        assertEquals((float)1, lib.getParsedArgValue("length"));
+        assertEquals((float)2, lib.getParsedArgValue("width"));
+        assertEquals((float)3, lib.getParsedArgValue("height"));
 	} 
   
 }
