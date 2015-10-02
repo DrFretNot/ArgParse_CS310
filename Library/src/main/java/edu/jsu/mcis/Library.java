@@ -205,6 +205,19 @@ public class Library {
 	public argType getArgDataType(String arg){
 		return hmap.get(arg);
 	}
+	
+	public String argMultiUseChecker(String[] args){
+		if (args[0].equals("-h")){
+			return checkForHelpArg();
+		}
+		else{
+			if (!checkNumOfArgs(args).equals("")){
+				return checkNumOfArgs(args);	
+			}
+			else return parseDataType(args);
+		}
+		//return "false";
+	}
     
 }
 

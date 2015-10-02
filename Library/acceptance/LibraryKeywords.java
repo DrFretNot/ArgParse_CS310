@@ -77,17 +77,17 @@ public class LibraryKeywords
     
     public void startProgramWithArguments(String[] args)
     {
-    	lib = new Library();
+    	Library lib = new Library();
         lib.addProgramName("Volume Calculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgName("length");
+        lib.addArgWithDataType("length", Library.argType.FLOAT);
         lib.addArgDescription("the length of the box (float)");
-        lib.addArgName("width");
-    	lib.addArgDescription("the width of the box (float)");
-        lib.addArgName("height");
+        lib.addArgWithDataType("width", Library.argType.FLOAT);
+        lib.addArgDescription("the width of the box (float)");
+        lib.addArgWithDataType("height", Library.argType.FLOAT);
         lib.addArgDescription("the height of the box (float)");
         lib.addArgsFromCLI(args);
-        output = lib.checkForHelpArg();
+        output = lib.argMultiUseChecker(args);
     }
 
 }

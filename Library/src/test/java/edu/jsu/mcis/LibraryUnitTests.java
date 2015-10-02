@@ -152,6 +152,29 @@ public class LibraryUnitTests {
         lib.addArgsFromCLI(args);
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument box?: invalid boolean value: something", lib.parseDataType(args));
 	}
+	
+	@Test
+	public void testArgMultiUseCheckerReturnsCorrectMessage(){
+		String[] helpArgs = {"-h"};
+		String[] args = {"1", "something", "3"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgWithDataType("length", Library.argType.FLOAT);
+        lib.addArgDescription("the length of the box");
+        lib.addArgWithDataType("width", Library.argType.FLOAT);
+        lib.addArgDescription("the width of the box");
+        lib.addArgWithDataType("height", Library.argType.FLOAT);
+        lib.addArgDescription("the height of the box");
+        lib.addArgsFromCLI(helpArgs);
+        assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", lib.argMultiUseChecker(helpArgs)); 
+        lib.addArgsFromCLI(args);
+        assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", lib.argMultiUseChecker(args));
+        String[] lessArgs = {"1", "something"};
+        assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", lib.argMultiUseChecker(lessArgs));
+        String[] moreArgs = {"1", "something", "3", "10"};
+        assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.argMultiUseChecker(moreArgs));
+	}
   
 }
     
