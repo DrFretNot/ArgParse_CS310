@@ -135,23 +135,7 @@ public class LibraryUnitTests {
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", lib.parseDataType(args));
 	}
 	
-	//@Test
-	public void testEnterInvalidBooleanValueAndReturnErrorMessage(){
-		String[] args = {"1", "2", "3", "something"};
-        Library lib = new Library();
-        lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgWithDataType("length", Library.argType.FLOAT);
-        lib.addArgDescription("the length of the box");
-        lib.addArgWithDataType("width", Library.argType.FLOAT);
-        lib.addArgDescription("the width of the box");
-        lib.addArgWithDataType("height", Library.argType.FLOAT);
-        lib.addArgDescription("the height of the box");
-        lib.addArgWithDataType("box?", Library.argType.BOOLEAN);
-        lib.addArgDescription("Is the shape a box");
-        lib.addArgsFromCLI(args);
-        assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument box?: invalid boolean value: something", lib.parseDataType(args));
-	}
+	
 	
 	@Test
 	public void testArgMultiUseCheckerReturnsCorrectMessage(){
