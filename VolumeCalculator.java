@@ -1,6 +1,11 @@
+import edu.jsu.mcis.*;
+
+//import edu.jsu.mcis.Library;
+//import edu.jsu.mcis.*;
+
 public class VolumeCalculator 
 {
-    public static void main(String[] args) 
+    /*public static void main(String[] args) 
     {
         VolumeCalculator v = new VolumeCalculator();
         int length, width, height;
@@ -25,5 +30,30 @@ public class VolumeCalculator
     public VolumeCalculator()
     {
         
+    }*/
+    
+    public static void main(String[] args){
+    	Library VolumeCalculator = new Library();
+    	//tried this but didn't work
+    	//Library.Library VolumeCalculator = new Library.Library();
+    	
+    	VolumeCalculator.addProgramName("VolumeCalculator");
+    	
+    	VolumeCalculator.addProgramDescription("Calculate the volume of a box given length, width, and height.\nEnter -h for more details.");
+    	
+    	VolumeCalculator.addArgWithDataType("length", FLOAT);
+    	
+    	VolumeCalculator.addArgWithDataType("width", FLOAT);
+    	
+    	VolumeCalculator.addArgWithDataType("height", FLOAT);
+    	
+    	System.out.println(VolumeCalculator.getProgramName());
+    	System.out.println(VolumeCalculator.getProgramDescription());
+    	
+    	if (VolumeCalculator.argMultiUseChecker(args).equals("")){
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		System.out.println("The volume is " + Volume);
+    	}
+    	else System.out.println(VolumeCalculator.argMultiUseChecker(args));
     }
 }
