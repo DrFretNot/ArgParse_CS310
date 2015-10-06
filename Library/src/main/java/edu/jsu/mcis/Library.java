@@ -3,6 +3,7 @@ package edu.jsu.mcis;
 import java.util.*;
 
 public class Library {
+	
 
 	private List<String> argNameList;
 	private List<String> argValueList;
@@ -15,6 +16,19 @@ public class Library {
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     private HashMap<String, argType> hmap;
 	
+/* 	private class ExceptionClass extends Exception{
+		private class HelpException{
+			throws 
+			throw new HelpException("This is the help exception message");
+		
+		
+		}
+		
+		
+		
+		
+	}
+	 */
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
 	//the values given for each argument, and the description of each argument. 
@@ -54,8 +68,7 @@ public class Library {
 		argValueList.add("");
 	}
     
-    public void addArgWithDataType(String argName, argType dataType)
-    {
+    public void addArgWithDataType(String argName, argType dataType)  {
         hmap.put(argName, dataType);
         argNameList.add(argName);
         argValueList.add("");
@@ -86,8 +99,7 @@ public class Library {
    		}
     }
     
-    public String parseDataType(String[] args)
-    {
+    public String parseDataType(String[] args){
         String errorMessage = "";
         int indexHolder = 0;
         String currentTypeError = "";
@@ -219,7 +231,7 @@ public class Library {
 		//return "false";
 	}
    
-  
+
 }
 
 
