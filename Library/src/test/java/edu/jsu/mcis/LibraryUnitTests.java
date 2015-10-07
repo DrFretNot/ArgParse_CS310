@@ -159,6 +159,40 @@ public class LibraryUnitTests {
         String[] moreArgs = {"1", "something", "3", "10"};
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.argMultiUseChecker(moreArgs));
 	}
+    
+    @Test
+    public void testForArgName(){
+        Argument one = new Argument();
+        one.addElements(arg[0], Library.argType.FLOAT, "length");
+        one.getName();
+        
+            
+    }
+    
   
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
