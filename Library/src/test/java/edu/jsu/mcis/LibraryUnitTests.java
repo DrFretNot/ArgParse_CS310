@@ -165,7 +165,8 @@ public class LibraryUnitTests {
         Library lib = new Library();
         Argument one = new Argument();
         one.addElements("length");
-        one.getName();        
+        
+        assertEquals("lengt",one.getName());
     }
     
   
