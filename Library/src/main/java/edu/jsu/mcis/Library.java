@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Library {
 	
-
 	private List<String> argNameList;
 	private List<String> argValueList;
     private List<Object> parsedValueList;
@@ -32,6 +31,8 @@ public class Library {
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
 	//the values given for each argument, and the description of each argument. 
+  
+    
 	public Library(){ 
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
@@ -91,8 +92,8 @@ public class Library {
    		return parsedValueList.get(index);
     }
    
-   //Takes the array of strings from the command line and matches each value with the 
-   //correct argument
+    //Takes the array of strings from the command line and matches each value with the 
+    //correct argument
     public void addArgsFromCLI(String[] args){
    		for(int i = 0; i < args.length; i++){
    			argValueList.add(i, args[i]);
@@ -158,10 +159,10 @@ public class Library {
         return errorMessage;
     }
    
-   //Checks if the number of arguments given from the command line matches the number of 
-   //arguments expected
-   //Returns an error message when incorrect arguments are given
-   public String checkNumOfArgs(String[] args){
+    //Checks if the number of arguments given from the command line matches the number of 
+    //arguments expected
+    //Returns an error message when incorrect arguments are given
+    public String checkNumOfArgs(String[] args){
    		int numOfArgNames = argNameList.size();
    		if(args.length < numOfArgNames){
             String message = "usage: java " + programName;
@@ -230,7 +231,7 @@ public class Library {
 		}
 		//return "false";
 	}
-   
+
 
 }
 

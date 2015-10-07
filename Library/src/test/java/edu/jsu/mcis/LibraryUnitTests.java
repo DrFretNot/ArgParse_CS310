@@ -161,12 +161,11 @@ public class LibraryUnitTests {
 	}
     
     @Test
-    public void testForArgName(){
+    public void testEnterArgNameAndReturnCorrectName(){
+        Library lib = new Library();
         Argument one = new Argument();
-        one.addElements(arg[0], Library.argType.FLOAT, "length");
-        one.getName();
-        
-            
+        one.addElements("length");
+        one.getName();        
     }
     
   

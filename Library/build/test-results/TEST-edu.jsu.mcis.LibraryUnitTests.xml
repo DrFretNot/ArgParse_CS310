@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2015-10-02T16:13:38" hostname="Katies-MacBook-Air-2.local" time="0.018">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="12" skipped="0" failures="0" errors="0" timestamp="2015-10-07T17:19:13" hostname="Prefontaine" time="0.011">
   <properties/>
-  <testcase name="testDataTypeOfAllArgsIsFloat" classname="edu.jsu.mcis.LibraryUnitTests" time="0.013"/>
-  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testDataTypeOfAllArgsIsFloat" classname="edu.jsu.mcis.LibraryUnitTests" time="0.006"/>
+  <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testErrorThrownWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testArgMultiUseCheckerReturnsCorrectMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testParseToCorrectDataType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testEnterArgNameAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testAddArgumentAndReturnDefault" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testErrorThrownWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testEnterInvalidDataTypeForArgumentAndReturnErrorMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
