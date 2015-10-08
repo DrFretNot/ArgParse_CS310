@@ -161,15 +161,13 @@ public class LibraryUnitTests {
 	}
     
     @Test
-    public void testEnterArgNameAndReturnCorrectName(){
+    public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
         Library lib = new Library();
         Argument one = new Argument();
-        one.addElements("length");
-        
-        assertEquals("lengt",one.getName());
+        one.addElements("length",Library.argType.FLOAT);
+        assertEquals("length",one.getName());
+        assertEquals(Library.argType.FLOAT, one.getType());
     }
-    
-  
 }
     
     
