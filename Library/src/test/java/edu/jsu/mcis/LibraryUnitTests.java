@@ -160,12 +160,13 @@ public class LibraryUnitTests {
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.argMultiUseChecker(moreArgs));
 	}
     
-    /*@Test
+
+    @Test
     public void testForArgName(){
         Argument one = new Argument();
         one.addElements(arg[0], Library.argType.FLOAT, "length");
         one.getName();       
-    }*/
+    }
     
     @Test
     public void testParseReturnsCorrectHelpExceptionMessage(){
@@ -188,9 +189,16 @@ public class LibraryUnitTests {
         	//Assert.That(e.message, Is("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box"));
         }
         //assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+
+    @Test
+    public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
+        Library lib = new Library();
+        Argument one = new Argument();
+        one.addElements("length",Library.argType.FLOAT);
+        assertEquals("length",one.getName());
+        assertEquals(Library.argType.FLOAT, one.getType());
+
     }
-    
-  
 }
     
     
