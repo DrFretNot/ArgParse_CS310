@@ -36,4 +36,13 @@ public class Argument{
     {
         return this.argName;
     }
+    
+    public static void main(String args[]){
+        
+        String testString = "string Test";
+        Library.argType testArgType = Library.argType.STRING;
+        System.out.println(testString + "is a " + String.valueOf(testArgType));
+        
+        
+    }
 }
