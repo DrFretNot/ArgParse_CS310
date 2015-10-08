@@ -16,19 +16,35 @@ public class Library {
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     private HashMap<String, argType> hmap;
 	
-/* 	private class ExceptionClass extends Exception{
-		private class HelpException{
-			throws 
-			throw new HelpException("This is the help exception message");
-		
-		
+	public class HelpException extends Exception{
+		public HelpException(){
+			super();
 		}
-		
-		
-		
-		
+		public HelpException(String message){
+			super(message);
+		}
 	}
-	 */
+	public class IncorrectNumberOfArgsException extends Exception{
+		public IncorrectNumberOfArgsException(){
+			super();
+		}
+		public IncorrectNumberOfArgsException(String message){
+			super(message);
+		}
+	}
+	public class IncorrectArgTypeException extends Exception{
+		public IncorrectArgTypeException(){
+			super();
+		}
+		public IncorrectArgTypeException(String message){
+			super(message);
+		}
+	}
+	
+		
+		
+		
+	 
 	//constructor
 	//Adds 3 ArrayLists to store the name of each argument given by the product owner,
 	//the values given for each argument, and the description of each argument. 
@@ -227,6 +243,19 @@ public class Library {
 				return checkNumOfArgs(args);	
 			}
 			else return parseDataType(args);
+		}
+		//return "false";
+	}
+	
+	public void parse(String[] args) throws HelpException{
+		if (args[0].equals("-h")){
+			throw new HelpException(checkForHelpArg());
+		}
+		else{
+			if (!checkNumOfArgs(args).equals("")){
+				//throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
+			}
+			else {};//throw new IncorrectArgTypeException(parseDataType(args));
 		}
 		//return "false";
 	}

@@ -137,7 +137,7 @@ public class LibraryUnitTests {
 	
 	
 	
-	@Test
+	//@Test
 	public void testArgMultiUseCheckerReturnsCorrectMessage(){
 		String[] helpArgs = {"-h"};
 		String[] args = {"1", "something", "3"};
@@ -160,13 +160,34 @@ public class LibraryUnitTests {
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.argMultiUseChecker(moreArgs));
 	}
     
-    @Test
+    /*@Test
     public void testForArgName(){
         Argument one = new Argument();
         one.addElements(arg[0], Library.argType.FLOAT, "length");
-        one.getName();
-        
-            
+        one.getName();       
+    }*/
+    
+    @Test
+    public void testParseReturnsCorrectHelpExceptionMessage(){
+    	String[] args = {"-h"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgName("length");
+        lib.addArgDescription("the length of the box");
+        lib.addArgName("width");
+        lib.addArgDescription("the width of the box");
+        lib.addArgName("height");
+        lib.addArgDescription("the height of the box");
+        lib.addArgsFromCLI(args);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        	//Assert.That(e.message, Is("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box"));
+        }
+        //assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
     }
     
   
