@@ -81,6 +81,9 @@ public class LibraryUnitTests {
     	length.addElements("length");
     	width.addElements("width", "the width of the box");
     	height.addElements("height", Library.argType.INTEGER);
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
     	try{
     		lib.parse(args);
     	}
