@@ -9,6 +9,11 @@ public class Argument{
         type = null;
     }
     
+    public void addElements(String name){
+        this.setName(name);
+        this.setType(Library.argType.STRING);
+    }
+    
     public void addElements(String name, Library.argType dataType){
         this.setName(name);
         this.setType(dataType);

@@ -249,17 +249,16 @@ public class Library {
 	}
 
 	
-	public void parse(String[] args) throws HelpException{
+	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
 		if (args[0].equals("-h")){
 			throw new HelpException(checkForHelpArg());
 		}
 		else{
 			if (!checkNumOfArgs(args).equals("")){
-				//throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
+				throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
 			}
-			else {};//throw new IncorrectArgTypeException(parseDataType(args));
+			else throw new IncorrectArgTypeException(parseDataType(args));
 		}
-		//return "false";
 	}
    
 

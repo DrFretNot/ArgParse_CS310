@@ -18,11 +18,25 @@ public class LibraryUnitTests {
         lib.addProgramDescription("Calculate the volume of a box");
         assertEquals("Calculate the volume of a box", lib.getProgramDescription());   
     }
-    @Test
+    
+    /*@Test
     public void testAddArgumentAndReturnDefault() {
     	Library lib = new Library();
     	lib.addArgName("length");
         assertEquals("", lib.getArgValue("length"));
+    }*/
+    @Test
+    public void testAddArgumentAndReturnCorrectName(){
+    	Argument length = new Argument();
+    	length.addElements("length");
+    	assertEquals("length", length.getName()); 
+    }
+    
+    @Test
+    public void testAddArgumentWithoutTypeAndReturnDefaultType(){
+    	Argument length = new Argument();
+    	length.addElements("length");
+    	assertEquals(Library.argType.STRING, length.getType()); 
     }
     
     @Test
@@ -161,12 +175,12 @@ public class LibraryUnitTests {
 	}
     
 
-    @Test
+    /*@Test
     public void testForArgName(){
         Argument one = new Argument();
         one.addElements(arg[0], Library.argType.FLOAT, "length");
         one.getName();       
-    }
+    }*/
     
     @Test
     public void testParseReturnsCorrectHelpExceptionMessage(){
@@ -186,13 +200,11 @@ public class LibraryUnitTests {
         }
         catch(Exception e){
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
-        	//Assert.That(e.message, Is("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box"));
         }
-        //assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
 }
     @Test
     public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
-        Library lib = new Library();
+        //Library lib = new Library();
         Argument one = new Argument();
         one.addElements("length",Library.argType.FLOAT);
         assertEquals("length",one.getName());
