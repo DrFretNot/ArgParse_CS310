@@ -228,13 +228,15 @@ public class LibraryUnitTests {
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgName("length");
-        lib.addArgDescription("the length of the box");
-        lib.addArgName("width");
-        lib.addArgDescription("the width of the box");
-        lib.addArgName("height");
-        lib.addArgDescription("the height of the box");
-        lib.addArgsFromCLI(args);
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
         try{
         	lib.parse(args);
         }

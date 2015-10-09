@@ -236,6 +236,20 @@ public class Library {
             return argValueList.get(0); 
         }
     }
+    
+    public String helpMessage(){
+		String helpMessage = "usage: java " + programName;
+		for(int i = 0; i < argumentList.size(); i++) {
+			Argument currentArg = argumentList.get(i);
+			helpMessage += " " + currentArg.getName();   
+		}
+		helpMessage += "\n" + programDescription + "\npositional arguments:";
+		for(int i = 0; i < argumentList.size(); i++) {
+			Argument currentArg = argumentList.get(i);
+			helpMessage += "\n" + currentArg.getName() + " " + currentArg.getDescription();   
+		}
+		return helpMessage;
+    }
 	
 	public argType getArgDataType(String arg){
 		return hmap.get(arg);
@@ -261,7 +275,7 @@ public class Library {
    			currentArg.setValue(args[i]);
    		}
 		if (args[0].equals("-h")){
-			throw new HelpException(checkForHelpArg());
+			throw new HelpException(helpMessage());
 		}
 		else{
 			if (!checkNumOfArgs(args).equals("")){
