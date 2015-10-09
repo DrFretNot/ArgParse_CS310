@@ -212,6 +212,37 @@ public class Library {
    		}
    		else return "";
    }
+   
+   public String IncorrectNumberOfArgsMessage(String[] args){
+   		int numOfArgs = argumentList.size();
+   		if(args.length < numOfArgs){
+            String message = "usage: java " + programName;
+            for(int i = 0; i < argumentList.size(); i++) {
+            	Argument currentArg = argumentList.get(i);
+                message += " " + currentArg.getName();   
+            }
+            message += "\n" + programName + ".java: error: the following arguments are required:";
+            int numOfArgsMissing = numOfArgs - args.length;
+            for(int j = args.length; j < numOfArgs; j++){
+            	Argument currentArg = argumentList.get(j);
+            	message += " " + currentArg.getName();
+            }
+   			return message;
+   		}
+   		else {
+   			String message = "usage: java " + programName;
+            for(int i = 0; i < argumentList.size(); i++) {
+            	Argument currentArg = argumentList.get(i);
+                message += " " + currentArg.getName();;   
+            }
+            message += "\n" + programName + ".java: error: unrecognized arguments:";
+            int numOfArgsUnrecognized = args.length - numOfArgs;
+            for(int j = numOfArgs; j < args.length; j++){
+            	message += " " + args[j];
+            }
+   			return message;
+   		}
+   }
     
     public String checkForHelpArg(){
         if(argValueList.get(0).equals("-h")){
@@ -278,8 +309,11 @@ public class Library {
 			throw new HelpException(helpMessage());
 		}
 		else{
-			if (!checkNumOfArgs(args).equals("")){
+			/*if (!checkNumOfArgs(args).equals("")){
 				throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
+			}*/
+			if (argumentList.size() != args.length){
+				throw new IncorrectNumberOfArgsException(IncorrectNumberOfArgsMessage(args));
 			}
 			else if (!parseDataType(args).equals("")){
 				throw new IncorrectArgTypeException(parseDataType(args));
