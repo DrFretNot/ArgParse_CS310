@@ -315,6 +315,19 @@ public class LibraryUnitTests {
         //need to figure out a way to have lowercase type values and not just return the enum
 	}
     
+    @Test
+    public void testNamedArgumentTakesAndReturnCorrectName(){
+        
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgument(new Argument("length"));
+        lib.addArgument(new Argument("width"));
+        lib.addArgument(new Argument("height"));
+        lib.addArgument(new NamedArgument("--location"));
+        
+    }
+    
 }
     
     
