@@ -4,7 +4,7 @@ public class Argument{
     private String argName;
     private String description;
     private Library.argType type;
-    private String value;
+    private Object value;
     
     public Argument(){
         argName = null;
@@ -66,7 +66,7 @@ public class Argument{
     	return description;
     }
     
-    public String getValue(){
+    public Object getValue(){
     	return value;
     }
     

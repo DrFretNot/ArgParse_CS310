@@ -290,6 +290,29 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
         }
 	}
+	
+	@Test
+	public void testParseReturnsCorrectExceptionMessageWhenGivenIncorrectDataType(){
+		String[] args = {"1", "something", "3"};
+		Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.FLOAT, "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
+        }
+	}
     
 }
     

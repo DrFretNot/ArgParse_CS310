@@ -180,6 +180,58 @@ public class Library {
         //	for all practical effects, any non-"true"-String is false
         return errorMessage;
     }
+    /*
+    int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
+    
+    private void parseDataType(String[] args) throws NumberFormatException{
+        String errorMessage = "";
+        //int indexHolder = 0;
+        String currentTypeError = "";
+        
+		for (int index = 0; index < args.length; index++){
+			incorrectDataTypeIndex = index;
+			//Object currentArgument = args[index];
+			//argType currentArgType = hmap.get(argNameList.get(index));
+			Argument currentArg = argumentList.get(index);
+			if (currentArg.getType() == argType.INTEGER){
+				//currentTypeError = "integer";
+				//currentArgument = Integer.parseInt(args[index]);
+				//parsedValueList.add(currentArgument);
+				//return errorMessage;
+				int argValue = Integer.parseInt(args[index]);
+				currentArg.setValue(argValue);
+			}
+			else if (currentArgType == argType.FLOAT){
+				currentTypeError = "float";
+				currentArgument = Float.parseFloat(args[index]);
+				parsedValueList.add(currentArgument);
+				//return errorMessage;
+			}
+			else if (currentArgType == argType.STRING){
+				parsedValueList.add(currentArgument);
+				//return errorMessage;
+			}
+			//boolean
+			else{
+				currentTypeError = "boolean";
+				currentArgument = Boolean.parseBoolean(args[index]);
+				parsedValueList.add(currentArgument);
+				//return errorMessage;
+			}
+			//else return "Error\n"
+		}
+    }
+    
+    private String incorrectDataTypeMessage(String[] args, int index){
+			errorMessage = "usage: java " + programName;
+			for(int i = 0; i < argumentList.size(); i++) {
+				Argument currentArgs = argumentList.get(i);
+                errorMessage += " " + currentArg.getName();   
+            } 
+            errorMessage += "\n" + programName + ".java: error: argument " + argNameList.get(index) + ": invalid ";
+            errorMessage += currentTypeError + " value: " + args[indexHolder];
+            //return errorMessage;       	
+    }*/
    
     //Checks if the number of arguments given from the command line matches the number of 
     //arguments expected
@@ -213,7 +265,7 @@ public class Library {
    		else return "";
    }
    
-   public String IncorrectNumberOfArgsMessage(String[] args){
+   private String incorrectNumberOfArgsMessage(String[] args){
    		int numOfArgs = argumentList.size();
    		if(args.length < numOfArgs){
             String message = "usage: java " + programName;
@@ -268,7 +320,7 @@ public class Library {
         }
     }
     
-    public String helpMessage(){
+    private String helpMessage(){
 		String helpMessage = "usage: java " + programName;
 		for(int i = 0; i < argumentList.size(); i++) {
 			Argument currentArg = argumentList.get(i);
@@ -304,23 +356,23 @@ public class Library {
 		if (args[0].equals("-h")){
 			throw new HelpException(helpMessage());
 		}
+		else if (argumentList.size() != args.length){
+				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
+		}
 		else if (argumentList.size() == args.length){
 			for(int i = 0; i < args.length; i++){
    				Argument currentArg = argumentList.get(i);
    				currentArg.setValue(args[i]);
    			}
-		}
-		else if (argumentList.size() != args.length){
-				throw new IncorrectNumberOfArgsException(IncorrectNumberOfArgsMessage(args));
-		}
-			
+   			if (!parseDataType(args).equals("")){
+				throw new IncorrectArgTypeException(parseDataType(args));
+			}
+		}	
 		/*if (!checkNumOfArgs(args).equals("")){
 			throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
 		}*/
 		
-		else if (!parseDataType(args).equals("")){
-			throw new IncorrectArgTypeException(parseDataType(args));
-		}
+		
 	}
    
 
