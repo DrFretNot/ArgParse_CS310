@@ -314,6 +314,19 @@ public class LibraryUnitTests {
         }
 	}
     
+    @Test
+    public void testNamedArgumentTakesAndReturnCorrectName(){
+        
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        lib.addArgument(new Argument("length"));
+        lib.addArgument(new Argument("width"));
+        lib.addArgument(new Argument("height"));
+        lib.addArgument(new NamedArgument("-location"));
+        
+    }
+    
 }
     
     
