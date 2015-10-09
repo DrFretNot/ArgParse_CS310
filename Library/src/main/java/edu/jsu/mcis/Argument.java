@@ -1,12 +1,16 @@
 package edu.jsu.mcis;
 
 public class Argument{
-    public String argName;
-    public Library.argType type;
+    private String argName;
+    private String description;
+    private Library.argType type;
+    private String value;
     
     public Argument(){
         argName = null;
+        description = "";
         type = null;
+        value = null;
     }
     
     public void addElements(String name){
@@ -18,6 +22,18 @@ public class Argument{
         this.setName(name);
         this.setType(dataType);
     }
+    
+    public void addElements(String name, String argDescription){
+        this.setName(name);
+        description = argDescription;
+        this.setType(Library.argType.STRING);
+    }
+    
+    public void addElements(String name, Library.argType dataType, String argDescription){
+    	this.setName(name);
+        this.setType(dataType);
+        description = argDescription;
+    } 
     
 /*     public String getInfo(){
         public String info = String.valueOf(this.getName());
@@ -33,6 +49,10 @@ public class Argument{
         type = dataType;
     }
     
+    public void setValue(String argValue){
+    	value = argValue;
+    }
+    
     public Library.argType getType(){
         return this.type;
     }
@@ -40,6 +60,14 @@ public class Argument{
     public String getName()
     {
         return this.argName;
+    }
+    
+    public String getDescription(){
+    	return description;
+    }
+    
+    public String getValue(){
+    	return value;
     }
     
     public static void main(String args[]){

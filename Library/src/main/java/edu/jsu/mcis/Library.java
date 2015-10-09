@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Library {
 	
+	private List<Argument> argumentList;
 	private List<String> argNameList;
 	private List<String> argValueList;
     private List<Object> parsedValueList;
@@ -49,7 +50,8 @@ public class Library {
 	//the values given for each argument, and the description of each argument. 
   
     
-	public Library(){ 
+	public Library(){
+		argumentList = new ArrayList<Argument>(); 
 		argNameList = new ArrayList<String>();
 		argValueList = new ArrayList<String>();
 		argDescriptionList = new ArrayList<String>();
@@ -75,6 +77,10 @@ public class Library {
     
     public String getProgramDescription(){
         return programDescription;   
+    }
+    
+    public void addArgument(Argument arg){
+    	argumentList.add(arg);
     }
     //Adds the name of the argument given by the PO to the list of arg names
     //Adds the empty string as the value for each argument in list of arg values
@@ -250,6 +256,10 @@ public class Library {
 
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
+		for(int i = 0; i < args.length; i++){
+   			Argument currentArg = argumentList.get(i);
+   			currentArg.setValue(args[i]);
+   		}
 		if (args[0].equals("-h")){
 			throw new HelpException(checkForHelpArg());
 		}
@@ -257,7 +267,9 @@ public class Library {
 			if (!checkNumOfArgs(args).equals("")){
 				throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
 			}
-			else throw new IncorrectArgTypeException(parseDataType(args));
+			else if (!parseDataType(args).equals("")){
+				throw new IncorrectArgTypeException(parseDataType(args));
+			}
 		}
 	}
    

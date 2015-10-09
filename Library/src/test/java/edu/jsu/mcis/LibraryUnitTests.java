@@ -25,6 +25,7 @@ public class LibraryUnitTests {
     	lib.addArgName("length");
         assertEquals("", lib.getArgValue("length"));
     }*/
+    
     @Test
     public void testAddArgumentAndReturnCorrectName(){
     	Argument length = new Argument();
@@ -40,6 +41,23 @@ public class LibraryUnitTests {
     }
     
     @Test
+    public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
+        //Library lib = new Library();
+        Argument one = new Argument();
+        one.addElements("length",Library.argType.FLOAT);
+        assertEquals("length", one.getName());
+        assertEquals(Library.argType.FLOAT, one.getType());
+    }
+    
+    @Test
+    public void testAddArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
+    	Argument length = new Argument();
+    	length.addElements("length", "the length of the box");
+    	assertEquals("the length of the box", length.getDescription());
+    	assertEquals(Library.argType.STRING, length.getType());  
+    }
+    
+    /*@Test
     public void testArgumentPlacedInCorrectIndex(){
     	String[] args = {"7", "3", "2"};
     	Library lib = new Library();
@@ -51,6 +69,25 @@ public class LibraryUnitTests {
     	assertEquals("7", lib.getArgValue("length"));
     	assertEquals("3", lib.getArgValue("width"));
     	assertEquals("2", lib.getArgValue("height"));
+    }*/
+    
+    @Test
+    public void testArgValuesFromCLIAssignedToCorrectArgument(){
+    	String[] args = {"7", "5", "3"};
+    	Library lib = new Library();
+    	Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER);
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){};
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
     }
     
     @Test
@@ -201,16 +238,8 @@ public class LibraryUnitTests {
         catch(Exception e){
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
-}
-    @Test
-    public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
-        //Library lib = new Library();
-        Argument one = new Argument();
-        one.addElements("length",Library.argType.FLOAT);
-        assertEquals("length",one.getName());
-        assertEquals(Library.argType.FLOAT, one.getType());
-
-    }
+	}
+    
 }
     
     
