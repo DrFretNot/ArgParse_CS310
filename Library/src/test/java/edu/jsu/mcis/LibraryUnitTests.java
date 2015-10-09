@@ -323,7 +323,7 @@ public class LibraryUnitTests {
         lib.addArgument(new Argument("length"));
         lib.addArgument(new Argument("width"));
         lib.addArgument(new Argument("height"));
-        lib.addArgument(new NamedArgument("-location"));
+        lib.addArgument(new NamedArgument("--location"));
         
     }
     
