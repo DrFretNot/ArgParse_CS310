@@ -49,7 +49,7 @@ public class Argument{
         type = dataType;
     }
     
-    public void setValue(String argValue){
+    public void setValue(Object argValue){
     	value = argValue;
     }
     

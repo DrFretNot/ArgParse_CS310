@@ -79,8 +79,8 @@ public class LibraryUnitTests {
     	Argument width = new Argument();
     	Argument height = new Argument();
     	length.addElements("length");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", Library.argType.INTEGER);
+    	width.addElements("width");
+    	height.addElements("height");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -310,8 +310,9 @@ public class LibraryUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid FLOAT value: something", e.getMessage());
         }
+        //need to figure out a way to have lowercase type values and not just return the enum
 	}
     
 }

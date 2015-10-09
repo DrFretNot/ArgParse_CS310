@@ -180,10 +180,10 @@ public class Library {
         //	for all practical effects, any non-"true"-String is false
         return errorMessage;
     }
-    /*
+    
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     
-    private void parseDataType(String[] args) throws NumberFormatException{
+    private void parseDataTypeWithArgClass(String[] args) throws NumberFormatException{
         String errorMessage = "";
         //int indexHolder = 0;
         String currentTypeError = "";
@@ -201,37 +201,48 @@ public class Library {
 				int argValue = Integer.parseInt(args[index]);
 				currentArg.setValue(argValue);
 			}
-			else if (currentArgType == argType.FLOAT){
-				currentTypeError = "float";
-				currentArgument = Float.parseFloat(args[index]);
-				parsedValueList.add(currentArgument);
+			else if (currentArg.getType() == argType.FLOAT){
+				//currentTypeError = "float";
+				//currentArgument = Float.parseFloat(args[index]);
+				//parsedValueList.add(currentArgument);
 				//return errorMessage;
+				float argValue = Float.parseFloat(args[index]);
+				currentArg.setValue(argValue);
 			}
-			else if (currentArgType == argType.STRING){
-				parsedValueList.add(currentArgument);
+			else if (currentArg.getType() == argType.STRING){
+				//parsedValueList.add(currentArgument);
 				//return errorMessage;
+				String argValue = args[index];
+				currentArg.setValue(argValue);
 			}
 			//boolean
 			else{
-				currentTypeError = "boolean";
-				currentArgument = Boolean.parseBoolean(args[index]);
-				parsedValueList.add(currentArgument);
+				//currentTypeError = "boolean";
+				//currentArgument = Boolean.parseBoolean(args[index]);
+				//parsedValueList.add(currentArgument);
 				//return errorMessage;
+				Boolean argValue = Boolean.parseBoolean(args[index]);
+				currentArg.setValue(argValue);
 			}
 			//else return "Error\n"
 		}
     }
     
-    private String incorrectDataTypeMessage(String[] args, int index){
-			errorMessage = "usage: java " + programName;
+    private String incorrectDataTypeMessage(String[] args){
+			String errorMessage = "usage: java " + programName;
 			for(int i = 0; i < argumentList.size(); i++) {
-				Argument currentArgs = argumentList.get(i);
+				Argument currentArg = argumentList.get(i);
                 errorMessage += " " + currentArg.getName();   
-            } 
-            errorMessage += "\n" + programName + ".java: error: argument " + argNameList.get(index) + ": invalid ";
-            errorMessage += currentTypeError + " value: " + args[indexHolder];
-            //return errorMessage;       	
-    }*/
+            }
+            Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
+            errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + args[incorrectDataTypeIndex];
+            //maybe matching each enum to a lowercase string value
+            //errorMessage += currentArg.getType() + " value: " + args[incorrectDataTypeIndex];
+            return errorMessage;
+            //return errorMessage;
+            //String message = "usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something";
+            //return message;       	
+    }
    
     //Checks if the number of arguments given from the command line matches the number of 
     //arguments expected
@@ -364,8 +375,14 @@ public class Library {
    				Argument currentArg = argumentList.get(i);
    				currentArg.setValue(args[i]);
    			}
-   			if (!parseDataType(args).equals("")){
+   			/*if (!parseDataType(args).equals("")){
 				throw new IncorrectArgTypeException(parseDataType(args));
+			}*/
+			try{
+				parseDataTypeWithArgClass(args);
+			}
+			catch (Exception e){
+				throw new IncorrectArgTypeException(incorrectDataTypeMessage(args));
 			}
 		}	
 		/*if (!checkNumOfArgs(args).equals("")){
