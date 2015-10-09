@@ -301,23 +301,25 @@ public class Library {
 
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		for(int i = 0; i < args.length; i++){
-   			Argument currentArg = argumentList.get(i);
-   			currentArg.setValue(args[i]);
-   		}
 		if (args[0].equals("-h")){
 			throw new HelpException(helpMessage());
 		}
-		else{
-			/*if (!checkNumOfArgs(args).equals("")){
-				throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
-			}*/
-			if (argumentList.size() != args.length){
+		else if (argumentList.size() == args.length){
+			for(int i = 0; i < args.length; i++){
+   				Argument currentArg = argumentList.get(i);
+   				currentArg.setValue(args[i]);
+   			}
+		}
+		else if (argumentList.size() != args.length){
 				throw new IncorrectNumberOfArgsException(IncorrectNumberOfArgsMessage(args));
-			}
-			else if (!parseDataType(args).equals("")){
-				throw new IncorrectArgTypeException(parseDataType(args));
-			}
+		}
+			
+		/*if (!checkNumOfArgs(args).equals("")){
+			throw new IncorrectNumberOfArgsException(checkNumOfArgs(args));	
+		}*/
+		
+		else if (!parseDataType(args).equals("")){
+			throw new IncorrectArgTypeException(parseDataType(args));
 		}
 	}
    
