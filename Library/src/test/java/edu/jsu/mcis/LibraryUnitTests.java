@@ -175,6 +175,24 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
         }
 	}
+	
+	/*@Test
+	public void testParseForDoubleDashAndReturnTheNamedArgument(){
+		Library lib = new Library();
+		lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+        length.addElements("length", Library.argType.FLOAT, "the length of the box");
+        lib.addArgument(length);
+        lib.addNamedArgument("type");
+        try{
+        	lib.parse();
+        }
+        catch(Exception e){}
+        assertEquals("type", lib.getNamedArgument(0));
+        //assertEquals(
+	}*/
+	//make a hashmap to store name of the named arg and the value
     
     /*@Test
     public void testNamedArgumentTakesAndReturnCorrectName(){
@@ -182,10 +200,7 @@ public class LibraryUnitTests {
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgument(new Argument("length"));
-        lib.addArgument(new Argument("width"));
-        lib.addArgument(new Argument("height"));
-        lib.addArgument(new NamedArgument("--location"));
+        lib.addArgument(
         
     }*/
     //need to make the name part of the constructor, but then will have to change when we add it to the argumentList
