@@ -79,12 +79,12 @@ public class Argument{
     	return value;
     }
     
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         
         String testString = "string Test";
         Library.argType testArgType = Library.argType.STRING;
         System.out.println(testString + "is a " + String.valueOf(testArgType));
         
         
-    }
+    }*/
 }

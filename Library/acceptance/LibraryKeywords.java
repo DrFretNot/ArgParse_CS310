@@ -30,9 +30,9 @@ public class LibraryKeywords
     	Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", Library.argType.FLOAT, "the length of the box");
-    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
-    	height.addElements("height", Library.argType.FLOAT, "the height of the box");
+    	length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	width.addElements("width", Library.argType.INTEGER, "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -56,7 +56,7 @@ public class LibraryKeywords
     
     public String getLength(){
     	Argument currentArg = lib.getArgument("length");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public String getWidth() 
@@ -66,7 +66,7 @@ public class LibraryKeywords
     
     public String getWidth(){
     	Argument currentArg = lib.getArgument("width");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public String getHeight() 
@@ -76,7 +76,7 @@ public class LibraryKeywords
     
     public String getHeight(){
     	Argument currentArg = lib.getArgument("height");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     public String getProgramOutput() 
@@ -127,7 +127,7 @@ public class LibraryKeywords
     
     public String getpet(){
     	Argument currentArg = lib.getArgument("pet");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public String getNumber()
@@ -137,7 +137,7 @@ public class LibraryKeywords
     
     public String getNumber(){
     	Argument currentArg = lib.getArgument("number");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public String getRainy()
@@ -147,7 +147,7 @@ public class LibraryKeywords
     
     public String getRainy(){
     	Argument currentArg = lib.getArgument("rainy");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public String getBathrooms()
@@ -157,7 +157,7 @@ public class LibraryKeywords
     
     public String getBathrooms(){
     	Argument currentArg = lib.getArgument("bathrooms");
-    	return (String)currentArg.getValue();
+    	return currentArg.getValue();
     }
     
     /*public void startProgramWithArguments(String[] args)

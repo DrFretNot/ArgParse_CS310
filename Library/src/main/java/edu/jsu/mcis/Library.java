@@ -17,25 +17,25 @@ public class Library {
     private HashMap<String, argType> hmap;
 	
 	public class HelpException extends Exception{
-		public HelpException(){
+		/*public HelpException(){
 			super();
-		}
+		}*/
 		public HelpException(String message){
 			super(message);
 		}
 	}
 	public class IncorrectNumberOfArgsException extends Exception{
-		public IncorrectNumberOfArgsException(){
+		/*public IncorrectNumberOfArgsException(){
 			super();
-		}
+		}*/
 		public IncorrectNumberOfArgsException(String message){
 			super(message);
 		}
 	}
 	public class IncorrectArgTypeException extends Exception{
-		public IncorrectArgTypeException(){
+		/*public IncorrectArgTypeException(){
 			super();
-		}
+		}*/
 		public IncorrectArgTypeException(String message){
 			super(message);
 		}
