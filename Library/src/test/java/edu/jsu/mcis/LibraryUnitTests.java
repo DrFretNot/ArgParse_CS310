@@ -34,10 +34,22 @@ public class LibraryUnitTests {
     }
     
     @Test
+    public void testAddArgumentInLibraryAndReturnCorrectArgumentInLibrary(){
+    	Library lib = new Library();
+    	Argument length = new Argument();
+    	length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	lib.addArgument(length);
+    	Argument currentArg = lib.getArgument("length");
+    	assertEquals("length", currentArg.getName());
+    	assertEquals("integer", currentArg.getType());
+    	assertEquals("the length of the box", currentArg.getDescription());
+    }
+    
+    @Test
     public void testAddArgumentWithoutTypeAndReturnDefaultType(){
     	Argument length = new Argument();
     	length.addElements("length");
-    	assertEquals(Library.argType.STRING, length.getType()); 
+    	assertEquals("string", length.getType()); 
     }
     
     @Test
@@ -46,7 +58,7 @@ public class LibraryUnitTests {
         Argument one = new Argument();
         one.addElements("length",Library.argType.FLOAT);
         assertEquals("length", one.getName());
-        assertEquals(Library.argType.FLOAT, one.getType());
+        assertEquals("float", one.getType());
     }
     
     @Test
@@ -54,7 +66,7 @@ public class LibraryUnitTests {
     	Argument length = new Argument();
     	length.addElements("length", "the length of the box");
     	assertEquals("the length of the box", length.getDescription());
-    	assertEquals(Library.argType.STRING, length.getType());  
+    	assertEquals("string", length.getType());  
     }
     
     /*@Test
@@ -92,7 +104,7 @@ public class LibraryUnitTests {
     	assertEquals("5", width.getValue());
     	assertEquals("3", height.getValue());
     }
-    
+    /*
     @Test
     public void testErrorThrownWhenGivenLessArgsThanSpecified(){
     	String[] args = {"7", "3"};
@@ -104,8 +116,31 @@ public class LibraryUnitTests {
     	lib.addArgsFromCLI(args);
     	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", lib.checkNumOfArgs(args));
     }
+    */
+    @Test
+    public void testParseReturnsCorrectExceptionMessageWhenGivenLessArgsThanSpecified(){
+    	String[] args = {"1", "2"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
+        }
+	}
 
- 	@Test
+ 	/*@Test
     public void testErrorThrownWhenGivenMoreArgsThanSpecified(){
     	String[] args = {"7", "3", "2", "10"};
     	Library lib = new Library();
@@ -115,8 +150,31 @@ public class LibraryUnitTests {
     	lib.addArgName("height");
     	lib.addArgsFromCLI(args);
     	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.checkNumOfArgs(args));
-    }
+    }*/
     
+    @Test
+    public void testParseReturnsCorrectExceptionMessageWhenGivenMoreArgsThanSpecified(){
+    	String[] args = {"1", "2", "3", "10"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
+        }
+	}
+    /*
     @Test
     public void testHelpInformation(){
         String[] args = {"-h"};
@@ -132,9 +190,32 @@ public class LibraryUnitTests {
         lib.addArgsFromCLI(args);
         assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", lib.checkForHelpArg()); 
         
-    }
+    }*/
+    
+    @Test
+    public void testParseReturnsCorrectHelpExceptionMessage(){
+    	String[] args = {"-h"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        }
+	}
 	
-	@Test
+	/*@Test
 	public void testDataTypeOfAllArgsIsFloat(){
 		
 		Library lib = new Library();
@@ -187,10 +268,10 @@ public class LibraryUnitTests {
         lib.addArgDescription("the height of the box");
         lib.addArgsFromCLI(args);
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", lib.parseDataType(args));
-	}
+	}*/
 	
 	
-	
+	/*
 	//@Test
 	public void testArgMultiUseCheckerReturnsCorrectMessage(){
 		String[] helpArgs = {"-h"};
@@ -212,7 +293,7 @@ public class LibraryUnitTests {
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", lib.argMultiUseChecker(lessArgs));
         String[] moreArgs = {"1", "something", "3", "10"};
         assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", lib.argMultiUseChecker(moreArgs));
-	}
+	}*/
     
 
     /*@Test
@@ -222,74 +303,11 @@ public class LibraryUnitTests {
         one.getName();       
     }*/
     
-    @Test
-    public void testParseReturnsCorrectHelpExceptionMessage(){
-    	String[] args = {"-h"};
-        Library lib = new Library();
-        lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-        try{
-        	lib.parse(args);
-        }
-        catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
-        }
-	}
     
-    @Test
-    public void testParseReturnsCorrectExceptionMessageWhenGivenLessArgsThanSpecified(){
-    	String[] args = {"1", "2"};
-        Library lib = new Library();
-        lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-        try{
-        	lib.parse(args);
-        }
-        catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
-        }
-	}
+    
+   
 	
-	@Test
-    public void testParseReturnsCorrectExceptionMessageWhenGivenMoreArgsThanSpecified(){
-    	String[] args = {"1", "2", "3", "10"};
-        Library lib = new Library();
-        lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-        try{
-        	lib.parse(args);
-        }
-        catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
-        }
-	}
+	
 	
 	@Test
 	public void testParseReturnsCorrectExceptionMessageWhenGivenIncorrectDataType(){
@@ -310,12 +328,12 @@ public class LibraryUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid FLOAT value: something", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
         }
         //need to figure out a way to have lowercase type values and not just return the enum
 	}
     
-    @Test
+    /*@Test
     public void testNamedArgumentTakesAndReturnCorrectName(){
         
         Library lib = new Library();
@@ -326,7 +344,10 @@ public class LibraryUnitTests {
         lib.addArgument(new Argument("height"));
         lib.addArgument(new NamedArgument("--location"));
         
-    }
+    }*/
+    //need to make the name part of the constructor, but then will have to change when we add it to the argumentList
+    //because if we add it to the argumentList first with just then name then add elements later, the argument instance in the 
+    //list won't have the other elements
     
 }
     

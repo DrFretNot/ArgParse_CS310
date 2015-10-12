@@ -5,10 +5,10 @@ import java.util.*;
 public class Library {
 	
 	private List<Argument> argumentList;
-	private List<String> argNameList;
-	private List<String> argValueList;
-    private List<Object> parsedValueList;
-	private List<String> argDescriptionList;
+	//private List<String> argNameList;
+	//private List<String> argValueList;
+    //private List<Object> parsedValueList;
+	//private List<String> argDescriptionList;
     
     private String programName = "";
     private String programDescription = "";
@@ -52,11 +52,11 @@ public class Library {
     
 	public Library(){
 		argumentList = new ArrayList<Argument>(); 
-		argNameList = new ArrayList<String>();
-		argValueList = new ArrayList<String>();
-		argDescriptionList = new ArrayList<String>();
-		parsedValueList = new ArrayList<Object>();
-        hmap = new HashMap<String, argType>();
+		//argNameList = new ArrayList<String>();
+		//argValueList = new ArrayList<String>();
+		//argDescriptionList = new ArrayList<String>();
+		//parsedValueList = new ArrayList<Object>();
+        //hmap = new HashMap<String, argType>();
 	}
 	
 	//Stores the name of the program using the library
@@ -82,11 +82,22 @@ public class Library {
     public void addArgument(Argument arg){
     	argumentList.add(arg);
     }
+    
+    public Argument getArgument(String argName){
+    	Argument returnArg = null;
+    	for(int i = 0; i < argumentList.size(); i++){
+    		Argument currentArg = argumentList.get(i);
+    		if(currentArg.getName().equals(argName)){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
     //Adds the name of the argument given by the PO to the list of arg names
     //Adds the empty string as the value for each argument in list of arg values
     //Each value in argValueList corresponds to the arg name in argNameList because names 
     //and values are added in the same order
-	public void addArgName(String argName){
+	/*public void addArgName(String argName){
 		argNameList.add(argName);
 		argValueList.add("");
 	}
@@ -112,17 +123,17 @@ public class Library {
     public Object getParsedArgValue(String argName){
    		int index = argNameList.indexOf(argName);    
    		return parsedValueList.get(index);
-    }
+    }*/
    
     //Takes the array of strings from the command line and matches each value with the 
     //correct argument
-    public void addArgsFromCLI(String[] args){
+    /*public void addArgsFromCLI(String[] args){
    		for(int i = 0; i < args.length; i++){
    			argValueList.add(i, args[i]);
    		}
-    }
+    }*/
     
-    public String parseDataType(String[] args){
+    /*public String parseDataType(String[] args){
         String errorMessage = "";
         int indexHolder = 0;
         String currentTypeError = "";
@@ -178,8 +189,8 @@ public class Library {
         }*/
         //	There exists no method to test whether a String encodes a Boolean; 
         //	for all practical effects, any non-"true"-String is false
-        return errorMessage;
-    }
+        /*return errorMessage;
+    }*/
     
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     
@@ -193,23 +204,23 @@ public class Library {
 			//Object currentArgument = args[index];
 			//argType currentArgType = hmap.get(argNameList.get(index));
 			Argument currentArg = argumentList.get(index);
-			if (currentArg.getType() == argType.INTEGER){
+			if (currentArg.getType().equals("integer")){
 				//currentTypeError = "integer";
 				//currentArgument = Integer.parseInt(args[index]);
 				//parsedValueList.add(currentArgument);
 				//return errorMessage;
 				int argValue = Integer.parseInt(args[index]);
-				currentArg.setValue(argValue);
+				currentArg.setValue(String.valueOf(argValue));
 			}
-			else if (currentArg.getType() == argType.FLOAT){
+			else if (currentArg.getType().equals("float")){
 				//currentTypeError = "float";
 				//currentArgument = Float.parseFloat(args[index]);
 				//parsedValueList.add(currentArgument);
 				//return errorMessage;
 				float argValue = Float.parseFloat(args[index]);
-				currentArg.setValue(argValue);
+				currentArg.setValue(String.valueOf(argValue));
 			}
-			else if (currentArg.getType() == argType.STRING){
+			else if (currentArg.getType().equals("string")){
 				//parsedValueList.add(currentArgument);
 				//return errorMessage;
 				String argValue = args[index];
@@ -222,7 +233,7 @@ public class Library {
 				//parsedValueList.add(currentArgument);
 				//return errorMessage;
 				Boolean argValue = Boolean.parseBoolean(args[index]);
-				currentArg.setValue(argValue);
+				currentArg.setValue(String.valueOf(argValue));
 			}
 			//else return "Error\n"
 		}
@@ -247,7 +258,7 @@ public class Library {
     //Checks if the number of arguments given from the command line matches the number of 
     //arguments expected
     //Returns an error message when incorrect arguments are given
-    public String checkNumOfArgs(String[] args){
+   /* public String checkNumOfArgs(String[] args){
    		int numOfArgNames = argNameList.size();
    		if(args.length < numOfArgNames){
             String message = "usage: java " + programName;
@@ -274,7 +285,7 @@ public class Library {
    			return message;
    		}
    		else return "";
-   }
+   }*/
    
    private String incorrectNumberOfArgsMessage(String[] args){
    		int numOfArgs = argumentList.size();
@@ -307,7 +318,7 @@ public class Library {
    		}
    }
     
-    public String checkForHelpArg(){
+    /*public String checkForHelpArg(){
         if(argValueList.get(0).equals("-h")){
         	String helpMessage = "usage: java " + programName;
         	for(int i = 0; i < argNameList.size(); i++) {
@@ -327,9 +338,9 @@ public class Library {
         	}
         	errorMessage += ": command not found";
             return errorMessage; */
-            return argValueList.get(0); 
+            /*return argValueList.get(0); 
         }
-    }
+    }*/
     
     private String helpMessage(){
 		String helpMessage = "usage: java " + programName;
@@ -345,7 +356,7 @@ public class Library {
 		return helpMessage;
     }
 	
-	public argType getArgDataType(String arg){
+	/*public argType getArgDataType(String arg){
 		return hmap.get(arg);
 	}
 	
@@ -360,7 +371,7 @@ public class Library {
 			else return parseDataType(args);
 		}
 		//return "false";
-	}
+	}*/
 
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{

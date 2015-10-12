@@ -4,7 +4,7 @@ public class Argument{
     private String argName;
     private String description;
     private Library.argType type;
-    private Object value;
+    private String value;
     
     public Argument(){
         argName = null;
@@ -49,12 +49,21 @@ public class Argument{
         type = dataType;
     }
     
-    public void setValue(Object argValue){
+    public void setValue(String argValue){
     	value = argValue;
     }
     
-    public Library.argType getType(){
-        return this.type;
+    public String getType(){
+    	if(type == Library.argType.INTEGER){
+    		return "integer";
+    	}
+    	else if(type == Library.argType.FLOAT){
+    		return "float";
+    	}
+    	else if(type == Library.argType.STRING){
+    		return "string";
+    	}
+    	else return "boolean";
     }
     
     public String getName()
@@ -66,7 +75,7 @@ public class Argument{
     	return description;
     }
     
-    public Object getValue(){
+    public String getValue(){
     	return value;
     }
     
