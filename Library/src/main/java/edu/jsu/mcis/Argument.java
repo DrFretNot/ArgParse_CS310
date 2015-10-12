@@ -34,13 +34,7 @@ public class Argument{
         this.setType(dataType);
         description = argDescription;
     } 
-    
-/*     public String getInfo(){
-        public String info = String.valueOf(this.getName());
-        info = info + " is a " + String.valueOf(this.getType());
-        
-    } */
-    
+
     private void setName(String name){
         argName = name;
     }
@@ -77,14 +71,5 @@ public class Argument{
     
     public String getValue(){
     	return value;
-    }
-    
-    /*public static void main(String args[]){
-        
-        String testString = "string Test";
-        Library.argType testArgType = Library.argType.STRING;
-        System.out.println(testString + "is a " + String.valueOf(testArgType));
-        
-        
-    }*/
+    } 
 }

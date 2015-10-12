@@ -6,24 +6,6 @@ public class LibraryKeywords
     private Library lib;
     private String output;
 
-    /*public void startVolumeCalculatorWithArguments(String[] args) 
-    {
-        lib = new Library();
-        lib.addProgramName("Volume Calculator");
-        lib.addArgName("length");
-        lib.addArgName("width");
-        lib.addArgName("height");
-        lib.addArgsFromCLI(args);
-
-        output = lib.checkNumOfArgs(args);
-        if (output == "")
-        {
-        	float len = Float.parseFloat(lib.getArgValue("length"));
-            float wid = Float.parseFloat(lib.getArgValue("width"));
-            float hei = Float.parseFloat(lib.getArgValue("height"));
-            output = String.valueOf(len * wid * hei);
-        }
-    }*/
     public void startVolumeCalculatorWithArguments(String[] args){
     	lib = new Library();
     	lib.addProgramName("Volume Calculator");
@@ -49,30 +31,15 @@ public class LibraryKeywords
     	}
     }
     
-    /*public String getLength() 
-    {
-        return lib.getArgValue("length");
-    }*/
-    
     public String getLength(){
     	Argument currentArg = lib.getArgument("length");
     	return currentArg.getValue();
     }
     
-    /*public String getWidth() 
-    {
-        return lib.getArgValue("width");
-    }*/
-    
     public String getWidth(){
     	Argument currentArg = lib.getArgument("width");
     	return currentArg.getValue();
     }
-    
-    /*public String getHeight() 
-    {
-        return lib.getArgValue("height");
-    }*/
     
     public String getHeight(){
     	Argument currentArg = lib.getArgument("height");
@@ -83,19 +50,6 @@ public class LibraryKeywords
     {
         return output;
     }
-    
-    /*public void startAbsurdProgramWithArguments(String[] args)
-    {
-
-        lib = new Library();
-        lib.addProgramName("Absurd Program");
-
-        lib.addArgName("pet");
-        lib.addArgName("number");
-        lib.addArgName("rainy");
-        lib.addArgName("bathrooms");
-        lib.addArgsFromCLI(args);
-    }*/
     
     public void startAbsurdProgramWithArguments(String[] args){
     	lib = new Library();
@@ -120,60 +74,25 @@ public class LibraryKeywords
     	}	
     }
     
-    /*public String getPet()
-    {
-        return lib.getArgValue("pet");
-    }*/
-    
     public String getpet(){
     	Argument currentArg = lib.getArgument("pet");
     	return currentArg.getValue();
     }
-    
-    /*public String getNumber()
-    {
-        return lib.getArgValue("number");
-    }*/
     
     public String getNumber(){
     	Argument currentArg = lib.getArgument("number");
     	return currentArg.getValue();
     }
     
-    /*public String getRainy()
-    {
-        return lib.getArgValue("rainy");
-    }*/
-    
     public String getRainy(){
     	Argument currentArg = lib.getArgument("rainy");
     	return currentArg.getValue();
     }
     
-    /*public String getBathrooms()
-    {
-        return lib.getArgValue("bathrooms");
-    }*/
-    
     public String getBathrooms(){
     	Argument currentArg = lib.getArgument("bathrooms");
     	return currentArg.getValue();
     }
-    
-    /*public void startProgramWithArguments(String[] args)
-    {
-    	Library lib = new Library();
-        lib.addProgramName("Volume Calculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgWithDataType("length", Library.argType.FLOAT);
-        lib.addArgDescription("the length of the box (float)");
-        lib.addArgWithDataType("width", Library.argType.FLOAT);
-        lib.addArgDescription("the width of the box (float)");
-        lib.addArgWithDataType("height", Library.argType.FLOAT);
-        lib.addArgDescription("the height of the box (float)");
-        lib.addArgsFromCLI(args);
-        output = lib.argMultiUseChecker(args);
-    }*/
     
     public void startProgramWithArguments(String[] args){
     	lib = new Library();
