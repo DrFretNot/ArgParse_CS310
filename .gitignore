@@ -1,4 +1,8 @@
 
+.gradle/
+
+Library/build
+
 Library/build/jacoco/test.exec
 
 Library/build/jacoco/test.exec
