@@ -198,7 +198,43 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
 	}
-    
+	@Test
+    public void testAddNamedArgumentAndReturnCorrectName(){
+    	NamedArgument type = new NamedArgument("type");
+		assertEquals("type", type.getName()); 
+    }
+	
+	@Test
+    public void testAddNamedArgumentWithoutTypeAndReturnDefaultType(){
+    	NamedArgument type = new NamedArgument("type");
+    	assertEquals("string", type.getType()); 
+    }
+	
+    @Test
+    public void testEnterNamedArgNameAndTypeAndReturnCorrectInfo(){
+        NamedArgument help = new NamedArgument("help",Library.argType.BOOLEAN);
+        assertEquals("help", help.getName());
+        assertEquals("boolean", help.getType());
+    }
+	
+    @Test
+    public void testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
+    	NamedArgument type = new NamedArgument("type", "the shape of the object");
+    	assertEquals("the shape of the object", type.getDescription());
+    	assertEquals("string", type.getType());  
+    } 	
+	
+/* 	@Test
+    public void testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary(){
+    	Library lib = new Library();
+    	NamedArgument type = new NamedArgument("type", Library.argType.STRING, "the shape of the object");
+    	//lib.addNamedArgument(new NamedArgument("type", Library.argType.STRING, "the shape of the object"));
+    	NamedArgument currentArg = lib.getNamedArgument("type");
+    	assertEquals("type", currentArg.getName());
+    	assertEquals("string", currentArg.getType());
+    	assertEquals("the shape of the object", currentArg.getDescription());
+		//Sinh and Katie still needs to define method "getNamedArgument" in Library
+    } */
 }
     
     
