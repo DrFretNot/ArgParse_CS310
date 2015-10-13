@@ -162,11 +162,46 @@ public class Library {
 
 		return helpMessage;
     }
+    
+    private String longFormArg(String[] args){
+     // Go through the args coming in and check for the string "--" 
+    // whatever is immediately following will be the name of our long form argument.
+        
+        for (int i = 0; i < argumentList.size(); i++){
+            if(args[i].startsWith("--")){
+                String temp = args[i];
+                temp = temp.replace("--","");
+            }
+        
+        }
+        return temp;
+    }
+    
+     private boolean longFormArgCheck(String[] args){
+     // Go through the args coming in and check for the string "--" 
+    // whatever is immediately following will be the name of our long form argument.
+        boolean tempOne = false; 
+        for (int i = 0; i < argumentList.size(); i++){
+            if(args[i].startsWith("--")){
+               //temp = true;
+                return true;
+            }
+        
+        }
+        return tempOne;
+        
+    }
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].startsWith("-") || args[0].startsWith("--")){
+		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
+        else if (longFormArgCheck(args) == true){
+            String temp = longFormArg(args);
+            if (temp == "help"){
+                throw new HelpException(helpMessage());
+            }
+        }
 		else if (argumentList.size() != args.length){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
 		}

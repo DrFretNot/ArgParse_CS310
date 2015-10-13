@@ -177,8 +177,8 @@ public class LibraryUnitTests {
 	}
     
     @Test
-    public void testLongFormHelp() {
-        String[] args = {"--help"};
+    public void testShortFormHelp() {
+        String[] args = {"-h"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -198,6 +198,35 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
 	}
+    
+    @Test
+    public void testLongFormHelp(){
+        String[] args = {"help"};
+        Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        }
+    }
+
+
+
+
+
+
 }
     
     
