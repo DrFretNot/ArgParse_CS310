@@ -4,32 +4,36 @@ import java.util.*;
 
 public class Library {
 	
-	private List<Argument> argumentList;
-	
+    protected Map<String, Argument> positionalArguments;
+	protected Map<String, NamedArgument> namedArgument;
+    private ArrayList<Argument> argumentList;
     private String programName = "";
     private String programDescription = "";
-    
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
-    //private HashMap<String, argType> hmap;
+    
+    public Library(){
+		this.programName = "";
+        this.programDescription = "";
+        this.argumentList = new ArrayList<>(); 
+
+	}
 	
 	public class HelpException extends Exception{
 		public HelpException(String message){
 			super(message);
 		}
 	}
+    
 	public class IncorrectNumberOfArgsException extends Exception{
 		public IncorrectNumberOfArgsException(String message){
 			super(message);
 		}
 	}
+    
 	public class IncorrectArgTypeException extends Exception{
 		public IncorrectArgTypeException(String message){
 			super(message);
 		}
-	}
-
-	public Library(){
-		argumentList = new ArrayList<Argument>(); 
 	}
     
     public void addProgramName(String inputProgramName){
@@ -76,15 +80,17 @@ public class Library {
 				int argValue = Integer.parseInt(args[index]);
 				currentArg.setValue(String.valueOf(argValue));
 			}
+            
 			else if (currentArg.getType().equals("float")){
 				float argValue = Float.parseFloat(args[index]);
 				currentArg.setValue(String.valueOf(argValue));
 			}
+            
 			else if (currentArg.getType().equals("string")){
 				String argValue = args[index];
 				currentArg.setValue(argValue);
 			}
-			//boolean
+			
 			else{
 				Boolean argValue = Boolean.parseBoolean(args[index]);
 				currentArg.setValue(String.valueOf(argValue));
@@ -93,14 +99,15 @@ public class Library {
     }
     
     private String incorrectDataTypeMessage(String[] args){
-			String errorMessage = "usage: java " + programName;
-			for(int i = 0; i < argumentList.size(); i++) {
-				Argument currentArg = argumentList.get(i);
-                errorMessage += " " + currentArg.getName();   
-            }
-            Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
-            errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + args[incorrectDataTypeIndex];
-            return errorMessage;    	
+		String errorMessage = "usage: java " + programName;
+		for(int i = 0; i < argumentList.size(); i++) {
+			Argument currentArg = argumentList.get(i);
+            errorMessage += " " + currentArg.getName();   
+        }
+            
+        Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
+        errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + args[incorrectDataTypeIndex];
+        return errorMessage;    	
     }
    
    private String incorrectNumberOfArgsMessage(String[] args){
@@ -111,14 +118,18 @@ public class Library {
             	Argument currentArg = argumentList.get(i);
                 message += " " + currentArg.getName();   
             }
+            
             message += "\n" + programName + ".java: error: the following arguments are required:";
             int numOfArgsMissing = numOfArgs - args.length;
+            
             for(int j = args.length; j < numOfArgs; j++){
             	Argument currentArg = argumentList.get(j);
             	message += " " + currentArg.getName();
             }
+            
    			return message;
    		}
+        
    		else {
    			String message = "usage: java " + programName;
             for(int i = 0; i < argumentList.size(); i++) {
@@ -127,6 +138,7 @@ public class Library {
             }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
             int numOfArgsUnrecognized = args.length - numOfArgs;
+            
             for(int j = numOfArgs; j < args.length; j++){
             	message += " " + args[j];
             }
@@ -140,16 +152,19 @@ public class Library {
 			Argument currentArg = argumentList.get(i);
 			helpMessage += " " + currentArg.getName();   
 		}
+        
 		helpMessage += "\n" + programDescription + "\npositional arguments:";
-		for(int i = 0; i < argumentList.size(); i++) {
+		
+        for(int i = 0; i < argumentList.size(); i++) {
 			Argument currentArg = argumentList.get(i);
 			helpMessage += "\n" + currentArg.getName() + " " + currentArg.getDescription();   
 		}
+
 		return helpMessage;
     }
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].equals("-h")){
+		if (args[0].equals("-h")||args[0].equals("--help")){
 			throw new HelpException(helpMessage());
 		}
 		else if (argumentList.size() != args.length){

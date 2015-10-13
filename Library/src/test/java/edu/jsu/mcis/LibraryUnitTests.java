@@ -175,37 +175,29 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
         }
 	}
-	
-	/*@Test
-	public void testParseForDoubleDashAndReturnTheNamedArgument(){
-		Library lib = new Library();
-		lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-        length.addElements("length", Library.argType.FLOAT, "the length of the box");
-        lib.addArgument(length);
-        lib.addNamedArgument("type");
-        try{
-        	lib.parse();
-        }
-        catch(Exception e){}
-        assertEquals("type", lib.getNamedArgument(0));
-        //assertEquals(
-	}*/
-	//make a hashmap to store name of the named arg and the value
     
-    /*@Test
-    public void testNamedArgumentTakesAndReturnCorrectName(){
-        
+    @Test
+    public void testLongFormHelp() {
+        String[] args = {"--help"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        lib.addArgument(
-        
-    }*/
-    //need to make the name part of the constructor, but then will have to change when we add it to the argumentList
-    //because if we add it to the argumentList first with just then name then add elements later, the argument instance in the 
-    //list won't have the other elements
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+        try{
+        	lib.parse(args);
+        }
+        catch(Exception e){
+        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        }
+	}
     
 }
     
