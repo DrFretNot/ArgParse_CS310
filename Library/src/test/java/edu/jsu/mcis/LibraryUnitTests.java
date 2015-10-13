@@ -198,7 +198,6 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
 	}
-    
 }
     
     
