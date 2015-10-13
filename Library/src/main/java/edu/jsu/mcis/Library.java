@@ -164,8 +164,8 @@ public class Library {
     }
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].equals("-h")||args[0].equals("--help")){
-			throw new HelpException(helpMessage());
+		if (args[0].startsWith("-") || args[0].startsWith("--")){
+            throw new HelpException(helpMessage());
 		}
 		else if (argumentList.size() != args.length){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
