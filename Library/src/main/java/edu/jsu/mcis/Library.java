@@ -183,7 +183,7 @@ public class Library {
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
         String temp = "";
-        for (int i = 0; i < argumentList.size(); i++){
+        for (int i = 0; i < args.length; i++){
             if(args[i].startsWith("--")){
                 temp = args[i];
                 temp = temp.replace("--","");
@@ -197,7 +197,7 @@ public class Library {
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
         boolean tempOne = false; 
-        for (int i = 0; i < argumentList.size(); i++){
+        for (int i = 0; i < args.length; i++){
             if(args[i].startsWith("--")){
                tempOne = true;
                 //return true;
@@ -212,12 +212,12 @@ public class Library {
 		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
-        /*else if (longFormArgCheck(args) == true){
+        else if (longFormArgCheck(args)){
             String temp = longFormArg(args);
             if (temp == "help"){
                 throw new HelpException(helpMessage());
             }
-        }*/
+        }
 		else if (argumentList.size() != args.length){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
 		}
@@ -237,7 +237,8 @@ public class Library {
 }
 
 
-
+//Katie and Andrew: possibly test if startswith -- in the for loop to add the values from the CLI
+//then call a method that handles the named arguments  
 
 
 
