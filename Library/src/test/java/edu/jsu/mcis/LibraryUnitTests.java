@@ -255,17 +255,15 @@ public class LibraryUnitTests {
     	assertEquals("string", type.getType());  
     } 	
 	
-/* 	@Test
+ 	@Test
     public void testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary(){
     	Library lib = new Library();
-    	NamedArgument type = new NamedArgument("type", Library.argType.STRING, "the shape of the object");
-    	//lib.addNamedArgument(new NamedArgument("type", Library.argType.STRING, "the shape of the object"));
+    	lib.addNamedArgument(new NamedArgument("type", Library.argType.STRING, "the shape of the object"));
     	NamedArgument currentArg = lib.getNamedArgument("type");
     	assertEquals("type", currentArg.getName());
     	assertEquals("string", currentArg.getType());
     	assertEquals("the shape of the object", currentArg.getDescription());
-		//Sinh and Katie still needs to define method "getNamedArgument" in Library
-    } */
+    }
 
 }
     

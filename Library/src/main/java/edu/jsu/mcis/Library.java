@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Library {
 	
-    protected Map<String, Argument> positionalArguments;
-	protected Map<String, NamedArgument> namedArgument;
+    //protected Map<String, Argument> positionalArguments;
+	private ArrayList<NamedArgument> namedArgumentList;
     private ArrayList<Argument> argumentList;
     private String programName = "";
     private String programDescription = "";
@@ -14,7 +14,8 @@ public class Library {
     public Library(){
 		this.programName = "";
         this.programDescription = "";
-        this.argumentList = new ArrayList<>(); 
+        this.argumentList = new ArrayList<>();
+        this.namedArgumentList = new ArrayList<>(); 
 
 	}
 	
@@ -56,10 +57,25 @@ public class Library {
     	argumentList.add(arg);
     }
     
+    public void addNamedArgument(NamedArgument arg){
+    	namedArgumentList.add(arg);
+    }
+    
     public Argument getArgument(String argName){
     	Argument returnArg = null;
     	for(int i = 0; i < argumentList.size(); i++){
     		Argument currentArg = argumentList.get(i);
+    		if(currentArg.getName().equals(argName)){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
+    
+    public NamedArgument getNamedArgument(String argName){
+    	NamedArgument returnArg = null;
+    	for(int i = 0; i < namedArgumentList.size(); i++){
+    		NamedArgument currentArg = namedArgumentList.get(i);
     		if(currentArg.getName().equals(argName)){
     			returnArg = currentArg;
     		}
@@ -166,10 +182,10 @@ public class Library {
     private String longFormArg(String[] args){
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
-        
+        String temp = "";
         for (int i = 0; i < argumentList.size(); i++){
             if(args[i].startsWith("--")){
-                String temp = args[i];
+                temp = args[i];
                 temp = temp.replace("--","");
             }
         
@@ -183,8 +199,8 @@ public class Library {
         boolean tempOne = false; 
         for (int i = 0; i < argumentList.size(); i++){
             if(args[i].startsWith("--")){
-               //temp = true;
-                return true;
+               tempOne = true;
+                //return true;
             }
         
         }
@@ -196,12 +212,12 @@ public class Library {
 		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
-        else if (longFormArgCheck(args) == true){
+        /*else if (longFormArgCheck(args) == true){
             String temp = longFormArg(args);
             if (temp == "help"){
                 throw new HelpException(helpMessage());
             }
-        }
+        }*/
 		else if (argumentList.size() != args.length){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
 		}
