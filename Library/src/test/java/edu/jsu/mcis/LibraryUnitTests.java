@@ -358,10 +358,32 @@ public class LibraryUnitTests {
 	}
 
 
-	@Test
-    public void testAddNamedArgumentAndReturnCorrectName(){
+@Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithDefaultValue(){
     	NamedArgument type = new NamedArgument("type", "box");
 		assertEquals("type", type.getName()); 
+    }
+
+	@Test
+    public void testAddNamedArgumentAndReturnCorrectName(){
+    	NamedArgument type = new NamedArgument("type");
+		assertEquals("type", type.getName()); 
+    }
+    
+    @Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescription(){
+    	NamedArgument type = new NamedArgument("IntType", Library.argType.INTEGER,"This is an integer" );
+		assertEquals("IntType", type.getName()); 
+		assertEquals("integer", type.getType()); 
+		assertEquals("This is an integer", type.getDescription()); 
+    }
+    
+     @Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescriptionWithFloat(){
+    	NamedArgument type = new NamedArgument("FloatType", Library.argType.FLOAT,"This is a float" );
+		assertEquals("FloatType", type.getName()); 
+		assertEquals("float", type.getType()); 
+		assertEquals("This is a float", type.getDescription()); 
     }
     
     @Test
