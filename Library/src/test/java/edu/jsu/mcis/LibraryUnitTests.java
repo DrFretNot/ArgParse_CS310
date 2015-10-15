@@ -107,7 +107,7 @@ public class LibraryUnitTests {
         }
 	}
 
-    /*@Test
+    @Test
     public void testParseReturnsCorrectExceptionMessageWhenGivenMoreArgsThanSpecified(){
     	String[] args = {"1", "2", "3", "10"};
         Library lib = new Library();
@@ -128,7 +128,7 @@ public class LibraryUnitTests {
         catch(Exception e){
         	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
         }
-	}*/
+	}
 	//commented out because it is not working with parse right now. We have to figure out how to check for the right
 	//number of positional args out of all the args
     

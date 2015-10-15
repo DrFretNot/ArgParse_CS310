@@ -179,7 +179,7 @@ public class Library {
 		return helpMessage;
     }
     
-    private String longFormArg(String[] args){
+   /* private String longFormArg(String[] args){
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
         String temp = "";
@@ -193,7 +193,7 @@ public class Library {
         return temp;
     }
     
-     /*private boolean longFormArgCheck(String[] args){
+     private boolean longFormArgCheck(String[] args){
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
         boolean tempOne = false; 
@@ -261,12 +261,6 @@ public class Library {
 		}
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
 		setNamedArgValues(args);
-        /*else if (longFormArgCheck(args)){
-            String temp = longFormArg(args);
-            if (temp == "help"){
-                throw new HelpException(helpMessage());
-            }
-        }*/
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
 			String helpArgValue = helpArgument.getValue();
@@ -294,8 +288,6 @@ public class Library {
 }
 
 
-//Katie and Andrew: possibly test if startswith -- in the for loop to add the values from the CLI
-//then call a method that handles the named argument  
 
 
 
