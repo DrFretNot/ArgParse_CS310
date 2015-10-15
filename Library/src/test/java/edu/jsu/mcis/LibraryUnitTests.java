@@ -129,9 +129,7 @@ public class LibraryUnitTests {
         	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
         }
 	}
-	//commented out because it is not working with parse right now. We have to figure out how to check for the right
-	//number of positional args out of all the args
-    
+	
     @Test
     public void testParseReturnsCorrectHelpExceptionMessage(){
     	String[] args = {"-h"};
@@ -164,9 +162,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", Library.argType.FLOAT, "the length of the box");
+    	length.addElements("length", Library.argType.INTEGER, "the length of the box");
     	width.addElements("width", Library.argType.FLOAT, "the width of the box");
-    	height.addElements("height", Library.argType.FLOAT, "the height of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -178,28 +176,7 @@ public class LibraryUnitTests {
         }
 	}
     
-    /*@Test
-    public void testShortFormHelp() {
-        String[] args = {"-h"};
-        Library lib = new Library();
-        lib.addProgramName("VolumeCalculator");
-        lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-        try{
-        	lib.parse(args);
-        }
-        catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
-        }
-	}*/
+ 
 
     
     @Test
@@ -423,6 +400,35 @@ public class LibraryUnitTests {
     	assertEquals("the shape of the object", currentArg.getDescription());
     }
 
+
+	@Test
+	public void testAddingFloatAndBooleanArgumentsAndParseValuesCorrectly(){
+		String[] args = {"7","8","9","TRUE"};
+		Library lib = new Library();
+		Argument length =new Argument();
+		Argument width = new Argument();
+		Argument height = new Argument();
+		Argument fact = new Argument();
+		
+		length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
+    	fact.addElements("fact", Library.argType.BOOLEAN, "the validity of the fact");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+	 	lib.addArgument(height);
+    	lib.addArgument(fact);
+    	
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	
+    	assertEquals("7", length.getValue());
+    	assertEquals("8.0",width.getValue());
+    	assertEquals("9", height.getValue());
+    	assertEquals("true", fact.getValue());	
+	}
 }
     
     

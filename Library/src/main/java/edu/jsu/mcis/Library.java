@@ -179,34 +179,7 @@ public class Library {
 		return helpMessage;
     }
     
-   /* private String longFormArg(String[] args){
-     // Go through the args coming in and check for the string "--" 
-    // whatever is immediately following will be the name of our long form argument.
-        String temp = "";
-        for (int i = 0; i < args.length; i++){
-            if(args[i].startsWith("--")){
-                temp = args[i];
-                temp = temp.replace("--","");
-            }
-        
-        }
-        return temp;
-    }
-    
-     private boolean longFormArgCheck(String[] args){
-     // Go through the args coming in and check for the string "--" 
-    // whatever is immediately following will be the name of our long form argument.
-        boolean tempOne = false; 
-        for (int i = 0; i < args.length; i++){
-            if(args[i].startsWith("--")){
-               tempOne = true;
-                //return true;
-            }
-        
-        }
-        return tempOne;
-        
-    }*/
+   
     
     private ArrayList<String> getPositionalArgs(String[] args){
     	ArrayList<String> posArgList = new ArrayList<>(); 
