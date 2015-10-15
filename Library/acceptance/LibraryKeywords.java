@@ -18,6 +18,8 @@ public class LibraryKeywords
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box"));
+    	lib.addNamedArgument(new NamedArgument("digits", "4"));
     	try{
     		lib.parse(args);
     		float len = Float.parseFloat(length.getValue());
@@ -46,6 +48,15 @@ public class LibraryKeywords
     	return currentArg.getValue();
     }
     
+    public String getType(){
+    	NamedArgument type = lib.getNamedArgument("type");
+    	return type.getValue();
+    }
+    
+    public String getDigits(){
+    	NamedArgument digits = lib.getNamedArgument("digits");
+    	return digits.getValue();
+    }
     public String getProgramOutput() 
     {
         return output;
