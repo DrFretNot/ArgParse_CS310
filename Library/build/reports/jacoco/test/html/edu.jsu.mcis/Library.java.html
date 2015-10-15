@@ -128,7 +128,7 @@ public class Library {
    
    private String incorrectNumberOfArgsMessage(ArrayList&lt;String&gt; argList){
 <span class="fc" id="L130">   		int numOfArgs = argumentList.size();</span>
-<span class="pc bpc" id="L131" title="1 of 2 branches missed.">   		if(argList.size() &lt; numOfArgs){</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">   		if(argList.size() &lt; numOfArgs){</span>
 <span class="fc" id="L132">            String message = &quot;usage: java &quot; + programName;</span>
 <span class="fc bfc" id="L133" title="All 2 branches covered.">            for(int i = 0; i &lt; argumentList.size(); i++) {</span>
 <span class="fc" id="L134">            	Argument currentArg = argumentList.get(i);</span>
@@ -147,18 +147,18 @@ public class Library {
    		}
         
    		else {
-<span class="nc" id="L150">   			String message = &quot;usage: java &quot; + programName;</span>
-<span class="nc bnc" id="L151" title="All 2 branches missed.">            for(int i = 0; i &lt; argumentList.size(); i++) {</span>
-<span class="nc" id="L152">            	Argument currentArg = argumentList.get(i);</span>
-<span class="nc" id="L153">                message += &quot; &quot; + currentArg.getName();;   </span>
+<span class="fc" id="L150">   			String message = &quot;usage: java &quot; + programName;</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">            for(int i = 0; i &lt; argumentList.size(); i++) {</span>
+<span class="fc" id="L152">            	Argument currentArg = argumentList.get(i);</span>
+<span class="fc" id="L153">                message += &quot; &quot; + currentArg.getName();;   </span>
             }
-<span class="nc" id="L155">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments:&quot;;</span>
+<span class="fc" id="L155">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments:&quot;;</span>
             //int numOfArgsUnrecognized = args.length - numOfArgs;
             
-<span class="nc bnc" id="L158" title="All 2 branches missed.">            for(int j = numOfArgs; j &lt; argList.size(); j++){</span>
-<span class="nc" id="L159">            	message += &quot; &quot; + argList.get(j);</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">            for(int j = numOfArgs; j &lt; argList.size(); j++){</span>
+<span class="fc" id="L159">            	message += &quot; &quot; + argList.get(j);</span>
             }
-<span class="nc" id="L161">   			return message;</span>
+<span class="fc" id="L161">   			return message;</span>
    		}
    }
     
@@ -179,21 +179,21 @@ public class Library {
 <span class="fc" id="L179">		return helpMessage;</span>
     }
     
-    private String longFormArg(String[] args){
+   /* private String longFormArg(String[] args){
      // Go through the args coming in and check for the string &quot;--&quot; 
     // whatever is immediately following will be the name of our long form argument.
-<span class="nc" id="L185">        String temp = &quot;&quot;;</span>
-<span class="nc bnc" id="L186" title="All 2 branches missed.">        for (int i = 0; i &lt; args.length; i++){</span>
-<span class="nc bnc" id="L187" title="All 2 branches missed.">            if(args[i].startsWith(&quot;--&quot;)){</span>
-<span class="nc" id="L188">                temp = args[i];</span>
-<span class="nc" id="L189">                temp = temp.replace(&quot;--&quot;,&quot;&quot;);</span>
+        String temp = &quot;&quot;;
+        for (int i = 0; i &lt; args.length; i++){
+            if(args[i].startsWith(&quot;--&quot;)){
+                temp = args[i];
+                temp = temp.replace(&quot;--&quot;,&quot;&quot;);
             }
         
         }
-<span class="nc" id="L193">        return temp;</span>
+        return temp;
     }
     
-     /*private boolean longFormArgCheck(String[] args){
+     private boolean longFormArgCheck(String[] args){
      // Go through the args coming in and check for the string &quot;--&quot; 
     // whatever is immediately following will be the name of our long form argument.
         boolean tempOne = false; 
@@ -261,41 +261,33 @@ public class Library {
 		}
 <span class="fc" id="L262">		ArrayList&lt;String&gt; tempPositionalArgList = getPositionalArgs(args);</span>
 <span class="fc" id="L263">		setNamedArgValues(args);</span>
-        /*else if (longFormArgCheck(args)){
-            String temp = longFormArg(args);
-            if (temp == &quot;help&quot;){
-                throw new HelpException(helpMessage());
-            }
-        }*/
-<span class="fc" id="L270">        NamedArgument helpArgument = getNamedArgument(&quot;help&quot;);</span>
-<span class="fc bfc" id="L271" title="All 2 branches covered.">        if (helpArgument != null){</span>
-<span class="fc" id="L272">			String helpArgValue = helpArgument.getValue();</span>
-<span class="pc bpc" id="L273" title="1 of 2 branches missed.">			if (helpArgValue.equals(&quot;true&quot;)){</span>
-<span class="fc" id="L274">				throw new HelpException(helpMessage());</span>
+<span class="fc" id="L264">        NamedArgument helpArgument = getNamedArgument(&quot;help&quot;);</span>
+<span class="fc bfc" id="L265" title="All 2 branches covered.">        if (helpArgument != null){</span>
+<span class="fc" id="L266">			String helpArgValue = helpArgument.getValue();</span>
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">			if (helpArgValue.equals(&quot;true&quot;)){</span>
+<span class="fc" id="L268">				throw new HelpException(helpMessage());</span>
 			}
         }
         
-<span class="fc bfc" id="L278" title="All 2 branches covered.">		if (argumentList.size() != tempPositionalArgList.size()){</span>
-<span class="fc" id="L279">				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">		if (argumentList.size() != tempPositionalArgList.size()){</span>
+<span class="fc" id="L273">				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));</span>
 		}
-<span class="pc bpc" id="L281" title="1 of 2 branches missed.">		else if (argumentList.size() == tempPositionalArgList.size()){</span>
-<span class="fc bfc" id="L282" title="All 2 branches covered.">			for(int i = 0; i &lt; tempPositionalArgList.size(); i++){</span>
-<span class="fc" id="L283">   				Argument currentArg = argumentList.get(i);</span>
-<span class="fc" id="L284">   				currentArg.setValue(tempPositionalArgList.get(i));</span>
+<span class="pc bpc" id="L275" title="1 of 2 branches missed.">		else if (argumentList.size() == tempPositionalArgList.size()){</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">			for(int i = 0; i &lt; tempPositionalArgList.size(); i++){</span>
+<span class="fc" id="L277">   				Argument currentArg = argumentList.get(i);</span>
+<span class="fc" id="L278">   				currentArg.setValue(tempPositionalArgList.get(i));</span>
    			}
 			try{
-<span class="fc" id="L287">				parseDataTypeWithArgClass(tempPositionalArgList);</span>
+<span class="fc" id="L281">				parseDataTypeWithArgClass(tempPositionalArgList);</span>
 			}
-<span class="fc" id="L289">			catch (Exception e){</span>
-<span class="fc" id="L290">				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));</span>
-<span class="fc" id="L291">			}</span>
+<span class="fc" id="L283">			catch (Exception e){</span>
+<span class="fc" id="L284">				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));</span>
+<span class="fc" id="L285">			}</span>
 		}	
-<span class="fc" id="L293">	}</span>
+<span class="fc" id="L287">	}</span>
 }
 
 
-//Katie and Andrew: possibly test if startswith -- in the for loop to add the values from the CLI
-//then call a method that handles the named argument  
 
 
 
