@@ -214,8 +214,22 @@ public class Library {
     		if(!args[i].startsWith("--") && i == 0){
     			posArgList.add(args[i]);
     		}
-    		else if(!args[i].startsWith("--") && !args[i-1].startsWith("--")){
-    			posArgList.add(args[i]);
+    		else if(!args[i].startsWith("--")){
+    			if(!args[i-1].startsWith("--")){
+    				posArgList.add(args[i]);
+    			}
+    			else{
+    				String[] tempNamedArg = new String[2];
+					for(int j = 0; j < namedArgumentList.size(); j++){
+    					NamedArgument currentArg = namedArgumentList.get(j);
+    					tempNamedArg = args[i-1].split("--");
+    					if(currentArg.getName().equals(tempNamedArg[1])) {
+    						if(currentArg.getType().equals("boolean")){
+    							posArgList.add(args[i]);
+    						}
+    					}   			
+    				}
+    			}
     		}
     	}
     	return posArgList;
