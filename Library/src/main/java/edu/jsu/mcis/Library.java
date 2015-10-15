@@ -275,7 +275,7 @@ public class Library {
 			}
         }
         
-		else if (argumentList.size() != tempPositionalArgList.size()){
+		if (argumentList.size() != tempPositionalArgList.size()){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));
 		}
 		else if (argumentList.size() == tempPositionalArgList.size()){

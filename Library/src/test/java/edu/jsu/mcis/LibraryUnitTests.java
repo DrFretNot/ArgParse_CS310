@@ -327,7 +327,35 @@ public class LibraryUnitTests {
     	assertEquals("3", height.getValue());
 	}
 
-
+	@Test
+	public void testParseReadsCorrectArgumentsWhenGivenMultipleNamedArguments(){
+		String[] args = {"7", "--type", "pyramid", "5", "3", "--digits", "1"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box"));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
+    	NamedArgument type = lib.getNamedArgument("type");
+    	assertEquals("pyramid", type.getValue());
+    	NamedArgument digits = lib.getNamedArgument("digits");
+    	assertEquals("1", digits.getValue());
+	}
 
 
 	@Test

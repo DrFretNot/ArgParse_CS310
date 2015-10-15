@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="22" skipped="0" failures="0" errors="0" timestamp="2015-10-15T02:37:34" hostname="Katies-MacBook-Air-2.local" time="0.032">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="23" skipped="0" failures="0" errors="0" timestamp="2015-10-15T02:57:27" hostname="Katies-MacBook-Air-2.local" time="0.035">
   <properties/>
-  <testcase name="testEnterLongFormHelpAndReturnCorrectMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.019"/>
+  <testcase name="testEnterLongFormHelpAndReturnCorrectMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.021"/>
   <testcase name="testNamedArgValuesFromCLIAssignedToCorrectNamedArgument" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentAndReturnCorrectDefaultValue" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testArgValuesFromCLIAssignedToCorrectArgument" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testParseReturnsCorrectHelpExceptionMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testParseReturnsCorrectHelpExceptionMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testParseReadsCorrectPositionalArgsWhenGivenNamedArgsAlso" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
@@ -15,14 +15,15 @@
   <testcase name="testAddArgumentInLibraryAndReturnCorrectArgumentInLibrary" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentWithoutTypeAndReturnDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
-  <testcase name="testAddNamedArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testAddNamedArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testEnterArgNameAndTypeAndReturnCorrectInfo" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testParseReturnsCorrectExceptionMessageWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testEnterNamedArgNameAndTypeAndReturnCorrectInfo" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testBooleanNamedArgAssignedCorrectValueWhenCalledInCLI" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentWithoutTypeAndReturnDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testParseReadsCorrectArgumentsWhenGivenMultipleNamedArguments" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
