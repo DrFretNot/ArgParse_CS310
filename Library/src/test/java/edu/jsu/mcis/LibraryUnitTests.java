@@ -204,7 +204,7 @@ public class LibraryUnitTests {
     
     @Test
     public void testLongFormHelp(){
-        String[] args = {"help"};
+        String[] args = {"--help"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -217,12 +217,38 @@ public class LibraryUnitTests {
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", Library.argType.BOOLEAN));
         try{
         	lib.parse(args);
         }
         catch(Exception e){
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
+    }
+    
+    @Test
+    public void testParseReadsCorrectPositionalArgsWhenGivenNamedArgsAlso(){
+    	String[] args = {"7", "--type", "pyramid", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box"));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
     }
 
 
@@ -233,13 +259,19 @@ public class LibraryUnitTests {
 
 	@Test
     public void testAddNamedArgumentAndReturnCorrectName(){
-    	NamedArgument type = new NamedArgument("type");
+    	NamedArgument type = new NamedArgument("type", "box");
 		assertEquals("type", type.getName()); 
+    }
+    
+    @Test
+    public void testAddNamedArgumentAndReturnCorrectDefaultValue(){
+    	NamedArgument type = new NamedArgument("type", "box");
+		assertEquals("box", type.getValue());
     }
 	
 	@Test
     public void testAddNamedArgumentWithoutTypeAndReturnDefaultType(){
-    	NamedArgument type = new NamedArgument("type");
+    	NamedArgument type = new NamedArgument("type", "box");
     	assertEquals("string", type.getType()); 
     }
 	
@@ -252,7 +284,7 @@ public class LibraryUnitTests {
 	
     @Test
     public void testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
-    	NamedArgument type = new NamedArgument("type", "the shape of the object");
+    	NamedArgument type = new NamedArgument("type", "box", "the shape of the object");
     	assertEquals("the shape of the object", type.getDescription());
     	assertEquals("string", type.getType());  
     } 	
@@ -260,9 +292,10 @@ public class LibraryUnitTests {
  	@Test
     public void testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary(){
     	Library lib = new Library();
-    	lib.addNamedArgument(new NamedArgument("type", Library.argType.STRING, "the shape of the object"));
+    	lib.addNamedArgument(new NamedArgument("type", "box", Library.argType.STRING, "the shape of the object"));
     	NamedArgument currentArg = lib.getNamedArgument("type");
     	assertEquals("type", currentArg.getName());
+    	assertEquals("box", currentArg.getValue());
     	assertEquals("string", currentArg.getType());
     	assertEquals("the shape of the object", currentArg.getDescription());
     }

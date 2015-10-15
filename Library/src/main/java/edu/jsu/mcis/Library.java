@@ -85,36 +85,36 @@ public class Library {
     
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     
-    private void parseDataTypeWithArgClass(String[] args) throws NumberFormatException{
+    private void parseDataTypeWithArgClass(ArrayList<String> argList) throws NumberFormatException{
         String errorMessage = "";
         String currentTypeError = "";
         
-		for (int index = 0; index < args.length; index++){
+		for (int index = 0; index < argList.size(); index++){
 			incorrectDataTypeIndex = index;
 			Argument currentArg = argumentList.get(index);
 			if (currentArg.getType().equals("integer")){
-				int argValue = Integer.parseInt(args[index]);
+				int argValue = Integer.parseInt(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
 			}
             
 			else if (currentArg.getType().equals("float")){
-				float argValue = Float.parseFloat(args[index]);
+				float argValue = Float.parseFloat(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
 			}
             
 			else if (currentArg.getType().equals("string")){
-				String argValue = args[index];
+				String argValue = argList.get(index);
 				currentArg.setValue(argValue);
 			}
 			
 			else{
-				Boolean argValue = Boolean.parseBoolean(args[index]);
+				Boolean argValue = Boolean.parseBoolean(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
 			}
 		}
     }
     
-    private String incorrectDataTypeMessage(String[] args){
+    private String incorrectDataTypeMessage(ArrayList<String> argList){
 		String errorMessage = "usage: java " + programName;
 		for(int i = 0; i < argumentList.size(); i++) {
 			Argument currentArg = argumentList.get(i);
@@ -122,13 +122,13 @@ public class Library {
         }
             
         Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
-        errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + args[incorrectDataTypeIndex];
+        errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
         return errorMessage;    	
     }
    
-   private String incorrectNumberOfArgsMessage(String[] args){
+   private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
    		int numOfArgs = argumentList.size();
-   		if(args.length < numOfArgs){
+   		if(argList.size() < numOfArgs){
             String message = "usage: java " + programName;
             for(int i = 0; i < argumentList.size(); i++) {
             	Argument currentArg = argumentList.get(i);
@@ -136,9 +136,9 @@ public class Library {
             }
             
             message += "\n" + programName + ".java: error: the following arguments are required:";
-            int numOfArgsMissing = numOfArgs - args.length;
+            //int numOfArgsMissing = numOfArgs - args.length;
             
-            for(int j = args.length; j < numOfArgs; j++){
+            for(int j = argList.size(); j < numOfArgs; j++){
             	Argument currentArg = argumentList.get(j);
             	message += " " + currentArg.getName();
             }
@@ -153,10 +153,10 @@ public class Library {
                 message += " " + currentArg.getName();;   
             }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
-            int numOfArgsUnrecognized = args.length - numOfArgs;
+            //int numOfArgsUnrecognized = args.length - numOfArgs;
             
-            for(int j = numOfArgs; j < args.length; j++){
-            	message += " " + args[j];
+            for(int j = numOfArgs; j < argList.size(); j++){
+            	message += " " + argList.get(j);
             }
    			return message;
    		}
@@ -193,7 +193,7 @@ public class Library {
         return temp;
     }
     
-     private boolean longFormArgCheck(String[] args){
+     /*private boolean longFormArgCheck(String[] args){
      // Go through the args coming in and check for the string "--" 
     // whatever is immediately following will be the name of our long form argument.
         boolean tempOne = false; 
@@ -206,31 +206,45 @@ public class Library {
         }
         return tempOne;
         
+    }*/
+    
+    private ArrayList<String> getPositionalArgs(String[] args){
+    	ArrayList<String> posArgList = new ArrayList<>(); 
+    	for(int i = 0; i < args.length; i++){
+    		if(!args[i].startsWith("--") && i == 0){
+    			posArgList.add(args[i]);
+    		}
+    		else if(!args[i].startsWith("--") && !args[i-1].startsWith("--")){
+    			posArgList.add(args[i]);
+    		}
+    	}
+    	return posArgList;
     }
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
 		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
-        else if (longFormArgCheck(args)){
+		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
+        /*else if (longFormArgCheck(args)){
             String temp = longFormArg(args);
             if (temp == "help"){
                 throw new HelpException(helpMessage());
             }
-        }
-		else if (argumentList.size() != args.length){
-				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(args));
+        }*/
+		if (argumentList.size() != tempPositionalArgList.size()){
+				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));
 		}
-		else if (argumentList.size() == args.length){
-			for(int i = 0; i < args.length; i++){
+		else if (argumentList.size() == tempPositionalArgList.size()){
+			for(int i = 0; i < tempPositionalArgList.size(); i++){
    				Argument currentArg = argumentList.get(i);
-   				currentArg.setValue(args[i]);
+   				currentArg.setValue(tempPositionalArgList.get(i));
    			}
 			try{
-				parseDataTypeWithArgClass(args);
+				parseDataTypeWithArgClass(tempPositionalArgList);
 			}
 			catch (Exception e){
-				throw new IncorrectArgTypeException(incorrectDataTypeMessage(args));
+				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
 			}
 		}	
 	}
@@ -238,7 +252,7 @@ public class Library {
 
 
 //Katie and Andrew: possibly test if startswith -- in the for loop to add the values from the CLI
-//then call a method that handles the named arguments  
+//then call a method that handles the named argument  
 
 
 

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="19" skipped="0" failures="1" errors="0" timestamp="2015-10-14T16:42:04" hostname="Katies-MacBook-Air-2.local" time="0.036">
+<testsuite name="edu.jsu.mcis.LibraryUnitTests" tests="20" skipped="0" failures="1" errors="0" timestamp="2015-10-15T00:18:08" hostname="Katies-MacBook-Air-2.local" time="0.044">
   <properties/>
-  <testcase name="testAddArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.007"/>
-  <testcase name="testParseReturnsCorrectExceptionMessageWhenGivenMoreArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.01"/>
-  <testcase name="testArgValuesFromCLIAssignedToCorrectArgument" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testAddArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.008"/>
+  <testcase name="testAddNamedArgumentAndReturnCorrectDefaultValue" classname="edu.jsu.mcis.LibraryUnitTests" time="0.002"/>
+  <testcase name="testArgValuesFromCLIAssignedToCorrectArgument" classname="edu.jsu.mcis.LibraryUnitTests" time="0.012"/>
   <testcase name="testParseReturnsCorrectHelpExceptionMessage" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testForAddProgramNameAndReturnCorrectProgramName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testLongFormHelp" classname="edu.jsu.mcis.LibraryUnitTests" time="0.006">
-    <failure message="org.junit.ComparisonFailure: expected:&lt;...length width height&#10;[Calculate the volume of a box.&#10;positional arguments:&#10;length the length of the box&#10;width the width of the box&#10;height the height of the box]&gt; but was:&lt;...length width height&#10;[VolumeCalculator.java: error: the following arguments are required: width height]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;...length width height
+    <failure message="org.junit.ComparisonFailure: expected:&lt;...length width height&#10;[Calculate the volume of a box.&#10;positional arguments:&#10;length the length of the box&#10;width the width of the box&#10;height the height of the box]&gt; but was:&lt;...length width height&#10;[VolumeCalculator.java: error: the following arguments are required: length width height]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;...length width height
 [Calculate the volume of a box.
 positional arguments:
 length the length of the box
 width the width of the box
 height the height of the box]&gt; but was:&lt;...length width height
-[VolumeCalculator.java: error: the following arguments are required: width height]&gt;
+[VolumeCalculator.java: error: the following arguments are required: length width height]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at edu.jsu.mcis.LibraryUnitTests.testLongFormHelp(LibraryUnitTests.java:222)
+	at edu.jsu.mcis.LibraryUnitTests.testLongFormHelp(LibraryUnitTests.java:225)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -62,16 +62,17 @@ height the height of the box]&gt; but was:&lt;...length width height
 	at java.lang.Thread.run(Thread.java:745)
 </failure>
   </testcase>
-  <testcase name="testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.002"/>
+  <testcase name="testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testParseReadsCorrectPositionalArgsWhenGivenNamedArgsAlso" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testParseReturnsCorrectExceptionMessageWhenGivenIncorrectDataType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentInLibraryAndReturnCorrectArgumentInLibrary" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testAddArgumentWithoutTypeAndReturnDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
-  <testcase name="testAddNamedArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testAddArgumentWithoutTypeAndReturnDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
+  <testcase name="testAddNamedArgumentAndReturnCorrectName" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
   <testcase name="testEnterArgNameAndTypeAndReturnCorrectInfo" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testParseReturnsCorrectExceptionMessageWhenGivenLessArgsThanSpecified" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testEnterNamedArgNameAndTypeAndReturnCorrectInfo" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
-  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.001"/>
+  <testcase name="testEnterNamedArgNameAndTypeAndReturnCorrectInfo" classname="edu.jsu.mcis.LibraryUnitTests" time="0.003"/>
+  <testcase name="testForAddProgramDescriptionAndReturnCorrectProgramDescription" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentWithoutTypeAndReturnDefaultType" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testShortFormHelp" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
   <testcase name="testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary" classname="edu.jsu.mcis.LibraryUnitTests" time="0.0"/>
