@@ -267,7 +267,15 @@ public class Library {
                 throw new HelpException(helpMessage());
             }
         }*/
-		if (argumentList.size() != tempPositionalArgList.size()){
+        NamedArgument helpArgument = getNamedArgument("help");
+        if (helpArgument != null){
+			String helpArgValue = helpArgument.getValue();
+			if (helpArgValue.equals("true")){
+				throw new HelpException(helpMessage());
+			}
+        }
+        
+		else if (argumentList.size() != tempPositionalArgList.size()){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));
 		}
 		else if (argumentList.size() == tempPositionalArgList.size()){

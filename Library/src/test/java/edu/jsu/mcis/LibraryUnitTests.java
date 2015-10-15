@@ -178,7 +178,7 @@ public class LibraryUnitTests {
         }
 	}
     
-    @Test
+    /*@Test
     public void testShortFormHelp() {
         String[] args = {"-h"};
         Library lib = new Library();
@@ -199,11 +199,11 @@ public class LibraryUnitTests {
         catch(Exception e){
         	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
         }
-	}
+	}*/
 
     
     @Test
-    public void testLongFormHelp(){
+    public void testEnterLongFormHelpAndReturnCorrectMessage(){
         String[] args = {"--help"};
         Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
@@ -303,7 +303,7 @@ public class LibraryUnitTests {
 
 	@Test
 	public void testParseReadsCorrectPositionalArgsWhenGivenBooleanNamedArgsAlso(){
-		String[] args = {"7", "--help", "5", "3"};
+		String[] args = {"7", "--helpful", "5", "3"};
     	Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -316,7 +316,7 @@ public class LibraryUnitTests {
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
-    	NamedArgument help = new NamedArgument("help", Library.argType.BOOLEAN);
+    	NamedArgument help = new NamedArgument("helpful", Library.argType.BOOLEAN);
     	lib.addNamedArgument(help);
     	try{
     		lib.parse(args);
