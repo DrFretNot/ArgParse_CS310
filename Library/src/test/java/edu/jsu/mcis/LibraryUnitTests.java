@@ -251,6 +251,30 @@ public class LibraryUnitTests {
     	assertEquals("3", height.getValue());
     }
 
+	@Test
+	public void testNamedArgValuesFromCLIAssignedToCorrectNamedArgument(){
+		String[] args = {"7", "--type", "pyramid", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	NamedArgument type = new NamedArgument("type", "box");
+    	lib.addNamedArgument(type);
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	NamedArgument currentArg = lib.getNamedArgument("type");
+    	assertEquals("pyramid", currentArg.getValue());
+	}
 
 
 

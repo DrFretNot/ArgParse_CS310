@@ -54,6 +54,10 @@ public class NamedArgument{
 		return argName;
 	}
 	
+	public void setValue(String argValue){
+    	value = argValue;
+    }
+	
 	public String getValue(){
 		return value;
 	}

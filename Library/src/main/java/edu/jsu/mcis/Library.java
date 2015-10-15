@@ -220,12 +220,33 @@ public class Library {
     	}
     	return posArgList;
     }
+    
+    private void setNamedArgValues(String[] args){
+    	for(int i = 0; i < args.length; i++){
+    		String[] tempNamedArg = new String[2];
+    		if(args[i].startsWith("--")){
+    			tempNamedArg = args[i].split("--");
+    			for(int j = 0; j < namedArgumentList.size(); j++){
+    				NamedArgument currentArg = namedArgumentList.get(j);
+    				if(currentArg.getName().equals(tempNamedArg[1])){
+    					if(currentArg.getType() != "boolean"){
+    						currentArg.setValue(args[i+1]);
+    					}
+    					else{
+    						currentArg.setValue("true");
+    					}
+    				}
+    			}
+    		}
+    	}
+    }
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
 		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
+		setNamedArgValues(args);
         /*else if (longFormArgCheck(args)){
             String temp = longFormArg(args);
             if (temp == "help"){
