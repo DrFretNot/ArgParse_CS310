@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Library {
 	
-    //protected Map<String, Argument> positionalArguments;
 	private ArrayList<NamedArgument> namedArgumentList;
     private ArrayList<Argument> argumentList;
     private String programName = "";
@@ -19,25 +18,7 @@ public class Library {
 
 	}
 	
-	public class HelpException extends Exception{
-		public HelpException(String message){
-			super(message);
-		}
-	}
-    
-	public class IncorrectNumberOfArgsException extends Exception{
-		public IncorrectNumberOfArgsException(String message){
-			super(message);
-		}
-	}
-    
-	public class IncorrectArgTypeException extends Exception{
-		public IncorrectArgTypeException(String message){
-			super(message);
-		}
-	}
-    
-    public void addProgramName(String inputProgramName){
+	public void addProgramName(String inputProgramName){
         programName = inputProgramName;       
     }
     
