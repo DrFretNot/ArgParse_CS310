@@ -45,7 +45,7 @@
 |                                 | Should Be Equal              | ${output}          | ${expected3} |            |
 
 | *Test Case*                  | *Action*                              | *Argument*         | *Argument*   | *Argument* | *Argument* | *Argument* | *Argument* | *Argument* |
-| Test Named Argument Defaults | Start Volume Calculator With Arguments | 7                  | 3            | 2          |            |            |            |            |
+| Test Named Argument Defaults | Start Volume Calculator With Arguments | 7                 | 3            | 2          |            |            |            |            |
 |                              | ${length}=                            | Get Length         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 7                  | ${length}    |            |            |            |            |            |
 |                              | ${width}=                             | Get Width          |              |            |            |            |            |            |
@@ -56,7 +56,7 @@
 |                              | Should Be Equal                       | box                | ${type}      |            |            |            |            |            |
 |                              | ${digits}=                            | Get Digits         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 4                  | ${digits}    |            |            |            |            |            |
-| Test Named Argument Single   | Start Volume Calculator With Arguments | 7                  | 3            | 2          | --type     | ellipsoid  |            |            |
+| Test Named Argument Single   | Start Volume Calculator With Arguments | 7                 | 3            | 2          | --type     | ellipsoid  |            |            |
 |                              | ${length}=                            | Get Length         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 7                  | ${length}    |            |            |            |            |            |
 |                              | ${width}=                             | Get Width          |              |            |            |            |            |            |
@@ -67,7 +67,7 @@
 |                              | Should Be Equal                       | ellipsoid          | ${type}      |            |            |            |            |            |
 |                              | ${digits}=                            | Get Digits         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 4                  | ${digits}    |            |            |            |            |            |
-| Test Named Argument Multiple | Start Volume Calculator With Arguments | 7                  | 3            | 2          | --type     | ellipsoid  | --digits   | 1          |
+| Test Named Argument Multiple | Start Volume Calculator With Arguments | 7                 | 3            | 2          | --type     | ellipsoid  | --digits   | 1          |
 |                              | ${length}=                            | Get Length         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 7                  | ${length}    |            |            |            |            |            |
 |                              | ${width}=                             | Get Width          |              |            |            |            |            |            |
@@ -80,7 +80,7 @@
 |                              | Should Be Equal                       | 1                  | ${digits}    |            |            |            |            |            |
 
 | *Test Case*                  | *Action*                              | *Argument*         | *Argument*   | *Argument* | *Argument* | *Argument* | *Argument* | *Argument* |
-| Test Named Argument Anywhere | Start Volume Calculator With Arguments | --type             | ellipsoid    | 7          | 3          | --digits   | 1          | 2          |
+| Test Named Argument Anywhere | Start Volume Calculator With Arguments | --type            | ellipsoid    | 7          | 3          | --digits   | 1          | 2          |
 |                              | ${length}=                            | Get Length         |              |            |            |            |            |            |
 |                              | Should Be Equal                       | 7                  | ${length}    |            |            |            |            |            |
 |                              | ${width}=                             | Get Width          |              |            |            |            |            |            |
