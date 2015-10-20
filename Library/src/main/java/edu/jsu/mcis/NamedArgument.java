@@ -1,11 +1,8 @@
 package edu.jsu.mcis;
 
-public class NamedArgument{
+public class NamedArgument extends Argument{
     
-    private String argName;
-    private String description;
-    private Library.argType type;
-    private String value;
+   
 
     public NamedArgument(String name){
         argName = name;
@@ -50,34 +47,7 @@ public class NamedArgument{
         value = defaultValue;  
     }
     
-	public String getName(){
-		return argName;
-	}
 	
-	public void setValue(String argValue){
-    	value = argValue;
-    }
-	
-	public String getValue(){
-		return value;
-	}
-	
-	public String getType(){
-    	if(type == Library.argType.INTEGER){
-    		return "integer";
-    	}
-    	else if(type == Library.argType.FLOAT){
-    		return "float";
-    	}
-    	else if(type == Library.argType.STRING){
-    		return "string";
-    	}
-    	else return "boolean";
-	}
-	
-	public String getDescription(){
-		return description;
-	}
 
 
 }

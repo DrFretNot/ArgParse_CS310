@@ -1,10 +1,10 @@
 package edu.jsu.mcis;
 
 public class Argument{
-    private String argName;
-    private String description;
-    private Library.argType type;
-    private String value;
+    protected String argName;
+    protected String description;
+    protected Library.argType type;
+    protected String value;
 
     
     public Argument(){

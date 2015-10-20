@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Library {
 	
-	private ArrayList&lt;NamedArgument&gt; namedArgumentList;
-    private ArrayList&lt;Argument&gt; argumentList;
+	private List&lt;NamedArgument&gt; namedArgumentList;
+    private List&lt;Argument&gt; argumentList;
 <span class="fc" id="L9">    private String programName = &quot;&quot;;</span>
 <span class="fc" id="L10">    private String programDescription = &quot;&quot;;</span>
 <span class="pc" id="L11">    public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
@@ -13,8 +13,8 @@ public class Library {
 <span class="fc" id="L13">    public Library(){</span>
 <span class="fc" id="L14">		this.programName = &quot;&quot;;</span>
 <span class="fc" id="L15">        this.programDescription = &quot;&quot;;</span>
-<span class="fc" id="L16">        this.argumentList = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L17">        this.namedArgumentList = new ArrayList&lt;&gt;(); </span>
+<span class="fc" id="L16">        this.argumentList = new ArrayList&lt;Argument&gt;();</span>
+<span class="fc" id="L17">        this.namedArgumentList = new ArrayList&lt;NamedArgument&gt;(); </span>
 
 <span class="fc" id="L19">	}</span>
 	

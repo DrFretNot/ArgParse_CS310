@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Library {
 	
-	private ArrayList<NamedArgument> namedArgumentList;
-    private ArrayList<Argument> argumentList;
+	private List<NamedArgument> namedArgumentList;
+    private List<Argument> argumentList;
     private String programName = "";
     private String programDescription = "";
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
@@ -13,8 +13,8 @@ public class Library {
     public Library(){
 		this.programName = "";
         this.programDescription = "";
-        this.argumentList = new ArrayList<>();
-        this.namedArgumentList = new ArrayList<>(); 
+        this.argumentList = new ArrayList<Argument>();
+        this.namedArgumentList = new ArrayList<NamedArgument>(); 
 
 	}
 	
