@@ -4,7 +4,7 @@ import java.lang.String.*;
 public class LibraryKeywords 
 {
     private Library lib;
-    private String output;
+    private String output = "n";
 
     public void startVolumeCalculatorWithArguments(String[] args){
     	lib = new Library();
@@ -118,6 +118,7 @@ public class LibraryKeywords
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", Library.argType.BOOLEAN));
     	try{
     		lib.parse(args);
     	}
