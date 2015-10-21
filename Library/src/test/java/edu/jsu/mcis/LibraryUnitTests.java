@@ -452,6 +452,17 @@ public class LibraryUnitTests {
     		assertEquals("usage: java Volume Calculator length width height\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
     	}
     }
+    
+    @Test
+	public void testAddingNamedArgumentWithShortFormAndReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", 't');
+    	//assertEquals("the shape of the object", type.getDescription());
+    	assertEquals('t', type.getShortForm());  	
+	
+	}
+    
+    
+    
 }    
     
     
