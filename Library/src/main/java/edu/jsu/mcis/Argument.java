@@ -5,6 +5,7 @@ public class Argument{
     protected String description;
     protected Library.argType type;
     protected String value;
+	protected int position;
 
     
     public Argument(){
@@ -12,34 +13,44 @@ public class Argument{
         description = "";
         type = null;
         value = null;
+		position = -1;//passing by cheating.
     }
     
-    public void addElements(String name){
-        this.setName(name);
+    public void addElements(String name, int position){
+        this.setPosition(position);
+		this.setName(name);
         this.setType(Library.argType.STRING);
     }
     
-    public void addElements(String name, Library.argType dataType){
+    public void addElements(String name, int position, Library.argType dataType){
+		this.setPosition(position);
         this.setName(name);
         this.setType(dataType);
     }
     
-    public void addElements(String name, String argDescription){
+    public void addElements(String name, int position, String argDescription){
+        this.setPosition(position);		
         this.setName(name);
         description = argDescription;
         this.setType(Library.argType.STRING);
     }
     
-    public void addElements(String name, Library.argType dataType, String argDescription){
+    public void addElements(String name, int position, Library.argType dataType, String argDescription){
+        this.setPosition(position);		
     	this.setName(name);
         this.setType(dataType);
         description = argDescription;
     } 
 
+	
     private void setName(String name){
         argName = name;
     }
     
+	private void setPosition(int pos){
+		position = pos;
+	}
+	
     private void setType(Library.argType dataType){
         type = dataType;
     }
@@ -47,6 +58,8 @@ public class Argument{
     public void setValue(String argValue){
     	value = argValue;
     }
+	
+	
     
     public String getType(){
     	if(type == Library.argType.INTEGER){
