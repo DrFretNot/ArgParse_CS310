@@ -2,7 +2,31 @@ package edu.jsu.mcis;
 
 public class NamedArgument extends Argument{
     
-   
+   private char shortFormName;
+
+	/*
+	constructors
+	
+	HAVE
+	name
+	name	defaultValue
+	name	dataType
+	name	defaultValue	dataType
+	name	defaultValue	argDescription
+	name	dataType		argDescription
+	name	defaultValue	dataType 		argDescription
+	name	shortForm
+	
+	NEED(?)
+	name	argDescription
+	name	defaultValue	shortForm
+	name	dataType		shortForm
+	name	defaultValue	dataType		shortForm
+	name	defaultValue	argDescription	shortForm
+	name	dataType		argDescription	shortForm
+	name	defaultValue	dataType 		argDescription	shortForm
+	
+	*/
 
     public NamedArgument(String name){
         argName = name;
@@ -47,7 +71,21 @@ public class NamedArgument extends Argument{
         value = defaultValue;  
     }
     
-	
+	public  NamedArgument(String name, char shortForm){
+		argName = name;
+        description = "";
+        type = Library.argType.STRING;
+        value = null;
+        shortFormName = shortForm;
+	}	
+
+
+
+
+
+	public char getShortForm(){
+		return shortFormName;
+	}
 
 
 }
