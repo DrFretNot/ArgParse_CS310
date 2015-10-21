@@ -118,7 +118,7 @@ public class LibraryKeywords
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", Library.argType.BOOLEAN));
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN));
     	try{
     		lib.parse(args);
     	}

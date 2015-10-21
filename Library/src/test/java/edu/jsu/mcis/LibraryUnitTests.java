@@ -47,7 +47,6 @@ public class LibraryUnitTests {
     
     @Test
     public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
-        //Library lib = new Library();
         Argument one = new Argument();
         one.addElements("length",Library.argType.FLOAT);
         assertEquals("length", one.getName());
@@ -61,6 +60,102 @@ public class LibraryUnitTests {
     	assertEquals("the length of the box", length.getDescription());
     	assertEquals("string", length.getType());  
     }
+    
+    @Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithDefaultValue(){
+    	NamedArgument type = new NamedArgument("type", "box");
+		assertEquals("type", type.getName()); 
+    }
+
+	@Test
+    public void testAddNamedArgumentAndReturnCorrectName(){
+    	NamedArgument type = new NamedArgument("type");
+		assertEquals("type", type.getName()); 
+    }
+    
+    @Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescription(){
+    	NamedArgument type = new NamedArgument("IntType", Library.argType.INTEGER,"This is an integer" );
+		assertEquals("IntType", type.getName()); 
+		assertEquals("integer", type.getType()); 
+		assertEquals("This is an integer", type.getDescription()); 
+    }
+    
+     @Test
+    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescriptionWithFloat(){
+    	NamedArgument type = new NamedArgument("FloatType", Library.argType.FLOAT,"This is a float" );
+		assertEquals("FloatType", type.getName()); 
+		assertEquals("float", type.getType()); 
+		assertEquals("This is a float", type.getDescription()); 
+    }
+    
+    @Test
+    public void testAddNamedArgumentAndReturnCorrectDefaultValue(){
+    	NamedArgument type = new NamedArgument("type", "box");
+		assertEquals("box", type.getValue());
+    }
+	
+	@Test
+    public void testAddNamedArgumentWithoutTypeAndReturnDefaultType(){
+    	NamedArgument type = new NamedArgument("type", "box");
+    	assertEquals("string", type.getType()); 
+    }
+	
+    @Test
+    public void testEnterNamedArgNameAndTypeAndReturnCorrectInfo(){
+        NamedArgument help = new NamedArgument("help",Library.argType.BOOLEAN);
+        assertEquals("help", help.getName());
+        assertEquals("boolean", help.getType());
+    }
+	
+    @Test
+    public void testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
+    	NamedArgument type = new NamedArgument("type", "box", "the shape of the object");
+    	assertEquals("the shape of the object", type.getDescription());
+    	assertEquals("string", type.getType());  
+    } 	
+	
+ 	@Test
+    public void testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary(){
+    	Library lib = new Library();
+    	lib.addNamedArgument(new NamedArgument("type", "box", Library.argType.STRING, "the shape of the object"));
+    	NamedArgument currentArg = lib.getNamedArgument("type");
+    	assertEquals("type", currentArg.getName());
+    	assertEquals("box", currentArg.getValue());
+    	assertEquals("string", currentArg.getType());
+    	assertEquals("the shape of the object", currentArg.getDescription());
+    }
+
+
+	@Test
+	public void testAddingFloatAndBooleanArgumentsAndParseValuesCorrectly(){
+		String[] args = {"7","8","9","TRUE"};
+		Library lib = new Library();
+		Argument length =new Argument();
+		Argument width = new Argument();
+		Argument height = new Argument();
+		Argument fact = new Argument();
+		
+		length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
+    	fact.addElements("fact", Library.argType.BOOLEAN, "the validity of the fact");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+	 	lib.addArgument(height);
+    	lib.addArgument(fact);
+    	
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	
+    	assertEquals("7", length.getValue());
+    	assertEquals("8.0",width.getValue());
+    	assertEquals("9", height.getValue());
+    	assertEquals("true", fact.getValue());	
+	}
+
     
     @Test
     public void testArgValuesFromCLIAssignedToCorrectArgument(){
@@ -334,122 +429,30 @@ public class LibraryUnitTests {
     	assertEquals("1", digits.getValue());
 	}
 
-
-@Test
-    public void testAddNamedArgumentAndReturnCorrectNameWithDefaultValue(){
-    	NamedArgument type = new NamedArgument("type", "box");
-		assertEquals("type", type.getName()); 
-    }
-
 	@Test
-    public void testAddNamedArgumentAndReturnCorrectName(){
-    	NamedArgument type = new NamedArgument("type");
-		assertEquals("type", type.getName()); 
-    }
-    
-    @Test
-    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescription(){
-    	NamedArgument type = new NamedArgument("IntType", Library.argType.INTEGER,"This is an integer" );
-		assertEquals("IntType", type.getName()); 
-		assertEquals("integer", type.getType()); 
-		assertEquals("This is an integer", type.getDescription()); 
-    }
-    
-     @Test
-    public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescriptionWithFloat(){
-    	NamedArgument type = new NamedArgument("FloatType", Library.argType.FLOAT,"This is a float" );
-		assertEquals("FloatType", type.getName()); 
-		assertEquals("float", type.getType()); 
-		assertEquals("This is a float", type.getDescription()); 
-    }
-    
-    @Test
-    public void testAddNamedArgumentAndReturnCorrectDefaultValue(){
-    	NamedArgument type = new NamedArgument("type", "box");
-		assertEquals("box", type.getValue());
-    }
-	
-	@Test
-    public void testAddNamedArgumentWithoutTypeAndReturnDefaultType(){
-    	NamedArgument type = new NamedArgument("type", "box");
-    	assertEquals("string", type.getType()); 
-    }
-	
-    @Test
-    public void testEnterNamedArgNameAndTypeAndReturnCorrectInfo(){
-        NamedArgument help = new NamedArgument("help",Library.argType.BOOLEAN);
-        assertEquals("help", help.getName());
-        assertEquals("boolean", help.getType());
-    }
-	
-    @Test
-    public void testAddNamedArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
-    	NamedArgument type = new NamedArgument("type", "box", "the shape of the object");
-    	assertEquals("the shape of the object", type.getDescription());
-    	assertEquals("string", type.getType());  
-    } 	
-	
- 	@Test
-    public void testAddNamedArgumentInLibraryAndReturnCorrectNamedArgumentInLibrary(){
-    	Library lib = new Library();
-    	lib.addNamedArgument(new NamedArgument("type", "box", Library.argType.STRING, "the shape of the object"));
-    	NamedArgument currentArg = lib.getNamedArgument("type");
-    	assertEquals("type", currentArg.getName());
-    	assertEquals("box", currentArg.getValue());
-    	assertEquals("string", currentArg.getType());
-    	assertEquals("the shape of the object", currentArg.getDescription());
-    }
-
-
-	@Test
-	public void testAddingFloatAndBooleanArgumentsAndParseValuesCorrectly(){
-		String[] args = {"7","8","9","TRUE"};
+	public void testParseThrowsCorrectExceptionWhenGivenIncorrectDataTypeAndNamedHelpArgument(){
+		String[] args = {"7", "something", "2"};
 		Library lib = new Library();
-		Argument length =new Argument();
-		Argument width = new Argument();
-		Argument height = new Argument();
-		Argument fact = new Argument();
-		
-		length.addElements("length", Library.argType.INTEGER, "the length of the box");
-    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
-    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
-    	fact.addElements("fact", Library.argType.BOOLEAN, "the validity of the fact");
+    	lib.addProgramName("Volume Calculator");
+    	lib.addProgramDescription("Calculate the volume of a box.");
+    	Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box (float)");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box (float)");
+    	height.addElements("height", Library.argType.FLOAT, "the height of the box (float)");
     	lib.addArgument(length);
     	lib.addArgument(width);
-	 	lib.addArgument(height);
-    	lib.addArgument(fact);
-    	
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN));
     	try{
     		lib.parse(args);
     	}
-    	catch(Exception e){}
-    	
-    	assertEquals("7", length.getValue());
-    	assertEquals("8.0",width.getValue());
-    	assertEquals("9", height.getValue());
-    	assertEquals("true", fact.getValue());	
-	}
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    	catch(Exception e){
+    		assertEquals("usage: java Volume Calculator length width height\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
+    	}
+    }
+}    
     
     
     
