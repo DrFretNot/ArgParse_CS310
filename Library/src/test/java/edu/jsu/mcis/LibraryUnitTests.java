@@ -476,7 +476,7 @@ public class LibraryUnitTests {
     	length.addElements("length", 0, Library.argType.FLOAT, "the length of the box (float)");
     	width.addElements("width", 1, Library.argType.FLOAT, "the width of the box (float)");
     	height.addElements("height", 2, Library.argType.FLOAT, "the height of the box (float)");
-		Argument 
+		//Argument 
 		
 	}
 
@@ -484,14 +484,41 @@ public class LibraryUnitTests {
     @Test
 	public void testAddingNamedArgumentWithShortFormAndReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", 't');
-    	//assertEquals("the shape of the object", type.getDescription());
     	assertEquals('t', type.getShortForm());  	
-	
+	} 
+    @Test
+	public void testAddingNamedArgumentWithShortFormAndValueThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", "new value",'t');
+    	assertEquals('t', type.getShortForm());  	
+	}
+	 @Test
+	public void testAddingNamedArgumentWithShortFormAndDataTypeThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", Library.argType.STRING,'t');
+    	assertEquals('t', type.getShortForm());  	
 	}
     
-    
-    
-
+    @Test
+	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", "value",Library.argType.STRING,'t');
+    	assertEquals('t', type.getShortForm());  	
+	}
+	@Test
+	public void testAddingNamedArgumentWithShortFormAndValueAndDescriptionThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", "value", "this is a type",'t');
+    	assertEquals('t', type.getShortForm());  	
+	}
+    @Test
+	public void testAddingNamedArgumentWithShortFormAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", Library.argType.STRING, "This is a type", 't');
+    	assertEquals('t', type.getShortForm());  	
+	}
+	
+	@Test
+	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
+		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
+    	assertEquals('t', type.getShortForm());  	
+	}
+	
 }    
     
     
