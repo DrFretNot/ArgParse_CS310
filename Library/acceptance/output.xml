@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20151022 16:07:25.157">
-<suite source="/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
+<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20151022 16:33:50.378">
+<suite source="/Users/trentford/Documents/Repositories/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
 <test id="s1-t1" name="Test Volume Calculator Normal Function">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
 <arguments>
@@ -8,10 +8,70 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20151022 16:07:25.988" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:25.909" endtime="20151022 16:07:25.991"></status>
+<status status="PASS" starttime="20151022 16:33:51.234" endtime="20151022 16:33:51.253"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:25.891" endtime="20151022 16:07:25.996" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Length">
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.268" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151022 16:33:51.260" endtime="20151022 16:33:51.270"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>7</arg>
+<arg>${length}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.276" endtime="20151022 16:33:51.287"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Width">
+<assign>
+<var>${width}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.296" level="INFO">${width} = 5</msg>
+<status status="PASS" starttime="20151022 16:33:51.291" endtime="20151022 16:33:51.297"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>5</arg>
+<arg>${width}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.300" endtime="20151022 16:33:51.311"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Height">
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.321" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:51.315" endtime="20151022 16:33:51.323"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.326" endtime="20151022 16:33:51.334"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.344" level="INFO">${output} = 70.0</msg>
+<status status="PASS" starttime="20151022 16:33:51.338" endtime="20151022 16:33:51.345"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>70.0</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.348" endtime="20151022 16:33:51.356"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.221" endtime="20151022 16:33:51.359" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Test Unrecognized Argument">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -21,10 +81,25 @@
 <arg>2</arg>
 <arg>43</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.049" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.020" endtime="20151022 16:07:26.051"></status>
+<status status="PASS" starttime="20151022 16:33:51.371" endtime="20151022 16:33:51.378"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.009" endtime="20151022 16:07:26.054" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.388" level="INFO">${output} = usage: java Volume Calculator length width height
+Volume Calculator.java: error: unrecognized arguments: 43</msg>
+<status status="PASS" starttime="20151022 16:33:51.382" endtime="20151022 16:33:51.389"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${expected1}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.393" endtime="20151022 16:33:51.402"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.364" endtime="20151022 16:33:51.405" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Test Absurd Program Normal Function">
 <kw library="LibraryKeywords" name="Start Absurd Program With Arguments">
@@ -34,20 +109,98 @@
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.099" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.071" endtime="20151022 16:07:26.102"></status>
+<status status="PASS" starttime="20151022 16:33:51.419" endtime="20151022 16:33:51.429"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.059" endtime="20151022 16:07:26.106" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Getpet">
+<assign>
+<var>${pet}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.436" level="INFO">${pet} = dog</msg>
+<status status="PASS" starttime="20151022 16:33:51.432" endtime="20151022 16:33:51.437"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>dog</arg>
+<arg>${pet}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.440" endtime="20151022 16:33:51.447"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Number">
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.456" level="INFO">${number} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:51.451" endtime="20151022 16:33:51.457"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${number}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.460" endtime="20151022 16:33:51.468"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Rainy">
+<assign>
+<var>${rainy}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.478" level="INFO">${rainy} = true</msg>
+<status status="PASS" starttime="20151022 16:33:51.472" endtime="20151022 16:33:51.480"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>true</arg>
+<arg>${rainy}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.484" endtime="20151022 16:33:51.491"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Bathrooms">
+<assign>
+<var>${bathrooms}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.499" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" starttime="20151022 16:33:51.495" endtime="20151022 16:33:51.500"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3.5</arg>
+<arg>${bathrooms}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.503" endtime="20151022 16:33:51.511"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.409" endtime="20151022 16:33:51.515" critical="yes"></status>
 </test>
 <test id="s1-t4" name="Test Usage Message">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
 <arguments>
 <arg>-h</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.137" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.116" endtime="20151022 16:07:26.139"></status>
+<status status="PASS" starttime="20151022 16:33:51.526" endtime="20151022 16:33:51.532"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.110" endtime="20151022 16:07:26.143" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.541" level="INFO">${output} = usage: java Volume Calculator length width height
+Calculate the volume of a box.
+positional arguments:
+length the length of the box (float)
+width the width of the box (float)
+height the height of the ...</msg>
+<status status="PASS" starttime="20151022 16:33:51.535" endtime="20151022 16:33:51.543"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${expected2}</arg>
+<arg>${output}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.546" endtime="20151022 16:33:51.556"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.518" endtime="20151022 16:33:51.559" critical="yes"></status>
 </test>
 <test id="s1-t5" name="Test Incorrect Datatype Message">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
@@ -56,10 +209,25 @@
 <arg>something</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.179" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.156" endtime="20151022 16:07:26.181"></status>
+<status status="PASS" starttime="20151022 16:33:51.573" endtime="20151022 16:33:51.582"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.148" endtime="20151022 16:07:26.183" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.596" level="INFO">${output} = usage: java Volume Calculator length width height
+Volume Calculator.java: error: argument width: invalid float value: something</msg>
+<status status="PASS" starttime="20151022 16:33:51.586" endtime="20151022 16:33:51.597"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${expected3}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.602" endtime="20151022 16:33:51.614"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.563" endtime="20151022 16:33:51.617" critical="yes"></status>
 </test>
 <test id="s1-t6" name="Test Named Argument Defaults">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -68,10 +236,86 @@
 <arg>3</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.226" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.197" endtime="20151022 16:07:26.229"></status>
+<status status="PASS" starttime="20151022 16:33:51.632" endtime="20151022 16:33:51.640"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.187" endtime="20151022 16:07:26.232" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Length">
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.654" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151022 16:33:51.644" endtime="20151022 16:33:51.656"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>7</arg>
+<arg>${length}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.660" endtime="20151022 16:33:51.667"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Width">
+<assign>
+<var>${width}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.680" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151022 16:33:51.671" endtime="20151022 16:33:51.682"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3</arg>
+<arg>${width}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.686" endtime="20151022 16:33:51.696"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Height">
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.707" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:51.700" endtime="20151022 16:33:51.709"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.712" endtime="20151022 16:33:51.722"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Type">
+<assign>
+<var>${type}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.733" level="INFO">${type} = box</msg>
+<status status="PASS" starttime="20151022 16:33:51.726" endtime="20151022 16:33:51.734"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>box</arg>
+<arg>${type}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.737" endtime="20151022 16:33:51.744"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Digits">
+<assign>
+<var>${digits}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.751" level="INFO">${digits} = 4</msg>
+<status status="PASS" starttime="20151022 16:33:51.747" endtime="20151022 16:33:51.753"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${digits}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.756" endtime="20151022 16:33:51.763"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.621" endtime="20151022 16:33:51.765" critical="yes"></status>
 </test>
 <test id="s1-t7" name="Test Named Argument Single">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -82,10 +326,87 @@
 <arg>--type</arg>
 <arg>ellipsoid</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.276" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.243" endtime="20151022 16:07:26.278"></status>
+<status status="PASS" starttime="20151022 16:33:51.777" endtime="20151022 16:33:51.785"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.235" endtime="20151022 16:07:26.282" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Length">
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.803" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151022 16:33:51.790" endtime="20151022 16:33:51.804"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>7</arg>
+<arg>${length}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.807" endtime="20151022 16:33:51.817"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Width">
+<assign>
+<var>${width}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.826" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151022 16:33:51.820" endtime="20151022 16:33:51.828"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3</arg>
+<arg>${width}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.831" endtime="20151022 16:33:51.846"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Height">
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.854" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:51.849" endtime="20151022 16:33:51.856"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.860" endtime="20151022 16:33:51.868"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Type">
+<assign>
+<var>${type}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.876" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151022 16:33:51.871" endtime="20151022 16:33:51.877"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>ellipsoid</arg>
+<arg>${type}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.880" endtime="20151022 16:33:51.887"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Digits">
+<assign>
+<var>${digits}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.895" level="INFO">${digits} = 4</msg>
+<status status="PASS" starttime="20151022 16:33:51.890" endtime="20151022 16:33:51.896"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>4</arg>
+<arg>${digits}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.900" endtime="20151022 16:33:51.907"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.768" endtime="20151022 16:33:51.910" critical="yes"></status>
 </test>
 <test id="s1-t8" name="Test Named Argument Multiple">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -98,10 +419,88 @@
 <arg>--digits</arg>
 <arg>1</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.325" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.296" endtime="20151022 16:07:26.327"></status>
+<status status="PASS" starttime="20151022 16:33:51.923" endtime="20151022 16:33:51.933"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.287" endtime="20151022 16:07:26.331" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Length">
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.937" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.950" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151022 16:33:51.938" endtime="20151022 16:33:51.952"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>7</arg>
+<arg>${length}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.956" endtime="20151022 16:33:51.962"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Width">
+<assign>
+<var>${width}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.970" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151022 16:33:51.965" endtime="20151022 16:33:51.971"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3</arg>
+<arg>${width}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.974" endtime="20151022 16:33:51.981"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Height">
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.989" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:51.984" endtime="20151022 16:33:51.990"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:51.994" endtime="20151022 16:33:52.002"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Type">
+<assign>
+<var>${type}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.010" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151022 16:33:52.005" endtime="20151022 16:33:52.012"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>ellipsoid</arg>
+<arg>${type}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.015" endtime="20151022 16:33:52.022"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Digits">
+<assign>
+<var>${digits}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.030" level="INFO">${digits} = 1</msg>
+<status status="PASS" starttime="20151022 16:33:52.026" endtime="20151022 16:33:52.032"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>1</arg>
+<arg>${digits}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.035" endtime="20151022 16:33:52.042"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:51.914" endtime="20151022 16:33:52.044" critical="yes"></status>
 </test>
 <test id="s1-t9" name="Test Named Argument Anywhere">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -114,10 +513,89 @@
 <arg>1</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.370" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.346" endtime="20151022 16:07:26.373"></status>
+<status status="PASS" starttime="20151022 16:33:52.057" endtime="20151022 16:33:52.067"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.336" endtime="20151022 16:07:26.376" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Length">
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.937" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:52.070" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:52.085" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151022 16:33:52.071" endtime="20151022 16:33:52.086"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>7</arg>
+<arg>${length}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.089" endtime="20151022 16:33:52.096"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Width">
+<assign>
+<var>${width}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.102" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151022 16:33:52.098" endtime="20151022 16:33:52.104"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3</arg>
+<arg>${width}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.107" endtime="20151022 16:33:52.113"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Height">
+<assign>
+<var>${height}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.120" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151022 16:33:52.116" endtime="20151022 16:33:52.121"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.123" endtime="20151022 16:33:52.131"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Type">
+<assign>
+<var>${type}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.139" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151022 16:33:52.135" endtime="20151022 16:33:52.140"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>ellipsoid</arg>
+<arg>${type}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.143" endtime="20151022 16:33:52.149"></status>
+</kw>
+<kw library="LibraryKeywords" name="Get Digits">
+<assign>
+<var>${digits}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.155" level="INFO">${digits} = 1</msg>
+<status status="PASS" starttime="20151022 16:33:52.151" endtime="20151022 16:33:52.156"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>1</arg>
+<arg>${digits}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.159" endtime="20151022 16:33:52.166"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:52.048" endtime="20151022 16:33:52.169" critical="yes"></status>
 </test>
 <test id="s1-t10" name="Test Help Flag">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
@@ -127,24 +605,58 @@
 <arg>3</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20151022 16:07:26.401" level="FAIL">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</msg>
-<status status="FAIL" starttime="20151022 16:07:26.384" endtime="20151022 16:07:26.402"></status>
+<status status="PASS" starttime="20151022 16:33:52.178" endtime="20151022 16:33:52.184"></status>
 </kw>
-<status status="FAIL" starttime="20151022 16:07:26.379" endtime="20151022 16:07:26.405" critical="yes">NoSuchMethodError: edu.jsu.mcis.Argument.addElements(Ljava/lang/String;Ledu/jsu/mcis/Library$argType;Ljava/lang/String;)V</status>
+<kw library="LibraryKeywords" name="Get Program Output">
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20151022 16:33:52.196" level="INFO">${output} = usage: java Volume Calculator length width height
+Calculate the volume of a box.
+positional arguments:
+length the length of the box (float)
+width the width of the box (float)
+height the height of the ...</msg>
+<status status="PASS" starttime="20151022 16:33:52.191" endtime="20151022 16:33:52.197"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${expected4}</arg>
+<arg>${output}</arg>
+</arguments>
+<status status="PASS" starttime="20151022 16:33:52.199" endtime="20151022 16:33:52.206"></status>
+</kw>
+<status status="PASS" starttime="20151022 16:33:52.172" endtime="20151022 16:33:52.209" critical="yes"></status>
 </test>
-<status status="FAIL" starttime="20151022 16:07:25.189" endtime="20151022 16:07:26.416"></status>
+<status status="PASS" starttime="20151022 16:33:50.405" endtime="20151022 16:33:52.219"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="10">Critical Tests</stat>
-<stat pass="0" fail="10">All Tests</stat>
+<stat pass="10" fail="0">Critical Tests</stat>
+<stat pass="10" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" id="s1" fail="10" name="LibraryTests">LibraryTests</stat>
+<stat pass="10" id="s1" fail="0" name="LibraryTests">LibraryTests</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.937" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.258" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.643" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.789" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:51.937" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151022 16:33:52.070" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
 </errors>
 </robot>
