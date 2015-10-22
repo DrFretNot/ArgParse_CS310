@@ -208,7 +208,7 @@ public class Library {
     					}
     				}
     			}
-    		}
+    		}//else do the same for "-"
     	}
     }
 	
