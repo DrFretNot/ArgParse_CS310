@@ -5,7 +5,7 @@ public class Argument{
     protected String description;
     protected Library.argType type;
     protected String value;
-	//protected int position;
+	private int position;
 
     
     public Argument(){
@@ -13,7 +13,7 @@ public class Argument{
         description = "";
         type = null;
         value = null;
-		//position = -1;//passing by cheating.
+        position = -1;
     }
     
     public void addElements(String name){
@@ -47,9 +47,13 @@ public class Argument{
         argName = name;
     }
     
-	/*private void setPosition(int pos){
+	public void setPosition(int pos){
 		position = pos;
-	}*/
+	}
+	
+	public int getPosition(){
+		return position;
+	}
 	
     private void setType(Library.argType dataType){
         type = dataType;
@@ -85,5 +89,6 @@ public class Argument{
     
     public String getValue(){
     	return value;
-    } 
+    }
+     
 }

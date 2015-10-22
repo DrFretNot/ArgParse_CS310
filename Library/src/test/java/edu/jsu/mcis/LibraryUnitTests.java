@@ -453,15 +453,16 @@ public class LibraryUnitTests {
     	}
     }
 	
-	/*@Test
+	@Test
 	public void testPositionalArgumentHoldsPosition(){
 		Library lib = new Library();
     	lib.addProgramName("Volume Calculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
     	Argument length = new Argument();
-    	length.addElements("length", 0, Library.argType.FLOAT, "the length of the box (float)");
-		assertEquals(0, length.position);
-	}*/
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box (float)");
+    	lib.addArgument(length);
+		assertEquals(0, length.getPosition());
+	}
 	
 	/*@Test
 	public void testUsingPositionVariableForArgumentClass(){

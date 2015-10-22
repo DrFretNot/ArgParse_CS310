@@ -8,6 +8,7 @@ public class Library {
     private List<Argument> argumentList;
     private String programName = "";
     private String programDescription = "";
+    private int posCount;
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     public Library(){
@@ -15,7 +16,7 @@ public class Library {
         this.programDescription = "";
         this.argumentList = new ArrayList<Argument>();
         this.namedArgumentList = new ArrayList<NamedArgument>(); 
-
+		posCount = -1;
 	}
 	
 	public void addProgramName(String inputProgramName){
@@ -35,6 +36,8 @@ public class Library {
     }
     
     public void addArgument(Argument arg){
+    	posCount++;
+    	arg.setPosition(posCount);
     	argumentList.add(arg);
     }
     
