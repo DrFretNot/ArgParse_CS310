@@ -1,0 +1,223 @@
+  location: class VolumeCalculator
+6 errors
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/Library/src/main/java/edu/jsu/mcis$ ls
+Argument.java                        Library.class
+HelpException.java                   Library.java
+IncorrectArgTypeException.java       NamedArgument.java
+IncorrectNumberOfArgsException.java  VolumeCalculator.java
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/Library/src/main/java/edu/jsu/mcis$ mv VolumeCalculator.java ~/GitHub/ArgParse_CS310/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/Library/src/main/java/edu/jsu/mcis$ cd ~/GitHub/ArgParse_CS310/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ ls
+ArgumentParser.class    README.md               build/
+ArgumentParser.java     SprintReview1.pptx      feature files/
+Library/                VolumeCalculator.class
+Notes/                  VolumeCalculator.java
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ mkdir demos
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ mv VolumeCalculator.java demos/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ ls
+ArgumentParser.class    README.md               demos/
+ArgumentParser.java     SprintReview1.pptx      feature files/
+Library/                VolumeCalculator.class
+Notes/                  build/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ rm *.class
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ ls
+ArgumentParser.java  README.md            demos/
+Library/             SprintReview1.pptx   feature files/
+Notes/               build/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310$ cd demos/
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ cls
+-bash: cls: command not found
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ clear
+
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ javac VolumeCalculator.java 
+VolumeCalculator.java:2: error: package edu.jsu.mcis does not exist
+import edu.jsu.mcis.*;
+^
+VolumeCalculator.java:33: error: cannot find symbol
+    	Library VolumeCalculator = new Library();
+    	^
+  symbol:   class Library
+  location: class VolumeCalculator
+VolumeCalculator.java:33: error: cannot find symbol
+    	Library VolumeCalculator = new Library();
+    	                               ^
+  symbol:   class Library
+  location: class VolumeCalculator
+VolumeCalculator.java:41: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("length", FLOAT);
+    	                                              ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+VolumeCalculator.java:43: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("width", FLOAT);
+    	                                             ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+VolumeCalculator.java:45: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("height", FLOAT);
+    	                                              ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+6 errors
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ javac -cp .:../Library/build/libs/Library-1.0.jar VolumeCalculator.java 
+VolumeCalculator.java:41: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("length", FLOAT);
+    	                                              ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+VolumeCalculator.java:43: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("width", FLOAT);
+    	                                             ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+VolumeCalculator.java:45: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("height", FLOAT);
+    	                                              ^
+  symbol:   variable FLOAT
+  location: class VolumeCalculator
+VolumeCalculator.java:50: error: cannot find symbol
+    	if (VolumeCalculator.argMultiUseChecker(args).equals("")){
+    	                    ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                               ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                              ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                                                                            ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:54: error: cannot find symbol
+    	else System.out.println(VolumeCalculator.argMultiUseChecker(args));
+    	                                        ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+8 errors
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ javac -cp .:../Library/build/libs/Library-1.0.jar VolumeCalculator.java 
+VolumeCalculator.java:41: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("length", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:43: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("width", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:45: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("height", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:50: error: cannot find symbol
+    	if (VolumeCalculator.argMultiUseChecker(args).equals("")){
+    	                    ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                               ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                              ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                                                                            ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:54: error: cannot find symbol
+    	else System.out.println(VolumeCalculator.argMultiUseChecker(args));
+    	                                        ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+8 errors
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ javac -cp .:../Library/build/libs/Library-1.0.jar VolumeCalculator.java 
+VolumeCalculator.java:41: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("length", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:43: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("width", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:45: error: cannot find symbol
+    	VolumeCalculator.addArgWithDataType("height", Library.argType.FLOAT);
+    	                ^
+  symbol:   method addArgWithDataType(String,argType)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:50: error: cannot find symbol
+    	if (VolumeCalculator.argMultiUseChecker(args).equals("")){
+    	                    ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                               ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                              ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:51: error: cannot find symbol
+    		float Volume = VolumeCalculator.getParsedArgValue("length") * VolumeCalculator.getParsedArgValue("width") * VolumeCalculator.getParsedArgValue("height");
+    		                                                                                                                            ^
+  symbol:   method getParsedArgValue(String)
+  location: variable VolumeCalculator of type Library
+VolumeCalculator.java:54: error: cannot find symbol
+    	else System.out.println(VolumeCalculator.argMultiUseChecker(args));
+    	                                        ^
+  symbol:   method argMultiUseChecker(String[])
+  location: variable VolumeCalculator of type Library
+8 errors
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ git add .
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ git commit
+[master 6b2496f] Implementing Demo for ArgParse.
+ 1 file changed, 56 insertions(+)
+ create mode 100644 demos/VolumeCalculator.java
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+To https://github.com/DrFretNot/ArgParse_CS310.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/DrFretNot/ArgParse_CS310.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+robertwarren@Roberts-MacBook-Pro:~/GitHub/ArgParse_CS310/demos$ 
