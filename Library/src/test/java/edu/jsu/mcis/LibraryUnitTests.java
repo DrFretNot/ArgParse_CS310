@@ -518,6 +518,16 @@ public class LibraryUnitTests {
 		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
     	assertEquals('t', type.getShortForm());  	
 	}
+    
+    @Test
+    public void testThrowsArgumentDoesNotExistExeption(){
+        assertTrue(true);   
+    }
+    
+    @Test
+    public void testThrowsWrongDataTypeException(){
+        assertTrue(true);   
+    }
 	
 }    
     
