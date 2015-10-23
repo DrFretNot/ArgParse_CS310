@@ -428,6 +428,38 @@ public class LibraryUnitTests {
     	NamedArgument digits = lib.getNamedArgument("digits");
     	assertEquals("1", digits.getValue());
 	}
+	
+	@Test
+	public void testParseReadsCorrectArgumentsWhenGivenShortFormNamedArguments(){
+		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "1"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("", e);
+    	}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
+    	NamedArgument type = lib.getNamedArgument("type");
+    	assertEquals("pyramid", type.getValue());
+    	NamedArgument digits = lib.getNamedArgument("digits");
+    	assertEquals("1", digits.getValue());
+	}
 
 	@Test
 	public void testParseThrowsCorrectExceptionWhenGivenIncorrectDataTypeAndNamedHelpArgument(){
@@ -464,6 +496,7 @@ public class LibraryUnitTests {
 		assertEquals(0, length.getPosition());
 	}
 	
+	
 	/*@Test
 	public void testUsingPositionVariableForArgumentClass(){
 		String[] args = {"7", "5", "2"};
@@ -484,39 +517,39 @@ public class LibraryUnitTests {
     @Test
 	public void testAddingNamedArgumentWithShortFormAndReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	} 
     @Test
 	public void testAddingNamedArgumentWithShortFormAndValueThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "new value",'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	 @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", Library.argType.STRING,'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
     
     @Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value",Library.argType.STRING,'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	@Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value", "this is a type",'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
     @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", Library.argType.STRING, "This is a type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	
 	@Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
     
     @Test

@@ -168,11 +168,11 @@ public class Library {
     private ArrayList<String> getPositionalArgs(String[] args){
     	ArrayList<String> posArgList = new ArrayList<>(); 
     	for(int i = 0; i < args.length; i++){
-    		if(!args[i].startsWith("--") && i == 0){
+    		if(!args[i].startsWith("-") && i == 0){
     			posArgList.add(args[i]);
     		}
-    		else if(!args[i].startsWith("--")){
-    			if(!args[i-1].startsWith("--")){
+    		else if(!args[i].startsWith("-")){
+    			if(!args[i-1].startsWith("-")){
     				posArgList.add(args[i]);
     			}
     			else{
@@ -192,7 +192,7 @@ public class Library {
     	return posArgList;
     }
     
-    private void setNamedArgValues(String[] args){
+    private void setLongFormNamedArgValues(String[] args){
     	for(int i = 0; i < args.length; i++){
     		String[] tempNamedArg = new String[2];
     		if(args[i].startsWith("--")){
@@ -208,16 +208,35 @@ public class Library {
     					}
     				}
     			}
-    		}//else do the same for "-"
+    		}
     	}
     }
-	
+    private void setShortFormNamedArgValues(String[] args){
+		for(int i = 0; i < args.length; i++){
+			String[] tempNamedArg = new String[2];
+			if(args[i].startsWith("-")){
+				tempNamedArg = args[i].split("-");
+				for(int k = 0; k < namedArgumentList.size(); k++){
+					NamedArgument currentArg = namedArgumentList.get(k);
+					if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])){
+						if(currentArg.getType() != "boolean"){
+							currentArg.setValue(args[i+1]);
+						}
+						else{
+							currentArg.setValue("true");
+						}
+					}
+				}
+			}
+		}		
+	}
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
 		if (args[0].startsWith("-h")) {
             throw new HelpException(helpMessage());
 		}
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
-		setNamedArgValues(args);
+		setLongFormNamedArgValues(args);
+		setShortFormNamedArgValues(args);
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
 			String helpArgValue = helpArgument.getValue();
