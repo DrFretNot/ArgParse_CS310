@@ -131,7 +131,7 @@ public class NamedArgument extends Argument{
 
 //**************************************************************************************
 //methods
-	public char getShortForm(){
+	public char getShortFormName(){
 		return shortFormName;
 	}
 
