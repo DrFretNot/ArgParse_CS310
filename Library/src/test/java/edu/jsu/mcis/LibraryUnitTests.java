@@ -22,7 +22,7 @@ public class LibraryUnitTests {
     @Test
     public void testAddArgumentAndReturnCorrectName(){
     	Argument length = new Argument();
-    	length.addElements("length", 0);
+    	length.addElements("length");
     	assertEquals("length", length.getName()); 
     }
     
@@ -30,7 +30,7 @@ public class LibraryUnitTests {
     public void testAddArgumentInLibraryAndReturnCorrectArgumentInLibrary(){
     	Library lib = new Library();
     	Argument length = new Argument();
-    	length.addElements("length", 0, Library.argType.INTEGER, "the length of the box");
+    	length.addElements("length", Library.argType.INTEGER, "the length of the box");
     	lib.addArgument(length);
     	Argument currentArg = lib.getArgument("length");
     	assertEquals("length", currentArg.getName());
@@ -41,14 +41,14 @@ public class LibraryUnitTests {
     @Test
     public void testAddArgumentWithoutTypeAndReturnDefaultType(){
     	Argument length = new Argument();
-    	length.addElements("length", 0);
+    	length.addElements("length");
     	assertEquals("string", length.getType()); 
     }
     
     @Test
     public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
         Argument one = new Argument();
-        one.addElements("length", 0, Library.argType.FLOAT);
+        one.addElements("length",Library.argType.FLOAT);
         assertEquals("length", one.getName());
         assertEquals("float", one.getType());
     }
@@ -56,7 +56,7 @@ public class LibraryUnitTests {
     @Test
     public void testAddArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
     	Argument length = new Argument();
-    	length.addElements("length", 0, "the length of the box");
+    	length.addElements("length", "the length of the box");
     	assertEquals("the length of the box", length.getDescription());
     	assertEquals("string", length.getType());  
     }
@@ -136,10 +136,10 @@ public class LibraryUnitTests {
 		Argument height = new Argument();
 		Argument fact = new Argument();
 		
-		length.addElements("length", 0, Library.argType.INTEGER, "the length of the box");
-    	width.addElements("width", 1, Library.argType.FLOAT, "the width of the box");
-    	height.addElements("height", 2, Library.argType.INTEGER, "the height of the box");
-    	fact.addElements("fact", 3, Library.argType.BOOLEAN, "the validity of the fact");
+		length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
+    	fact.addElements("fact", Library.argType.BOOLEAN, "the validity of the fact");
     	lib.addArgument(length);
     	lib.addArgument(width);
 	 	lib.addArgument(height);
@@ -164,9 +164,9 @@ public class LibraryUnitTests {
     	Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0 );
-    	width.addElements("width", 1);
-    	height.addElements("height", 2);
+    	length.addElements("length");
+    	width.addElements("width");
+    	height.addElements("height");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -188,9 +188,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -211,9 +211,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -234,9 +234,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -257,9 +257,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, Library.argType.INTEGER, "the length of the box");
-    	width.addElements("width", 1, Library.argType.FLOAT, "the width of the box");
-    	height.addElements("height", 2, Library.argType.INTEGER, "the height of the box");
+    	length.addElements("length", Library.argType.INTEGER, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.INTEGER, "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -283,9 +283,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -307,9 +307,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -332,9 +332,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -357,9 +357,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -382,9 +382,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -408,9 +408,9 @@ public class LibraryUnitTests {
         Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, "the length of the box");
-    	width.addElements("width", 1, "the width of the box");
-    	height.addElements("height", 2, "the height of the box");
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -438,9 +438,9 @@ public class LibraryUnitTests {
     	Argument length = new Argument();
     	Argument width = new Argument();
     	Argument height = new Argument();
-    	length.addElements("length", 0, Library.argType.FLOAT, "the length of the box (float)");
-    	width.addElements("width", 1, Library.argType.FLOAT, "the width of the box (float)");
-    	height.addElements("height", 2, Library.argType.FLOAT, "the height of the box (float)");
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box (float)");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box (float)");
+    	height.addElements("height", Library.argType.FLOAT, "the height of the box (float)");
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
@@ -452,7 +452,6 @@ public class LibraryUnitTests {
     		assertEquals("usage: java Volume Calculator length width height\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
     	}
     }
-
 	
 	@Test
 	public void testPositionalArgumentHoldsPosition(){
@@ -460,11 +459,12 @@ public class LibraryUnitTests {
     	lib.addProgramName("Volume Calculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
     	Argument length = new Argument();
-    	length.addElements("length", 0, Library.argType.FLOAT, "the length of the box (float)");
-		assertEquals(0, length.position);
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box (float)");
+    	lib.addArgument(length);
+		assertEquals(0, length.getPosition());
 	}
 	
-	@Test
+	/*@Test
 	public void testUsingPositionVariableForArgumentClass(){
 		String[] args = {"7", "5", "2"};
 		Library lib = new Library();
@@ -478,7 +478,7 @@ public class LibraryUnitTests {
     	height.addElements("height", 2, Library.argType.FLOAT, "the height of the box (float)");
 		//Argument 
 		
-	}
+	}*/
 
     
     @Test

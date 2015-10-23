@@ -5,7 +5,7 @@ public class Argument{
     protected String description;
     protected Library.argType type;
     protected String value;
-	protected int position;
+	private int position;
 
     
     public Argument(){
@@ -13,30 +13,30 @@ public class Argument{
         description = "";
         type = null;
         value = null;
-		position = -1;//passing by cheating.
+        position = -1;
     }
     
-    public void addElements(String name, int position){
-        this.setPosition(position);
+    public void addElements(String name){
+        //this.setPosition(position);
 		this.setName(name);
         this.setType(Library.argType.STRING);
     }
     
-    public void addElements(String name, int position, Library.argType dataType){
-		this.setPosition(position);
+    public void addElements(String name, Library.argType dataType){
+		//this.setPosition(position);
         this.setName(name);
         this.setType(dataType);
     }
     
-    public void addElements(String name, int position, String argDescription){
-        this.setPosition(position);		
+    public void addElements(String name, String argDescription){
+        //this.setPosition(position);		
         this.setName(name);
         description = argDescription;
         this.setType(Library.argType.STRING);
     }
     
-    public void addElements(String name, int position, Library.argType dataType, String argDescription){
-        this.setPosition(position);		
+    public void addElements(String name, Library.argType dataType, String argDescription){
+        //this.setPosition(position);		
     	this.setName(name);
         this.setType(dataType);
         description = argDescription;
@@ -47,8 +47,12 @@ public class Argument{
         argName = name;
     }
     
-	private void setPosition(int pos){
+	public void setPosition(int pos){
 		position = pos;
+	}
+	
+	public int getPosition(){
+		return position;
 	}
 	
     private void setType(Library.argType dataType){
@@ -85,5 +89,6 @@ public class Argument{
     
     public String getValue(){
     	return value;
-    } 
+    }
+     
 }
