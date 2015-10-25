@@ -166,7 +166,7 @@ public class Library {
    
     
     private ArrayList<String> getPositionalArgs(String[] args){
-    	ArrayList<String> posArgList = new ArrayList<>(); 
+    	ArrayList<String> posArgList = new ArrayList<String>(); 
     	for(int i = 0; i < args.length; i++){
     		if(!args[i].startsWith("-") && i == 0){
     			posArgList.add(args[i]);
@@ -179,12 +179,22 @@ public class Library {
     				String[] tempNamedArg = new String[2];
 					for(int j = 0; j < namedArgumentList.size(); j++){
     					NamedArgument currentArg = namedArgumentList.get(j);
-    					tempNamedArg = args[i-1].split("--");
-    					if(currentArg.getName().equals(tempNamedArg[1])) {
-    						if(currentArg.getType().equals("boolean")){
-    							posArgList.add(args[i]);
-    						}
-    					}   			
+    					if(args[i-1].startsWith("--")){
+							tempNamedArg = args[i-1].split("--");
+							if(currentArg.getName().equals(tempNamedArg[1])) {
+								if(currentArg.getType().equals("boolean")){
+									posArgList.add(args[i]);
+								}
+							}
+						}
+						else{
+							tempNamedArg = args[i-1].split("-");
+							if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])) {
+								if(currentArg.getType().equals("boolean")){
+									posArgList.add(args[i]);
+								}
+							}
+						}   			
     				}
     			}
     		}
@@ -200,7 +210,7 @@ public class Library {
     			for(int j = 0; j < namedArgumentList.size(); j++){
     				NamedArgument currentArg = namedArgumentList.get(j);
     				if(currentArg.getName().equals(tempNamedArg[1])){
-    					if(currentArg.getType() != "boolean"){
+    					if(!currentArg.getType().equals("boolean")){
     						currentArg.setValue(args[i+1]);
     					}
     					else{
@@ -219,7 +229,7 @@ public class Library {
 				for(int k = 0; k < namedArgumentList.size(); k++){
 					NamedArgument currentArg = namedArgumentList.get(k);
 					if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])){
-						if(currentArg.getType() != "boolean"){
+						if(!currentArg.getType().equals("boolean")){
 							currentArg.setValue(args[i+1]);
 						}
 						else{
@@ -228,7 +238,7 @@ public class Library {
 					}
 				}
 			}
-		}		
+		}
 	}
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
 		if (args[0].startsWith("-h")) {
