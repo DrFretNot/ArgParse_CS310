@@ -431,7 +431,7 @@ public class LibraryUnitTests {
 	
 	@Test
 	public void testParseReadsCorrectArgumentsWhenGivenShortFormNamedArguments(){
-		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "1"};
+		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "6"};
     	Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -458,7 +458,7 @@ public class LibraryUnitTests {
     	NamedArgument type = lib.getNamedArgument("type");
     	assertEquals("pyramid", type.getValue());
     	NamedArgument digits = lib.getNamedArgument("digits");
-    	assertEquals("1", digits.getValue());
+    	assertEquals("6", digits.getValue());
 	}
 
 	@Test
