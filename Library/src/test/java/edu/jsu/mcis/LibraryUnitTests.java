@@ -611,14 +611,43 @@ public class LibraryUnitTests {
 		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
     	assertEquals('t', type.getShortFormName());  	
 	}
+	
+	@Test
+	public void testAddNamedArgumentWithShortFormAndReturnCorrectNamedArgumentInLibraryUsingShortFormName(){
+		Library lib = new Library();
+		lib.addNamedArgument(new NamedArgument("type", 't'));
+		NamedArgument arg = lib.getNamedArgument('t');
+		assertEquals("type", arg.getName());
+	}
     
     @Test
-    public void testThrowsArgumentDoesNotExistExeption(){
-        assertTrue(true);   
+    public void testParseThrowsArgumentDoesNotExistExeptionForNamedArguments(){
+    	String[] args = {"7", "--myarg", "myval", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument myarg does not exist", e.getMessage());
+    	}
+        //assertTrue(true);   
     }
     
     @Test
-    public void testThrowsWrongDataTypeException(){
+    public void testParseThrowsWrongDataTypeExceptionForNamedArguments(){
         assertTrue(true);   
     }
 	
