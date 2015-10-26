@@ -479,7 +479,6 @@ public class LibraryUnitTests {
     	lib.addNamedArgument(new NamedArgument("dark", "false", Library.argType.BOOLEAN, 'd'));
     	lib.addNamedArgument(new NamedArgument("appropriate", "false", Library.argType.BOOLEAN, 'a'));
     	lib.addNamedArgument(new NamedArgument("pink", "false", Library.argType.BOOLEAN, 'p'));
-    	//assertEquals("", lib.getPositionalArgs(args));
     	try{
     		lib.parse(args);
     	}
@@ -495,6 +494,30 @@ public class LibraryUnitTests {
     	assertEquals("true", appropriate.getValue());
     	NamedArgument pink = lib.getNamedArgument("pink");
     	assertEquals("true", pink.getValue());
+	}
+	
+	@Test
+	public void testParseThrowsHelpExceptionWhenGivenShortFormHelpArgument(){
+		String[] args = {"7", "-h", "5", "3"};
+		Library lib = new Library();
+    	lib.addProgramName("VolumeCalculator");
+    	lib.addProgramDescription("Calculate the volume of a box.");
+    	Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.FLOAT, "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+    	}
 	}
 
 	@Test
