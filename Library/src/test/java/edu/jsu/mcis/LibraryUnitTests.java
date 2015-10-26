@@ -643,7 +643,6 @@ public class LibraryUnitTests {
     	catch(Exception e){
     		assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument myarg does not exist", e.getMessage());
     	}
-        //assertTrue(true);   
     }
     
     @Test
