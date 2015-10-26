@@ -67,9 +67,20 @@ public class Library {
     	return returnArg;
     }
     
+    public NamedArgument getNamedArgument(char argShortFormName){
+    	NamedArgument returnArg = null;
+    	for(int i = 0; i < namedArgumentList.size(); i++){
+    		NamedArgument currentArg = namedArgumentList.get(i);
+    		if(currentArg.getShortFormName() == argShortFormName){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
+    
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     
-    private void parseDataTypeWithArgClass(ArrayList<String> argList) throws NumberFormatException{
+    private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
         String errorMessage = "";
         String currentTypeError = "";
         
@@ -166,25 +177,43 @@ public class Library {
    
     
     private ArrayList<String> getPositionalArgs(String[] args){
-    	ArrayList<String> posArgList = new ArrayList<>(); 
-    	for(int i = 0; i < args.length; i++){
-    		if(!args[i].startsWith("--") && i == 0){
+    	ArrayList<String> posArgList = new ArrayList<String>(); 
+    	for(int i = 0; i < args.length; i++){ //going through args from CLI
+    		if(!args[i].startsWith("-") && i == 0){ //test if the first arg is a positional arg
     			posArgList.add(args[i]);
     		}
-    		else if(!args[i].startsWith("--")){
-    			if(!args[i-1].startsWith("--")){
+    		else if(!args[i].startsWith("-")){ //arg from CLI doesn't have a dash
+    			if(!args[i-1].startsWith("-")){ //if the one before it doesn't have a dash, then it's a pos arg
     				posArgList.add(args[i]);
     			}
-    			else{
+    			else{ //the arg before it has a dash
     				String[] tempNamedArg = new String[2];
-					for(int j = 0; j < namedArgumentList.size(); j++){
-    					NamedArgument currentArg = namedArgumentList.get(j);
+    				if(args[i-1].startsWith("--")){ //arg before it is in long form
     					tempNamedArg = args[i-1].split("--");
-    					if(currentArg.getName().equals(tempNamedArg[1])) {
-    						if(currentArg.getType().equals("boolean")){
-    							posArgList.add(args[i]);
-    						}
-    					}   			
+    					for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+    						NamedArgument currentNamedArg = namedArgumentList.get(j);
+    						if(currentNamedArg.getName().equals(tempNamedArg[1])) {
+								if(currentNamedArg.getType().equals("boolean")){ //if long form arg is boolean, still need to add arg after to pos args
+									posArgList.add(args[i]);
+								}
+							}
+    					}
+    				}
+    				else{ //arg before it is in short form
+    					tempNamedArg = args[i-1].split("-");
+						if(tempNamedArg[1].length() == 1){ //single char
+							for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+								NamedArgument currentNamedArg = namedArgumentList.get(j);
+								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {
+									if(currentNamedArg.getType().equals("boolean")){ //if short form arg is boolean, still need to add arg after to pos args
+										posArgList.add(args[i]);
+									}
+								}
+							}
+						}
+						else{ //multiple flags in one specification, must be boolean so add arg after it to pos args
+							posArgList.add(args[i]);
+						}
     				}
     			}
     		}
@@ -192,7 +221,7 @@ public class Library {
     	return posArgList;
     }
     
-    private void setNamedArgValues(String[] args){
+    private void setLongFormNamedArgValues(String[] args){
     	for(int i = 0; i < args.length; i++){
     		String[] tempNamedArg = new String[2];
     		if(args[i].startsWith("--")){
@@ -200,7 +229,7 @@ public class Library {
     			for(int j = 0; j < namedArgumentList.size(); j++){
     				NamedArgument currentArg = namedArgumentList.get(j);
     				if(currentArg.getName().equals(tempNamedArg[1])){
-    					if(currentArg.getType() != "boolean"){
+    					if(!currentArg.getType().equals("boolean")){
     						currentArg.setValue(args[i+1]);
     					}
     					else{
@@ -208,16 +237,123 @@ public class Library {
     					}
     				}
     			}
-    		}//else do the same for "-"
+    		}
     	}
     }
-	
-	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].startsWith("-h")) {
-            throw new HelpException(helpMessage());
+    private void setShortFormNamedArgValues(String[] args){
+		for(int i = 0; i < args.length; i++){
+			String[] tempNamedArg = new String[2];
+			if(args[i].startsWith("-")){
+				tempNamedArg = args[i].split("-");
+				for(int k = 0; k < namedArgumentList.size(); k++){
+					NamedArgument currentNamedArg = namedArgumentList.get(k);
+					if(tempNamedArg[1].length() == 1){ //single char
+						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){
+							if(!currentNamedArg.getType().equals("boolean")){
+								currentNamedArg.setValue(args[i+1]);
+							}
+							else{
+								currentNamedArg.setValue("true");
+							}
+						}
+					}
+					else{ //multiple flags in one specification
+						for(int j = 0; j < tempNamedArg[1].length(); j++){
+							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){
+								currentNamedArg.setValue("true");
+							}
+						}
+					}
+				}
+			}
 		}
+	}
+	String invalidNamedArgument = ""; //used in invalidNamedArgument and argumentDoesNotExistMessage
+	
+	private void invalidNamedArgument(String[] args) throws ArgumentDoesNotExistException{
+		for(int i = 0; i < args.length; i++){
+			if(args[i].startsWith("--")){
+				String[] splitLongNamedArg = new String[2];
+				splitLongNamedArg = args[i].split("--");
+				NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);
+				if(tempArg == null){
+					invalidNamedArgument = splitLongNamedArg[1];
+					throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+				}
+			}
+			else if(args[i].startsWith("-")){
+				String[] splitShortNamedArg = new String[2];
+				splitShortNamedArg = args[i].split("-");
+				if(splitShortNamedArg[1].length() == 1){ //single char
+					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(0));
+					if(tempArg == null){
+						invalidNamedArgument = splitShortNamedArg[1];
+						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+					}
+				}
+				else{ //multiple flags in one specification
+					for(int k = 0; k < splitShortNamedArg[1].length(); k++){
+						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));
+						if(tempArg == null){
+							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));
+							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	private String argumentDoesNotExistMessage(String invalidNamedArgument){
+		String message = "usage: java " + programName;
+		for(int i = 0; i < argumentList.size(); i++) {
+			Argument currentArg = argumentList.get(i);
+            message += " " + currentArg.getName();   
+        }
+        
+        message += "\n" + programName + ".java: error: argument " + invalidNamedArgument + " does not exist";
+        
+        /*for(int i = 0; i < args.length; i++){
+        	if(args[i].startsWith("--")){
+        		String[] splitLongNamedArg = new String[2];
+        		splitLongNamedArg = args[i].split("--");
+        		NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);
+        		if(tempArg == null){
+        			message += " " + splitLongNamedArg[1];
+        		}
+        	}
+        	else if(args[i].startsWith("-")){
+        		String[] splitShortNamedArg = new String[2];
+        		splitShortNamedArg = args[i].split("-");
+        		if(splitShortNamedArg[1].length() == 1){ //single char
+					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1]);
+					if(tempArg == null){
+						message += " " + splitShortNamedArg[1];
+					}
+				}
+				else{ //multiple flags in one specification
+					for(int k = 0; k < splitShortNamedArg[1].length(); k++){
+						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));
+						if(tempArg == null){
+							message += " " + splitShortNamedArg[1].charAt(k);
+						}
+					}
+				}
+        	}
+        }
+        
+        message += " does/do not exist";*/
+        
+    	return message;
+	}
+	
+	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
-		setNamedArgValues(args);
+		
+		setLongFormNamedArgValues(args);
+		setShortFormNamedArgValues(args);
+		invalidNamedArgument(args); //throws ArgumentDoesNotExistException
+		
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
 			String helpArgValue = helpArgument.getValue();
@@ -235,7 +371,7 @@ public class Library {
    				currentArg.setValue(tempPositionalArgList.get(i));
    			}
 			try{
-				parseDataTypeWithArgClass(tempPositionalArgList);
+				parseDataType(tempPositionalArgList);
 			}
 			catch (Exception e){
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));

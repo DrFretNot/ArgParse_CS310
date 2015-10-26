@@ -240,6 +240,7 @@ public class LibraryUnitTests {
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
         try{
         	lib.parse(args);
         }
@@ -428,6 +429,97 @@ public class LibraryUnitTests {
     	NamedArgument digits = lib.getNamedArgument("digits");
     	assertEquals("1", digits.getValue());
 	}
+	
+	@Test
+	public void testParseReadsCorrectArgumentsWhenGivenShortFormNamedArguments(){
+		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "6"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("", e);
+    	}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
+    	NamedArgument type = lib.getNamedArgument("type");
+    	assertEquals("pyramid", type.getValue());
+    	NamedArgument digits = lib.getNamedArgument("digits");
+    	assertEquals("6", digits.getValue());
+	}
+	
+	@Test
+	public void testParseReadsCorrectArgumentsWhenGivenShortFormFlagsCombinedInSingleSpecification(){
+		String[] args = {"7", "-dap", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("dark", "false", Library.argType.BOOLEAN, 'd'));
+    	lib.addNamedArgument(new NamedArgument("appropriate", "false", Library.argType.BOOLEAN, 'a'));
+    	lib.addNamedArgument(new NamedArgument("pink", "false", Library.argType.BOOLEAN, 'p'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("", e);
+    	}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
+    	NamedArgument dark = lib.getNamedArgument("dark");
+    	assertEquals("true", dark.getValue());
+    	NamedArgument appropriate = lib.getNamedArgument("appropriate");
+    	assertEquals("true", appropriate.getValue());
+    	NamedArgument pink = lib.getNamedArgument("pink");
+    	assertEquals("true", pink.getValue());
+	}
+	
+	@Test
+	public void testParseThrowsHelpExceptionWhenGivenShortFormHelpArgument(){
+		String[] args = {"7", "-h", "5", "3"};
+		Library lib = new Library();
+    	lib.addProgramName("VolumeCalculator");
+    	lib.addProgramDescription("Calculate the volume of a box.");
+    	Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", Library.argType.FLOAT, "the length of the box");
+    	width.addElements("width", Library.argType.FLOAT, "the width of the box");
+    	height.addElements("height", Library.argType.FLOAT, "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+    	}
+	}
 
 	@Test
 	public void testParseThrowsCorrectExceptionWhenGivenIncorrectDataTypeAndNamedHelpArgument(){
@@ -464,6 +556,7 @@ public class LibraryUnitTests {
 		assertEquals(0, length.getPosition());
 	}
 	
+	
 	/*@Test
 	public void testUsingPositionVariableForArgumentClass(){
 		String[] args = {"7", "5", "2"};
@@ -484,40 +577,78 @@ public class LibraryUnitTests {
     @Test
 	public void testAddingNamedArgumentWithShortFormAndReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	} 
     @Test
 	public void testAddingNamedArgumentWithShortFormAndValueThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "new value",'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	 @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", Library.argType.STRING,'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
     
     @Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value",Library.argType.STRING,'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	@Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value", "this is a type",'t');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
     @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", Library.argType.STRING, "This is a type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
 	
 	@Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
-    	assertEquals('t', type.getShortForm());  	
+    	assertEquals('t', type.getShortFormName());  	
 	}
+	
+	@Test
+	public void testAddNamedArgumentWithShortFormAndReturnCorrectNamedArgumentInLibraryUsingShortFormName(){
+		Library lib = new Library();
+		lib.addNamedArgument(new NamedArgument("type", 't'));
+		NamedArgument arg = lib.getNamedArgument('t');
+		assertEquals("type", arg.getName());
+	}
+    
+    @Test
+    public void testParseThrowsArgumentDoesNotExistExeptionForNamedArguments(){
+    	String[] args = {"7", "--myarg", "myval", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument myarg does not exist", e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void testParseThrowsWrongDataTypeExceptionForNamedArguments(){
+        assertTrue(true);   
+    }
 	
 }    
     
