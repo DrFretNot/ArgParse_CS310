@@ -167,34 +167,42 @@ public class Library {
     
     private ArrayList<String> getPositionalArgs(String[] args){
     	ArrayList<String> posArgList = new ArrayList<String>(); 
-    	for(int i = 0; i < args.length; i++){
-    		if(!args[i].startsWith("-") && i == 0){
+    	for(int i = 0; i < args.length; i++){ //going through args from CLI
+    		if(!args[i].startsWith("-") && i == 0){ //test if the first arg is a positional arg
     			posArgList.add(args[i]);
     		}
-    		else if(!args[i].startsWith("-")){
-    			if(!args[i-1].startsWith("-")){
+    		else if(!args[i].startsWith("-")){ //arg from CLI doesn't have a dash
+    			if(!args[i-1].startsWith("-")){ //if the one before it doesn't have a dash, then it's a pos arg
     				posArgList.add(args[i]);
     			}
-    			else{
+    			else{ //the arg before it has a dash
     				String[] tempNamedArg = new String[2];
-					for(int j = 0; j < namedArgumentList.size(); j++){
-    					NamedArgument currentArg = namedArgumentList.get(j);
-    					if(args[i-1].startsWith("--")){
-							tempNamedArg = args[i-1].split("--");
-							if(currentArg.getName().equals(tempNamedArg[1])) {
-								if(currentArg.getType().equals("boolean")){
+    				if(args[i-1].startsWith("--")){ //arg before it is in long form
+    					tempNamedArg = args[i-1].split("--");
+    					for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+    						NamedArgument currentNamedArg = namedArgumentList.get(j);
+    						if(currentNamedArg.getName().equals(tempNamedArg[1])) {
+								if(currentNamedArg.getType().equals("boolean")){ //if long form arg is boolean, still need to add arg after to pos args
 									posArgList.add(args[i]);
+								}
+							}
+    					}
+    				}
+    				else{ //arg before it is in short form
+    					tempNamedArg = args[i-1].split("-");
+						if(tempNamedArg[1].length() == 1){ //single char
+							for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+								NamedArgument currentNamedArg = namedArgumentList.get(j);
+								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {
+									if(currentNamedArg.getType().equals("boolean")){ //if short form arg is boolean, still need to add arg after to pos args
+										posArgList.add(args[i]);
+									}
 								}
 							}
 						}
-						else{
-							tempNamedArg = args[i-1].split("-");
-							if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])) {
-								if(currentArg.getType().equals("boolean")){
-									posArgList.add(args[i]);
-								}
-							}
-						}   			
+						else{ //multiple flags in one specification, must be boolean so add arg after it to pos args
+							posArgList.add(args[i]);
+						}
     				}
     			}
     		}
@@ -227,13 +235,22 @@ public class Library {
 			if(args[i].startsWith("-")){
 				tempNamedArg = args[i].split("-");
 				for(int k = 0; k < namedArgumentList.size(); k++){
-					NamedArgument currentArg = namedArgumentList.get(k);
-					if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])){
-						if(!currentArg.getType().equals("boolean")){
-							currentArg.setValue(args[i+1]);
+					NamedArgument currentNamedArg = namedArgumentList.get(k);
+					if(tempNamedArg[1].length() == 1){ //single char
+						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){
+							if(!currentNamedArg.getType().equals("boolean")){
+								currentNamedArg.setValue(args[i+1]);
+							}
+							else{
+								currentNamedArg.setValue("true");
+							}
 						}
-						else{
-							currentArg.setValue("true");
+					}
+					else{ //multiple flags in one specification
+						for(int j = 0; j < tempNamedArg[1].length(); j++){
+							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){
+								currentNamedArg.setValue("true");
+							}
 						}
 					}
 				}

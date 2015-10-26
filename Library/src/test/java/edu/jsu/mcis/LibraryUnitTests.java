@@ -460,6 +460,42 @@ public class LibraryUnitTests {
     	NamedArgument digits = lib.getNamedArgument("digits");
     	assertEquals("6", digits.getValue());
 	}
+	
+	@Test
+	public void testParseReadsCorrectArgumentsWhenGivenShortFormFlagsCombinedInSingleSpecification(){
+		String[] args = {"7", "-dap", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("dark", "false", Library.argType.BOOLEAN, 'd'));
+    	lib.addNamedArgument(new NamedArgument("appropriate", "false", Library.argType.BOOLEAN, 'a'));
+    	lib.addNamedArgument(new NamedArgument("pink", "false", Library.argType.BOOLEAN, 'p'));
+    	//assertEquals("", lib.getPositionalArgs(args));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("", e);
+    	}
+    	assertEquals("7", length.getValue());
+    	assertEquals("5", width.getValue());
+    	assertEquals("3", height.getValue());
+    	NamedArgument dark = lib.getNamedArgument("dark");
+    	assertEquals("true", dark.getValue());
+    	NamedArgument appropriate = lib.getNamedArgument("appropriate");
+    	assertEquals("true", appropriate.getValue());
+    	NamedArgument pink = lib.getNamedArgument("pink");
+    	assertEquals("true", pink.getValue());
+	}
 
 	@Test
 	public void testParseThrowsCorrectExceptionWhenGivenIncorrectDataTypeAndNamedHelpArgument(){
