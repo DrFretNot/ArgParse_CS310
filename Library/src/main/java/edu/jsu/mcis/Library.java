@@ -177,7 +177,6 @@ public class Library {
    
     
     private ArrayList<String> getPositionalArgs(String[] args){
-<<<<<<< HEAD
     	ArrayList<String> posArgList = new ArrayList<String>(); 
     	for(int i = 0; i < args.length; i++){ //going through args from CLI
     		if(!args[i].startsWith("-") && i == 0){ //test if the first arg is a positional arg
@@ -185,15 +184,6 @@ public class Library {
     		}
     		else if(!args[i].startsWith("-")){ //arg from CLI doesn't have a dash
     			if(!args[i-1].startsWith("-")){ //if the one before it doesn't have a dash, then it's a pos arg
-=======
-    	ArrayList<String> posArgList = new ArrayList<>(); 
-    	for(int i = 0; i < args.length; i++){
-    		if(!args[i].startsWith("-") && i == 0){
-    			posArgList.add(args[i]);
-    		}
-    		else if(!args[i].startsWith("-")){
-    			if(!args[i-1].startsWith("-")){
->>>>>>> origin/master
     				posArgList.add(args[i]);
     			}
     			else{ //the arg before it has a dash
@@ -256,7 +246,6 @@ public class Library {
 			if(args[i].startsWith("-")){
 				tempNamedArg = args[i].split("-");
 				for(int k = 0; k < namedArgumentList.size(); k++){
-<<<<<<< HEAD
 					NamedArgument currentNamedArg = namedArgumentList.get(k);
 					if(tempNamedArg[1].length() == 1){ //single char
 						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){
@@ -273,20 +262,10 @@ public class Library {
 							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){
 								currentNamedArg.setValue("true");
 							}
-=======
-					NamedArgument currentArg = namedArgumentList.get(k);
-					if(Character.toString(currentArg.getShortFormName()).equals(tempNamedArg[1])){
-						if(currentArg.getType() != "boolean"){
-							currentArg.setValue(args[i+1]);
-						}
-						else{
-							currentArg.setValue("true");
->>>>>>> origin/master
 						}
 					}
 				}
 			}
-<<<<<<< HEAD
 		}
 	}
 	String invalidNamedArgument = ""; //used in invalidNamedArgument and argumentDoesNotExistMessage
@@ -322,13 +301,6 @@ public class Library {
 					}
 				}
 			}
-=======
-		}		
-	}
-	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].startsWith("-h")) {
-            throw new HelpException(helpMessage());
->>>>>>> origin/master
 		}
 	}
 	
@@ -377,13 +349,11 @@ public class Library {
 	
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
-<<<<<<< HEAD
 		
 		setLongFormNamedArgValues(args);
 		setShortFormNamedArgValues(args);
 		invalidNamedArgument(args); //throws ArgumentDoesNotExistException
 		
-
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
 			String helpArgValue = helpArgument.getValue();
@@ -409,7 +379,6 @@ public class Library {
 		}	
 	}
 }
-
 
 
 

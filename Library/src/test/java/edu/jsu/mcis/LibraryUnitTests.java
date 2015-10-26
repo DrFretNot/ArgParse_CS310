@@ -432,11 +432,7 @@ public class LibraryUnitTests {
 	
 	@Test
 	public void testParseReadsCorrectArgumentsWhenGivenShortFormNamedArguments(){
-<<<<<<< HEAD
 		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "6"};
-=======
-		String[] args = {"7", "-t", "pyramid", "5", "3", "-d", "1"};
->>>>>>> origin/master
     	Library lib = new Library();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
@@ -463,7 +459,6 @@ public class LibraryUnitTests {
     	NamedArgument type = lib.getNamedArgument("type");
     	assertEquals("pyramid", type.getValue());
     	NamedArgument digits = lib.getNamedArgument("digits");
-<<<<<<< HEAD
     	assertEquals("6", digits.getValue());
 	}
 	
@@ -524,7 +519,6 @@ public class LibraryUnitTests {
     	catch(Exception e){
     		assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
     	}
-
 	}
 
 	@Test
@@ -616,7 +610,6 @@ public class LibraryUnitTests {
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", "value", Library.argType.STRING, "This is a type", 't');
     	assertEquals('t', type.getShortFormName());  	
-<<<<<<< HEAD
 	}
 	
 	@Test
@@ -654,23 +647,8 @@ public class LibraryUnitTests {
     
     @Test
     public void testParseThrowsWrongDataTypeExceptionForNamedArguments(){
-=======
-	}
-    
-    @Test
-    public void testThrowsArgumentDoesNotExistExeption(){
-        assertTrue(true);   
-    }
-    
-    @Test
-    public void testThrowsWrongDataTypeException(){
->>>>>>> origin/master
         assertTrue(true);   
     }
 	
 }    
-    
-    
-    
-    
     
