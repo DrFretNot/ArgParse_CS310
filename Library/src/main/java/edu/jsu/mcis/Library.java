@@ -258,9 +258,6 @@ public class Library {
 		}
 	}
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].startsWith("-h")) {
-            throw new HelpException(helpMessage());
-		}
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
 		setLongFormNamedArgValues(args);
 		setShortFormNamedArgValues(args);

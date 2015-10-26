@@ -240,6 +240,7 @@ public class LibraryUnitTests {
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
         try{
         	lib.parse(args);
         }

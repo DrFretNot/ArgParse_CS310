@@ -18,8 +18,8 @@ public class LibraryKeywords
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("type", "box"));
-    	lib.addNamedArgument(new NamedArgument("digits", "4"));
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "4", 'd'));
     	try{
     		lib.parse(args);
     		float len = Float.parseFloat(length.getValue());
@@ -118,7 +118,7 @@ public class LibraryKeywords
     	lib.addArgument(length);
     	lib.addArgument(width);
     	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN));
+    	lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
     	try{
     		lib.parse(args);
     	}
