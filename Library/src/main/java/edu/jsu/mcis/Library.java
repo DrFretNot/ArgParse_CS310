@@ -79,13 +79,14 @@ public class Library {
     }
     
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
+    String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
     
     private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
-        String errorMessage = "";
-        String currentTypeError = "";
         
+        //checking positional args
 		for (int index = 0; index < argList.size(); index++){
 			incorrectDataTypeIndex = index;
+			incorrectArgumentType = "positional";
 			Argument currentArg = argumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
@@ -107,18 +108,58 @@ public class Library {
 				currentArg.setValue(String.valueOf(argValue));
 			}
 		}
+		
+		//checking named args
+		for (int index = 0; index < namedArgumentList.size(); index++){
+			incorrectDataTypeIndex = index;
+			incorrectArgumentType = "named";
+			Argument currentArg = namedArgumentList.get(index);
+			if (currentArg.getType().equals("integer")){
+				int argValue = Integer.parseInt(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+            
+			else if (currentArg.getType().equals("float")){
+				float argValue = Float.parseFloat(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+            
+			else if (currentArg.getType().equals("string")){
+				String argValue = currentArg.getValue();
+				currentArg.setValue(argValue);
+			}
+			
+			else{
+				Boolean argValue = Boolean.parseBoolean(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+		}
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
-		String errorMessage = "usage: java " + programName;
-		for(int i = 0; i < argumentList.size(); i++) {
-			Argument currentArg = argumentList.get(i);
-            errorMessage += " " + currentArg.getName();   
-        }
-            
-        Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
-        errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
-        return errorMessage;    	
+		if (incorrectArgumentType.equals("positional")){
+			String errorMessage = "usage: java " + programName;
+			for(int i = 0; i < argumentList.size(); i++) {
+				Argument currentArg = argumentList.get(i);
+				errorMessage += " " + currentArg.getName();   
+			}
+			
+			Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
+			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
+			return errorMessage;  
+		}
+		
+		else {
+			String errorMessage = "usage: java " + programName;
+			for(int i = 0; i < namedArgumentList.size(); i++) {
+				NamedArgument currentArg = namedArgumentList.get(i);
+				errorMessage += " " + currentArg.getName();   
+			}
+			
+			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); 
+			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + currentArg.getValue();
+			return errorMessage; 
+		}  	
     }
    
    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
@@ -312,37 +353,6 @@ public class Library {
         }
         
         message += "\n" + programName + ".java: error: argument " + invalidNamedArgument + " does not exist";
-        
-        /*for(int i = 0; i < args.length; i++){
-        	if(args[i].startsWith("--")){
-        		String[] splitLongNamedArg = new String[2];
-        		splitLongNamedArg = args[i].split("--");
-        		NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);
-        		if(tempArg == null){
-        			message += " " + splitLongNamedArg[1];
-        		}
-        	}
-        	else if(args[i].startsWith("-")){
-        		String[] splitShortNamedArg = new String[2];
-        		splitShortNamedArg = args[i].split("-");
-        		if(splitShortNamedArg[1].length() == 1){ //single char
-					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1]);
-					if(tempArg == null){
-						message += " " + splitShortNamedArg[1];
-					}
-				}
-				else{ //multiple flags in one specification
-					for(int k = 0; k < splitShortNamedArg[1].length(); k++){
-						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));
-						if(tempArg == null){
-							message += " " + splitShortNamedArg[1].charAt(k);
-						}
-					}
-				}
-        	}
-        }
-        
-        message += " does/do not exist";*/
         
     	return message;
 	}

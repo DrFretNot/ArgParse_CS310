@@ -646,8 +646,28 @@ public class LibraryUnitTests {
     }
     
     @Test
-    public void testParseThrowsWrongDataTypeExceptionForNamedArguments(){
-        assertTrue(true);   
+    public void testParseThrowsIncorrectArgTypeExceptionForNamedArguments(){
+    	String[] args = {"7", "-d", "myval", "5", "3"};
+    	Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator type digits\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
+    	}
     }
 	
 }    

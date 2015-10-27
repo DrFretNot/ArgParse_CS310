@@ -4,7 +4,8 @@ public class Argument{
     protected String argName;
     protected String description;
     protected Library.argType type;
-    protected <T> value;
+    //protected <T> value;
+    protected String value;
 	private int position;
 
     

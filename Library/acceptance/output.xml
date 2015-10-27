@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20151026 11:39:47.164">
-<suite source="/Users/trentford/Documents/Repositories/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
+<robot generator="Robot 2.9 (Jython 2.7.0 on java1.7.0_65)" generated="20151027 13:07:44.355">
+<suite source="/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Library/acceptance/LibraryTests.txt" id="s1" name="LibraryTests">
 <test id="s1-t1" name="Test Volume Calculator Normal Function">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
 <arguments>
@@ -8,15 +8,15 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.175" endtime="20151026 11:39:48.217"></status>
+<status status="PASS" starttime="20151027 13:07:45.045" endtime="20151027 13:07:45.057"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.235" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:48.223" endtime="20151026 11:39:48.238"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.075" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.063" endtime="20151027 13:07:45.077"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -24,14 +24,14 @@
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.242" endtime="20151026 11:39:48.253"></status>
+<status status="PASS" starttime="20151027 13:07:45.081" endtime="20151027 13:07:45.089"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.266" level="INFO">${width} = 5</msg>
-<status status="PASS" starttime="20151026 11:39:48.259" endtime="20151026 11:39:48.268"></status>
+<msg timestamp="20151027 13:07:45.096" level="INFO">${width} = 5</msg>
+<status status="PASS" starttime="20151027 13:07:45.092" endtime="20151027 13:07:45.098"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -39,14 +39,14 @@
 <arg>5</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.274" endtime="20151026 11:39:48.284"></status>
+<status status="PASS" starttime="20151027 13:07:45.102" endtime="20151027 13:07:45.113"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.295" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:48.289" endtime="20151026 11:39:48.298"></status>
+<msg timestamp="20151027 13:07:45.121" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.117" endtime="20151027 13:07:45.123"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -54,14 +54,14 @@
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.302" endtime="20151026 11:39:48.311"></status>
+<status status="PASS" starttime="20151027 13:07:45.126" endtime="20151027 13:07:45.133"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.320" level="INFO">${output} = 70.0</msg>
-<status status="PASS" starttime="20151026 11:39:48.315" endtime="20151026 11:39:48.322"></status>
+<msg timestamp="20151027 13:07:45.140" level="INFO">${output} = 70.0</msg>
+<status status="PASS" starttime="20151027 13:07:45.137" endtime="20151027 13:07:45.141"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -69,9 +69,9 @@
 <arg>${output}</arg>
 <arg>70.0</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.325" endtime="20151026 11:39:48.331"></status>
+<status status="PASS" starttime="20151027 13:07:45.146" endtime="20151027 13:07:45.153"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.161" endtime="20151026 11:39:48.335" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.035" endtime="20151027 13:07:45.156" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Test Unrecognized Argument">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -81,15 +81,15 @@
 <arg>2</arg>
 <arg>43</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.347" endtime="20151026 11:39:48.354"></status>
+<status status="PASS" starttime="20151027 13:07:45.166" endtime="20151027 13:07:45.171"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.364" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20151027 13:07:45.179" level="INFO">${output} = usage: java Volume Calculator length width height
 Volume Calculator.java: error: unrecognized arguments: 43</msg>
-<status status="PASS" starttime="20151026 11:39:48.358" endtime="20151026 11:39:48.365"></status>
+<status status="PASS" starttime="20151027 13:07:45.175" endtime="20151027 13:07:45.180"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -97,9 +97,9 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>${output}</arg>
 <arg>${expected1}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.368" endtime="20151026 11:39:48.376"></status>
+<status status="PASS" starttime="20151027 13:07:45.183" endtime="20151027 13:07:45.190"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.339" endtime="20151026 11:39:48.379" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.159" endtime="20151027 13:07:45.192" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Test Absurd Program Normal Function">
 <kw library="LibraryKeywords" name="Start Absurd Program With Arguments">
@@ -109,14 +109,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.392" endtime="20151026 11:39:48.401"></status>
+<status status="PASS" starttime="20151027 13:07:45.203" endtime="20151027 13:07:45.211"></status>
 </kw>
 <kw library="LibraryKeywords" name="Getpet">
 <assign>
 <var>${pet}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.409" level="INFO">${pet} = dog</msg>
-<status status="PASS" starttime="20151026 11:39:48.404" endtime="20151026 11:39:48.411"></status>
+<msg timestamp="20151027 13:07:45.220" level="INFO">${pet} = dog</msg>
+<status status="PASS" starttime="20151027 13:07:45.214" endtime="20151027 13:07:45.221"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -124,14 +124,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>dog</arg>
 <arg>${pet}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.415" endtime="20151026 11:39:48.425"></status>
+<status status="PASS" starttime="20151027 13:07:45.224" endtime="20151027 13:07:45.232"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Number">
 <assign>
 <var>${number}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.436" level="INFO">${number} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:48.430" endtime="20151026 11:39:48.438"></status>
+<msg timestamp="20151027 13:07:45.240" level="INFO">${number} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.236" endtime="20151027 13:07:45.242"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -139,14 +139,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>2</arg>
 <arg>${number}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.442" endtime="20151026 11:39:48.451"></status>
+<status status="PASS" starttime="20151027 13:07:45.244" endtime="20151027 13:07:45.251"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Rainy">
 <assign>
 <var>${rainy}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.461" level="INFO">${rainy} = true</msg>
-<status status="PASS" starttime="20151026 11:39:48.455" endtime="20151026 11:39:48.463"></status>
+<msg timestamp="20151027 13:07:45.259" level="INFO">${rainy} = true</msg>
+<status status="PASS" starttime="20151027 13:07:45.254" endtime="20151027 13:07:45.260"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -154,14 +154,14 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>true</arg>
 <arg>${rainy}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.467" endtime="20151026 11:39:48.475"></status>
+<status status="PASS" starttime="20151027 13:07:45.264" endtime="20151027 13:07:45.271"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Bathrooms">
 <assign>
 <var>${bathrooms}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.485" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" starttime="20151026 11:39:48.478" endtime="20151026 11:39:48.487"></status>
+<msg timestamp="20151027 13:07:45.281" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" starttime="20151027 13:07:45.275" endtime="20151027 13:07:45.282"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -169,28 +169,28 @@ Volume Calculator.java: error: unrecognized arguments: 43</msg>
 <arg>3.5</arg>
 <arg>${bathrooms}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.492" endtime="20151026 11:39:48.501"></status>
+<status status="PASS" starttime="20151027 13:07:45.285" endtime="20151027 13:07:45.293"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.382" endtime="20151026 11:39:48.505" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.196" endtime="20151027 13:07:45.296" critical="yes"></status>
 </test>
 <test id="s1-t4" name="Test Usage Message">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
 <arguments>
 <arg>-h</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.519" endtime="20151026 11:39:48.528"></status>
+<status status="PASS" starttime="20151027 13:07:45.307" endtime="20151027 13:07:45.313"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.540" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20151027 13:07:45.322" level="INFO">${output} = usage: java Volume Calculator length width height
 Calculate the volume of a box.
 positional arguments:
 length the length of the box (float)
 width the width of the box (float)
 height the height of the ...</msg>
-<status status="PASS" starttime="20151026 11:39:48.533" endtime="20151026 11:39:48.542"></status>
+<status status="PASS" starttime="20151027 13:07:45.316" endtime="20151027 13:07:45.324"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -198,9 +198,9 @@ height the height of the ...</msg>
 <arg>${expected2}</arg>
 <arg>${output}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.547" endtime="20151026 11:39:48.558"></status>
+<status status="PASS" starttime="20151027 13:07:45.327" endtime="20151027 13:07:45.337"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.509" endtime="20151026 11:39:48.563" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.300" endtime="20151027 13:07:45.340" critical="yes"></status>
 </test>
 <test id="s1-t5" name="Test Incorrect Datatype Message">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
@@ -209,15 +209,15 @@ height the height of the ...</msg>
 <arg>something</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.599" endtime="20151026 11:39:48.612"></status>
+<status status="PASS" starttime="20151027 13:07:45.354" endtime="20151027 13:07:45.360"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.623" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20151027 13:07:45.375" level="INFO">${output} = usage: java Volume Calculator length width height
 Volume Calculator.java: error: argument width: invalid float value: something</msg>
-<status status="PASS" starttime="20151026 11:39:48.616" endtime="20151026 11:39:48.625"></status>
+<status status="PASS" starttime="20151027 13:07:45.364" endtime="20151027 13:07:45.376"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -225,9 +225,9 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>${output}</arg>
 <arg>${expected3}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.631" endtime="20151026 11:39:48.644"></status>
+<status status="PASS" starttime="20151027 13:07:45.380" endtime="20151027 13:07:45.389"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.570" endtime="20151026 11:39:48.649" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.345" endtime="20151027 13:07:45.392" critical="yes"></status>
 </test>
 <test id="s1-t6" name="Test Named Argument Defaults">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -236,16 +236,16 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.668" endtime="20151026 11:39:48.677"></status>
+<status status="PASS" starttime="20151027 13:07:45.403" endtime="20151027 13:07:45.411"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.699" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:48.683" endtime="20151026 11:39:48.701"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.426" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.416" endtime="20151027 13:07:45.427"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -253,14 +253,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.709" endtime="20151026 11:39:48.719"></status>
+<status status="PASS" starttime="20151027 13:07:45.431" endtime="20151027 13:07:45.438"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.730" level="INFO">${width} = 3</msg>
-<status status="PASS" starttime="20151026 11:39:48.723" endtime="20151026 11:39:48.732"></status>
+<msg timestamp="20151027 13:07:45.446" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151027 13:07:45.441" endtime="20151027 13:07:45.448"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -268,14 +268,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.736" endtime="20151026 11:39:48.748"></status>
+<status status="PASS" starttime="20151027 13:07:45.451" endtime="20151027 13:07:45.457"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.758" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:48.752" endtime="20151026 11:39:48.760"></status>
+<msg timestamp="20151027 13:07:45.465" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.460" endtime="20151027 13:07:45.466"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -283,14 +283,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.765" endtime="20151026 11:39:48.776"></status>
+<status status="PASS" starttime="20151027 13:07:45.469" endtime="20151027 13:07:45.476"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Type">
 <assign>
 <var>${type}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.787" level="INFO">${type} = box</msg>
-<status status="PASS" starttime="20151026 11:39:48.781" endtime="20151026 11:39:48.788"></status>
+<msg timestamp="20151027 13:07:45.482" level="INFO">${type} = box</msg>
+<status status="PASS" starttime="20151027 13:07:45.478" endtime="20151027 13:07:45.483"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -298,14 +298,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>box</arg>
 <arg>${type}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.791" endtime="20151026 11:39:48.798"></status>
+<status status="PASS" starttime="20151027 13:07:45.486" endtime="20151027 13:07:45.493"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Digits">
 <assign>
 <var>${digits}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.807" level="INFO">${digits} = 4</msg>
-<status status="PASS" starttime="20151026 11:39:48.802" endtime="20151026 11:39:48.809"></status>
+<msg timestamp="20151027 13:07:45.500" level="INFO">${digits} = 4</msg>
+<status status="PASS" starttime="20151027 13:07:45.496" endtime="20151027 13:07:45.501"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -313,9 +313,9 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>4</arg>
 <arg>${digits}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.813" endtime="20151026 11:39:48.821"></status>
+<status status="PASS" starttime="20151027 13:07:45.506" endtime="20151027 13:07:45.511"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.653" endtime="20151026 11:39:48.824" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.395" endtime="20151027 13:07:45.514" critical="yes"></status>
 </test>
 <test id="s1-t7" name="Test Named Argument Single">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -326,17 +326,17 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>--type</arg>
 <arg>ellipsoid</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.838" endtime="20151026 11:39:48.847"></status>
+<status status="PASS" starttime="20151027 13:07:45.522" endtime="20151027 13:07:45.527"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.865" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:48.851" endtime="20151026 11:39:48.867"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.541" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.530" endtime="20151027 13:07:45.543"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -344,14 +344,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.872" endtime="20151026 11:39:48.883"></status>
+<status status="PASS" starttime="20151027 13:07:45.546" endtime="20151027 13:07:45.552"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.891" level="INFO">${width} = 3</msg>
-<status status="PASS" starttime="20151026 11:39:48.887" endtime="20151026 11:39:48.893"></status>
+<msg timestamp="20151027 13:07:45.558" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151027 13:07:45.554" endtime="20151027 13:07:45.559"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -359,14 +359,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.898" endtime="20151026 11:39:48.907"></status>
+<status status="PASS" starttime="20151027 13:07:45.562" endtime="20151027 13:07:45.568"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.915" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:48.910" endtime="20151026 11:39:48.917"></status>
+<msg timestamp="20151027 13:07:45.575" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.571" endtime="20151027 13:07:45.576"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -374,14 +374,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.921" endtime="20151026 11:39:48.929"></status>
+<status status="PASS" starttime="20151027 13:07:45.579" endtime="20151027 13:07:45.586"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Type">
 <assign>
 <var>${type}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.937" level="INFO">${type} = ellipsoid</msg>
-<status status="PASS" starttime="20151026 11:39:48.932" endtime="20151026 11:39:48.939"></status>
+<msg timestamp="20151027 13:07:45.593" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151027 13:07:45.589" endtime="20151027 13:07:45.594"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -389,14 +389,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>ellipsoid</arg>
 <arg>${type}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.942" endtime="20151026 11:39:48.949"></status>
+<status status="PASS" starttime="20151027 13:07:45.598" endtime="20151027 13:07:45.603"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Digits">
 <assign>
 <var>${digits}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.960" level="INFO">${digits} = 4</msg>
-<status status="PASS" starttime="20151026 11:39:48.953" endtime="20151026 11:39:48.962"></status>
+<msg timestamp="20151027 13:07:45.608" level="INFO">${digits} = 4</msg>
+<status status="PASS" starttime="20151027 13:07:45.605" endtime="20151027 13:07:45.609"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -404,9 +404,9 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>4</arg>
 <arg>${digits}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.965" endtime="20151026 11:39:48.974"></status>
+<status status="PASS" starttime="20151027 13:07:45.612" endtime="20151027 13:07:45.616"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.829" endtime="20151026 11:39:48.978" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.516" endtime="20151027 13:07:45.618" critical="yes"></status>
 </test>
 <test id="s1-t8" name="Test Named Argument Multiple">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -419,18 +419,18 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>--digits</arg>
 <arg>1</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:48.998" endtime="20151026 11:39:49.011"></status>
+<status status="PASS" starttime="20151027 13:07:45.628" endtime="20151027 13:07:45.635"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.033" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:49.016" endtime="20151026 11:39:49.034"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.647" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.637" endtime="20151027 13:07:45.648"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -438,14 +438,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.039" endtime="20151026 11:39:49.063"></status>
+<status status="PASS" starttime="20151027 13:07:45.650" endtime="20151027 13:07:45.655"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.080" level="INFO">${width} = 3</msg>
-<status status="PASS" starttime="20151026 11:39:49.067" endtime="20151026 11:39:49.084"></status>
+<msg timestamp="20151027 13:07:45.660" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151027 13:07:45.657" endtime="20151027 13:07:45.661"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -453,14 +453,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.088" endtime="20151026 11:39:49.103"></status>
+<status status="PASS" starttime="20151027 13:07:45.664" endtime="20151027 13:07:45.669"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.117" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:49.111" endtime="20151026 11:39:49.118"></status>
+<msg timestamp="20151027 13:07:45.674" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.671" endtime="20151027 13:07:45.675"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -468,14 +468,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.121" endtime="20151026 11:39:49.135"></status>
+<status status="PASS" starttime="20151027 13:07:45.678" endtime="20151027 13:07:45.685"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Type">
 <assign>
 <var>${type}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.144" level="INFO">${type} = ellipsoid</msg>
-<status status="PASS" starttime="20151026 11:39:49.139" endtime="20151026 11:39:49.146"></status>
+<msg timestamp="20151027 13:07:45.690" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151027 13:07:45.687" endtime="20151027 13:07:45.691"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -483,14 +483,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>ellipsoid</arg>
 <arg>${type}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.151" endtime="20151026 11:39:49.163"></status>
+<status status="PASS" starttime="20151027 13:07:45.693" endtime="20151027 13:07:45.697"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Digits">
 <assign>
 <var>${digits}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.173" level="INFO">${digits} = 1</msg>
-<status status="PASS" starttime="20151026 11:39:49.166" endtime="20151026 11:39:49.174"></status>
+<msg timestamp="20151027 13:07:45.703" level="INFO">${digits} = 1</msg>
+<status status="PASS" starttime="20151027 13:07:45.699" endtime="20151027 13:07:45.704"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -498,9 +498,9 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>1</arg>
 <arg>${digits}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.180" endtime="20151026 11:39:49.193"></status>
+<status status="PASS" starttime="20151027 13:07:45.707" endtime="20151027 13:07:45.713"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:48.982" endtime="20151026 11:39:49.196" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.622" endtime="20151027 13:07:45.715" critical="yes"></status>
 </test>
 <test id="s1-t9" name="Test Named Argument Anywhere">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -513,19 +513,19 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>1</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.212" endtime="20151026 11:39:49.225"></status>
+<status status="PASS" starttime="20151027 13:07:45.724" endtime="20151027 13:07:45.730"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.228" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.250" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:49.229" endtime="20151026 11:39:49.251"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.732" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.745" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.733" endtime="20151027 13:07:45.746"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -533,14 +533,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.255" endtime="20151026 11:39:49.265"></status>
+<status status="PASS" starttime="20151027 13:07:45.748" endtime="20151027 13:07:45.753"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.276" level="INFO">${width} = 3</msg>
-<status status="PASS" starttime="20151026 11:39:49.269" endtime="20151026 11:39:49.277"></status>
+<msg timestamp="20151027 13:07:45.758" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151027 13:07:45.755" endtime="20151027 13:07:45.759"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -548,14 +548,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.281" endtime="20151026 11:39:49.291"></status>
+<status status="PASS" starttime="20151027 13:07:45.761" endtime="20151027 13:07:45.765"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.312" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:49.298" endtime="20151026 11:39:49.314"></status>
+<msg timestamp="20151027 13:07:45.771" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.768" endtime="20151027 13:07:45.771"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -563,14 +563,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.318" endtime="20151026 11:39:49.327"></status>
+<status status="PASS" starttime="20151027 13:07:45.773" endtime="20151027 13:07:45.778"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Type">
 <assign>
 <var>${type}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.342" level="INFO">${type} = ellipsoid</msg>
-<status status="PASS" starttime="20151026 11:39:49.336" endtime="20151026 11:39:49.346"></status>
+<msg timestamp="20151027 13:07:45.785" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151027 13:07:45.781" endtime="20151027 13:07:45.786"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -578,14 +578,14 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>ellipsoid</arg>
 <arg>${type}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.351" endtime="20151026 11:39:49.361"></status>
+<status status="PASS" starttime="20151027 13:07:45.789" endtime="20151027 13:07:45.794"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Digits">
 <assign>
 <var>${digits}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.369" level="INFO">${digits} = 1</msg>
-<status status="PASS" starttime="20151026 11:39:49.364" endtime="20151026 11:39:49.370"></status>
+<msg timestamp="20151027 13:07:45.800" level="INFO">${digits} = 1</msg>
+<status status="PASS" starttime="20151027 13:07:45.796" endtime="20151027 13:07:45.802"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -593,9 +593,9 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>1</arg>
 <arg>${digits}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.374" endtime="20151026 11:39:49.387"></status>
+<status status="PASS" starttime="20151027 13:07:45.804" endtime="20151027 13:07:45.809"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:49.200" endtime="20151026 11:39:49.390" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.718" endtime="20151027 13:07:45.811" critical="yes"></status>
 </test>
 <test id="s1-t10" name="Test Help Flag">
 <kw library="LibraryKeywords" name="Start Program With Arguments">
@@ -605,19 +605,19 @@ Volume Calculator.java: error: argument width: invalid float value: something</m
 <arg>3</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.404" endtime="20151026 11:39:49.414"></status>
+<status status="PASS" starttime="20151027 13:07:45.820" endtime="20151027 13:07:45.828"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Program Output">
 <assign>
 <var>${output}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.426" level="INFO">${output} = usage: java Volume Calculator length width height
+<msg timestamp="20151027 13:07:45.835" level="INFO">${output} = usage: java Volume Calculator length width height
 Calculate the volume of a box.
 positional arguments:
 length the length of the box (float)
 width the width of the box (float)
 height the height of the ...</msg>
-<status status="PASS" starttime="20151026 11:39:49.419" endtime="20151026 11:39:49.428"></status>
+<status status="PASS" starttime="20151027 13:07:45.831" endtime="20151027 13:07:45.836"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -625,9 +625,9 @@ height the height of the ...</msg>
 <arg>${expected4}</arg>
 <arg>${output}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.433" endtime="20151026 11:39:49.463"></status>
+<status status="PASS" starttime="20151027 13:07:45.839" endtime="20151027 13:07:45.845"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:49.394" endtime="20151026 11:39:49.467" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.813" endtime="20151027 13:07:45.848" critical="yes"></status>
 </test>
 <test id="s1-t11" name="Test Short Form Arguments">
 <kw library="LibraryKeywords" name="Start Volume Calculator With Arguments">
@@ -640,20 +640,20 @@ height the height of the ...</msg>
 <arg>1</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.483" endtime="20151026 11:39:49.495"></status>
+<status status="PASS" starttime="20151027 13:07:45.860" endtime="20151027 13:07:45.868"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Length">
 <assign>
 <var>${length}</var>
 </assign>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.228" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.499" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.528" level="INFO">${length} = 7</msg>
-<status status="PASS" starttime="20151026 11:39:49.500" endtime="20151026 11:39:49.530"></status>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.732" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.870" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.888" level="INFO">${length} = 7</msg>
+<status status="PASS" starttime="20151027 13:07:45.871" endtime="20151027 13:07:45.889"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -661,14 +661,14 @@ height the height of the ...</msg>
 <arg>7</arg>
 <arg>${length}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.534" endtime="20151026 11:39:49.547"></status>
+<status status="PASS" starttime="20151027 13:07:45.892" endtime="20151027 13:07:45.898"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Width">
 <assign>
 <var>${width}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.557" level="INFO">${width} = 3</msg>
-<status status="PASS" starttime="20151026 11:39:49.551" endtime="20151026 11:39:49.558"></status>
+<msg timestamp="20151027 13:07:45.907" level="INFO">${width} = 3</msg>
+<status status="PASS" starttime="20151027 13:07:45.902" endtime="20151027 13:07:45.908"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -676,14 +676,14 @@ height the height of the ...</msg>
 <arg>3</arg>
 <arg>${width}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.562" endtime="20151026 11:39:49.574"></status>
+<status status="PASS" starttime="20151027 13:07:45.910" endtime="20151027 13:07:45.917"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Height">
 <assign>
 <var>${height}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.586" level="INFO">${height} = 2</msg>
-<status status="PASS" starttime="20151026 11:39:49.579" endtime="20151026 11:39:49.587"></status>
+<msg timestamp="20151027 13:07:45.924" level="INFO">${height} = 2</msg>
+<status status="PASS" starttime="20151027 13:07:45.920" endtime="20151027 13:07:45.926"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -691,14 +691,14 @@ height the height of the ...</msg>
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.590" endtime="20151026 11:39:49.600"></status>
+<status status="PASS" starttime="20151027 13:07:45.929" endtime="20151027 13:07:45.936"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Type">
 <assign>
 <var>${type}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.611" level="INFO">${type} = ellipsoid</msg>
-<status status="PASS" starttime="20151026 11:39:49.604" endtime="20151026 11:39:49.612"></status>
+<msg timestamp="20151027 13:07:45.943" level="INFO">${type} = ellipsoid</msg>
+<status status="PASS" starttime="20151027 13:07:45.939" endtime="20151027 13:07:45.945"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -706,14 +706,14 @@ height the height of the ...</msg>
 <arg>ellipsoid</arg>
 <arg>${type}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.616" endtime="20151026 11:39:49.625"></status>
+<status status="PASS" starttime="20151027 13:07:45.947" endtime="20151027 13:07:45.953"></status>
 </kw>
 <kw library="LibraryKeywords" name="Get Digits">
 <assign>
 <var>${digits}</var>
 </assign>
-<msg timestamp="20151026 11:39:49.637" level="INFO">${digits} = 1</msg>
-<status status="PASS" starttime="20151026 11:39:49.629" endtime="20151026 11:39:49.638"></status>
+<msg timestamp="20151027 13:07:45.960" level="INFO">${digits} = 1</msg>
+<status status="PASS" starttime="20151027 13:07:45.956" endtime="20151027 13:07:45.961"></status>
 </kw>
 <kw library="BuiltIn" name="Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -721,11 +721,11 @@ height the height of the ...</msg>
 <arg>1</arg>
 <arg>${digits}</arg>
 </arguments>
-<status status="PASS" starttime="20151026 11:39:49.644" endtime="20151026 11:39:49.657"></status>
+<status status="PASS" starttime="20151027 13:07:45.964" endtime="20151027 13:07:45.970"></status>
 </kw>
-<status status="PASS" starttime="20151026 11:39:49.472" endtime="20151026 11:39:49.661" critical="yes"></status>
+<status status="PASS" starttime="20151027 13:07:45.852" endtime="20151027 13:07:45.972" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20151026 11:39:47.193" endtime="20151026 11:39:49.677"></status>
+<status status="PASS" starttime="20151027 13:07:44.380" endtime="20151027 13:07:45.979"></status>
 </suite>
 <statistics>
 <total>
@@ -739,26 +739,26 @@ height the height of the ...</msg>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.228" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.222" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.682" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:48.850" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.015" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.228" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
-<msg timestamp="20151026 11:39:49.499" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.732" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.062" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.415" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.530" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.637" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.732" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
+<msg timestamp="20151027 13:07:45.870" level="WARN">Keyword 'Get Length' found both from a custom test library 'LibraryKeywords' and a standard library 'BuiltIn'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'LibraryKeywords.Get Length' or 'BuiltIn.Get Length'.</msg>
 </errors>
 </robot>
