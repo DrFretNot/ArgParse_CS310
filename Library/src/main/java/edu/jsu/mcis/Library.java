@@ -91,6 +91,7 @@ public class Library {
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
+				//currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("float")){

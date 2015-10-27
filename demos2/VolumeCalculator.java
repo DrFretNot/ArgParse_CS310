@@ -24,23 +24,24 @@ public class VolumeCalculator
         lib.addArgument(length);
         lib.addArgument(width);
         lib.addArgument(height);
+        lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+        lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
         
-        while(true){
-			System.out.println("Please enter your argument values");
-		
-			try {
-				lib.parse(args);
-				x = Float.parseFloat(length.getValue());
-				y = Float.parseFloat(width.getValue());
-				z = Float.parseFloat(height.getValue());
-				System.out.println( String.valueOf(x * y * z) );
-			}
-			catch(Exception e){
-				System.out.println(e.getMessage());
-			}
+
+		//System.out.println("Please enter your argument values");
+	
+		try {
+			lib.parse(args);
+			x = Float.parseFloat(length.getValue());
+			y = Float.parseFloat(width.getValue());
+			z = Float.parseFloat(height.getValue());
+			System.out.println( String.valueOf(x * y * z) );
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
 		
 			
-        }
     }
     
     /*private float box(float a, float b, float c) {
