@@ -1,18 +1,19 @@
 import edu.jsu.mcis.*;
+import java.util.*;
 
 public class VolumeCalculator 
 {
 
     
 
-    static void main (String args[]) {
+    public static void main (String args[]) {
         float x = 0;
         float y = 0;
-        float zed = 0;
+        float z = 0;
         float total = 0;
             
         Library lib = new Library();
-        Argument length =new Argument();
+        Argument length = new Argument();
         Argument width = new Argument();
         Argument height = new Argument();
     
@@ -24,23 +25,28 @@ public class VolumeCalculator
         lib.addArgument(width);
         lib.addArgument(height);
         
-        
-        try {
-            lib.parse(args);
+        while(true){
+			System.out.println("Please enter your argument values");
+		
+			try {
+				lib.parse(args);
+				x = Float.parseFloat(length.getValue());
+				y = Float.parseFloat(width.getValue());
+				z = Float.parseFloat(height.getValue());
+				System.out.println( String.valueOf(x * y * z) );
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		
+			
         }
-        catch(Exception e){}
-        
-        x = length.getValue();
-        y = width.getValue();
-        zed = height.getValue();
-        System.out.println( box(x,y,zed) );
-        
     }
     
-    private float box(float a, float b, float c) {
-        total = a*b*c;
+    /*private float box(float a, float b, float c) {
+        float total = a*b*c;
         return total;
-    }
+    }*/
         
     
 }
