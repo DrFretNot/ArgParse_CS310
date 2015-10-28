@@ -48,7 +48,12 @@ public class NamedArgument extends Argument{
         argName = name;
         description = "";
         type = dataType;
-        value = null;  
+        if(dataType == Library.argType.BOOLEAN){
+        	value = "false";
+        }
+        else{
+        	value = null; 
+        } 
     }  
     public NamedArgument(String name, String defaultValue, Library.argType dataType){
         argName = name;
@@ -66,7 +71,12 @@ public class NamedArgument extends Argument{
         argName = name;
         description = argDescription;
         type = dataType;
-        value = null;  
+        if(dataType == Library.argType.BOOLEAN){
+        	value = "false";
+        }
+        else{
+        	value = null; 
+        }   
     }
     public NamedArgument(String name, String defaultValue, Library.argType dataType, String argDescription){
         argName = name;
@@ -95,7 +105,12 @@ public class NamedArgument extends Argument{
         argName = name;
         description = "";
         type = dataType;
-        value = null;  
+        if(dataType == Library.argType.BOOLEAN){
+        	value = "false";
+        }
+        else{
+        	value = null; 
+        }   
         shortFormName = shortForm;
     }  
     public NamedArgument(String name, String defaultValue, Library.argType dataType, char shortForm){
@@ -116,7 +131,12 @@ public class NamedArgument extends Argument{
         argName = name;
         description = argDescription;
         type = dataType;
-        value = null;  
+        if(dataType == Library.argType.BOOLEAN){
+        	value = "false";
+        }
+        else{
+        	value = null; 
+        }   
         shortFormName = shortForm;
     }
     public NamedArgument(String name, String defaultValue, Library.argType dataType, String argDescription, char shortForm){

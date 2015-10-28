@@ -26,7 +26,7 @@ public class VolumeCalculator
         lib.addArgument(height);
         lib.addNamedArgument(new NamedArgument("type", "box", 't'));
         lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
-        lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
+        lib.addNamedArgument(new NamedArgument("help", Library.argType.BOOLEAN, 'h'));
         	
 		try {
 			lib.parse(args);

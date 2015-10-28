@@ -48,6 +48,11 @@ public class Argument{
         argName = name;
     }
     
+    public String getName()
+    {
+        return this.argName;
+    }
+    
 	public void setPosition(int pos){
 		position = pos;
 	}
@@ -59,12 +64,6 @@ public class Argument{
     private void setType(Library.argType dataType){
         type = dataType;
     }
-    
-    public void setValue(String argValue){
-    	value = argValue;
-    }
-	
-	
     
     public String getType(){
     	if(type == Library.argType.INTEGER){
@@ -79,15 +78,14 @@ public class Argument{
     	else return "boolean";
     }
     
-    public String getName()
-    {
-        return this.argName;
-    }
-    
     public String getDescription(){
     	return description;
     }
     
+    public void setValue(String argValue){
+    	value = argValue;
+    }
+	
     public String getValue(){
     	return value;
     }
