@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+"7", "--type", "pyramid", "5", "3", "--digits", "1"
+-->
+<arguments> 
+    <positional>
+        <name>length</name>
+        <type>float</type>
+        <description>Its the length</description>
+        <restrictions>
+            <restrict>length</restrict>
+            <restrict>width</restrict>
+            <restrict>height</restrict>
+        </restrictions>
+        <position>1</position>
+    </positional>
+    
+    
+    <positional>
+        <name>width</name>
+        <type>float</type>
+        <position>2</position>
+    </positional>
+    <positional>
+        <name>height</name>
+        <type>float</type>
+        <position>3</position>
+    </positional>
+    <named>
+        <name>type</name>
+        <shortname>t</shortname>
+        <type>string</type>
+        <default>box</default>
+    </named>
+    <named>
+        <name>digits</name>
+        <shortname>d</shortname>
+        <type>integer</type>
+        <default>4</default>
+    </named>   
+</arguments>
+    
