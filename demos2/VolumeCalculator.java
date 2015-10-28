@@ -13,6 +13,8 @@ public class VolumeCalculator
         float total = 0;
             
         Library lib = new Library();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
         Argument length = new Argument();
         Argument width = new Argument();
         Argument height = new Argument();
@@ -26,6 +28,7 @@ public class VolumeCalculator
         lib.addArgument(height);
         lib.addNamedArgument(new NamedArgument("type", "box", 't'));
         lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
+        lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
         
 
 		//System.out.println("Please enter your argument values");
