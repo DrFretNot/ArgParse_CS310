@@ -56,6 +56,17 @@ public class Library {
     	return returnArg;
     }
     
+    public Argument getArgument(int argPosition){
+    	Argument returnArg = null;
+    	for(int i = 0; i < argumentList.size(); i++){
+    		Argument currentArg = argumentList.get(i);
+    		if(currentArg.getPosition() == argPosition - 1){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
+    
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
     	for(int i = 0; i < namedArgumentList.size(); i++){

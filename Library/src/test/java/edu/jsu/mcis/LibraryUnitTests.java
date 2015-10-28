@@ -669,6 +669,26 @@ public class LibraryUnitTests {
     		assertEquals("usage: java VolumeCalculator type digits\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
     	}
     }
+    
+    @Test
+    public void testGetArgumentReturnCorrectArgumentBySearchingForPosition(){
+    	Library lib = new Library();
+    	Argument length = new Argument();
+    	Argument width = new Argument();
+    	Argument height = new Argument();
+    	length.addElements("length", "the length of the box");
+    	width.addElements("width", "the width of the box");
+    	height.addElements("height", "the height of the box");
+    	lib.addArgument(length);
+    	lib.addArgument(width);
+    	lib.addArgument(height);
+    	Argument arg1 = lib.getArgument(1);
+    	assertEquals("length", arg1.getName());
+    	Argument arg2 = lib.getArgument(2);
+    	assertEquals("width", arg2.getName());
+    	Argument arg3 = lib.getArgument(3);
+    	assertEquals("height", arg3.getName());
+    }
 	
 }    
     
