@@ -4,8 +4,6 @@ import java.util.*;
 public class VolumeCalculator 
 {
 
-    
-
     public static void main (String args[]) {
         float x = 0;
         float y = 0;
@@ -29,28 +27,30 @@ public class VolumeCalculator
         lib.addNamedArgument(new NamedArgument("type", "box", 't'));
         lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
         lib.addNamedArgument(new NamedArgument("help", "false", Library.argType.BOOLEAN, 'h'));
-        
-
-		//System.out.println("Please enter your argument values");
-	
+        	
 		try {
 			lib.parse(args);
 			x = Float.parseFloat(length.getValue());
 			y = Float.parseFloat(width.getValue());
 			z = Float.parseFloat(height.getValue());
-			System.out.println( String.valueOf(x * y * z) );
+			NamedArgument type = lib.getNamedArgument("type");
+			if(type.getValue().equals("box")){
+				System.out.println( String.valueOf(x * y * z) );
+			}
+			else if(type.getValue().equals("pyramid")){
+				System.out.println( String.valueOf((x * y * z)/3) );
+			}
+			else if(type.getValue().equals("ellipsoid")){
+				System.out.println( String.valueOf((4*(3.1415)*x*y*z)/3 ));
+			}
+			System.out.println(type.getValue());
+			System.out.println("******************************");
 		}
 		catch(Exception e){
 			System.out.println(e.getMessage());
+			System.out.println("******************************");
 		}
-		
 			
     }
-    
-    private float box(float a, float b, float c) {
-        float total = a*b*c;
-        return total;
-    }
-        
     
 }
