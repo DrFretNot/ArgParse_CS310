@@ -47,10 +47,10 @@ public class VolumeCalculator
 			
     }
     
-    /*private float box(float a, float b, float c) {
+    private float box(float a, float b, float c) {
         float total = a*b*c;
         return total;
-    }*/
+    }
         
     
 }
