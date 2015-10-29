@@ -692,7 +692,7 @@ public class LibraryUnitTests {
 	
 	@Test
 	public void testImportingXMLFileStoresCorrectInfoForEachArgument(){
-		String[] args = {"7", "5", "2"};
+		String[] args = {"7", "-t", "pyramid", "5", "2"};
 		Library lib = new Library();
 		try{
 			lib.addArgumentsFromXMLFile("Arguments.xml");
@@ -712,6 +712,8 @@ public class LibraryUnitTests {
 		assertEquals("7.0", length.getValue());
 		assertEquals("5.0", width.getValue());
 		assertEquals("2.0", height.getValue());
+		NamedArgument type = lib.getNamedArgument('t');
+		assertEquals("pyramid", type.getValue());
 	}
 }    
     

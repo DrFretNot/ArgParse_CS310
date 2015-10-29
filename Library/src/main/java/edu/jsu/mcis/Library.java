@@ -164,6 +164,57 @@ public class Library {
 				addArgument(newArg); 
 			}
 		}
+		
+		//get another nodelist of elements
+		NodeList nlNamed = docEle.getElementsByTagName("named");
+		
+		if(nlNamed.getLength() > 0) {
+			
+			for(int i = 0 ; i < nlNamed.getLength();i++) {
+				 
+				//get the argument element
+				Element el = (Element)nlNamed.item(i);
+				
+				NodeList nameNL = el.getElementsByTagName("name");
+				Element nameEL = (Element)nameNL.item(0);
+				String name = nameEL.getTextContent();
+				
+				NodeList typeNL = el.getElementsByTagName("type");
+				Element typeEL = (Element)typeNL.item(0);
+				String type = typeEL.getTextContent();
+				
+				NodeList shortnameNL = el.getElementsByTagName("shortname");
+				Element shortnameEL = (Element)shortnameNL.item(0);
+				String shortname = shortnameEL.getTextContent();
+				char shortFormName = shortname.charAt(0);
+				
+				NodeList defaultNL = el.getElementsByTagName("default");
+				Element defaultEL = (Element)defaultNL.item(0);
+				String defaultValue = defaultEL.getTextContent();
+				
+				//Argument newArg = new Argument();
+				Library.argType dataType;
+				if(type.equals("integer")){
+					dataType = Library.argType.INTEGER;
+				}
+				else if(type.equals("float")){
+					dataType = Library.argType.FLOAT;
+				}
+				else if(type.equals("string")){
+					dataType = Library.argType.STRING;
+				}
+				else if(type.equals("boolean")){
+					dataType = Library.argType.BOOLEAN;
+				}
+				else{
+					dataType = Library.argType.STRING;
+				}
+			
+				//newArg.addElements(name, dataType);
+				addNamedArgument(new NamedArgument(name, defaultValue, dataType, shortFormName));
+				//addArgument(newArg); 
+			}
+		}
     }
     
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
