@@ -693,6 +693,14 @@ public class LibraryUnitTests {
 	@Test
 	public void testImportingXMLFileStoresCorrectInfoForEachArgument(){
 		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		/*try{
+			AddXMLArguments xml = new AddXMLArguments();
+			Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}*/
+		//Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
 		Library lib = new Library();
 		try{
 			lib.addArgumentsFromXMLFile("Arguments.xml");
@@ -715,5 +723,40 @@ public class LibraryUnitTests {
 		NamedArgument type = lib.getNamedArgument('t');
 		assertEquals("pyramid", type.getValue());
 	}
+	
+	@Test
+	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfLibrary(){
+		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		try{
+			AddXMLArguments xml = new AddXMLArguments();
+			Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+		//Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
+		/*Library lib = new Library();
+		try{
+			lib.addArgumentsFromXMLFile("Arguments.xml");
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}*/
+		try{
+			lib.parse(args);
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+		Argument length = lib.getArgument(1);
+		Argument width = lib.getArgument(2);
+		Argument height = lib.getArgument(3);
+		assertEquals("7.0", length.getValue());
+		assertEquals("5.0", width.getValue());
+		assertEquals("2.0", height.getValue());
+		NamedArgument type = lib.getNamedArgument('t');
+		assertEquals("pyramid", type.getValue());
+	}
+	
 }    
     

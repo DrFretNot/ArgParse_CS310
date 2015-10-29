@@ -4,7 +4,7 @@
             <type>float</type>
             <position>1</position>
         </positional>
-        <positional name="width">
+        <positional>
             <name>width</name>
             <type>float</type>
             <position>2</position>
