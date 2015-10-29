@@ -690,5 +690,28 @@ public class LibraryUnitTests {
     	assertEquals("height", arg3.getName());
     }
 	
+	@Test
+	public void testImportingXMLFileStoresCorrectInfoForEachArgument(){
+		String[] args = {"7", "5", "2"};
+		Library lib = new Library();
+		try{
+			lib.addArgumentsFromXMLFile("Arguments.xml");
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+		try{
+			lib.parse(args);
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+		Argument length = lib.getArgument(1);
+		Argument width = lib.getArgument(2);
+		Argument height = lib.getArgument(3);
+		assertEquals("7.0", length.getValue());
+		assertEquals("5.0", width.getValue());
+		assertEquals("2.0", height.getValue());
+	}
 }    
     
