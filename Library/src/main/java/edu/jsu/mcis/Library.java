@@ -1,6 +1,23 @@
 package edu.jsu.mcis;
 
 import java.util.*;
+import java.lang.Object.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
+import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
+import org.w3c.dom.Entity;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException; 
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.*;
+import java.io.File;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 
 public class Library {
 	
@@ -56,6 +73,17 @@ public class Library {
     	return returnArg;
     }
     
+    public Argument getArgument(int argPosition){
+    	Argument returnArg = null;
+    	for(int i = 0; i < argumentList.size(); i++){
+    		Argument currentArg = argumentList.get(i);
+    		if(currentArg.getPosition() == argPosition - 1){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
+    
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
     	for(int i = 0; i < namedArgumentList.size(); i++){
@@ -67,18 +95,142 @@ public class Library {
     	return returnArg;
     }
     
-    int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
+    public NamedArgument getNamedArgument(char argShortFormName){
+    	NamedArgument returnArg = null;
+    	for(int i = 0; i < namedArgumentList.size(); i++){
+    		NamedArgument currentArg = namedArgumentList.get(i);
+    		if(currentArg.getShortFormName() == argShortFormName){
+    			returnArg = currentArg;
+    		}
+    	}
+    	return returnArg;
+    }
     
-    private void parseDataTypeWithArgClass(ArrayList<String> argList) throws NumberFormatException{
-        String errorMessage = "";
-        String currentTypeError = "";
+    public void addArgumentsFromXMLFile(String fileName) throws ParserConfigurationException, SAXException, IOException{
+    	
+    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+		//Using factory get an instance of document builder
+		DocumentBuilder db = dbf.newDocumentBuilder();
+
+		//parse using builder to get DOM representation of the XML file
+		Document dom = db.parse(new File(fileName));
+	
+		//get the root element
+		Element docEle = dom.getDocumentElement();
+
+		//get a nodelist of elements
+		NodeList nl = docEle.getElementsByTagName("positional");
+		
+		if(nl.getLength() > 0) {
+			
+			for(int i = 0 ; i < nl.getLength();i++) {
+				 
+				//get the argument element
+				Element el = (Element)nl.item(i);
+				
+				NodeList nameNL = el.getElementsByTagName("name");
+				Element nameEL = (Element)nameNL.item(0);
+				String name = nameEL.getTextContent();
+				
+				NodeList typeNL = el.getElementsByTagName("type");
+				Element typeEL = (Element)typeNL.item(0);
+				String type = typeEL.getTextContent();
+				
+				NodeList positionNL = el.getElementsByTagName("position");
+				Element positionEL = (Element)positionNL.item(0);
+				String position = positionEL.getTextContent();
+				
+				Argument newArg = new Argument();
+				Library.argType dataType;
+				if(type.equals("integer")){
+					dataType = Library.argType.INTEGER;
+				}
+				else if(type.equals("float")){
+					dataType = Library.argType.FLOAT;
+				}
+				else if(type.equals("string")){
+					dataType = Library.argType.STRING;
+				}
+				else if(type.equals("boolean")){
+					dataType = Library.argType.BOOLEAN;
+				}
+				else{
+					dataType = Library.argType.STRING;
+				}
+			
+				newArg.addElements(name, dataType);
+			
+				addArgument(newArg); 
+			}
+		}
+		
+		//get another nodelist of elements
+		NodeList nlNamed = docEle.getElementsByTagName("named");
+		
+		if(nlNamed.getLength() > 0) {
+			
+			for(int i = 0 ; i < nlNamed.getLength();i++) {
+				 
+				//get the argument element
+				Element el = (Element)nlNamed.item(i);
+				
+				NodeList nameNL = el.getElementsByTagName("name");
+				Element nameEL = (Element)nameNL.item(0);
+				String name = nameEL.getTextContent();
+				
+				NodeList typeNL = el.getElementsByTagName("type");
+				Element typeEL = (Element)typeNL.item(0);
+				String type = typeEL.getTextContent();
+				
+				NodeList shortnameNL = el.getElementsByTagName("shortname");
+				Element shortnameEL = (Element)shortnameNL.item(0);
+				String shortname = shortnameEL.getTextContent();
+				char shortFormName = shortname.charAt(0);
+				
+				NodeList defaultNL = el.getElementsByTagName("default");
+				Element defaultEL = (Element)defaultNL.item(0);
+				String defaultValue = defaultEL.getTextContent();
+				
+				//Argument newArg = new Argument();
+				Library.argType dataType;
+				if(type.equals("integer")){
+					dataType = Library.argType.INTEGER;
+				}
+				else if(type.equals("float")){
+					dataType = Library.argType.FLOAT;
+				}
+				else if(type.equals("string")){
+					dataType = Library.argType.STRING;
+				}
+				else if(type.equals("boolean")){
+					dataType = Library.argType.BOOLEAN;
+				}
+				else{
+					dataType = Library.argType.STRING;
+				}
+			
+				//newArg.addElements(name, dataType);
+				addNamedArgument(new NamedArgument(name, defaultValue, dataType, shortFormName));
+				//addArgument(newArg); 
+			}
+		}
+    }
+    
+    int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
+    String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
+    
+    private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
         
+        //checking positional args
 		for (int index = 0; index < argList.size(); index++){
 			incorrectDataTypeIndex = index;
+			incorrectArgumentType = "positional";
 			Argument currentArg = argumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
+				//currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("float")){
@@ -96,18 +248,58 @@ public class Library {
 				currentArg.setValue(String.valueOf(argValue));
 			}
 		}
+		
+		//checking named args
+		for (int index = 0; index < namedArgumentList.size(); index++){
+			incorrectDataTypeIndex = index;
+			incorrectArgumentType = "named";
+			Argument currentArg = namedArgumentList.get(index);
+			if (currentArg.getType().equals("integer")){
+				int argValue = Integer.parseInt(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+            
+			else if (currentArg.getType().equals("float")){
+				float argValue = Float.parseFloat(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+            
+			else if (currentArg.getType().equals("string")){
+				String argValue = currentArg.getValue();
+				currentArg.setValue(argValue);
+			}
+			
+			else{
+				Boolean argValue = Boolean.parseBoolean(currentArg.getValue());
+				currentArg.setValue(String.valueOf(argValue));
+			}
+		}
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
-		String errorMessage = "usage: java " + programName;
-		for(int i = 0; i < argumentList.size(); i++) {
-			Argument currentArg = argumentList.get(i);
-            errorMessage += " " + currentArg.getName();   
-        }
-            
-        Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
-        errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
-        return errorMessage;    	
+		if (incorrectArgumentType.equals("positional")){
+			String errorMessage = "usage: java " + programName;
+			for(int i = 0; i < argumentList.size(); i++) {
+				Argument currentArg = argumentList.get(i);
+				errorMessage += " " + currentArg.getName();   
+			}
+			
+			Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
+			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
+			return errorMessage;  
+		}
+		
+		else {
+			String errorMessage = "usage: java " + programName;
+			for(int i = 0; i < namedArgumentList.size(); i++) {
+				NamedArgument currentArg = namedArgumentList.get(i);
+				errorMessage += " " + currentArg.getName();   
+			}
+			
+			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); 
+			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + currentArg.getValue();
+			return errorMessage; 
+		}  	
     }
    
    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
@@ -166,25 +358,43 @@ public class Library {
    
     
     private ArrayList<String> getPositionalArgs(String[] args){
-    	ArrayList<String> posArgList = new ArrayList<>(); 
-    	for(int i = 0; i < args.length; i++){
-    		if(!args[i].startsWith("--") && i == 0){
+    	ArrayList<String> posArgList = new ArrayList<String>(); 
+    	for(int i = 0; i < args.length; i++){ //going through args from CLI
+    		if(!args[i].startsWith("-") && i == 0){ //test if the first arg is a positional arg
     			posArgList.add(args[i]);
     		}
-    		else if(!args[i].startsWith("--")){
-    			if(!args[i-1].startsWith("--")){
+    		else if(!args[i].startsWith("-")){ //arg from CLI doesn't have a dash
+    			if(!args[i-1].startsWith("-")){ //if the one before it doesn't have a dash, then it's a pos arg
     				posArgList.add(args[i]);
     			}
-    			else{
+    			else{ //the arg before it has a dash
     				String[] tempNamedArg = new String[2];
-					for(int j = 0; j < namedArgumentList.size(); j++){
-    					NamedArgument currentArg = namedArgumentList.get(j);
+    				if(args[i-1].startsWith("--")){ //arg before it is in long form
     					tempNamedArg = args[i-1].split("--");
-    					if(currentArg.getName().equals(tempNamedArg[1])) {
-    						if(currentArg.getType().equals("boolean")){
-    							posArgList.add(args[i]);
-    						}
-    					}   			
+    					for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+    						NamedArgument currentNamedArg = namedArgumentList.get(j);
+    						if(currentNamedArg.getName().equals(tempNamedArg[1])) {
+								if(currentNamedArg.getType().equals("boolean")){ //if long form arg is boolean, still need to add arg after to pos args
+									posArgList.add(args[i]);
+								}
+							}
+    					}
+    				}
+    				else{ //arg before it is in short form
+    					tempNamedArg = args[i-1].split("-");
+						if(tempNamedArg[1].length() == 1){ //single char
+							for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+								NamedArgument currentNamedArg = namedArgumentList.get(j);
+								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {
+									if(currentNamedArg.getType().equals("boolean")){ //if short form arg is boolean, still need to add arg after to pos args
+										posArgList.add(args[i]);
+									}
+								}
+							}
+						}
+						else{ //multiple flags in one specification, must be boolean so add arg after it to pos args
+							posArgList.add(args[i]);
+						}
     				}
     			}
     		}
@@ -192,7 +402,7 @@ public class Library {
     	return posArgList;
     }
     
-    private void setNamedArgValues(String[] args){
+    private void setLongFormNamedArgValues(String[] args){
     	for(int i = 0; i < args.length; i++){
     		String[] tempNamedArg = new String[2];
     		if(args[i].startsWith("--")){
@@ -200,7 +410,7 @@ public class Library {
     			for(int j = 0; j < namedArgumentList.size(); j++){
     				NamedArgument currentArg = namedArgumentList.get(j);
     				if(currentArg.getName().equals(tempNamedArg[1])){
-    					if(currentArg.getType() != "boolean"){
+    					if(!currentArg.getType().equals("boolean")){
     						currentArg.setValue(args[i+1]);
     					}
     					else{
@@ -208,16 +418,92 @@ public class Library {
     					}
     				}
     			}
-    		}//else do the same for "-"
+    		}
     	}
     }
-	
-	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException{
-		if (args[0].startsWith("-h")) {
-            throw new HelpException(helpMessage());
+    private void setShortFormNamedArgValues(String[] args){
+		for(int i = 0; i < args.length; i++){
+			String[] tempNamedArg = new String[2];
+			if(args[i].startsWith("-")){
+				tempNamedArg = args[i].split("-");
+				for(int k = 0; k < namedArgumentList.size(); k++){
+					NamedArgument currentNamedArg = namedArgumentList.get(k);
+					if(tempNamedArg[1].length() == 1){ //single char
+						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){
+							if(!currentNamedArg.getType().equals("boolean")){
+								currentNamedArg.setValue(args[i+1]);
+							}
+							else{
+								currentNamedArg.setValue("true");
+							}
+						}
+					}
+					else{ //multiple flags in one specification
+						for(int j = 0; j < tempNamedArg[1].length(); j++){
+							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){
+								currentNamedArg.setValue("true");
+							}
+						}
+					}
+				}
+			}
 		}
+	}
+	String invalidNamedArgument = ""; //used in invalidNamedArgument and argumentDoesNotExistMessage
+	
+	private void invalidNamedArgument(String[] args) throws ArgumentDoesNotExistException{
+		for(int i = 0; i < args.length; i++){
+			if(args[i].startsWith("--")){
+				String[] splitLongNamedArg = new String[2];
+				splitLongNamedArg = args[i].split("--");
+				NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);
+				if(tempArg == null){
+					invalidNamedArgument = splitLongNamedArg[1];
+					throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+				}
+			}
+			else if(args[i].startsWith("-")){
+				String[] splitShortNamedArg = new String[2];
+				splitShortNamedArg = args[i].split("-");
+				if(splitShortNamedArg[1].length() == 1){ //single char
+					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(0));
+					if(tempArg == null){
+						invalidNamedArgument = splitShortNamedArg[1];
+						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+					}
+				}
+				else{ //multiple flags in one specification
+					for(int k = 0; k < splitShortNamedArg[1].length(); k++){
+						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));
+						if(tempArg == null){
+							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));
+							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	private String argumentDoesNotExistMessage(String invalidNamedArgument){
+		String message = "usage: java " + programName;
+		for(int i = 0; i < argumentList.size(); i++) {
+			Argument currentArg = argumentList.get(i);
+            message += " " + currentArg.getName();   
+        }
+        
+        message += "\n" + programName + ".java: error: argument " + invalidNamedArgument + " does not exist";
+        
+    	return message;
+	}
+	
+	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
-		setNamedArgValues(args);
+		
+		setLongFormNamedArgValues(args);
+		setShortFormNamedArgValues(args);
+		invalidNamedArgument(args); //throws ArgumentDoesNotExistException
+		
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
 			String helpArgValue = helpArgument.getValue();
@@ -235,7 +521,7 @@ public class Library {
    				currentArg.setValue(tempPositionalArgList.get(i));
    			}
 			try{
-				parseDataTypeWithArgClass(tempPositionalArgList);
+				parseDataType(tempPositionalArgList);
 			}
 			catch (Exception e){
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
@@ -243,7 +529,6 @@ public class Library {
 		}	
 	}
 }
-
 
 
 
