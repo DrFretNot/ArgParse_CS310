@@ -723,6 +723,7 @@ public class LibraryUnitTests {
 		NamedArgument type = lib.getNamedArgument('t');
 		assertEquals("pyramid", type.getValue());
 	}
+
 	
 	@Test
 	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfLibrary(){
@@ -758,5 +759,28 @@ public class LibraryUnitTests {
 		assertEquals("pyramid", type.getValue());
 	}
 	
-}    
+   
+
+    
+    
+    /*
+     @Test
+     public void testReadingXMLGetPositionalArgumentValue(){
+     ArgumentXML xml = new ArgumentXML();
+     Library lib = new Library();
+     xml = ArgumentXML.ReadXML("/GitHub/ArgParse_CS310/Library/src/main/java/edu/jsu/mcis/ArgumentXML.xml");
+     String[] args = {"7", "--type", "pyramid", "5", "3", "--digits", "1"};
+     lib.parse(args);
+     assertEquals("dog", xml.getValue("pet"));
+     assertEquals(8, xml.getValue("number"));
+     assertEquals(true, xml.getValue("rainy"));
+     assertEquals(xml.getValue("bathrooms"), 3.4f);
+     assertEquals(2, xml.getValue("Length"));
+     assertEquals(1, xml.getValue("Width"));
+     assertEquals(3, xml.getValue("Height"));
+     }
+     */
+
+}
+
     
