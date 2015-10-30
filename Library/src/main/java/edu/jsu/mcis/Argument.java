@@ -18,26 +18,22 @@ public class Argument{
     }
     
     public void addElements(String name){
-        //this.setPosition(position);
 		this.setName(name);
         this.setType(Library.argType.STRING);
     }
     
     public void addElements(String name, Library.argType dataType){
-		//this.setPosition(position);
         this.setName(name);
         this.setType(dataType);
     }
     
     public void addElements(String name, String argDescription){
-        //this.setPosition(position);		
         this.setName(name);
         description = argDescription;
         this.setType(Library.argType.STRING);
     }
     
     public void addElements(String name, Library.argType dataType, String argDescription){
-        //this.setPosition(position);		
     	this.setName(name);
         this.setType(dataType);
         description = argDescription;

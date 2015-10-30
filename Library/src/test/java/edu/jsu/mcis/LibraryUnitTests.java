@@ -556,24 +556,6 @@ public class LibraryUnitTests {
 		assertEquals(0, length.getPosition());
 	}
 	
-	
-	/*@Test
-	public void testUsingPositionVariableForArgumentClass(){
-		String[] args = {"7", "5", "2"};
-		Library lib = new Library();
-    	lib.addProgramName("Volume Calculator");
-    	lib.addProgramDescription("Calculate the volume of a box.");
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", 0, Library.argType.FLOAT, "the length of the box (float)");
-    	width.addElements("width", 1, Library.argType.FLOAT, "the width of the box (float)");
-    	height.addElements("height", 2, Library.argType.FLOAT, "the height of the box (float)");
-		//Argument 
-		
-	}*/
-
-    
     @Test
 	public void testAddingNamedArgumentWithShortFormAndReturnCorrectShortForm(){
 		NamedArgument type = new NamedArgument("type", 't');
