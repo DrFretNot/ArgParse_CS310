@@ -689,98 +689,37 @@ public class LibraryUnitTests {
     	Argument arg3 = lib.getArgument(3);
     	assertEquals("height", arg3.getName());
     }
-	
-	@Test
-	public void testImportingXMLFileStoresCorrectInfoForEachArgument(){
-		String[] args = {"7", "-t", "pyramid", "5", "2"};
-		/*try{
-			AddXMLArguments xml = new AddXMLArguments();
-			Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
-		}
-		catch(Exception e){
-			assertEquals("", e);
-		}*/
-		//Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
-		Library lib = new Library();
-		try{
-			lib.addArgumentsFromXMLFile("Arguments.xml");
-		}
-		catch(Exception e){
-			assertEquals("", e);
-		}
-		try{
-			lib.parse(args);
-		}
-		catch(Exception e){
-			assertEquals("", e);
-		}
-		Argument length = lib.getArgument(1);
-		Argument width = lib.getArgument(2);
-		Argument height = lib.getArgument(3);
-		assertEquals("7.0", length.getValue());
-		assertEquals("5.0", width.getValue());
-		assertEquals("2.0", height.getValue());
-		NamedArgument type = lib.getNamedArgument('t');
-		assertEquals("pyramid", type.getValue());
-	}
 
 	
-	@Test
+	@Test//XML file location specific to Katie
 	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfLibrary(){
 		String[] args = {"7", "-t", "pyramid", "5", "2"};
 		try{
 			AddXMLArguments xml = new AddXMLArguments();
-			Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
-		}
-		catch(Exception e){
-			assertEquals("", e);
-		}
-		//Library lib = xml.addArgumentsFromXMLFile("Arguments.xml");
-		/*Library lib = new Library();
-		try{
-			lib.addArgumentsFromXMLFile("Arguments.xml");
-		}
-		catch(Exception e){
-			assertEquals("", e);
-		}*/
-		try{
+			Library lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			try{
 			lib.parse(args);
+			}
+			catch(Exception e){
+				assertEquals("", e);
+			}
+			Argument length = lib.getArgument(1);
+			Argument width = lib.getArgument(2);
+			Argument height = lib.getArgument(3);
+			assertEquals("7.0", length.getValue());
+			assertEquals("5.0", width.getValue());
+			assertEquals("2.0", height.getValue());
+			NamedArgument type = lib.getNamedArgument('t');
+			assertEquals("pyramid", type.getValue());
+			NamedArgument digits = lib.getNamedArgument('d');
+			assertEquals("4", digits.getValue());
 		}
 		catch(Exception e){
 			assertEquals("", e);
 		}
-		Argument length = lib.getArgument(1);
-		Argument width = lib.getArgument(2);
-		Argument height = lib.getArgument(3);
-		assertEquals("7.0", length.getValue());
-		assertEquals("5.0", width.getValue());
-		assertEquals("2.0", height.getValue());
-		NamedArgument type = lib.getNamedArgument('t');
-		assertEquals("pyramid", type.getValue());
+	
 	}
 	
-   
-
-    
-    
-    /*
-     @Test
-     public void testReadingXMLGetPositionalArgumentValue(){
-     ArgumentXML xml = new ArgumentXML();
-     Library lib = new Library();
-     xml = ArgumentXML.ReadXML("/GitHub/ArgParse_CS310/Library/src/main/java/edu/jsu/mcis/ArgumentXML.xml");
-     String[] args = {"7", "--type", "pyramid", "5", "3", "--digits", "1"};
-     lib.parse(args);
-     assertEquals("dog", xml.getValue("pet"));
-     assertEquals(8, xml.getValue("number"));
-     assertEquals(true, xml.getValue("rainy"));
-     assertEquals(xml.getValue("bathrooms"), 3.4f);
-     assertEquals(2, xml.getValue("Length"));
-     assertEquals(1, xml.getValue("Width"));
-     assertEquals(3, xml.getValue("Height"));
-     }
-     */
-
 }
 
     
