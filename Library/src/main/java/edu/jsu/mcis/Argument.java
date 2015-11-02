@@ -16,6 +16,7 @@ public class Argument{
         value = null;
         position = -1;
     }
+    //make constructor do the same as add elements
     
     public Argument(String name){
         addElements(name);

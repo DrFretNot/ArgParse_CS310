@@ -14,12 +14,13 @@ import java.io.IOException;
 
 public class Library {
 	
-	private List<NamedArgument> namedArgumentList;
+	private List<NamedArgument> namedArgumentList; //hashmap, key would be the name of the argument
+	//if short form is given from CLI, need to search for the name then find it in the map
     private List<Argument> argumentList;
     private String programName = "";
     private String programDescription = "";
     private int posCount;
-    public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
+    public enum argType {INTEGER, FLOAT, STRING, BOOLEAN}; // move to argument class
     
     public Library(){
 		this.programName = "";
@@ -51,7 +52,7 @@ public class Library {
     	argumentList.add(arg);
     }
     
-    public void addNamedArgument(NamedArgument arg){
+    public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
     	namedArgumentList.add(arg);
     }
     
@@ -220,7 +221,7 @@ public class Library {
    		}
    }
     
-    private String helpMessage(){
+    private String helpMessage(){ //update the help message to print out all options, not just positional
 		String helpMessage = "usage: java " + programName;
 		for(int i = 0; i < argumentList.size(); i++) {
 			Argument currentArg = argumentList.get(i);
