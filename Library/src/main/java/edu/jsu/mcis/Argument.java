@@ -17,6 +17,11 @@ public class Argument{
         position = -1;
     }
     
+    public Argument(String name){
+        addElements(name);
+    }
+    
+    
     public void addElements(String name){
 		this.setName(name);
         this.setType(Library.argType.STRING);
