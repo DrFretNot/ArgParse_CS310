@@ -1,0 +1,10 @@
+addElements in constructor for Argument
+Rename Library to something more specific
+XML should have all possibilities
+Add NamedArguments to help
+Look up normal command line messages (option, required, etc.)
+for code, let product owner start at 0
+XML tag
+Scope of declarations
+XML static
+Rename XML add Arguments
