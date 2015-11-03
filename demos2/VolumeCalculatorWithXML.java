@@ -10,8 +10,23 @@ public class VolumeCalculatorWithXML
         float z = 0;
           
         try{
-			AddXMLArguments xml = new AddXMLArguments();
-			Library lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			AddXMLArguments xml = new AddXMLArguments();//XML File path is different for each computer
+			
+			//checks if the XML File exists
+			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			boolean exists = varTempDir.exists();
+			if (varTempDir.isDirectory()){
+				//Katie
+				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			}
+			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			boolean exists = varTempDir.exists();
+			
+			if (varTempDir.isDirectory()){
+				//Trent
+				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			}
+			
 			try{
 				lib.parse(args);
 				Argument length = lib.getArgument(1);

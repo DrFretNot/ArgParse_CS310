@@ -10,23 +10,23 @@ public class VolumeCalculator
         float z = 0;
         float total = 0;
             
-        Library lib = new Library();
+        ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
         Argument length = new Argument();
         Argument width = new Argument();
         Argument height = new Argument();
     
-        length.addElements("length", Library.argType.FLOAT, "the length of the box");
-        width.addElements("width", Library.argType.FLOAT, "the width of the box");
-        height.addElements("height", Library.argType.FLOAT, "the height of the box");
+        length.addElements("length", ArgumentParser.argType.FLOAT, "the length of the box");
+        width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box");
+        height.addElements("height", ArgumentParser.argType.FLOAT, "the height of the box");
         
         lib.addArgument(length);
         lib.addArgument(width);
         lib.addArgument(height);
         lib.addNamedArgument(new NamedArgument("type", "box", 't'));
-        lib.addNamedArgument(new NamedArgument("digits", "0", Library.argType.INTEGER, 'd'));
-        lib.addNamedArgument(new NamedArgument("help", Library.argType.BOOLEAN, 'h'));
+        lib.addNamedArgument(new NamedArgument("digits", "0", ArgumentParser.argType.INTEGER, 'd'));
+        lib.addNamedArgument(new NamedArgument("help", ArgumentParser.argType.BOOLEAN, 'h'));
         	
 		try {
 			lib.parse(args);

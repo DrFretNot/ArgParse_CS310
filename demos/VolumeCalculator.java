@@ -30,19 +30,19 @@ public class VolumeCalculator {
     }*/
     
     public static void main(String[] args){
-    	Library VolumeCalculator = new Library();
+    	ArgumentParser VolumeCalculator = new ArgumentParser();
     	//tried this but didn't work
-    	//Library.Library VolumeCalculator = new Library.Library();
+    	//ArgumentParser.ArgumentParser VolumeCalculator = new ArgumentParser.ArgumentParser();
     	
     	VolumeCalculator.addProgramName("VolumeCalculator");
     	
     	VolumeCalculator.addProgramDescription("Calculate the volume of a box given length, width, and height.\nEnter -h for more details.");
     	
-    	VolumeCalculator.addArgWithDataType("length", Library.argType.FLOAT);
+    	VolumeCalculator.addArgWithDataType("length", ArgumentParser.argType.FLOAT);
     	
-    	VolumeCalculator.addArgWithDataType("width", Library.argType.FLOAT);
+    	VolumeCalculator.addArgWithDataType("width", ArgumentParser.argType.FLOAT);
     	
-    	VolumeCalculator.addArgWithDataType("height", Library.argType.FLOAT);
+    	VolumeCalculator.addArgWithDataType("height", ArgumentParser.argType.FLOAT);
     	
     	System.out.println(VolumeCalculator.getProgramName());
     	System.out.println(VolumeCalculator.getProgramDescription());
