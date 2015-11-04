@@ -10,7 +10,8 @@ public class VolumeCalculatorWithXML
         float z = 0;
           
         try{
-			AddXMLArguments xml = new AddXMLArguments();//XML File path is different for each computer
+			
+			/*AddXMLArguments xml = new AddXMLArguments();//XML File path is different for each computer
 			
 			//checks if the XML File exists
 			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
@@ -26,6 +27,22 @@ public class VolumeCalculatorWithXML
 				//Trent
 				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			}
+			*/
+			
+			
+			AddXMLArguments xml = new AddXMLArguments();
+		
+			//Katie Location
+			//Library lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+		
+			//Trent Location
+			Library lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			
+			
+			
+			
+			
+			
 			
 			try{
 				lib.parse(args);
