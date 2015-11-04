@@ -1,3 +1,13 @@
+/**
+*Argument Parser is a user-friendly library for taking in command line arguments
+*and returning their user specified values. The user defines what arguments are 
+*required. Then the program will parse command line info, and will automatically 
+*genreate help, useage, and error messages when the program is given program 
+*invalid arguments.
+*
+*
+*/
+
 package edu.jsu.mcis;
 
 import java.util.*;
@@ -22,6 +32,10 @@ public class ArgumentParser {
     private int posCount;
     public enum argType {INTEGER, FLOAT, STRING, BOOLEAN}; // move to argument class
     
+/**
+* the Argument Parser constructor this will instantiate a new instance of the Parser
+*
+*/    
     public ArgumentParser(){
 		this.programName = "";
         this.programDescription = "";
