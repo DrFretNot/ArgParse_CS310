@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>NamedArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ArgumentParser</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">NamedArgument.java</span></div><h1>NamedArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+public class NamedArgument extends PositionalArgument{
+    
+   private char shortFormName;
+
+	/*
+
+	constructors
+	
+	HAVE
+	name
+	name	defaultValue
+	name	dataType
+	name	defaultValue	dataType
+	name	defaultValue	argDescription
+	name	dataType		argDescription
+	name	defaultValue	dataType 		argDescription
+	name	shortForm
+	name	defaultValue	shortForm
+	
+	NEED(?)
+	name	argDescription		but description is a String, so we can't have this one. 
+	//							how to handle? do we need this combination?
+	
+	name	dataType		shortForm
+	name	defaultValue	dataType		shortForm
+	name	defaultValue	argDescription	shortForm
+	name	dataType		argDescription	shortForm
+	name	defaultValue	dataType 		argDescription	shortForm
+	
+	*/
+//**************************************************************************************
+
+    public NamedArgument(String name){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = ArgType.STRING;
+        //value = null;
+<span class="fc" id="L40">        super(name);  </span>
+<span class="fc" id="L41">    }</span>
+    
+    public NamedArgument(String name, ArgType dataType){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = dataType;
+<span class="fc" id="L47">        super(name, dataType);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="fc" id="L49">        	this.value = &quot;false&quot;;</span>
+        }
+        else{
+<span class="nc" id="L52">        	this.value = null; </span>
+        } 
+<span class="fc" id="L54">    }  </span>
+    
+     
+    
+    /*public NamedArgument(String name, String argDescription){
+    	
+    } */ 
+    
+    public NamedArgument(String name, ArgType dataType, String argDescription){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+<span class="fc" id="L66">        super(name, dataType, argDescription);</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L68">        	this.value = &quot;false&quot;;</span>
+        }
+        else{
+<span class="fc" id="L71">        	this.value = null; </span>
+        }   
+<span class="fc" id="L73">    } </span>
+    
+    public NamedArgument(String name, String defaultValue){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = ArgType.STRING;
+<span class="fc" id="L79">        super(name);</span>
+<span class="fc" id="L80">        value = defaultValue;  </span>
+<span class="fc" id="L81">    }          </span>
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = dataType;
+<span class="fc" id="L87">        super(name, dataType);</span>
+<span class="fc" id="L88">        value = defaultValue;  </span>
+<span class="fc" id="L89">    }  </span>
+    public NamedArgument(String name, String defaultValue, String argDescription){
+        //argName = name;
+        //description = argDescription;
+        //type = ArgType.STRING;
+<span class="fc" id="L94">        super(name, argDescription);</span>
+<span class="fc" id="L95">        value = defaultValue;  </span>
+<span class="fc" id="L96">    }    	</span>
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+<span class="fc" id="L102">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L103">        value = defaultValue;  </span>
+<span class="fc" id="L104">    }</span>
+    
+    
+    //These take shortForm
+	public NamedArgument(String name, char shortForm){
+		//argName = name;
+        //description = &quot;&quot;;
+        //type = ArgType.STRING;
+        //value = null;
+<span class="fc" id="L113">        super(name);</span>
+<span class="fc" id="L114">        shortFormName = shortForm;</span>
+<span class="fc" id="L115">	}	</span>
+	public NamedArgument(String name, String defaultValue, char shortForm){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = ArgType.STRING;
+<span class="fc" id="L120">        super(name);</span>
+<span class="fc" id="L121">        value = defaultValue;</span>
+<span class="fc" id="L122">        shortFormName = shortForm;  </span>
+<span class="fc" id="L123">    }  </span>
+	public NamedArgument(String name, ArgType dataType, char shortForm){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = dataType;
+<span class="fc" id="L128">        super(name, dataType);</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L130">        	value = &quot;false&quot;;</span>
+        }
+        else{
+<span class="fc" id="L133">        	value = null; </span>
+        }   
+<span class="fc" id="L135">        shortFormName = shortForm;</span>
+<span class="fc" id="L136">    }  </span>
+    public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
+        //argName = name;
+        //description = &quot;&quot;;
+        //type = dataType;
+<span class="fc" id="L141">        super(name, dataType);</span>
+<span class="fc" id="L142">        value = defaultValue;</span>
+<span class="fc" id="L143">        shortFormName = shortForm;  </span>
+<span class="fc" id="L144">    }  </span>
+    public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
+        //argName = name;
+        //description = argDescription;
+        //type = ArgType.STRING;
+<span class="fc" id="L149">        super(name, argDescription);</span>
+<span class="fc" id="L150">        value = defaultValue; </span>
+<span class="fc" id="L151">        shortFormName = shortForm; </span>
+<span class="fc" id="L152">    }    	</span>
+	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+<span class="fc" id="L157">        super(name, dataType, argDescription);</span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L159">        	value = &quot;false&quot;;</span>
+        }
+        else{
+<span class="fc" id="L162">        	value = null; </span>
+        }   
+<span class="fc" id="L164">        shortFormName = shortForm;</span>
+<span class="fc" id="L165">    }</span>
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+<span class="fc" id="L170">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L171">        value = defaultValue;  </span>
+<span class="fc" id="L172">        shortFormName = shortForm;</span>
+<span class="fc" id="L173">    }</span>
+	
+
+
+//**************************************************************************************
+//methods
+	public char getShortFormName(){
+<span class="fc" id="L180">		return shortFormName;</span>
+	}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

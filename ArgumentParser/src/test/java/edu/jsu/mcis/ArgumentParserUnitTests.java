@@ -22,18 +22,18 @@ public class ArgumentParserUnitTests {
     
     @Test
     public void testAddArgumentAndReturnCorrectName(){
-    	Argument length = new Argument();
-    	length.addElements("length");
+    	PositionalArgument length = new PositionalArgument("length");
+    	//length.addElements("length");
     	assertEquals("length", length.getName()); 
     }
     
     @Test
     public void testAddArgumentInArgumentParserAndReturnCorrectArgumentInArgumentParser(){
     	ArgumentParser lib = new ArgumentParser();
-    	Argument length = new Argument();
-    	length.addElements("length", ArgumentParser.argType.INTEGER, "the length of the box");
-    	lib.addArgument(length);
-    	Argument currentArg = lib.getArgument("length");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.INTEGER, "the length of the box");
+    	//length.addElements("length", Argument.ArgType.INTEGER, "the length of the box");
+    	lib.addPositionalArgument(length);
+    	PositionalArgument currentArg = lib.getPositionalArgument("length");
     	assertEquals("length", currentArg.getName());
     	assertEquals("integer", currentArg.getType());
     	assertEquals("the length of the box", currentArg.getDescription());
@@ -41,23 +41,23 @@ public class ArgumentParserUnitTests {
     
     @Test
     public void testAddArgumentWithoutTypeAndReturnDefaultType(){
-    	Argument length = new Argument();
-    	length.addElements("length");
+    	PositionalArgument length = new PositionalArgument("length");
+    	//length.addElements("length");
     	assertEquals("string", length.getType()); 
     }
     
     @Test
     public void testEnterArgNameAndTypeAndReturnCorrectInfo(){
-        Argument one = new Argument();
-        one.addElements("length",ArgumentParser.argType.FLOAT);
+        PositionalArgument one = new PositionalArgument("length", Argument.ArgType.FLOAT);
+        //one.addElements("length",Argument.ArgType.FLOAT);
         assertEquals("length", one.getName());
         assertEquals("float", one.getType());
     }
     
     @Test
     public void testAddArgumentWithDescriptionAndReturnCorrectDescriptionAndDefaultType(){
-    	Argument length = new Argument();
-    	length.addElements("length", "the length of the box");
+    	PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	//length.addElements("length", "the length of the box");
     	assertEquals("the length of the box", length.getDescription());
     	assertEquals("string", length.getType());  
     }
@@ -76,7 +76,7 @@ public class ArgumentParserUnitTests {
     
     @Test
     public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescription(){
-    	NamedArgument type = new NamedArgument("IntType", ArgumentParser.argType.INTEGER,"This is an integer" );
+    	NamedArgument type = new NamedArgument("IntType", Argument.ArgType.INTEGER,"This is an integer" );
 		assertEquals("IntType", type.getName()); 
 		assertEquals("integer", type.getType()); 
 		assertEquals("This is an integer", type.getDescription()); 
@@ -84,7 +84,7 @@ public class ArgumentParserUnitTests {
     
      @Test
     public void testAddNamedArgumentAndReturnCorrectNameWithTypeValueAndDescriptionWithFloat(){
-    	NamedArgument type = new NamedArgument("FloatType", ArgumentParser.argType.FLOAT,"This is a float" );
+    	NamedArgument type = new NamedArgument("FloatType", Argument.ArgType.FLOAT,"This is a float" );
 		assertEquals("FloatType", type.getName()); 
 		assertEquals("float", type.getType()); 
 		assertEquals("This is a float", type.getDescription()); 
@@ -104,7 +104,7 @@ public class ArgumentParserUnitTests {
 	
     @Test
     public void testEnterNamedArgNameAndTypeAndReturnCorrectInfo(){
-        NamedArgument help = new NamedArgument("help",ArgumentParser.argType.BOOLEAN);
+        NamedArgument help = new NamedArgument("help",Argument.ArgType.BOOLEAN);
         assertEquals("help", help.getName());
         assertEquals("boolean", help.getType());
     }
@@ -119,7 +119,7 @@ public class ArgumentParserUnitTests {
  	@Test
     public void testAddNamedArgumentInArgumentParserAndReturnCorrectNamedArgumentInArgumentParser(){
     	ArgumentParser lib = new ArgumentParser();
-    	lib.addNamedArgument(new NamedArgument("type", "box", ArgumentParser.argType.STRING, "the shape of the object"));
+    	lib.addNamedArgument(new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object"));
     	NamedArgument currentArg = lib.getNamedArgument("type");
     	assertEquals("type", currentArg.getName());
     	assertEquals("box", currentArg.getValue());
@@ -132,19 +132,19 @@ public class ArgumentParserUnitTests {
 	public void testAddingFloatAndBooleanArgumentsAndParseValuesCorrectly(){
 		String[] args = {"7","8","9","TRUE"};
 		ArgumentParser lib = new ArgumentParser();
-		Argument length =new Argument();
-		Argument width = new Argument();
-		Argument height = new Argument();
-		Argument fact = new Argument();
+		PositionalArgument length =new PositionalArgument("length", Argument.ArgType.INTEGER, "the length of the box");
+		PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the box");
+		PositionalArgument height = new PositionalArgument("height", Argument.ArgType.INTEGER, "the height of the box");
+		PositionalArgument fact = new PositionalArgument("fact", Argument.ArgType.BOOLEAN, "the validity of the fact");
 		
-		length.addElements("length", ArgumentParser.argType.INTEGER, "the length of the box");
-    	width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box");
-    	height.addElements("height", ArgumentParser.argType.INTEGER, "the height of the box");
-    	fact.addElements("fact", ArgumentParser.argType.BOOLEAN, "the validity of the fact");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-	 	lib.addArgument(height);
-    	lib.addArgument(fact);
+		//length.addElements("length", Argument.ArgType.INTEGER, "the length of the box");
+    	//width.addElements("width", Argument.ArgType.FLOAT, "the width of the box");
+    	//height.addElements("height", Argument.ArgType.INTEGER, "the height of the box");
+    	//fact.addElements("fact", Argument.ArgType.BOOLEAN, "the validity of the fact");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+	 	lib.addPositionalArgument(height);
+    	lib.addPositionalArgument(fact);
     	
     	try{
     		lib.parse(args);
@@ -162,15 +162,15 @@ public class ArgumentParserUnitTests {
     public void testArgValuesFromCLIAssignedToCorrectArgument(){
     	String[] args = {"7", "5", "3"};
     	ArgumentParser lib = new ArgumentParser();
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length");
-    	width.addElements("width");
-    	height.addElements("height");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+    	PositionalArgument length = new PositionalArgument("length");
+    	PositionalArgument width = new PositionalArgument("width");
+    	PositionalArgument height = new PositionalArgument("height");
+    	//length.addElements("length");
+    	//width.addElements("width");
+    	//height.addElements("height");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	try{
     		lib.parse(args);
     	}
@@ -186,15 +186,15 @@ public class ArgumentParserUnitTests {
         ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
         try{
         	lib.parse(args);
         }
@@ -209,15 +209,15 @@ public class ArgumentParserUnitTests {
         ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
         try{
         	lib.parse(args);
         }
@@ -232,16 +232,16 @@ public class ArgumentParserUnitTests {
         ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", ArgumentParser.argType.BOOLEAN, 'h'));
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
         try{
         	lib.parse(args);
         }
@@ -256,15 +256,15 @@ public class ArgumentParserUnitTests {
 		ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", ArgumentParser.argType.INTEGER, "the length of the box");
-    	width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box");
-    	height.addElements("height", ArgumentParser.argType.INTEGER, "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", Argument.ArgType.INTEGER, "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.INTEGER, "the height of the box");
+    	//length.addElements("length", Argument.ArgType.INTEGER, "the length of the box");
+    	//width.addElements("width", Argument.ArgType.FLOAT, "the width of the box");
+    	//height.addElements("height", Argument.ArgType.INTEGER, "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
         try{
         	lib.parse(args);
         }
@@ -282,16 +282,16 @@ public class ArgumentParserUnitTests {
         ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", ArgumentParser.argType.BOOLEAN));
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN));
         try{
         	lib.parse(args);
         }
@@ -306,15 +306,15 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box"));
     	try{
     		lib.parse(args);
@@ -331,15 +331,15 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	NamedArgument type = new NamedArgument("type", "box");
     	lib.addNamedArgument(type);
     	try{
@@ -356,16 +356,16 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	NamedArgument help = new NamedArgument("help", ArgumentParser.argType.BOOLEAN);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN);
     	lib.addNamedArgument(help);
     	try{
     		lib.parse(args);
@@ -381,16 +381,16 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	NamedArgument help = new NamedArgument("helpful", ArgumentParser.argType.BOOLEAN);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	NamedArgument help = new NamedArgument("helpful", Argument.ArgType.BOOLEAN);
     	lib.addNamedArgument(help);
     	try{
     		lib.parse(args);
@@ -407,17 +407,17 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box"));
-    	lib.addNamedArgument(new NamedArgument("digits", "0", ArgumentParser.argType.INTEGER));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER));
     	try{
     		lib.parse(args);
     	}
@@ -437,17 +437,17 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
-    	lib.addNamedArgument(new NamedArgument("digits", "0", ArgumentParser.argType.INTEGER, 'd'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
     	try{
     		lib.parse(args);
     	}
@@ -469,18 +469,18 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("dark", "false", ArgumentParser.argType.BOOLEAN, 'd'));
-    	lib.addNamedArgument(new NamedArgument("appropriate", "false", ArgumentParser.argType.BOOLEAN, 'a'));
-    	lib.addNamedArgument(new NamedArgument("pink", "false", ArgumentParser.argType.BOOLEAN, 'p'));
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("dark", "false", Argument.ArgType.BOOLEAN, 'd'));
+    	lib.addNamedArgument(new NamedArgument("appropriate", "false", Argument.ArgType.BOOLEAN, 'a'));
+    	lib.addNamedArgument(new NamedArgument("pink", "false", Argument.ArgType.BOOLEAN, 'p'));
     	try{
     		lib.parse(args);
     	}
@@ -504,16 +504,16 @@ public class ArgumentParserUnitTests {
 		ArgumentParser lib = new ArgumentParser();
     	lib.addProgramName("VolumeCalculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", ArgumentParser.argType.FLOAT, "the length of the box");
-    	width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box");
-    	height.addElements("height", ArgumentParser.argType.FLOAT, "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", ArgumentParser.argType.BOOLEAN, 'h'));
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the box");
+    	//length.addElements("length", Argument.ArgType.FLOAT, "the length of the box");
+    	//width.addElements("width", Argument.ArgType.FLOAT, "the width of the box");
+    	//height.addElements("height", Argument.ArgType.FLOAT, "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
     	try{
     		lib.parse(args);
     	}
@@ -528,16 +528,16 @@ public class ArgumentParserUnitTests {
 		ArgumentParser lib = new ArgumentParser();
     	lib.addProgramName("Volume Calculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", ArgumentParser.argType.FLOAT, "the length of the box (float)");
-    	width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box (float)");
-    	height.addElements("height", ArgumentParser.argType.FLOAT, "the height of the box (float)");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", ArgumentParser.argType.BOOLEAN));
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the box (float)");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the box (float)");
+    	//length.addElements("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	//width.addElements("width", Argument.ArgType.FLOAT, "the width of the box (float)");
+    	//height.addElements("height", Argument.ArgType.FLOAT, "the height of the box (float)");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN));
     	try{
     		lib.parse(args);
     	}
@@ -551,9 +551,9 @@ public class ArgumentParserUnitTests {
 		ArgumentParser lib = new ArgumentParser();
     	lib.addProgramName("Volume Calculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
-    	Argument length = new Argument();
-    	length.addElements("length", ArgumentParser.argType.FLOAT, "the length of the box (float)");
-    	lib.addArgument(length);
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	//length.addElements("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	lib.addPositionalArgument(length);
 		assertEquals(0, length.getPosition());
 	}
 	
@@ -569,13 +569,13 @@ public class ArgumentParserUnitTests {
 	}
 	 @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeThenReturnCorrectShortForm(){
-		NamedArgument type = new NamedArgument("type", ArgumentParser.argType.STRING,'t');
+		NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING,'t');
     	assertEquals('t', type.getShortFormName());  	
 	}
     
     @Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeThenReturnCorrectShortForm(){
-		NamedArgument type = new NamedArgument("type", "value",ArgumentParser.argType.STRING,'t');
+		NamedArgument type = new NamedArgument("type", "value",Argument.ArgType.STRING,'t');
     	assertEquals('t', type.getShortFormName());  	
 	}
 	@Test
@@ -585,13 +585,13 @@ public class ArgumentParserUnitTests {
 	}
     @Test
 	public void testAddingNamedArgumentWithShortFormAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
-		NamedArgument type = new NamedArgument("type", ArgumentParser.argType.STRING, "This is a type", 't');
+		NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, "This is a type", 't');
     	assertEquals('t', type.getShortFormName());  	
 	}
 	
 	@Test
 	public void testAddingNamedArgumentWithShortFormAndValueAndDataTypeAndDescriptionThenReturnCorrectShortForm(){
-		NamedArgument type = new NamedArgument("type", "value", ArgumentParser.argType.STRING, "This is a type", 't');
+		NamedArgument type = new NamedArgument("type", "value", Argument.ArgType.STRING, "This is a type", 't');
     	assertEquals('t', type.getShortFormName());  	
 	}
 	
@@ -609,17 +609,17 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
-    	lib.addNamedArgument(new NamedArgument("digits", "0", ArgumentParser.argType.INTEGER, 'd'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
     	try{
     		lib.parse(args);
     	}
@@ -634,17 +634,17 @@ public class ArgumentParserUnitTests {
     	ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of a box.");
-        Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
-    	lib.addNamedArgument(new NamedArgument("digits", "0", ArgumentParser.argType.INTEGER, 'd'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
     	try{
     		lib.parse(args);
     	}
@@ -656,20 +656,20 @@ public class ArgumentParserUnitTests {
     @Test
     public void testGetArgumentReturnCorrectArgumentBySearchingForPosition(){
     	ArgumentParser lib = new ArgumentParser();
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", "the length of the box");
-    	width.addElements("width", "the width of the box");
-    	height.addElements("height", "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	Argument arg1 = lib.getArgument(1);
+    	PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	PositionalArgument arg1 = lib.getPositionalArgument(1);
     	assertEquals("length", arg1.getName());
-    	Argument arg2 = lib.getArgument(2);
+    	PositionalArgument arg2 = lib.getPositionalArgument(2);
     	assertEquals("width", arg2.getName());
-    	Argument arg3 = lib.getArgument(3);
+    	PositionalArgument arg3 = lib.getPositionalArgument(3);
     	assertEquals("height", arg3.getName());
     }
 
@@ -684,10 +684,10 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			//ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
-			ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			//ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
 			
 			/*
@@ -721,9 +721,9 @@ public class ArgumentParserUnitTests {
 			catch(Exception e){
 				assertEquals("", e);
 			}
-			Argument length = lib.getArgument(1);
-			Argument width = lib.getArgument(2);
-			Argument height = lib.getArgument(3);
+			PositionalArgument length = lib.getPositionalArgument(1);
+			PositionalArgument width = lib.getPositionalArgument(2);
+			PositionalArgument height = lib.getPositionalArgument(3);
 			assertEquals("7.0", length.getValue());
 			assertEquals("5.0", width.getValue());
 			assertEquals("2.0", height.getValue());

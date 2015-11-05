@@ -26,11 +26,12 @@ public class ArgumentParser {
 	
 	private List<NamedArgument> namedArgumentList; //hashmap, key would be the name of the argument
 	//if short form is given from CLI, need to search for the name then find it in the map
-    private List<Argument> argumentList;
+    private List<PositionalArgument> positionalArgumentList;
     private String programName = "";
     private String programDescription = "";
     private int posCount;
-    public enum argType {INTEGER, FLOAT, STRING, BOOLEAN}; // move to argument class
+    //public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
+    
     
 /**
 * the Argument Parser constructor this will instantiate a new instance of the Parser
@@ -39,7 +40,7 @@ public class ArgumentParser {
     public ArgumentParser(){
 		this.programName = "";
         this.programDescription = "";
-        this.argumentList = new ArrayList<Argument>();
+        this.positionalArgumentList = new ArrayList<PositionalArgument>();
         this.namedArgumentList = new ArrayList<NamedArgument>(); 
 		posCount = -1;
 	}
@@ -60,20 +61,20 @@ public class ArgumentParser {
         return programDescription;   
     }
     
-    public void addArgument(Argument arg){
+    public void addPositionalArgument(PositionalArgument arg){
     	posCount++;
     	arg.setPosition(posCount);
-    	argumentList.add(arg);
+    	positionalArgumentList.add(arg);
     }
     
     public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
     	namedArgumentList.add(arg);
     }
     
-    public Argument getArgument(String argName){
-    	Argument returnArg = null;
-    	for(int i = 0; i < argumentList.size(); i++){
-    		Argument currentArg = argumentList.get(i);
+    public PositionalArgument getPositionalArgument(String argName){
+    	PositionalArgument returnArg = null;
+    	for(int i = 0; i < positionalArgumentList.size(); i++){
+    		PositionalArgument currentArg = positionalArgumentList.get(i);
     		if(currentArg.getName().equals(argName)){
     			returnArg = currentArg;
     		}
@@ -81,10 +82,10 @@ public class ArgumentParser {
     	return returnArg;
     }
     
-    public Argument getArgument(int argPosition){
-    	Argument returnArg = null;
-    	for(int i = 0; i < argumentList.size(); i++){
-    		Argument currentArg = argumentList.get(i);
+    public PositionalArgument getPositionalArgument(int argPosition){
+    	PositionalArgument returnArg = null;
+    	for(int i = 0; i < positionalArgumentList.size(); i++){
+    		PositionalArgument currentArg = positionalArgumentList.get(i);
     		if(currentArg.getPosition() == argPosition - 1){
     			returnArg = currentArg;
     		}
@@ -123,7 +124,7 @@ public class ArgumentParser {
 		for (int index = 0; index < argList.size(); index++){
 			incorrectDataTypeIndex = index;
 			incorrectArgumentType = "positional";
-			Argument currentArg = argumentList.get(index);
+			PositionalArgument currentArg = positionalArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
 				currentArg.setValue(String.valueOf(argValue));
@@ -150,7 +151,7 @@ public class ArgumentParser {
 		for (int index = 0; index < namedArgumentList.size(); index++){
 			incorrectDataTypeIndex = index;
 			incorrectArgumentType = "named";
-			Argument currentArg = namedArgumentList.get(index);
+			NamedArgument currentArg = namedArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(currentArg.getValue());
 				currentArg.setValue(String.valueOf(argValue));
@@ -176,12 +177,12 @@ public class ArgumentParser {
     private String incorrectDataTypeMessage(ArrayList<String> argList){
 		if (incorrectArgumentType.equals("positional")){
 			String errorMessage = "usage: java " + programName;
-			for(int i = 0; i < argumentList.size(); i++) {
-				Argument currentArg = argumentList.get(i);
+			for(int i = 0; i < positionalArgumentList.size(); i++) {
+				PositionalArgument currentArg = positionalArgumentList.get(i);
 				errorMessage += " " + currentArg.getName();   
 			}
 			
-			Argument currentArg = argumentList.get(incorrectDataTypeIndex); 
+			PositionalArgument currentArg = positionalArgumentList.get(incorrectDataTypeIndex); 
 			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
 			return errorMessage;  
 		}
@@ -200,11 +201,11 @@ public class ArgumentParser {
     }
    
    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
-   		int numOfArgs = argumentList.size();
+   		int numOfArgs = positionalArgumentList.size();
    		if(argList.size() < numOfArgs){
             String message = "usage: java " + programName;
-            for(int i = 0; i < argumentList.size(); i++) {
-            	Argument currentArg = argumentList.get(i);
+            for(int i = 0; i < positionalArgumentList.size(); i++) {
+            	PositionalArgument currentArg = positionalArgumentList.get(i);
                 message += " " + currentArg.getName();   
             }
             
@@ -212,7 +213,7 @@ public class ArgumentParser {
             //int numOfArgsMissing = numOfArgs - args.length;
             
             for(int j = argList.size(); j < numOfArgs; j++){
-            	Argument currentArg = argumentList.get(j);
+            	PositionalArgument currentArg = positionalArgumentList.get(j);
             	message += " " + currentArg.getName();
             }
             
@@ -221,8 +222,8 @@ public class ArgumentParser {
         
    		else {
    			String message = "usage: java " + programName;
-            for(int i = 0; i < argumentList.size(); i++) {
-            	Argument currentArg = argumentList.get(i);
+            for(int i = 0; i < positionalArgumentList.size(); i++) {
+            	PositionalArgument currentArg = positionalArgumentList.get(i);
                 message += " " + currentArg.getName();;   
             }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
@@ -237,15 +238,15 @@ public class ArgumentParser {
     
     private String helpMessage(){ //update the help message to print out all options, not just positional
 		String helpMessage = "usage: java " + programName;
-		for(int i = 0; i < argumentList.size(); i++) {
-			Argument currentArg = argumentList.get(i);
+		for(int i = 0; i < positionalArgumentList.size(); i++) {
+			PositionalArgument currentArg = positionalArgumentList.get(i);
 			helpMessage += " " + currentArg.getName();   
 		}
         
 		helpMessage += "\n" + programDescription + "\npositional arguments:";
 		
-        for(int i = 0; i < argumentList.size(); i++) {
-			Argument currentArg = argumentList.get(i);
+        for(int i = 0; i < positionalArgumentList.size(); i++) {
+			PositionalArgument currentArg = positionalArgumentList.get(i);
 			helpMessage += "\n" + currentArg.getName() + " " + currentArg.getDescription();   
 		}
 
@@ -384,8 +385,8 @@ public class ArgumentParser {
 	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
 		String message = "usage: java " + programName;
-		for(int i = 0; i < argumentList.size(); i++) {
-			Argument currentArg = argumentList.get(i);
+		for(int i = 0; i < positionalArgumentList.size(); i++) {
+			PositionalArgument currentArg = positionalArgumentList.get(i);
             message += " " + currentArg.getName();   
         }
         
@@ -409,12 +410,12 @@ public class ArgumentParser {
 			}
         }
         
-		if (argumentList.size() != tempPositionalArgList.size()){
+		if (positionalArgumentList.size() != tempPositionalArgList.size()){
 				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));
 		}
-		else if (argumentList.size() == tempPositionalArgList.size()){
+		else if (positionalArgumentList.size() == tempPositionalArgList.size()){
 			for(int i = 0; i < tempPositionalArgList.size(); i++){
-   				Argument currentArg = argumentList.get(i);
+   				PositionalArgument currentArg = positionalArgumentList.get(i);
    				currentArg.setValue(tempPositionalArgList.get(i));
    			}
 			try{

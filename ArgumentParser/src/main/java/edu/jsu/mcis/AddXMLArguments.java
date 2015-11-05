@@ -54,27 +54,27 @@ public class AddXMLArguments{
 					Element positionEL = (Element)positionNL.item(0);
 					String position = positionEL.getTextContent();
 				
-					Argument newArg = new Argument();
-					ArgumentParser.argType dataType;
+					
+					Argument.ArgType dataType;
 					if(type.equals("integer")){
-						dataType = ArgumentParser.argType.INTEGER;
+						dataType = Argument.ArgType.INTEGER;
 					}
 					else if(type.equals("float")){
-						dataType = ArgumentParser.argType.FLOAT;
+						dataType = Argument.ArgType.FLOAT;
 					}
 					else if(type.equals("string")){
-						dataType = ArgumentParser.argType.STRING;
+						dataType = Argument.ArgType.STRING;
 					}
 					else if(type.equals("boolean")){
-						dataType = ArgumentParser.argType.BOOLEAN;
+						dataType = Argument.ArgType.BOOLEAN;
 					}
 					else{
-						dataType = ArgumentParser.argType.STRING;
+						dataType = Argument.ArgType.STRING;
 					}
+					PositionalArgument newArg = new PositionalArgument(name, dataType);
+					//newArg.addElements(name, dataType);
 			
-					newArg.addElements(name, dataType);
-			
-					lib.addArgument(newArg); 
+					lib.addPositionalArgument(newArg); 
 				}
 			}
 		
@@ -106,21 +106,21 @@ public class AddXMLArguments{
 					String defaultValue = defaultEL.getTextContent();
 				
 					//Argument newArg = new Argument();
-					ArgumentParser.argType dataType;
+					Argument.ArgType dataType;
 					if(type.equals("integer")){
-						dataType = ArgumentParser.argType.INTEGER;
+						dataType = Argument.ArgType.INTEGER;
 					}
 					else if(type.equals("float")){
-						dataType = ArgumentParser.argType.FLOAT;
+						dataType = Argument.ArgType.FLOAT;
 					}
 					else if(type.equals("string")){
-						dataType = ArgumentParser.argType.STRING;
+						dataType = Argument.ArgType.STRING;
 					}
 					else if(type.equals("boolean")){
-						dataType = ArgumentParser.argType.BOOLEAN;
+						dataType = Argument.ArgType.BOOLEAN;
 					}
 					else{
-						dataType = ArgumentParser.argType.STRING;
+						dataType = Argument.ArgType.STRING;
 					}
 			
 					//newArg.addElements(name, dataType);

@@ -1,6 +1,6 @@
 package edu.jsu.mcis;
 
-public class NamedArgument extends Argument{
+public class NamedArgument extends PositionalArgument{
     
    private char shortFormName;
 
@@ -33,79 +33,100 @@ public class NamedArgument extends Argument{
 //**************************************************************************************
 
     public NamedArgument(String name){
-        argName = name;
-        description = "";
-        type = ArgumentParser.argType.STRING;
-        value = null;  
-    }  
-    public NamedArgument(String name, String defaultValue){
-        argName = name;
-        description = "";
-        type = ArgumentParser.argType.STRING;
-        value = defaultValue;  
-    }              
-	public NamedArgument(String name, ArgumentParser.argType dataType){
-        argName = name;
-        description = "";
-        type = dataType;
-        if(dataType == ArgumentParser.argType.BOOLEAN){
-        	value = "false";
+        //argName = name;
+        //description = "";
+        //type = ArgType.STRING;
+        //value = null;
+        super(name);  
+    }
+    
+    public NamedArgument(String name, ArgType dataType){
+        //argName = name;
+        //description = "";
+        //type = dataType;
+        super(name, dataType);
+        if(dataType == ArgType.BOOLEAN){
+        	this.value = "false";
         }
         else{
-        	value = null; 
+        	this.value = null; 
         } 
     }  
-    public NamedArgument(String name, String defaultValue, ArgumentParser.argType dataType){
-        argName = name;
-        description = "";
-        type = dataType;
+    
+     
+    
+    /*public NamedArgument(String name, String argDescription){
+    	
+    } */ 
+    
+    public NamedArgument(String name, ArgType dataType, String argDescription){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+        super(name, dataType, argDescription);
+        if(dataType == ArgType.BOOLEAN){
+        	this.value = "false";
+        }
+        else{
+        	this.value = null; 
+        }   
+    } 
+    
+    public NamedArgument(String name, String defaultValue){
+        //argName = name;
+        //description = "";
+        //type = ArgType.STRING;
+        super(name);
+        value = defaultValue;  
+    }          
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType){
+        //argName = name;
+        //description = "";
+        //type = dataType;
+        super(name, dataType);
         value = defaultValue;  
     }  
     public NamedArgument(String name, String defaultValue, String argDescription){
-        argName = name;
-        description = argDescription;
-        type = ArgumentParser.argType.STRING;
+        //argName = name;
+        //description = argDescription;
+        //type = ArgType.STRING;
+        super(name, argDescription);
         value = defaultValue;  
     }    	
-	public NamedArgument(String name, ArgumentParser.argType dataType, String argDescription){
-        argName = name;
-        description = argDescription;
-        type = dataType;
-        if(dataType == ArgumentParser.argType.BOOLEAN){
-        	value = "false";
-        }
-        else{
-        	value = null; 
-        }   
-    }
-    public NamedArgument(String name, String defaultValue, ArgumentParser.argType dataType, String argDescription){
-        argName = name;
-        description = argDescription;
-        type = dataType;
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+        super(name, dataType, argDescription);
         value = defaultValue;  
     }
     
     
     //These take shortForm
 	public NamedArgument(String name, char shortForm){
-		argName = name;
-        description = "";
-        type = ArgumentParser.argType.STRING;
-        value = null;
+		//argName = name;
+        //description = "";
+        //type = ArgType.STRING;
+        //value = null;
+        super(name);
         shortFormName = shortForm;
 	}	
 	public NamedArgument(String name, String defaultValue, char shortForm){
-        argName = name;
-        description = "";
-        type = ArgumentParser.argType.STRING;
+        //argName = name;
+        //description = "";
+        //type = ArgType.STRING;
+        super(name);
         value = defaultValue;
         shortFormName = shortForm;  
     }  
-	public NamedArgument(String name, ArgumentParser.argType dataType, char shortForm){
-        argName = name;
-        description = "";
-        type = dataType;
-        if(dataType == ArgumentParser.argType.BOOLEAN){
+	public NamedArgument(String name, ArgType dataType, char shortForm){
+        //argName = name;
+        //description = "";
+        //type = dataType;
+        super(name, dataType);
+        if(dataType == ArgType.BOOLEAN){
         	value = "false";
         }
         else{
@@ -113,25 +134,28 @@ public class NamedArgument extends Argument{
         }   
         shortFormName = shortForm;
     }  
-    public NamedArgument(String name, String defaultValue, ArgumentParser.argType dataType, char shortForm){
-        argName = name;
-        description = "";
-        type = dataType;
+    public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
+        //argName = name;
+        //description = "";
+        //type = dataType;
+        super(name, dataType);
         value = defaultValue;
         shortFormName = shortForm;  
     }  
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
-        argName = name;
-        description = argDescription;
-        type = ArgumentParser.argType.STRING;
+        //argName = name;
+        //description = argDescription;
+        //type = ArgType.STRING;
+        super(name, argDescription);
         value = defaultValue; 
         shortFormName = shortForm; 
     }    	
-	public NamedArgument(String name, ArgumentParser.argType dataType, String argDescription, char shortForm){
-        argName = name;
-        description = argDescription;
-        type = dataType;
-        if(dataType == ArgumentParser.argType.BOOLEAN){
+	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+        super(name, dataType, argDescription);
+        if(dataType == ArgType.BOOLEAN){
         	value = "false";
         }
         else{
@@ -139,10 +163,11 @@ public class NamedArgument extends Argument{
         }   
         shortFormName = shortForm;
     }
-    public NamedArgument(String name, String defaultValue, ArgumentParser.argType dataType, String argDescription, char shortForm){
-        argName = name;
-        description = argDescription;
-        type = dataType;
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
+        //argName = name;
+        //description = argDescription;
+        //type = dataType;
+        super(name, dataType, argDescription);
         value = defaultValue;  
         shortFormName = shortForm;
     }

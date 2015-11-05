@@ -1,95 +1,52 @@
 package edu.jsu.mcis;
 
-public class Argument{
-    protected String argName;
+public abstract class Argument
+{
+	protected String argName;
     protected String description;
-    protected ArgumentParser.argType type;
-    //protected <T> value;
+    protected ArgType type;
     protected String value;
-	private int position;
-
+    protected enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     public Argument(){
         argName = null;
         description = "";
         type = null;
         value = null;
-        position = -1;
+        //position = -1;
     }
-    //make constructor do the same as add elements
     
     public Argument(String name){
-        addElements(name);
+    	/*argName = name;
+        description = "";
+        type = ArgType.STRING;
+        value = null;*/
+        this(name, ArgType.STRING, "");
     }
     
-    
-    public void addElements(String name){
-		this.setName(name);
-        this.setType(ArgumentParser.argType.STRING);
-    }
-    
-    public void addElements(String name, ArgumentParser.argType dataType){
-        this.setName(name);
-        this.setType(dataType);
-    }
-    
-    public void addElements(String name, String argDescription){
-        this.setName(name);
-        description = argDescription;
-        this.setType(ArgumentParser.argType.STRING);
-    }
-    
-    public void addElements(String name, ArgumentParser.argType dataType, String argDescription){
-    	this.setName(name);
-        this.setType(dataType);
-        description = argDescription;
-    } 
-
-	
-    private void setName(String name){
-        argName = name;
-    }
-    
-    public String getName()
-    {
-        return this.argName;
-    }
-    
-	public void setPosition(int pos){
-		position = pos;
-	}
-	
-	public int getPosition(){
-		return position;
-	}
-	
-    private void setType(ArgumentParser.argType dataType){
+    public Argument(String name, ArgType dataType){
+    	/*argName = name;
+        description = "";
         type = dataType;
+        value = null;*/
+        this(name, dataType, "");
     }
     
-    public String getType(){
-    	if(type == ArgumentParser.argType.INTEGER){
-    		return "integer";
-    	}
-    	else if(type == ArgumentParser.argType.FLOAT){
-    		return "float";
-    	}
-    	else if(type == ArgumentParser.argType.STRING){
-    		return "string";
-    	}
-    	else return "boolean";
+    public Argument(String name, String argDescription){
+    	/*argName = name;
+        description = argDescription;
+        type = ArgType.STRING;
+        value = null;*/
+        this(name, ArgType.STRING, argDescription);
     }
     
-    public String getDescription(){
-    	return description;
+    public Argument(String name, ArgType dataType, String argDescription){
+    	argName = name;
+        description = argDescription;
+        type = dataType;
+        value = null;
     }
     
-    public void setValue(String argValue){
-    	value = argValue;
-    }
-	
-    public String getValue(){
-    	return value;
-    }
-     
+    //public Argument(){};
+    
 }
