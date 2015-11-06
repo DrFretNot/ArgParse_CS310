@@ -9,15 +9,15 @@ public class ArgumentParserKeywords
     public void startVolumeCalculatorWithArguments(String[] args){
     	lib = new ArgumentParser();
     	lib.addProgramName("Volume Calculator");
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", ArgumentParser.argType.INTEGER, "the length of the box");
-    	width.addElements("width", ArgumentParser.argType.INTEGER, "the width of the box");
-    	height.addElements("height", ArgumentParser.argType.INTEGER, "the height of the box");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.INTEGER, "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.INTEGER, "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.INTEGER, "the height of the box");
+    	//length.addElements("length", Argument.ArgType.INTEGER, "the length of the box");
+    	//width.addElements("width", Argument.ArgType.INTEGER, "the width of the box");
+    	//height.addElements("height", Argument.ArgType.INTEGER, "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
     	lib.addNamedArgument(new NamedArgument("digits", "4", 'd'));
     	try{
@@ -34,17 +34,17 @@ public class ArgumentParserKeywords
     }
     
     public String getLength(){
-    	Argument currentArg = lib.getArgument("length");
+    	PositionalArgument currentArg = lib.getPositionalArgument("length");
     	return currentArg.getValue();
     }
     
     public String getWidth(){
-    	Argument currentArg = lib.getArgument("width");
+    	PositionalArgument currentArg = lib.getPositionalArgument("width");
     	return currentArg.getValue();
     }
     
     public String getHeight(){
-    	Argument currentArg = lib.getArgument("height");
+    	PositionalArgument currentArg = lib.getPositionalArgument("height");
     	return currentArg.getValue();
     }
     
@@ -65,18 +65,18 @@ public class ArgumentParserKeywords
     public void startAbsurdProgramWithArguments(String[] args){
     	lib = new ArgumentParser();
     	lib.addProgramName("Volume Calculator");
-    	Argument pet = new Argument();
-    	Argument number = new Argument();
-    	Argument rainy = new Argument();
-    	Argument bathrooms = new Argument();
-    	pet.addElements("pet");
-    	number.addElements("number");
-    	rainy.addElements("rainy");
-    	bathrooms.addElements("bathrooms");
-    	lib.addArgument(pet);
-    	lib.addArgument(number);
-    	lib.addArgument(rainy);
-    	lib.addArgument(bathrooms);
+    	PositionalArgument pet = new PositionalArgument("pet");
+    	PositionalArgument number = new PositionalArgument("number");
+    	PositionalArgument rainy = new PositionalArgument("rainy");
+    	PositionalArgument bathrooms = new PositionalArgument("bathrooms");
+    	//pet.addElements("pet");
+    	//number.addElements();
+    	//rainy.addElements("rainy");
+    	//bathrooms.addElements(");
+    	lib.addPositionalArgument(pet);
+    	lib.addPositionalArgument(number);
+    	lib.addPositionalArgument(rainy);
+    	lib.addPositionalArgument(bathrooms);
     	try{
     		lib.parse(args);
     	}
@@ -86,22 +86,22 @@ public class ArgumentParserKeywords
     }
     
     public String getpet(){
-    	Argument currentArg = lib.getArgument("pet");
+    	PositionalArgument currentArg = lib.getPositionalArgument("pet");
     	return currentArg.getValue();
     }
     
     public String getNumber(){
-    	Argument currentArg = lib.getArgument("number");
+    	PositionalArgument currentArg = lib.getPositionalArgument("number");
     	return currentArg.getValue();
     }
     
     public String getRainy(){
-    	Argument currentArg = lib.getArgument("rainy");
+    	PositionalArgument currentArg = lib.getPositionalArgument("rainy");
     	return currentArg.getValue();
     }
     
     public String getBathrooms(){
-    	Argument currentArg = lib.getArgument("bathrooms");
+    	PositionalArgument currentArg = lib.getPositionalArgument("bathrooms");
     	return currentArg.getValue();
     }
     
@@ -109,16 +109,16 @@ public class ArgumentParserKeywords
     	lib = new ArgumentParser();
     	lib.addProgramName("Volume Calculator");
     	lib.addProgramDescription("Calculate the volume of a box.");
-    	Argument length = new Argument();
-    	Argument width = new Argument();
-    	Argument height = new Argument();
-    	length.addElements("length", ArgumentParser.argType.FLOAT, "the length of the box (float)");
-    	width.addElements("width", ArgumentParser.argType.FLOAT, "the width of the box (float)");
-    	height.addElements("height", ArgumentParser.argType.FLOAT, "the height of the box (float)");
-    	lib.addArgument(length);
-    	lib.addArgument(width);
-    	lib.addArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", ArgumentParser.argType.BOOLEAN, 'h'));
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the box (float)");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the box (float)");
+    	//length.addElements("length", Argument.ArgType.FLOAT, "the length of the box (float)");
+    	//width.addElements();
+    	//height.addElements();
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
     	try{
     		lib.parse(args);
     	}

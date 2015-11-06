@@ -6,7 +6,7 @@ public abstract class Argument
     protected String description;
     protected ArgType type;
     protected String value;
-    protected enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
+    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     public Argument(){
         argName = null;
