@@ -22,23 +22,21 @@ import java.io.IOException;
 
 /**
 <h2> 
-INTRO TO ArgParse! #FretNot
+INTRO TO ArgParse! 
 </h2>
-<p>
-  the ArgParse_CS310 module make it easy to write user-friendly 
-  command-line interfaces. The program defines what arguemtns is 
-  requires, and argparse will figure out how to parse those arguments. 
-  The argparse module also automatically generates help and 
-  usage messages and issues error codes when users 
- give program invalid arguments.
- </p>
 
- <p>
-  @param  url  an absolute URL giving the base location of the image
-  @param  name the location of the image, relative to the url argument
-  @return      the image at the specified URL
-  @see         Image
- */
+<p>The ArgParse_CS310 module make it easy to write user-friendly 
+command-line interfaces. The program defines what arguemtns is 
+requires, and argparse will figure out how to parse those arguments. 
+The argparse module also automatically generates help and 
+usage messages and issues error codes when users 
+give program invalid arguments.</p>
+
+@param  url  an absolute URL giving the base location of the image
+@param  name the location of the image, relative to the url argument
+@return      the image at the specified URL
+@see         Image
+*/
 
 
 
@@ -50,12 +48,13 @@ public class ArgumentParser {
     private String programName = "";
     private String programDescription = "";
     private int posCount;
-    //public enum argType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     
 /**
-* the Argument Parser constructor this will instantiate a new instance of the Parser
-*
+the Argument Parser constructor this will instantiate a new instance of the Parser
+<p>The constructor enters the blanks for the program name and the program description. 
+Creates a new lists for positional and named arguments. These will be used to hold the 
+arguments that are created by the user. </p>
 */    
     public ArgumentParser(){
 		this.programName = "";
@@ -65,6 +64,13 @@ public class ArgumentParser {
 		posCount = -1;
 	}
 	
+/**
+addProgramName
+
+
+*/
+    
+    
 	public void addProgramName(String inputProgramName){
         programName = inputProgramName;       
     }
