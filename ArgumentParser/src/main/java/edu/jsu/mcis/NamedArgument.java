@@ -4,46 +4,13 @@ public class NamedArgument extends PositionalArgument{
     
    private char shortFormName;
 
-	/*
-
-	constructors
-	
-	HAVE
-	name
-	name	defaultValue
-	name	dataType
-	name	defaultValue	dataType
-	name	defaultValue	argDescription
-	name	dataType		argDescription
-	name	defaultValue	dataType 		argDescription
-	name	shortForm
-	name	defaultValue	shortForm
-	
-	NEED(?)
-	name	argDescription		but description is a String, so we can't have this one. 
-	//							how to handle? do we need this combination?
-	
-	name	dataType		shortForm
-	name	defaultValue	dataType		shortForm
-	name	defaultValue	argDescription	shortForm
-	name	dataType		argDescription	shortForm
-	name	defaultValue	dataType 		argDescription	shortForm
-	
-	*/
 //**************************************************************************************
 
     public NamedArgument(String name){
-        //argName = name;
-        //description = "";
-        //type = ArgType.STRING;
-        //value = null;
         super(name);  
     }
     
     public NamedArgument(String name, ArgType dataType){
-        //argName = name;
-        //description = "";
-        //type = dataType;
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
         	this.value = "false";
@@ -53,16 +20,7 @@ public class NamedArgument extends PositionalArgument{
         } 
     }  
     
-     
-    
-    /*public NamedArgument(String name, String argDescription){
-    	
-    } */ 
-    
     public NamedArgument(String name, ArgType dataType, String argDescription){
-        //argName = name;
-        //description = argDescription;
-        //type = dataType;
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
         	this.value = "false";
@@ -73,32 +31,20 @@ public class NamedArgument extends PositionalArgument{
     } 
     
     public NamedArgument(String name, String defaultValue){
-        //argName = name;
-        //description = "";
-        //type = ArgType.STRING;
         super(name);
         value = defaultValue;  
     }          
 	
     public NamedArgument(String name, String defaultValue, ArgType dataType){
-        //argName = name;
-        //description = "";
-        //type = dataType;
         super(name, dataType);
         value = defaultValue;  
     }  
     public NamedArgument(String name, String defaultValue, String argDescription){
-        //argName = name;
-        //description = argDescription;
-        //type = ArgType.STRING;
         super(name, argDescription);
         value = defaultValue;  
     }    	
 	
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
-        //argName = name;
-        //description = argDescription;
-        //type = dataType;
         super(name, dataType, argDescription);
         value = defaultValue;  
     }
@@ -106,25 +52,15 @@ public class NamedArgument extends PositionalArgument{
     
     //These take shortForm
 	public NamedArgument(String name, char shortForm){
-		//argName = name;
-        //description = "";
-        //type = ArgType.STRING;
-        //value = null;
         super(name);
         shortFormName = shortForm;
 	}	
 	public NamedArgument(String name, String defaultValue, char shortForm){
-        //argName = name;
-        //description = "";
-        //type = ArgType.STRING;
         super(name);
         value = defaultValue;
         shortFormName = shortForm;  
     }  
 	public NamedArgument(String name, ArgType dataType, char shortForm){
-        //argName = name;
-        //description = "";
-        //type = dataType;
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
         	value = "false";
@@ -135,25 +71,16 @@ public class NamedArgument extends PositionalArgument{
         shortFormName = shortForm;
     }  
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
-        //argName = name;
-        //description = "";
-        //type = dataType;
         super(name, dataType);
         value = defaultValue;
         shortFormName = shortForm;  
     }  
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
-        //argName = name;
-        //description = argDescription;
-        //type = ArgType.STRING;
         super(name, argDescription);
         value = defaultValue; 
         shortFormName = shortForm; 
     }    	
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
-        //argName = name;
-        //description = argDescription;
-        //type = dataType;
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
         	value = "false";
@@ -164,9 +91,6 @@ public class NamedArgument extends PositionalArgument{
         shortFormName = shortForm;
     }
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
-        //argName = name;
-        //description = argDescription;
-        //type = dataType;
         super(name, dataType, argDescription);
         value = defaultValue;  
         shortFormName = shortForm;
@@ -180,5 +104,38 @@ public class NamedArgument extends PositionalArgument{
 		return shortFormName;
 	}
 
+//****** These are subclassed from the abstract class Argument **************************
+
+	public String getName()
+    {
+        return this.argName;
+    }
+
+	public String getType(){
+    	if(type == ArgType.INTEGER){
+    		return "integer";
+    	}
+    	else if(type == ArgType.FLOAT){
+    		return "float";
+    	}
+    	else if(type == ArgType.STRING){
+    		return "string";
+    	}
+    	else return "boolean";
+    }
+
+	public String getDescription(){
+    	return description;
+    }
+	
+	public void setValue(String argValue){
+    	value = argValue;
+    }
+    
+    public String getValue(){
+    	return value;
+    }
+
+//**************************************************************************************
 
 }

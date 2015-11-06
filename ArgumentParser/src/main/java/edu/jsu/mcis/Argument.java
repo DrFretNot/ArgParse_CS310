@@ -16,12 +16,11 @@ public abstract class Argument
         //position = -1;
     }
     
-    public Argument(String name){
-    	/*argName = name;
-        description = "";
-        type = ArgType.STRING;
-        value = null;*/
-        this(name, ArgType.STRING, "");
+    public Argument(String name, ArgType dataType, String argDescription){
+    	argName = name;
+        description = argDescription;
+        type = dataType;
+        value = null;
     }
     
     public Argument(String name, ArgType dataType){
@@ -40,12 +39,27 @@ public abstract class Argument
         this(name, ArgType.STRING, argDescription);
     }
     
-    public Argument(String name, ArgType dataType, String argDescription){
-    	argName = name;
-        description = argDescription;
-        type = dataType;
-        value = null;
+    
+    public Argument(String name){
+    	/*argName = name;
+        description = "";
+        type = ArgType.STRING;
+        value = null;*/
+        this(name, ArgType.STRING, "");
     }
+    
+    public abstract String getName();
+    
+    /*public abstract void setType(ArgType dataType);*/
+    
+    public abstract String getType();
+    
+    public abstract String getDescription();
+    
+    public abstract void setValue(String argValue);
+    
+    public abstract String getValue();
+    
     
     //public Argument(){};
     
