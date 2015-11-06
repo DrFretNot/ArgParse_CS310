@@ -20,6 +20,26 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+<h2> 
+INTRO TO ArgParse! #FretNot
+</h2>
+<p>
+  the ArgParse_CS310 module make it easy to write user-friendly 
+  command-line interfaces. The program defines what arguemtns is 
+  requires, and argparse will figure out how to parse those arguments. 
+  The argparse module also automatically generates help and 
+  usage messages and issues error codes when users 
+ give program invalid arguments.
+ </p>
+
+ <p>
+  @param  url  an absolute URL giving the base location of the image
+  @param  name the location of the image, relative to the url argument
+  @return      the image at the specified URL
+  @see         Image
+ */
+
 
 
 public class ArgumentParser {
