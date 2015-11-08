@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PositionalArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ArgumentParser</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">PositionalArgument.java</span></div><h1>PositionalArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
 
-public class PositionalArgument extends Argument{
+public class PositionalArgument&lt;T&gt; extends Argument{
 
-<span class="fc" id="L5">	private int position = -1;</span>
+	private T value;
+<span class="fc" id="L6">	private int position = -1;</span>
 
     public PositionalArgument(String name){
-<span class="fc" id="L8">        super(name);</span>
-<span class="fc" id="L9">    }</span>
+<span class="fc" id="L9">        super(name);</span>
+<span class="fc" id="L10">    }</span>
     
     public PositionalArgument(String name, ArgType dataType){
-<span class="fc" id="L12">        super(name, dataType);</span>
-<span class="fc" id="L13">    }</span>
+<span class="fc" id="L13">        super(name, dataType);</span>
+<span class="fc" id="L14">    }</span>
     
     public PositionalArgument(String name, String argDescription){
-<span class="fc" id="L16">        super(name, argDescription);</span>
-<span class="fc" id="L17">    }</span>
+<span class="fc" id="L17">        super(name, argDescription);</span>
+<span class="fc" id="L18">    }</span>
     
     public PositionalArgument(String name, ArgType dataType, String argDescription){
-<span class="fc" id="L20">        super(name, dataType, argDescription);</span>
-<span class="fc" id="L21">    } </span>
+<span class="fc" id="L21">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L22">    } </span>
 
 	public void setPosition(int pos){
-<span class="fc" id="L24">		position = pos;</span>
-<span class="fc" id="L25">	}</span>
+<span class="fc" id="L25">		position = pos;</span>
+<span class="fc" id="L26">	}</span>
 	
 	public int getPosition(){
-<span class="fc" id="L28">		return position;</span>
+<span class="fc" id="L29">		return position;</span>
 	}
 	
 //****** These are subclassed from the abstract class Argument **************************
 
    
     public String getName(){
-<span class="fc" id="L35">        return this.argName;</span>
+<span class="fc" id="L36">        return this.argName;</span>
     }
     
     public String getType(){
-<span class="fc bfc" id="L39" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
-<span class="fc" id="L40">    		return &quot;integer&quot;;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
+<span class="fc" id="L41">    		return &quot;integer&quot;;</span>
     	}
-<span class="fc bfc" id="L42" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L43">    		return &quot;float&quot;;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L44">    		return &quot;float&quot;;</span>
     	}
-<span class="fc bfc" id="L45" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
-<span class="fc" id="L46">    		return &quot;string&quot;;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
+<span class="fc" id="L47">    		return &quot;string&quot;;</span>
     	}
-<span class="fc" id="L48">    	else return &quot;boolean&quot;;</span>
+<span class="fc" id="L49">    	else return &quot;boolean&quot;;</span>
     }
     
     public String getDescription(){
-<span class="fc" id="L52">    	return description;</span>
+<span class="fc" id="L53">    	return description;</span>
     }
     
-    public void setValue(String argValue){
-<span class="fc" id="L56">    	value = argValue;</span>
-<span class="fc" id="L57">    }</span>
+    public void setValue(T argValue){
+<span class="fc" id="L57">    	value = argValue;</span>
+<span class="fc" id="L58">    }</span>
 	
-    public String getValue(){
-<span class="fc" id="L60">    	return value;</span>
+    public T getValue(){
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    	if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L62">    		return (T)(Float)value;</span>
+    	}
+    	else{
+<span class="fc" id="L65">    		return value;</span>
+    	}
     }
      
 //**************************************************************************************

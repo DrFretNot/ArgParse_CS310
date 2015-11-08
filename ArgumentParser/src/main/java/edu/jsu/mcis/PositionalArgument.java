@@ -1,7 +1,8 @@
 package edu.jsu.mcis;
 
-public class PositionalArgument extends Argument{
+public class PositionalArgument<T> extends Argument{
 
+	private T value;
 	private int position = -1;
 
     public PositionalArgument(String name){
@@ -52,12 +53,17 @@ public class PositionalArgument extends Argument{
     	return description;
     }
     
-    public void setValue(String argValue){
+    public void setValue(T argValue){
     	value = argValue;
     }
 	
-    public String getValue(){
-    	return value;
+    public T getValue(){
+    	if(type == ArgType.FLOAT){
+    		return (T)(Float)value;
+    	}
+    	else{
+    		return value;
+    	}
     }
      
 //**************************************************************************************

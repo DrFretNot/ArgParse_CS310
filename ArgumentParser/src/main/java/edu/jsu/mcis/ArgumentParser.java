@@ -153,13 +153,13 @@ addProgramName
 			PositionalArgument currentArg = positionalArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
-				currentArg.setValue(String.valueOf(argValue));
+				currentArg.setValue(argValue);
 				//currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("float")){
 				float argValue = Float.parseFloat(argList.get(index));
-				currentArg.setValue(String.valueOf(argValue));
+				currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("string")){
@@ -169,7 +169,7 @@ addProgramName
 			
 			else{
 				Boolean argValue = Boolean.parseBoolean(argList.get(index));
-				currentArg.setValue(String.valueOf(argValue));
+				currentArg.setValue(argValue);
 			}
 		}
 		
@@ -179,22 +179,22 @@ addProgramName
 			incorrectArgumentType = "named";
 			NamedArgument currentArg = namedArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
-				int argValue = Integer.parseInt(currentArg.getValue());
-				currentArg.setValue(String.valueOf(argValue));
+				int argValue = Integer.parseInt((String)currentArg.getValue());
+				currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("float")){
-				float argValue = Float.parseFloat(currentArg.getValue());
-				currentArg.setValue(String.valueOf(argValue));
+				float argValue = Float.parseFloat((String)currentArg.getValue());
+				currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("string")){
-				String argValue = currentArg.getValue();
+				String argValue = (String)currentArg.getValue();
 				currentArg.setValue(argValue);
 			}
 			
 			else{
-				Boolean argValue = Boolean.parseBoolean(currentArg.getValue());
+				Boolean argValue = Boolean.parseBoolean((String)currentArg.getValue());
 				currentArg.setValue(String.valueOf(argValue));
 			}
 		}
@@ -430,7 +430,7 @@ addProgramName
 		
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
-			String helpArgValue = helpArgument.getValue();
+			String helpArgValue = (String)helpArgument.getValue();
 			if (helpArgValue.equals("true")){
 				throw new HelpException(helpMessage());
 			}

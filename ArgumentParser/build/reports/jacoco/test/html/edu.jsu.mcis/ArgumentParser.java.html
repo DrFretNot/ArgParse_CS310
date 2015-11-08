@@ -153,13 +153,13 @@ addProgramName
 <span class="fc" id="L153">			PositionalArgument currentArg = positionalArgumentList.get(index);</span>
 <span class="fc bfc" id="L154" title="All 2 branches covered.">			if (currentArg.getType().equals(&quot;integer&quot;)){</span>
 <span class="fc" id="L155">				int argValue = Integer.parseInt(argList.get(index));</span>
-<span class="fc" id="L156">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="fc" id="L156">				currentArg.setValue(argValue);</span>
 				//currentArg.setValue(argValue);
 <span class="fc" id="L158">			}</span>
             
 <span class="fc bfc" id="L160" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;float&quot;)){</span>
 <span class="fc" id="L161">				float argValue = Float.parseFloat(argList.get(index));</span>
-<span class="fc" id="L162">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="fc" id="L162">				currentArg.setValue(argValue);</span>
 <span class="fc" id="L163">			}</span>
             
 <span class="fc bfc" id="L165" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;string&quot;)){</span>
@@ -169,7 +169,7 @@ addProgramName
 			
 			else{
 <span class="fc" id="L171">				Boolean argValue = Boolean.parseBoolean(argList.get(index));</span>
-<span class="fc" id="L172">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="fc" id="L172">				currentArg.setValue(argValue);</span>
 			}
 		}
 		
@@ -179,22 +179,22 @@ addProgramName
 <span class="fc" id="L179">			incorrectArgumentType = &quot;named&quot;;</span>
 <span class="fc" id="L180">			NamedArgument currentArg = namedArgumentList.get(index);</span>
 <span class="fc bfc" id="L181" title="All 2 branches covered.">			if (currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="fc" id="L182">				int argValue = Integer.parseInt(currentArg.getValue());</span>
-<span class="fc" id="L183">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="fc" id="L182">				int argValue = Integer.parseInt((String)currentArg.getValue());</span>
+<span class="fc" id="L183">				currentArg.setValue(argValue);</span>
 <span class="fc" id="L184">			}</span>
             
 <span class="pc bpc" id="L186" title="1 of 2 branches missed.">			else if (currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L187">				float argValue = Float.parseFloat(currentArg.getValue());</span>
-<span class="nc" id="L188">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="nc" id="L187">				float argValue = Float.parseFloat((String)currentArg.getValue());</span>
+<span class="nc" id="L188">				currentArg.setValue(argValue);</span>
 <span class="nc" id="L189">			}</span>
             
 <span class="fc bfc" id="L191" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="fc" id="L192">				String argValue = currentArg.getValue();</span>
+<span class="fc" id="L192">				String argValue = (String)currentArg.getValue();</span>
 <span class="fc" id="L193">				currentArg.setValue(argValue);</span>
 <span class="fc" id="L194">			}</span>
 			
 			else{
-<span class="fc" id="L197">				Boolean argValue = Boolean.parseBoolean(currentArg.getValue());</span>
+<span class="fc" id="L197">				Boolean argValue = Boolean.parseBoolean((String)currentArg.getValue());</span>
 <span class="fc" id="L198">				currentArg.setValue(String.valueOf(argValue));</span>
 			}
 		}
@@ -430,7 +430,7 @@ addProgramName
 		
 <span class="fc" id="L431">        NamedArgument helpArgument = getNamedArgument(&quot;help&quot;);</span>
 <span class="fc bfc" id="L432" title="All 2 branches covered.">        if (helpArgument != null){</span>
-<span class="fc" id="L433">			String helpArgValue = helpArgument.getValue();</span>
+<span class="fc" id="L433">			String helpArgValue = (String)helpArgument.getValue();</span>
 <span class="fc bfc" id="L434" title="All 2 branches covered.">			if (helpArgValue.equals(&quot;true&quot;)){</span>
 <span class="fc" id="L435">				throw new HelpException(helpMessage());</span>
 			}

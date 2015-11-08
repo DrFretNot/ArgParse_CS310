@@ -151,10 +151,10 @@ public class ArgumentParserUnitTests {
     	}
     	catch(Exception e){}
     	
-    	assertEquals("7", length.getValue());
-    	assertEquals("8.0",width.getValue());
-    	assertEquals("9", height.getValue());
-    	assertEquals("true", fact.getValue());	
+    	assertEquals(7, length.getValue());
+    	assertEquals((float)8.0,width.getValue());
+    	assertEquals(9, height.getValue());
+    	assertEquals(true, fact.getValue());	
 	}
 
     
@@ -428,7 +428,7 @@ public class ArgumentParserUnitTests {
     	NamedArgument type = lib.getNamedArgument("type");
     	assertEquals("pyramid", type.getValue());
     	NamedArgument digits = lib.getNamedArgument("digits");
-    	assertEquals("1", digits.getValue());
+    	assertEquals(1, digits.getValue());
 	}
 	
 	@Test
@@ -460,7 +460,7 @@ public class ArgumentParserUnitTests {
     	NamedArgument type = lib.getNamedArgument("type");
     	assertEquals("pyramid", type.getValue());
     	NamedArgument digits = lib.getNamedArgument("digits");
-    	assertEquals("6", digits.getValue());
+    	assertEquals(6, digits.getValue());
 	}
 	
 	@Test
@@ -724,13 +724,13 @@ public class ArgumentParserUnitTests {
 			PositionalArgument length = lib.getPositionalArgument(0);
 			PositionalArgument width = lib.getPositionalArgument(1);
 			PositionalArgument height = lib.getPositionalArgument(2);
-			assertEquals("7.0", length.getValue());
-			assertEquals("5.0", width.getValue());
-			assertEquals("2.0", height.getValue());
+			assertEquals((float)7.0, length.getValue());
+			assertEquals((float)5.0, width.getValue());
+			assertEquals((float)2.0, height.getValue());
 			NamedArgument type = lib.getNamedArgument('t');
 			assertEquals("pyramid", type.getValue());
 			NamedArgument digits = lib.getNamedArgument('d');
-			assertEquals("4", digits.getValue());
+			assertEquals(4, digits.getValue());
 		}
 		catch(Exception e){
 			assertEquals("", e);

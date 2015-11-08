@@ -5,14 +5,14 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
-    protected String value;
+    //protected String value;
 <span class="pc" id="L9">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
     
 <span class="nc" id="L11">    public Argument(){</span>
 <span class="nc" id="L12">        argName = null;</span>
 <span class="nc" id="L13">        description = &quot;&quot;;</span>
 <span class="nc" id="L14">        type = null;</span>
-<span class="nc" id="L15">        value = null;</span>
+        //value = null;
         //position = -1;
 <span class="nc" id="L17">    }</span>
     
@@ -20,7 +20,7 @@ public abstract class Argument
 <span class="fc" id="L20">    	argName = name;</span>
 <span class="fc" id="L21">        description = argDescription;</span>
 <span class="fc" id="L22">        type = dataType;</span>
-<span class="fc" id="L23">        value = null;</span>
+        //value = null;
 <span class="fc" id="L24">    }</span>
     
     public Argument(String name, ArgType dataType){
@@ -56,9 +56,9 @@ public abstract class Argument
     
     public abstract String getDescription();
     
-    public abstract void setValue(String argValue);
+    //public abstract void setValue(String argValue);
     
-    public abstract String getValue();
+    //public abstract String getValue();
     
     
     //public Argument(){};

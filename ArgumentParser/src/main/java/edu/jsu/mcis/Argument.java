@@ -5,14 +5,14 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
-    protected String value;
+    //protected String value;
     public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     public Argument(){
         argName = null;
         description = "";
         type = null;
-        value = null;
+        //value = null;
         //position = -1;
     }
     
@@ -20,7 +20,7 @@ public abstract class Argument
     	argName = name;
         description = argDescription;
         type = dataType;
-        value = null;
+        //value = null;
     }
     
     public Argument(String name, ArgType dataType){
@@ -56,9 +56,9 @@ public abstract class Argument
     
     public abstract String getDescription();
     
-    public abstract void setValue(String argValue);
+    //public abstract void setValue(String argValue);
     
-    public abstract String getValue();
+    //public abstract String getValue();
     
     
     //public Argument(){};
