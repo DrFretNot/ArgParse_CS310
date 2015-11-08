@@ -1,6 +1,6 @@
 package edu.jsu.mcis;
 
-public class NamedArgument extends PositionalArgument{
+public class NamedArgument extends Argument{
     
    private char shortFormName;
 

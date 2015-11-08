@@ -665,11 +665,11 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	PositionalArgument arg1 = lib.getPositionalArgument(1);
+    	PositionalArgument arg1 = lib.getPositionalArgument(0);
     	assertEquals("length", arg1.getName());
-    	PositionalArgument arg2 = lib.getPositionalArgument(2);
+    	PositionalArgument arg2 = lib.getPositionalArgument(1);
     	assertEquals("width", arg2.getName());
-    	PositionalArgument arg3 = lib.getPositionalArgument(3);
+    	PositionalArgument arg3 = lib.getPositionalArgument(2);
     	assertEquals("height", arg3.getName());
     }
 
@@ -721,9 +721,9 @@ public class ArgumentParserUnitTests {
 			catch(Exception e){
 				assertEquals("", e);
 			}
-			PositionalArgument length = lib.getPositionalArgument(1);
-			PositionalArgument width = lib.getPositionalArgument(2);
-			PositionalArgument height = lib.getPositionalArgument(3);
+			PositionalArgument length = lib.getPositionalArgument(0);
+			PositionalArgument width = lib.getPositionalArgument(1);
+			PositionalArgument height = lib.getPositionalArgument(2);
 			assertEquals("7.0", length.getValue());
 			assertEquals("5.0", width.getValue());
 			assertEquals("2.0", height.getValue());

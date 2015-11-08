@@ -112,7 +112,7 @@ addProgramName
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
     		PositionalArgument currentArg = positionalArgumentList.get(i);
-    		if(currentArg.getPosition() == argPosition - 1){
+    		if(currentArg.getPosition() == argPosition){
     			returnArg = currentArg;
     		}
     	}

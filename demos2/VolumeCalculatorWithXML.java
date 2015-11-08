@@ -46,9 +46,9 @@ public class VolumeCalculatorWithXML
 			
 			try{
 				lib.parse(args);
-				Argument length = lib.getArgument(1);
-				Argument width = lib.getArgument(2);
-				Argument height = lib.getArgument(3);
+				Argument length = lib.getArgument(0);
+				Argument width = lib.getArgument(1);
+				Argument height = lib.getArgument(2);
 			
 				x = Float.parseFloat(length.getValue());
 				y = Float.parseFloat(width.getValue());

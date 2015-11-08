@@ -6,7 +6,7 @@ public abstract class Argument
     protected String description;
     protected ArgType type;
     protected String value;
-<span class="pc" id="L9">    protected enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
+<span class="pc" id="L9">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
     
 <span class="nc" id="L11">    public Argument(){</span>
 <span class="nc" id="L12">        argName = null;</span>
@@ -16,36 +16,50 @@ public abstract class Argument
         //position = -1;
 <span class="nc" id="L17">    }</span>
     
-    public Argument(String name){
-    	/*argName = name;
-        description = &quot;&quot;;
-        type = ArgType.STRING;
-        value = null;*/
-<span class="fc" id="L24">        this(name, ArgType.STRING, &quot;&quot;);</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L19">    public Argument(String name, ArgType dataType, String argDescription){</span>
+<span class="fc" id="L20">    	argName = name;</span>
+<span class="fc" id="L21">        description = argDescription;</span>
+<span class="fc" id="L22">        type = dataType;</span>
+<span class="fc" id="L23">        value = null;</span>
+<span class="fc" id="L24">    }</span>
     
     public Argument(String name, ArgType dataType){
     	/*argName = name;
         description = &quot;&quot;;
         type = dataType;
         value = null;*/
-<span class="fc" id="L32">        this(name, dataType, &quot;&quot;);</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L31">        this(name, dataType, &quot;&quot;);</span>
+<span class="fc" id="L32">    }</span>
     
     public Argument(String name, String argDescription){
     	/*argName = name;
         description = argDescription;
         type = ArgType.STRING;
         value = null;*/
-<span class="fc" id="L40">        this(name, ArgType.STRING, argDescription);</span>
-<span class="fc" id="L41">    }</span>
+<span class="fc" id="L39">        this(name, ArgType.STRING, argDescription);</span>
+<span class="fc" id="L40">    }</span>
     
-<span class="fc" id="L43">    public Argument(String name, ArgType dataType, String argDescription){</span>
-<span class="fc" id="L44">    	argName = name;</span>
-<span class="fc" id="L45">        description = argDescription;</span>
-<span class="fc" id="L46">        type = dataType;</span>
-<span class="fc" id="L47">        value = null;</span>
-<span class="fc" id="L48">    }</span>
+    
+    public Argument(String name){
+    	/*argName = name;
+        description = &quot;&quot;;
+        type = ArgType.STRING;
+        value = null;*/
+<span class="fc" id="L48">        this(name, ArgType.STRING, &quot;&quot;);</span>
+<span class="fc" id="L49">    }</span>
+    
+    public abstract String getName();
+    
+    /*public abstract void setType(ArgType dataType);*/
+    
+    public abstract String getType();
+    
+    public abstract String getDescription();
+    
+    public abstract void setValue(String argValue);
+    
+    public abstract String getValue();
+    
     
     //public Argument(){};
     

@@ -1,104 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PositionalArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ArgumentParser</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">PositionalArgument.java</span></div><h1>PositionalArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
 
 public class PositionalArgument extends Argument{
-    //protected String argName;
-    //protected String description;
-    //protected ArgumentParser.argType type;
-    //protected &lt;T&gt; value;
-    //protected String value;
-<span class="fc" id="L9">	private int position = -1;</span>
 
-    
-   	
-    //make constructor do the same as add elements
-    
+<span class="fc" id="L5">	private int position = -1;</span>
+
     public PositionalArgument(String name){
-        //addElements(name);
-<span class="fc" id="L17">        super(name);</span>
-        //argName = name;
-        //description = &quot;&quot;;
-        //type = ArgType.STRING;
-        //value = null;
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L8">        super(name);</span>
+<span class="fc" id="L9">    }</span>
     
     public PositionalArgument(String name, ArgType dataType){
-        //this.setName(name);
-        //this.setType(dataType);
-<span class="fc" id="L27">        super(name, dataType);</span>
-        //argName = name;
-        //description = &quot;&quot;;
-        //type = dataType;
-        //value = null;
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L12">        super(name, dataType);</span>
+<span class="fc" id="L13">    }</span>
     
     public PositionalArgument(String name, String argDescription){
-        //this.setName(name);
-        //description = argDescription;
-        //this.setType(ArgumentParser.argType.STRING);
-<span class="fc" id="L38">        super(name, argDescription);</span>
-        //argName = name;
-        //description = argDescription;
-        //type = ArgType.STRING;
-        //value = null;
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L16">        super(name, argDescription);</span>
+<span class="fc" id="L17">    }</span>
     
     public PositionalArgument(String name, ArgType dataType, String argDescription){
-    	//this.setName(name);
-        //this.setType(dataType);
-        //description = argDescription;
-<span class="fc" id="L49">        super(name, dataType, argDescription);</span>
-        //argName = name;
-        //description = argDescription;
-        //type = dataType;
-        //value = null;
-<span class="fc" id="L54">    } </span>
+<span class="fc" id="L20">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L21">    } </span>
 
-	
-    private void setName(String name){
-<span class="nc" id="L58">        argName = name;</span>
-<span class="nc" id="L59">    }</span>
-    
-    public String getName()
-    {
-<span class="fc" id="L63">        return this.argName;</span>
-    }
-    
 	public void setPosition(int pos){
-<span class="fc" id="L67">		position = pos;</span>
-<span class="fc" id="L68">	}</span>
+<span class="fc" id="L24">		position = pos;</span>
+<span class="fc" id="L25">	}</span>
 	
 	public int getPosition(){
-<span class="fc" id="L71">		return position;</span>
+<span class="fc" id="L28">		return position;</span>
 	}
 	
-    private void setType(ArgType dataType){
-<span class="nc" id="L75">        type = dataType;</span>
-<span class="nc" id="L76">    }</span>
+//****** These are subclassed from the abstract class Argument **************************
+
+   
+    public String getName(){
+<span class="fc" id="L35">        return this.argName;</span>
+    }
     
     public String getType(){
-<span class="fc bfc" id="L79" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
-<span class="fc" id="L80">    		return &quot;integer&quot;;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
+<span class="fc" id="L40">    		return &quot;integer&quot;;</span>
     	}
-<span class="fc bfc" id="L82" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L83">    		return &quot;float&quot;;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L43">    		return &quot;float&quot;;</span>
     	}
-<span class="fc bfc" id="L85" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
-<span class="fc" id="L86">    		return &quot;string&quot;;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
+<span class="fc" id="L46">    		return &quot;string&quot;;</span>
     	}
-<span class="fc" id="L88">    	else return &quot;boolean&quot;;</span>
+<span class="fc" id="L48">    	else return &quot;boolean&quot;;</span>
     }
     
     public String getDescription(){
-<span class="fc" id="L92">    	return description;</span>
+<span class="fc" id="L52">    	return description;</span>
     }
     
     public void setValue(String argValue){
-<span class="fc" id="L96">    	value = argValue;</span>
-<span class="fc" id="L97">    }</span>
+<span class="fc" id="L56">    	value = argValue;</span>
+<span class="fc" id="L57">    }</span>
 	
     public String getValue(){
-<span class="fc" id="L100">    	return value;</span>
+<span class="fc" id="L60">    	return value;</span>
     }
      
+//**************************************************************************************
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
