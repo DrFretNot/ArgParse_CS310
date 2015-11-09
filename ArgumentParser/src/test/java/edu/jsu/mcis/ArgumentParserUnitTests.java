@@ -721,12 +721,15 @@ public class ArgumentParserUnitTests {
 			catch(Exception e){
 				assertEquals("", e);
 			}
+			assertEquals("VolumeCalculator", lib.getProgramName());
+			assertEquals("Calculate the volume of a specified object.", lib.getProgramDescription());
 			PositionalArgument length = lib.getPositionalArgument(0);
 			PositionalArgument width = lib.getPositionalArgument(1);
 			PositionalArgument height = lib.getPositionalArgument(2);
 			assertEquals((float)7.0, length.getValue());
 			assertEquals((float)5.0, width.getValue());
 			assertEquals((float)2.0, height.getValue());
+			assertEquals("the height of the object", height.getDescription());
 			NamedArgument type = lib.getNamedArgument('t');
 			assertEquals("pyramid", type.getValue());
 			NamedArgument digits = lib.getNamedArgument('d');
@@ -737,6 +740,9 @@ public class ArgumentParserUnitTests {
 		}
 	
 	}
+	
+	/*@Test
+	public void test*/
 	
 }
 

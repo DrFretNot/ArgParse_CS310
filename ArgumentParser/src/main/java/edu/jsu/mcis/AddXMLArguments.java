@@ -30,17 +30,35 @@ public class AddXMLArguments{
 			Document dom = db.parse(new File(fileName));
 	
 			//get the root element
-			Element docEle = dom.getDocumentElement();
+			Element program = dom.getDocumentElement();
 
 			//get a nodelist of elements
-			NodeList nl = docEle.getElementsByTagName("positional");
-		
-			if(nl.getLength() > 0) {
+			NodeList nlName = program.getElementsByTagName("name");
+			Element programNameEl = (Element)nlName.item(0);
+			String programName = programNameEl.getTextContent();
+			lib.addProgramName(programName);
 			
-				for(int i = 0 ; i < nl.getLength();i++) {
-				 
+			//get a nodelist of elements
+			NodeList programDescriptionNL = program.getElementsByTagName("description");
+			Element programDescriptionEl = (Element)programDescriptionNL.item(0);
+			String programDescription = programDescriptionEl.getTextContent();
+			lib.addProgramDescription(programDescription);
+			
+			//get a nodelist of elements
+			NodeList argumentsNL = program.getElementsByTagName("arguments");
+			Element arguments = (Element)argumentsNL.item(0);
+			//Element argumentsEl = (Element)arguments.item(0);
+			
+			NodeList positional = arguments.getElementsByTagName("positional");
+			
+		
+			if(positional.getLength() > 0) {
+			
+				for(int i = 0 ; i < positional.getLength();i++) {
+				 	//need to read in description for each argument
+				 	
 					//get the argument element
-					Element el = (Element)nl.item(i);
+					Element el = (Element)positional.item(i);
 				
 					NodeList nameNL = el.getElementsByTagName("name");
 					Element nameEL = (Element)nameNL.item(0);
@@ -49,6 +67,10 @@ public class AddXMLArguments{
 					NodeList typeNL = el.getElementsByTagName("type");
 					Element typeEL = (Element)typeNL.item(0);
 					String type = typeEL.getTextContent();
+					
+					NodeList descriptionNL = el.getElementsByTagName("description");
+					Element descriptionEL = (Element)descriptionNL.item(0);
+					String description = descriptionEL.getTextContent();
 				
 					NodeList positionNL = el.getElementsByTagName("position");
 					Element positionEL = (Element)positionNL.item(0);
@@ -71,7 +93,7 @@ public class AddXMLArguments{
 					else{
 						dataType = Argument.ArgType.STRING;
 					}
-					PositionalArgument newArg = new PositionalArgument(name, dataType);
+					PositionalArgument newArg = new PositionalArgument(name, dataType, description);
 					//newArg.addElements(name, dataType);
 			
 					lib.addPositionalArgument(newArg); 
@@ -79,7 +101,7 @@ public class AddXMLArguments{
 			}
 		
 			//get another nodelist of elements
-			NodeList nlNamed = docEle.getElementsByTagName("named");
+			NodeList nlNamed = arguments.getElementsByTagName("named");
 		
 			if(nlNamed.getLength() > 0) {
 			
