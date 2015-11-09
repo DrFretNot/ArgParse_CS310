@@ -13,13 +13,15 @@ import java.io.IOException;
 
 public class XMLReader{
 
-	private ArgumentParser lib;
+	/*private ArgumentParser lib;
 
 	public XMLReader(){
 		lib = new ArgumentParser();
-	}
+	}*/
 
-	public ArgumentParser addArgumentsFromXMLFile(String fileName) throws ParserConfigurationException, SAXException, IOException{
+	public static ArgumentParser readXMLFile(String fileName) throws ParserConfigurationException, SAXException, IOException{
+		
+		ArgumentParser lib = new ArgumentParser();
 		
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

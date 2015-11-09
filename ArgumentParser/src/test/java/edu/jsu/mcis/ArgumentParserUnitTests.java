@@ -678,16 +678,16 @@ public class ArgumentParserUnitTests {
 	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfArgumentParser(){
 		String[] args = {"7", "-t", "pyramid", "5", "2"};
 		try{
-			XMLReader xml = new XMLReader();
+			//XMLReader xml = new XMLReader();
 			
 			
 			
 			
 			//for Katie's only
-			ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
-			//ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
 			
 			/*
