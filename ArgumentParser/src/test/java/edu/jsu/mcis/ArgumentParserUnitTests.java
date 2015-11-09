@@ -678,7 +678,7 @@ public class ArgumentParserUnitTests {
 	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfArgumentParser(){
 		String[] args = {"7", "-t", "pyramid", "5", "2"};
 		try{
-			AddXMLArguments xml = new AddXMLArguments();
+			XMLReader xml = new XMLReader();
 			
 			
 			
