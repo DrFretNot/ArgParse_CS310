@@ -5,3 +5,4 @@ java -cp .;..\ArgumentParser\build\libs\ArgumentParser-1.0.jar VolumeCalculator 
 java -cp .;..\ArgumentParser\build\libs\ArgumentParser-1.0.jar VolumeCalculator 7 something 7
 java -cp .;..\ArgumentParser\build\libs\ArgumentParser-1.0.jar VolumeCalculator -h
 
+PAUSE

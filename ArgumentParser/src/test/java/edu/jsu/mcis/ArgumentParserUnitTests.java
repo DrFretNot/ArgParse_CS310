@@ -682,9 +682,11 @@ public class ArgumentParserUnitTests {
 			
 			
 			
-			
+			//for A-Money only
+            ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/Andrew/Documents/github/ArgParse_CS310/Arguments.xml");
+            
 			//for Katie's only
-			ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			//ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
 			//ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
