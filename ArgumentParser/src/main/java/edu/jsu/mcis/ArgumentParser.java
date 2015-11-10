@@ -1,6 +1,7 @@
 /**
  @author Katie Wood
- @author Trent Ford
+ @author Trent Ford "son of a biscuit, pecker-head"
+ @author Andrew Green
  @author Sinh Nguyen
  @author Robert S. Warren Jr.
  @version 1.04 Build firebolt 9001 Nov 9, 2015.
@@ -25,6 +26,8 @@ import java.io.*;
 //import java.io.File;
 //import java.io.IOException;
 
+
+/** Description of ArgumentParser:
 /**
  *<h2> 
  *INTRO TO ArgParse! 
@@ -40,11 +43,7 @@ import java.io.*;
  *@param  url  an absolute URL giving the base location of the image
  *@param  name the location of the image, relative to the url argument
  *@return      the image at the specified URL
- *@see         Image
  */
-
-
-/** Description of ArgumentParser */
 public class ArgumentParser {
 	
 	private List<NamedArgument> namedArgumentList; //hashmap, key would be the name of the argument
@@ -69,24 +68,32 @@ arguments that are created by the user. </p>
 		posCount = -1;
 	}
 	
-/**
-addProgramName
+    /**
+
+    addProgramName takes in a string program name and adds to a global string program name.
+     @param     addProgramName Takes in a string program name.
 
 
-*/
-    
-    
+
+
+    */ 
 	public void addProgramName(String inputProgramName){
         programName = inputProgramName;       
     }
     
+    /**
+
+    addProgramDescription takes in a string description of a program and adds to a global string program description.
+     @param addProgramDescription   Takes in a string program description.
+
+    */
     public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription;       
     }
     
     /** Constructor description of getProgramName() 
-    @param getProgramName Receives the specified name of the program
-    @return Returns specified program name as a string.
+     @param getProgramName Receives the specified name of the program
+    
     */
     public String getProgramName(){
         return programName;   
