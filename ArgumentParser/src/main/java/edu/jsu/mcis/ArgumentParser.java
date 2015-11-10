@@ -1,9 +1,9 @@
 /**
  @author Katie Wood
- @author Trent Ford "son of a biscuit, pecker-head"
+ @author Trent Ford 
  @author Andrew Green
  @author Sinh Nguyen
- @author Robert S. Warren Jr.
+ @author Robert Warren
  @version 1.04 Build firebolt 9001 Nov 9, 2015.
  Argument Parser is a user-friendly library for taking in command line arguments
  and returning their user specified values. The user defines what arguments are 
