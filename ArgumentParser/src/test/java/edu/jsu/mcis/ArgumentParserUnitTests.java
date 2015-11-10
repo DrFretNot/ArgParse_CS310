@@ -716,7 +716,7 @@ public class ArgumentParserUnitTests {
 			
 			
 			try{
-			lib.parse(args);
+				lib.parse(args);
 			}
 			catch(Exception e){
 				assertEquals("", e);
@@ -741,8 +741,53 @@ public class ArgumentParserUnitTests {
 	
 	}
 	
-	/*@Test
-	public void test*/
+	@Test
+	public void testWriteAllInformationToXMLFileAndReadBackInCorrectInfo(){
+		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		ArgumentParser lib = new ArgumentParser();
+		lib.addProgramName("VolumeCalculator");
+		lib.addProgramDescription("Calculate the volume of an object.");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't');
+    	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
+    	lib.addNamedArgument(type);
+    	lib.addNamedArgument(digits);
+    	
+    	lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	
+    	try{
+    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    		
+    		try{
+    			newLib.parse(args);
+    		}
+    		catch(Exception e){
+    			assertEquals("", e);
+    		}
+    		assertEquals("VolumeCalculator", newLib.getProgramName());
+			assertEquals("Calculate the volume of an object.", newLib.getProgramDescription());
+			PositionalArgument newLength = newLib.getPositionalArgument(0);
+			PositionalArgument newWidth = newLib.getPositionalArgument(1);
+			PositionalArgument newHeight = newLib.getPositionalArgument(2);
+			assertEquals((float)7.0, newLength.getValue());
+			assertEquals((float)5.0, newWidth.getValue());
+			assertEquals((float)2.0, newHeight.getValue());
+			assertEquals("the height of the object", newHeight.getDescription());
+			NamedArgument newType = newLib.getNamedArgument('t');
+			assertEquals("pyramid", newType.getValue());
+			NamedArgument newDigits = newLib.getNamedArgument('d');
+			assertEquals(4, newDigits.getValue());
+    		
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+	}
 	
 }
 

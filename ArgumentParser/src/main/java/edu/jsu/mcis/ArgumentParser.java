@@ -16,13 +16,14 @@ package edu.jsu.mcis;
 
 import java.util.*;
 import java.lang.Object.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException; 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+//import javax.xml.parsers.*;
+//import org.w3c.dom.NodeList;
+//import org.w3c.dom.Element;
+//import org.w3c.dom.Document;
+//import org.xml.sax.SAXException; 
+//import java.io.File;
+//import java.io.IOException;
 
 /**
  *<h2> 
@@ -119,6 +120,7 @@ addProgramName
     	return returnArg;
     }
     
+    //position starts at 0
     public PositionalArgument getPositionalArgument(int argPosition){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
@@ -462,6 +464,47 @@ addProgramName
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
 			}
 		}	
+	}
+	
+	public void writeToXMLFile(String fileName){
+		File outputFile = new File(fileName);
+		try{
+			PrintWriter outputFileWriter = new PrintWriter(outputFile);
+			outputFileWriter.println("<?xml version=" + "\"1.0\"?>");
+			outputFileWriter.println("<program>");
+				outputFileWriter.println("<name>" + getProgramName() + "</name>");
+				outputFileWriter.println("<description>" + getProgramDescription() + "</description>");
+				outputFileWriter.println("<arguments>");
+			
+				for(int i = 0; i < positionalArgumentList.size(); i++){
+					PositionalArgument posArg = positionalArgumentList.get(i);
+					outputFileWriter.println("<positional>");
+						outputFileWriter.println("<name>" + posArg.getName() + "</name>");
+						outputFileWriter.println("<type>" + posArg.getType() + "</type>");
+						outputFileWriter.println("<description>" + posArg.getDescription() + "</description>");
+						outputFileWriter.println("<position>" + (posArg.getPosition() + 1) + "</position>"); //prints position starting at 1
+					outputFileWriter.println("</positional>");
+				}
+				
+				for (int j = 0; j < namedArgumentList.size(); j++){
+					NamedArgument namedArg = namedArgumentList.get(j);
+					outputFileWriter.println("<named>");
+						outputFileWriter.println("<name>" + namedArg.getName() + "</name>");
+						outputFileWriter.println("<shortname>" + namedArg.getShortFormName() + "</shortname>");
+						outputFileWriter.println("<type>" + namedArg.getType() + "</type>");
+						outputFileWriter.println("<description>" + namedArg.getDescription() + "</description>");
+						outputFileWriter.println("<default>" + namedArg.getDefaultValue() + "</default>");
+					outputFileWriter.println("</named>");
+				}
+				
+				outputFileWriter.println("</arguments>");
+			outputFileWriter.println("</program>");
+			
+			outputFileWriter.close();
+		}
+		catch(Exception e){
+		System.out.println(e.getMessage());
+		}
 	}
 }
 

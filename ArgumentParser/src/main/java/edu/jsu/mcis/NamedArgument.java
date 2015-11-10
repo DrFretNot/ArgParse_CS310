@@ -4,6 +4,7 @@ public class NamedArgument<T> extends Argument{
     
    private T value;
    private char shortFormName;
+   private String defaultvalue = "";
 
 //**************************************************************************************
 
@@ -33,21 +34,25 @@ public class NamedArgument<T> extends Argument{
     
     public NamedArgument(String name, String defaultValue){
         super(name);
-        value = (T)defaultValue;  
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue; 
     }          
 	
     public NamedArgument(String name, String defaultValue, ArgType dataType){
         super(name, dataType);
-        value = (T)defaultValue;  
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;   
     }  
     public NamedArgument(String name, String defaultValue, String argDescription){
         super(name, argDescription);
-        value = (T)defaultValue;  
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;    
     }    	
 	
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
-        value = (T)defaultValue;  
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;    
     }
     
     
@@ -59,6 +64,7 @@ public class NamedArgument<T> extends Argument{
 	public NamedArgument(String name, String defaultValue, char shortForm){
         super(name);
         value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;  
     }  
 	public NamedArgument(String name, ArgType dataType, char shortForm){
@@ -74,11 +80,13 @@ public class NamedArgument<T> extends Argument{
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
         super(name, dataType);
         value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;  
     }  
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
         super(name, argDescription);
         value = (T)defaultValue; 
+        this.defaultvalue =  defaultValue;  
         shortFormName = shortForm; 
     }    	
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
@@ -94,6 +102,7 @@ public class NamedArgument<T> extends Argument{
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
         super(name, dataType, argDescription);
         value = (T)defaultValue;  
+        this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;
     }
 	
@@ -103,6 +112,10 @@ public class NamedArgument<T> extends Argument{
 //methods
 	public char getShortFormName(){
 		return shortFormName;
+	}
+	
+	public String getDefaultValue(){
+		return defaultvalue;
 	}
 
 //****** These are subclassed from the abstract class Argument **************************
