@@ -87,3 +87,5 @@ Library/.gradle/2.6/taskArtifacts/cache.properties.lock
 Library/.gradle/2.6/taskArtifacts/cache.properties.lock
 
 Library/.gradle/2.6/taskArtifacts/cache.properties.lock
+
+*.MF
