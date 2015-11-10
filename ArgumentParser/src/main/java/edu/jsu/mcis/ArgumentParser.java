@@ -1,45 +1,50 @@
 /**
-*Argument Parser is a user-friendly library for taking in command line arguments
-*and returning their user specified values. The user defines what arguments are 
-*required. Then the program will parse command line info, and will automatically 
-*genreate help, useage, and error messages when the program is given program 
-*invalid arguments.
-*
-*
-*/
+ @author Katie Wood
+ @author Trent Ford
+ @author Sinh Nguyen
+ @author Robert S. Warren Jr.
+ @version 1.04 Build firebolt 9001 Nov 9, 2015.
+ Argument Parser is a user-friendly library for taking in command line arguments
+ and returning their user specified values. The user defines what arguments are 
+ required. Then the program will parse command line info, and will automatically 
+ genreate help, useage, and error messages when the program is given program 
+ invalid arguments.
+  
+ */
 
 package edu.jsu.mcis;
 
 import java.util.*;
 import java.lang.Object.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException; 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+//import javax.xml.parsers.*;
+//import org.w3c.dom.NodeList;
+//import org.w3c.dom.Element;
+//import org.w3c.dom.Document;
+//import org.xml.sax.SAXException; 
+//import java.io.File;
+//import java.io.IOException;
 
 /**
-<h2> 
-INTRO TO ArgParse! 
-</h2>
+ *<h2> 
+ *INTRO TO ArgParse! 
+ *</h2>
+ *
+ *<p>The ArgParse_CS310 module make it easy to write user-friendly 
+ *command-line interfaces. The program defines what arguments is 
+ *requires, and argparse will figure out how to parse those arguments. 
+ *The argparse module also automatically generates help and 
+ *usage messages and issues error codes when users 
+ *give program invalid arguments.</p>
+ *
+ *@param  url  an absolute URL giving the base location of the image
+ *@param  name the location of the image, relative to the url argument
+ *@return      the image at the specified URL
+ *@see         Image
+ */
 
-<p>The ArgParse_CS310 module make it easy to write user-friendly 
-command-line interfaces. The program defines what arguemtns is 
-requires, and argparse will figure out how to parse those arguments. 
-The argparse module also automatically generates help and 
-usage messages and issues error codes when users 
-give program invalid arguments.</p>
 
-@param  url  an absolute URL giving the base location of the image
-@param  name the location of the image, relative to the url argument
-@return      the image at the specified URL
-@see         Image
-*/
-
-
-
+/** Description of ArgumentParser */
 public class ArgumentParser {
 	
 	private List<NamedArgument> namedArgumentList; //hashmap, key would be the name of the argument
@@ -79,10 +84,16 @@ addProgramName
         programDescription = inputProgramDescription;       
     }
     
+    /** Constructor description of getProgramName() 
+    @param getProgramName Receives the specified name of the program
+    @return Returns specified program name as a string.
+    */
     public String getProgramName(){
         return programName;   
     }
-    
+    /** Constructor description of getProgramDescription()
+     @param getProgramDescription recieves a Specified Program Description from CLI
+     @return Returns the specificed description of the program*/ 
     public String getProgramDescription(){
         return programDescription;   
     }
@@ -96,7 +107,8 @@ addProgramName
     public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
     	namedArgumentList.add(arg);
     }
-    
+    /** Constructor description of PositionalArgument getPositionalArgument(String argName) 
+    @param PositionalArgument */
     public PositionalArgument getPositionalArgument(String argName){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
@@ -108,6 +120,7 @@ addProgramName
     	return returnArg;
     }
     
+    //position starts at 0
     public PositionalArgument getPositionalArgument(int argPosition){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
@@ -451,6 +464,47 @@ addProgramName
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
 			}
 		}	
+	}
+	
+	public void writeToXMLFile(String fileName){
+		File outputFile = new File(fileName);
+		try{
+			PrintWriter outputFileWriter = new PrintWriter(outputFile);
+			outputFileWriter.println("<?xml version=" + "\"1.0\"?>");
+			outputFileWriter.println("<program>");
+				outputFileWriter.println("<name>" + getProgramName() + "</name>");
+				outputFileWriter.println("<description>" + getProgramDescription() + "</description>");
+				outputFileWriter.println("<arguments>");
+			
+				for(int i = 0; i < positionalArgumentList.size(); i++){
+					PositionalArgument posArg = positionalArgumentList.get(i);
+					outputFileWriter.println("<positional>");
+						outputFileWriter.println("<name>" + posArg.getName() + "</name>");
+						outputFileWriter.println("<type>" + posArg.getType() + "</type>");
+						outputFileWriter.println("<description>" + posArg.getDescription() + "</description>");
+						outputFileWriter.println("<position>" + (posArg.getPosition() + 1) + "</position>"); //prints position starting at 1
+					outputFileWriter.println("</positional>");
+				}
+				
+				for (int j = 0; j < namedArgumentList.size(); j++){
+					NamedArgument namedArg = namedArgumentList.get(j);
+					outputFileWriter.println("<named>");
+						outputFileWriter.println("<name>" + namedArg.getName() + "</name>");
+						outputFileWriter.println("<shortname>" + namedArg.getShortFormName() + "</shortname>");
+						outputFileWriter.println("<type>" + namedArg.getType() + "</type>");
+						outputFileWriter.println("<description>" + namedArg.getDescription() + "</description>");
+						outputFileWriter.println("<default>" + namedArg.getDefaultValue() + "</default>");
+					outputFileWriter.println("</named>");
+				}
+				
+				outputFileWriter.println("</arguments>");
+			outputFileWriter.println("</program>");
+			
+			outputFileWriter.close();
+		}
+		catch(Exception e){
+		System.out.println(e.getMessage());
+		}
 	}
 }
 
