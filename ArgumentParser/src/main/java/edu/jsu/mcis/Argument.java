@@ -5,6 +5,7 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
+    protected String[] valueSet;
     //protected String value;
     public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     
@@ -55,6 +56,8 @@ public abstract class Argument
     public abstract String getType();
     
     public abstract String getDescription();
+    
+    public abstract String[] getValueSet();
     
     //public abstract void setValue(String argValue);
     

@@ -789,6 +789,16 @@ public class ArgumentParserUnitTests {
 		}
 	}
 	
+	@Test
+	public void testAddSetOfValuesToArgumentAndReturnCorrectSetOfValues(){
+		String[] rainySet = {"true", "false", "True", "False"};
+		String[] typeSet = {"box", "pyramid", "ellipsoid"};
+		PositionalArgument rainy = new PositionalArgument("rainy", Argument.ArgType.BOOLEAN, "True if it is rainy", rainySet);
+		NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeSet);
+		assertEquals(rainySet, rainy.getValueSet());
+		assertEquals(typeSet, type.getValueSet()); 
+	}
+	
 }
 
     

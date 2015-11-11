@@ -21,6 +21,12 @@ public class PositionalArgument<T> extends Argument{
         super(name, dataType, argDescription);
     } 
 
+//***********************************************************************************
+	public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
+        super(name, dataType, argDescription);
+        valueSet = setOfValues;
+    } 
+//***********************************************************************************
 	public void setPosition(int pos){
 		position = pos;
 	}
@@ -64,6 +70,10 @@ public class PositionalArgument<T> extends Argument{
     	else{
     		return value;
     	}
+    }
+    
+    public String[] getValueSet(){
+    	return valueSet;
     }
      
 //**************************************************************************************

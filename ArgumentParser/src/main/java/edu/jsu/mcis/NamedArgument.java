@@ -105,7 +105,15 @@ public class NamedArgument<T> extends Argument{
         this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;
     }
-	//public NamedArgument()
+
+//*************************************************************************************
+	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues){
+        super(name, dataType, argDescription);
+        value = (T)defaultValue;  
+        this.defaultvalue =  defaultValue;  
+        shortFormName = shortForm;
+        valueSet = setOfValues;
+    }
 	
 
 
@@ -149,6 +157,10 @@ public class NamedArgument<T> extends Argument{
     
     public T getValue(){
     	return value;
+    }
+    
+    public String[] getValueSet(){
+    	return valueSet;
     }
 
 //**************************************************************************************
