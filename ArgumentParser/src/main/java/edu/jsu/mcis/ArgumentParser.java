@@ -483,9 +483,9 @@ public class ArgumentParser {
 		}
 	}
 	
-	/*private void parseArgumentValues(ArrayList<Argument> argList) throws IncorrectArgumentValueException{
-		for(int i = 0; i < argList.size(); i++){
-			Argument currentArg = argList.get(i);
+	private void parseNamedArgumentValues(List<NamedArgument> namedArgList) throws IncorrectArgumentValueException{
+		for(int i = 0; i < namedArgList.size(); i++){
+			NamedArgument currentArg = namedArgList.get(i);
 			String[] valueSet = currentArg.getValueSet();
 			if(!valueSet[0].equals("")){
 				Boolean valueSetContainsArgValue = false;
@@ -495,14 +495,51 @@ public class ArgumentParser {
 					}
 				}
 				if(!valueSetContainsArgValue){
-					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage());
+					throw new IncorrectArgumentValueException("Incorrect argument value frustum");
 				}
 			}
-			
-			
-			
 		}
-	}*/
+	}
+	
+	private void parsePositionalArgumentValues(List<PositionalArgument> posArgList) throws IncorrectArgumentValueException{
+		for(int i = 0; i < posArgList.size(); i++){
+			PositionalArgument currentArg = posArgList.get(i);
+			String[] valueSet = currentArg.getValueSet();
+			if(!valueSet[0].equals("")){
+				Boolean valueSetContainsArgValue = false;
+				for(int j = 0; j < valueSet.length; j++){
+					if(currentArg.getType().equals("integer")){
+						int intValue = (Integer)currentArg.getValue();
+						if(valueSet[j].equals(Integer.toString(intValue))){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else if(currentArg.getType().equals("integer")){
+						float floatValue = (Float)currentArg.getValue();
+						if(valueSet[j].equals(Float.toString(floatValue))){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else if(currentArg.getType().equals("string")){
+						String stringValue = (String)currentArg.getValue();
+						if(valueSet[j].equals(stringValue)){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else{
+						Boolean boolValue = (Boolean)currentArg.getValue();
+						if(valueSet[j].equals(boolValue)){
+							valueSetContainsArgValue = true;
+						}
+					}
+					
+				}
+				if(!valueSetContainsArgValue){
+					throw new IncorrectArgumentValueException("Incorrect argument value 6");
+				}
+			}
+		}
+	}
 	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
 		String message = "usage: java " + programName;
@@ -516,7 +553,7 @@ public class ArgumentParser {
     	return message;
 	}
 	
-	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException{
+	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
 		
 		setLongFormNamedArgValues(args);
@@ -545,6 +582,8 @@ public class ArgumentParser {
 			catch (Exception e){
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
 			}
+			parseNamedArgumentValues(namedArgumentList);
+			parsePositionalArgumentValues(positionalArgumentList);
 		}	
 	}
 	

@@ -693,13 +693,13 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
 			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
             //for andrew's only
-            ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
+            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
 			
 			/*
 			//This section should work, but gives initialization issues or other issues 
@@ -769,11 +769,11 @@ public class ArgumentParserUnitTests {
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
     	
-    	//lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    	lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    	lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	//lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     	try{
-    		//ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    		ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    		//ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     		try{
     			newLib.parse(args);
     		}
@@ -810,9 +810,9 @@ public class ArgumentParserUnitTests {
 		assertEquals(typeSet, type.getValueSet()); 
 	}
 	
-	/*@Test
-	public void testParseThrowsExceptionWhenGivenIncorrectArgumentValue{
-		String[] args = {"7", "-t", "frustum", "5", "2", "hello"};
+	@Test
+	public void testParseThrowsExceptionWhenGivenIncorrectNamedArgumentValue(){
+		String[] args = {"7", "-t", "frustum", "5", "2"};
 		ArgumentParser lib = new ArgumentParser();
 		lib.addProgramName("VolumeCalculator");
 		lib.addProgramDescription("Calculate the volume of an object.");
@@ -820,11 +820,9 @@ public class ArgumentParserUnitTests {
     	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
     	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
     	String[] rainySet = {"true", "false", "True", "False"};
-    	PositionalArgument rainy = new PositionalArgument("rainy", Argument.ArgType.BOOLEAN, "True if it is rainy", rainySet);
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	lib.addPositionalArgument(rainy);
     	String[] typeValues = {"box", "pyramid", "ellipsoid"};
     	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValues);
     	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
@@ -837,7 +835,36 @@ public class ArgumentParserUnitTests {
     		assertEquals("Incorrect argument value frustum", e.getMessage());
     	}
 		
-	}*/
+	}
+	
+	@Test
+	public void testParseThrowsExceptionWhenGivenIncorrectPositionalArgumentValue(){
+		String[] args = {"7", "-t", "pyramid", "5", "2", "6"};
+		ArgumentParser lib = new ArgumentParser();
+		lib.addProgramName("VolumeCalculator");
+		lib.addProgramDescription("Calculate the volume of an object.");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
+    	String[] numberSet = {"1", "2", "3", "4"};
+    	PositionalArgument number = new PositionalArgument("number", Argument.ArgType.INTEGER, "the number of objects", numberSet);
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addPositionalArgument(number);
+    	String[] typeValues = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValues);
+    	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
+    	lib.addNamedArgument(type);
+    	lib.addNamedArgument(digits); 
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("Incorrect argument value 6", e.getMessage());
+    	}
+		
+	}
 	
 }
 
