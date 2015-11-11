@@ -5,39 +5,40 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
+    protected String[] valueSet;
     //protected String value;
-<span class="pc" id="L9">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
+<span class="pc" id="L10">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
     
-<span class="nc" id="L11">    public Argument(){</span>
-<span class="nc" id="L12">        argName = null;</span>
-<span class="nc" id="L13">        description = &quot;&quot;;</span>
-<span class="nc" id="L14">        type = null;</span>
+<span class="nc" id="L12">    public Argument(){</span>
+<span class="nc" id="L13">        argName = null;</span>
+<span class="nc" id="L14">        description = &quot;&quot;;</span>
+<span class="nc" id="L15">        type = null;</span>
         //value = null;
         //position = -1;
-<span class="nc" id="L17">    }</span>
+<span class="nc" id="L18">    }</span>
     
-<span class="fc" id="L19">    public Argument(String name, ArgType dataType, String argDescription){</span>
-<span class="fc" id="L20">    	argName = name;</span>
-<span class="fc" id="L21">        description = argDescription;</span>
-<span class="fc" id="L22">        type = dataType;</span>
+<span class="fc" id="L20">    public Argument(String name, ArgType dataType, String argDescription){</span>
+<span class="fc" id="L21">    	argName = name;</span>
+<span class="fc" id="L22">        description = argDescription;</span>
+<span class="fc" id="L23">        type = dataType;</span>
         //value = null;
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L25">    }</span>
     
     public Argument(String name, ArgType dataType){
     	/*argName = name;
         description = &quot;&quot;;
         type = dataType;
         value = null;*/
-<span class="fc" id="L31">        this(name, dataType, &quot;&quot;);</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L32">        this(name, dataType, &quot;&quot;);</span>
+<span class="fc" id="L33">    }</span>
     
     public Argument(String name, String argDescription){
     	/*argName = name;
         description = argDescription;
         type = ArgType.STRING;
         value = null;*/
-<span class="fc" id="L39">        this(name, ArgType.STRING, argDescription);</span>
-<span class="fc" id="L40">    }</span>
+<span class="fc" id="L40">        this(name, ArgType.STRING, argDescription);</span>
+<span class="fc" id="L41">    }</span>
     
     
     public Argument(String name){
@@ -45,8 +46,8 @@ public abstract class Argument
         description = &quot;&quot;;
         type = ArgType.STRING;
         value = null;*/
-<span class="fc" id="L48">        this(name, ArgType.STRING, &quot;&quot;);</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L49">        this(name, ArgType.STRING, &quot;&quot;);</span>
+<span class="fc" id="L50">    }</span>
     
     public abstract String getName();
     
@@ -55,6 +56,8 @@ public abstract class Argument
     public abstract String getType();
     
     public abstract String getDescription();
+    
+    public abstract String[] getValueSet();
     
     //public abstract void setValue(String argValue);
     

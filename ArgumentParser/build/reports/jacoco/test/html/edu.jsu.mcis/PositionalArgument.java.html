@@ -21,49 +21,59 @@ public class PositionalArgument&lt;T&gt; extends Argument{
 <span class="fc" id="L21">        super(name, dataType, argDescription);</span>
 <span class="fc" id="L22">    } </span>
 
+//***********************************************************************************
+	public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
+<span class="fc" id="L26">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L27">        valueSet = setOfValues;</span>
+<span class="fc" id="L28">    } </span>
+//***********************************************************************************
 	public void setPosition(int pos){
-<span class="fc" id="L25">		position = pos;</span>
-<span class="fc" id="L26">	}</span>
+<span class="fc" id="L31">		position = pos;</span>
+<span class="fc" id="L32">	}</span>
 	
 	public int getPosition(){
-<span class="fc" id="L29">		return position;</span>
+<span class="fc" id="L35">		return position;</span>
 	}
 	
 //****** These are subclassed from the abstract class Argument **************************
 
    
     public String getName(){
-<span class="fc" id="L36">        return this.argName;</span>
+<span class="fc" id="L42">        return this.argName;</span>
     }
     
     public String getType(){
-<span class="fc bfc" id="L40" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
-<span class="fc" id="L41">    		return &quot;integer&quot;;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
+<span class="fc" id="L47">    		return &quot;integer&quot;;</span>
     	}
-<span class="fc bfc" id="L43" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L44">    		return &quot;float&quot;;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L50">    		return &quot;float&quot;;</span>
     	}
-<span class="fc bfc" id="L46" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
-<span class="fc" id="L47">    		return &quot;string&quot;;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
+<span class="fc" id="L53">    		return &quot;string&quot;;</span>
     	}
-<span class="fc" id="L49">    	else return &quot;boolean&quot;;</span>
+<span class="fc" id="L55">    	else return &quot;boolean&quot;;</span>
     }
     
     public String getDescription(){
-<span class="fc" id="L53">    	return description;</span>
+<span class="fc" id="L59">    	return description;</span>
     }
     
     public void setValue(T argValue){
-<span class="fc" id="L57">    	value = argValue;</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L63">    	value = argValue;</span>
+<span class="fc" id="L64">    }</span>
 	
     public T getValue(){
-<span class="fc bfc" id="L61" title="All 2 branches covered.">    	if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L62">    		return (T)(Float)value;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    	if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L68">    		return (T)(Float)value;</span>
     	}
     	else{
-<span class="fc" id="L65">    		return value;</span>
+<span class="fc" id="L71">    		return value;</span>
     	}
+    }
+    
+    public String[] getValueSet(){
+<span class="fc" id="L76">    	return valueSet;</span>
     }
      
 //**************************************************************************************
