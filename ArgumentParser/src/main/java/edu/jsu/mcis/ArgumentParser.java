@@ -490,8 +490,29 @@ public class ArgumentParser {
 			if(!valueSet[0].equals("")){
 				Boolean valueSetContainsArgValue = false;
 				for(int j = 0; j < valueSet.length; j++){
-					if(valueSet[j].equals((String)currentArg.getValue())){
-						valueSetContainsArgValue = true;
+					if(currentArg.getType().equals("integer")){
+						int intValue = (Integer)currentArg.getValue();
+						if(valueSet[j].equals(Integer.toString(intValue))){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else if(currentArg.getType().equals("integer")){
+						float floatValue = (Float)currentArg.getValue();
+						if(valueSet[j].equals(Float.toString(floatValue))){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else if(currentArg.getType().equals("string")){
+						String stringValue = (String)currentArg.getValue();
+						if(valueSet[j].equals(stringValue)){
+							valueSetContainsArgValue = true;
+						}
+					}
+					else{
+						Boolean boolValue = (Boolean)currentArg.getValue();
+						if(valueSet[j].equals(boolValue)){
+							valueSetContainsArgValue = true;
+						}
 					}
 				}
 				if(!valueSetContainsArgValue){
@@ -582,8 +603,8 @@ public class ArgumentParser {
 			catch (Exception e){
 				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
 			}
-			parseNamedArgumentValues(namedArgumentList);
-			parsePositionalArgumentValues(positionalArgumentList);
+			parseNamedArgumentValues(namedArgumentList); //throws IncorrectArgumentValueException
+			parsePositionalArgumentValues(positionalArgumentList); //throws IncorrectArgumentValueException
 		}	
 	}
 	
