@@ -55,11 +55,11 @@ public class ArgumentParser {
     
     
 /**
-the Argument Parser constructor this will instantiate a new instance of the Parser
-<p>The constructor enters the blanks for the program name and the program description. 
-Creates a new lists for positional and named arguments. These will be used to hold the 
-arguments that are created by the user. </p>
-*/    
+ *the Argument Parser constructor this will instantiate a new instance of the Parser
+ *<p>The constructor enters the blanks for the program name and the program description. 
+ *Creates a new lists for positional and named arguments. These will be used to hold the 
+ *arguments that are created by the user. </p>
+ */    
     public ArgumentParser(){
 		this.programName = "";
         this.programDescription = "";
@@ -69,53 +69,107 @@ arguments that are created by the user. </p>
 	}
 	
     /**
-
-    addProgramName takes in a string program name and adds to a global string program name.
-     @param     addProgramName Takes in a string program name.
-
-
-
-
-    */ 
+     *
+     *addProgramName takes in a string program name and adds to a global string program name.
+     *@param     addProgramName Takes in a string program name.
+     *
+     */ 
 	public void addProgramName(String inputProgramName){
         programName = inputProgramName;       
     }
     
     /**
-
-    addProgramDescription takes in a string description of a program and adds to a global string program description.
-     @param addProgramDescription   Takes in a string program description.
+     *
+     *
+     *addProgramDescription takes in a string description of a program and adds to a global string program description.
+     *@param addProgramDescription   Takes in a string program description.
 
     */
     public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription;       
     }
     
-    /** Constructor description of getProgramName() 
-     @param getProgramName Receives the specified name of the program
-    
-    */
+    /** 
+     *Constructor description of getProgramName() 
+     *@param getProgramName Receives the specified name of the program
+     */
     public String getProgramName(){
         return programName;   
     }
     /** Constructor description of getProgramDescription()
-     @param getProgramDescription recieves a Specified Program Description from CLI
-     @return Returns the specificed description of the program*/ 
+     *@param getProgramDescription recieves a Specified Program Description from CLI
+     *@return Returns the specificed description of the program*/ 
     public String getProgramDescription(){
         return programDescription;   
     }
     
+    /** @param addPositionalArgument Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *  java VolumeCalculator 7 5 2
+     *}
+     *</pre>
+     *If a positional argument is not supplied, the program should exit, and the usage information       should be              *displayed along with the error stating the missing argument.
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *  java VolumeCalculator 7 5
+     *}
+     *</pre>
+     *
+     *should produce something like the following:
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *  usage: java VolumeCalculator length width height VolumeCalculator.java: error: 
+     *  the following arguments are required: height
+     *
+     *}
+     *</pre>
+     *
+     *If an additional (i.e., one too many) positional argument is specified, then the program should     exit, and the        *usage information should be displayed along with the error stating the additional     argument.
+     *
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *  java VolumeCalculator 7 5 2 43
+     *}
+     *</pre>
+     *
+     *should produce the following:
+     * 
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *usage: java VolumeCalculator length width height
+     *VolumeCalculator.java: error: unrecognized arguments: 43
+     *}
+     *</pre>
+     *
+     */
     public void addPositionalArgument(PositionalArgument arg){
     	posCount++;
     	arg.setPosition(posCount);
     	positionalArgumentList.add(arg);
     }
     
+    /**
+     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *  Set<Something> s;
+     *  
+     *}
+     *</pre>
+     *
+     */
     public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
     	namedArgumentList.add(arg);
     }
     /** Constructor description of PositionalArgument getPositionalArgument(String argName) 
-    @param PositionalArgument */
+     *@param PositionalArgument */
     public PositionalArgument getPositionalArgument(String argName){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
