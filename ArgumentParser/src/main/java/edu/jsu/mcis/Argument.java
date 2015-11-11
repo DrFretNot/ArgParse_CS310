@@ -5,7 +5,7 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
-    protected String[] valueSet;
+    protected String[] valueSet = {""};
     //protected String value;
     public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     

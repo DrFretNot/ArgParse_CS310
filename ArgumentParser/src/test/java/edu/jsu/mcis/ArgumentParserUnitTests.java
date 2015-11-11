@@ -810,6 +810,35 @@ public class ArgumentParserUnitTests {
 		assertEquals(typeSet, type.getValueSet()); 
 	}
 	
+	/*@Test
+	public void testParseThrowsExceptionWhenGivenIncorrectArgumentValue{
+		String[] args = {"7", "-t", "frustum", "5", "2", "hello"};
+		ArgumentParser lib = new ArgumentParser();
+		lib.addProgramName("VolumeCalculator");
+		lib.addProgramDescription("Calculate the volume of an object.");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
+    	String[] rainySet = {"true", "false", "True", "False"};
+    	PositionalArgument rainy = new PositionalArgument("rainy", Argument.ArgType.BOOLEAN, "True if it is rainy", rainySet);
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addPositionalArgument(rainy);
+    	String[] typeValues = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValues);
+    	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
+    	lib.addNamedArgument(type);
+    	lib.addNamedArgument(digits); 
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("Incorrect argument value frustum", e.getMessage());
+    	}
+		
+	}*/
+	
 }
 
     

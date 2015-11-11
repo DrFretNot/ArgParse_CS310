@@ -483,6 +483,27 @@ public class ArgumentParser {
 		}
 	}
 	
+	/*private void parseArgumentValues(ArrayList<Argument> argList) throws IncorrectArgumentValueException{
+		for(int i = 0; i < argList.size(); i++){
+			Argument currentArg = argList.get(i);
+			String[] valueSet = currentArg.getValueSet();
+			if(!valueSet[0].equals("")){
+				Boolean valueSetContainsArgValue = false;
+				for(int j = 0; j < valueSet.length; j++){
+					if(valueSet[j].equals((String)currentArg.getValue())){
+						valueSetContainsArgValue = true;
+					}
+				}
+				if(!valueSetContainsArgValue){
+					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage());
+				}
+			}
+			
+			
+			
+		}
+	}*/
+	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
 		String message = "usage: java " + programName;
 		for(int i = 0; i < positionalArgumentList.size(); i++) {
