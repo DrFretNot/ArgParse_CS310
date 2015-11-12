@@ -300,7 +300,7 @@ public class ArgumentParser {
 		}  	
     }
    
-   private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
+    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
    		int numOfArgs = positionalArgumentList.size();
    		if(argList.size() < numOfArgs){
             String message = "usage: java " + programName;
@@ -339,15 +339,21 @@ public class ArgumentParser {
     private String helpMessage(){ //update the help message to print out all options, not just positional
 		String helpMessage = "usage: java " + programName;
 		for(int i = 0; i < positionalArgumentList.size(); i++) {
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += " " + currentArg.getName();   
+            PositionalArgument currentArg = positionalArgumentList.get(i);
+			helpMessage += " [" + currentArg.getName() + "]";   
 		}
         
-		helpMessage += "\n" + programDescription + "\npositional arguments:";
+        for(int i = 0; i < namedArgumentList.size(); i++) {
+            NamedArgument namedArg = namedArgumentList.get(i);
+            helpMessage += " [" + namedArg.getName() + "] ";
+        }
+  
+        
+        helpMessage += "\n" + programDescription + "\npositional arguments:";
 		
         for(int i = 0; i < positionalArgumentList.size(); i++) {
 			PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += "\n" + currentArg.getName() + " " + currentArg.getDescription();   
+			helpMessage += "\n[" + currentArg.getName() + "] " + currentArg.getDescription();   
 		}
 
 		return helpMessage;

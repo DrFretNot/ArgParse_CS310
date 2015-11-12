@@ -255,7 +255,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
         }
 	}
 	
@@ -305,7 +305,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
         }
     }
     
@@ -527,7 +527,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator length width height\nCalculate the volume of a box.\npositional arguments:\nlength the length of the box\nwidth the width of the box\nheight the height of the box", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
     	}
 	}
 
@@ -693,13 +693,13 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
 			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
             //for andrew's only
-            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
+            ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
 			
 			/*
 			//This section should work, but gives initialization issues or other issues 
@@ -769,11 +769,11 @@ public class ArgumentParserUnitTests {
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
     	
-    	lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    	//lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    	//lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     	try{
-    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    		//ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    		//ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    		ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     		try{
     			newLib.parse(args);
     		}
