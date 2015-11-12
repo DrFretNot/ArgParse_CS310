@@ -105,9 +105,115 @@ public class NamedArgument<T> extends Argument{
         this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;
     }
+    
+    /*******************************With set of values*********************************/
+    public NamedArgument(String name, String[] setOfValues){
+        super(name);
+        valueSet = setOfValues;
+    }
+    
+    public NamedArgument(String name, ArgType dataType, String[] setOfValues){
+        super(name, dataType);
+        if(dataType == ArgType.BOOLEAN){
+        	this.setValue((T)String.valueOf(false));
+        }
+        else{
+        	this.value = null; 
+        } 
+        valueSet = setOfValues;
+    }  
+    
+    public NamedArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
+        super(name, dataType, argDescription);
+        if(dataType == ArgType.BOOLEAN){
+        	this.setValue((T)String.valueOf(false));
+        }
+        else{
+        	this.value = null; 
+        }   
+        valueSet = setOfValues;
+    } 
+    
+    public NamedArgument(String name, String defaultValue, String[] setOfValues){
+        super(name);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue; 
+        valueSet = setOfValues;
+    }          
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String[] setOfValues){
+        super(name, dataType);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;  
+        valueSet = setOfValues;
+    }  
+    public NamedArgument(String name, String defaultValue, String argDescription,String[] setOfValues){
+        super(name, argDescription);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;
+        valueSet = setOfValues;
+    }    	
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription,String[] setOfValues){
+        super(name, dataType, argDescription);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;
+        valueSet = setOfValues;
+    }
+    
+    
+    //These take shortForm
+	public NamedArgument(String name, char shortForm,String[] setOfValues){
+        super(name);
+        shortFormName = shortForm;
+        valueSet = setOfValues;
+	}	
+	public NamedArgument(String name, String defaultValue, char shortForm,String[] setOfValues){
+        super(name);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;  
+        shortFormName = shortForm; 
+        valueSet = setOfValues;        
+    }  
+	public NamedArgument(String name, ArgType dataType, char shortForm,String[] setOfValues){
+        super(name, dataType);
+        if(dataType == ArgType.BOOLEAN){
+        	this.setValue((T)String.valueOf(false));
+        }
+        else{
+        	value = null; 
+        }   
+        shortFormName = shortForm;
+        valueSet = setOfValues;
+    }  
+    public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm,String[] setOfValues){
+        super(name, dataType);
+        value = (T)defaultValue;
+        this.defaultvalue =  defaultValue;  
+        shortFormName = shortForm;
+        valueSet = setOfValues; 
+    }  
+    public NamedArgument(String name, String defaultValue, String argDescription, char shortForm,String[] setOfValues){
+        super(name, argDescription);
+        value = (T)defaultValue; 
+        this.defaultvalue =  defaultValue;  
+        shortFormName = shortForm;
+        valueSet = setOfValues; 
+    }    	
+	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm,String[] setOfValues){
+        super(name, dataType, argDescription);
+        if(dataType == ArgType.BOOLEAN){
+        	this.setValue((T)String.valueOf(false));
+        }
+        else{
+        	value = null; 
+        }   
+        shortFormName = shortForm;
+        valueSet = setOfValues;
+    }
 
 //*************************************************************************************
-	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues){
+	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
         super(name, dataType, argDescription);
         value = (T)defaultValue;  
         this.defaultvalue =  defaultValue;  

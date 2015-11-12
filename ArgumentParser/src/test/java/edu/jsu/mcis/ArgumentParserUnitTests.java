@@ -865,6 +865,13 @@ public class ArgumentParserUnitTests {
     	}
 		
 	}
+    @Test
+    public void NamedArgumentConstructorWithValueSetTest() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    //need more tests like this
 	
 }
 

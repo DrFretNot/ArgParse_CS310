@@ -4,7 +4,7 @@ public class NamedArgument&lt;T&gt; extends Argument{
     
    private T value;
    private char shortFormName;
-<span class="fc" id="L7">   private String defaultvalue = &quot;&quot;;</span>
+<span class="pc" id="L7">   private String defaultvalue = &quot;&quot;;</span>
 
 //**************************************************************************************
 
@@ -105,62 +105,168 @@ public class NamedArgument&lt;T&gt; extends Argument{
 <span class="fc" id="L105">        this.defaultvalue =  defaultValue;  </span>
 <span class="fc" id="L106">        shortFormName = shortForm;</span>
 <span class="fc" id="L107">    }</span>
+    
+    /*******************************With set of values*********************************/
+    public NamedArgument(String name, String[] setOfValues){
+<span class="fc" id="L111">        super(name);</span>
+<span class="fc" id="L112">        valueSet = setOfValues;</span>
+<span class="fc" id="L113">    }</span>
+    
+    public NamedArgument(String name, ArgType dataType, String[] setOfValues){
+<span class="nc" id="L116">        super(name, dataType);</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L118">        	this.setValue((T)String.valueOf(false));</span>
+        }
+        else{
+<span class="nc" id="L121">        	this.value = null; </span>
+        } 
+<span class="nc" id="L123">        valueSet = setOfValues;</span>
+<span class="nc" id="L124">    }  </span>
+    
+    public NamedArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
+<span class="nc" id="L127">        super(name, dataType, argDescription);</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L129">        	this.setValue((T)String.valueOf(false));</span>
+        }
+        else{
+<span class="nc" id="L132">        	this.value = null; </span>
+        }   
+<span class="nc" id="L134">        valueSet = setOfValues;</span>
+<span class="nc" id="L135">    } </span>
+    
+    public NamedArgument(String name, String defaultValue, String[] setOfValues){
+<span class="nc" id="L138">        super(name);</span>
+<span class="nc" id="L139">        value = (T)defaultValue;</span>
+<span class="nc" id="L140">        this.defaultvalue =  defaultValue; </span>
+<span class="nc" id="L141">        valueSet = setOfValues;</span>
+<span class="nc" id="L142">    }          </span>
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String[] setOfValues){
+<span class="nc" id="L145">        super(name, dataType);</span>
+<span class="nc" id="L146">        value = (T)defaultValue;</span>
+<span class="nc" id="L147">        this.defaultvalue =  defaultValue;  </span>
+<span class="nc" id="L148">        valueSet = setOfValues;</span>
+<span class="nc" id="L149">    }  </span>
+    public NamedArgument(String name, String defaultValue, String argDescription,String[] setOfValues){
+<span class="nc" id="L151">        super(name, argDescription);</span>
+<span class="nc" id="L152">        value = (T)defaultValue;</span>
+<span class="nc" id="L153">        this.defaultvalue =  defaultValue;</span>
+<span class="nc" id="L154">        valueSet = setOfValues;</span>
+<span class="nc" id="L155">    }    	</span>
+	
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription,String[] setOfValues){
+<span class="nc" id="L158">        super(name, dataType, argDescription);</span>
+<span class="nc" id="L159">        value = (T)defaultValue;</span>
+<span class="nc" id="L160">        this.defaultvalue =  defaultValue;</span>
+<span class="nc" id="L161">        valueSet = setOfValues;</span>
+<span class="nc" id="L162">    }</span>
+    
+    
+    //These take shortForm
+	public NamedArgument(String name, char shortForm,String[] setOfValues){
+<span class="nc" id="L167">        super(name);</span>
+<span class="nc" id="L168">        shortFormName = shortForm;</span>
+<span class="nc" id="L169">        valueSet = setOfValues;</span>
+<span class="nc" id="L170">	}	</span>
+	public NamedArgument(String name, String defaultValue, char shortForm,String[] setOfValues){
+<span class="nc" id="L172">        super(name);</span>
+<span class="nc" id="L173">        value = (T)defaultValue;</span>
+<span class="nc" id="L174">        this.defaultvalue =  defaultValue;  </span>
+<span class="nc" id="L175">        shortFormName = shortForm; </span>
+<span class="nc" id="L176">        valueSet = setOfValues;        </span>
+<span class="nc" id="L177">    }  </span>
+	public NamedArgument(String name, ArgType dataType, char shortForm,String[] setOfValues){
+<span class="nc" id="L179">        super(name, dataType);</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L181">        	this.setValue((T)String.valueOf(false));</span>
+        }
+        else{
+<span class="nc" id="L184">        	value = null; </span>
+        }   
+<span class="nc" id="L186">        shortFormName = shortForm;</span>
+<span class="nc" id="L187">        valueSet = setOfValues;</span>
+<span class="nc" id="L188">    }  </span>
+    public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm,String[] setOfValues){
+<span class="nc" id="L190">        super(name, dataType);</span>
+<span class="nc" id="L191">        value = (T)defaultValue;</span>
+<span class="nc" id="L192">        this.defaultvalue =  defaultValue;  </span>
+<span class="nc" id="L193">        shortFormName = shortForm;</span>
+<span class="nc" id="L194">        valueSet = setOfValues; </span>
+<span class="nc" id="L195">    }  </span>
+    public NamedArgument(String name, String defaultValue, String argDescription, char shortForm,String[] setOfValues){
+<span class="nc" id="L197">        super(name, argDescription);</span>
+<span class="nc" id="L198">        value = (T)defaultValue; </span>
+<span class="nc" id="L199">        this.defaultvalue =  defaultValue;  </span>
+<span class="nc" id="L200">        shortFormName = shortForm;</span>
+<span class="nc" id="L201">        valueSet = setOfValues; </span>
+<span class="nc" id="L202">    }    	</span>
+	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm,String[] setOfValues){
+<span class="nc" id="L204">        super(name, dataType, argDescription);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="nc" id="L206">        	this.setValue((T)String.valueOf(false));</span>
+        }
+        else{
+<span class="nc" id="L209">        	value = null; </span>
+        }   
+<span class="nc" id="L211">        shortFormName = shortForm;</span>
+<span class="nc" id="L212">        valueSet = setOfValues;</span>
+<span class="nc" id="L213">    }</span>
 
 //*************************************************************************************
-	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues){
-<span class="fc" id="L111">        super(name, dataType, argDescription);</span>
-<span class="fc" id="L112">        value = (T)defaultValue;  </span>
-<span class="fc" id="L113">        this.defaultvalue =  defaultValue;  </span>
-<span class="fc" id="L114">        shortFormName = shortForm;</span>
-<span class="fc" id="L115">        valueSet = setOfValues;</span>
-<span class="fc" id="L116">    }</span>
+	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
+<span class="fc" id="L217">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L218">        value = (T)defaultValue;  </span>
+<span class="fc" id="L219">        this.defaultvalue =  defaultValue;  </span>
+<span class="fc" id="L220">        shortFormName = shortForm;</span>
+<span class="fc" id="L221">        valueSet = setOfValues;</span>
+<span class="fc" id="L222">    }</span>
 	
 
 
 //**************************************************************************************
 //methods
 	public char getShortFormName(){
-<span class="fc" id="L123">		return shortFormName;</span>
+<span class="fc" id="L229">		return shortFormName;</span>
 	}
 	
 	public String getDefaultValue(){
-<span class="fc" id="L127">		return defaultvalue;</span>
+<span class="fc" id="L233">		return defaultvalue;</span>
 	}
 
 //****** These are subclassed from the abstract class Argument **************************
 
 	public String getName()
     {
-<span class="fc" id="L134">        return this.argName;</span>
+<span class="fc" id="L240">        return this.argName;</span>
     }
 
 	public String getType(){
-<span class="fc bfc" id="L138" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
-<span class="fc" id="L139">    		return &quot;integer&quot;;</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
+<span class="fc" id="L245">    		return &quot;integer&quot;;</span>
     	}
-<span class="fc bfc" id="L141" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L142">    		return &quot;float&quot;;</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L248">    		return &quot;float&quot;;</span>
     	}
-<span class="fc bfc" id="L144" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
-<span class="fc" id="L145">    		return &quot;string&quot;;</span>
+<span class="fc bfc" id="L250" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
+<span class="fc" id="L251">    		return &quot;string&quot;;</span>
     	}
-<span class="fc" id="L147">    	else return &quot;boolean&quot;;</span>
+<span class="fc" id="L253">    	else return &quot;boolean&quot;;</span>
     }
 
 	public String getDescription(){
-<span class="fc" id="L151">    	return description;</span>
+<span class="fc" id="L257">    	return description;</span>
     }
 	
 	public void setValue(T argValue){
-<span class="fc" id="L155">    	value = argValue;</span>
-<span class="fc" id="L156">    }</span>
+<span class="fc" id="L261">    	value = argValue;</span>
+<span class="fc" id="L262">    }</span>
     
     public T getValue(){
-<span class="fc" id="L159">    	return value;</span>
+<span class="fc" id="L265">    	return value;</span>
     }
     
     public String[] getValueSet(){
-<span class="fc" id="L163">    	return valueSet;</span>
+<span class="fc" id="L269">    	return valueSet;</span>
     }
 
 //**************************************************************************************
