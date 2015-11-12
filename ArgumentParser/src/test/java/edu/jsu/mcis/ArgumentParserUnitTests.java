@@ -832,7 +832,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("Incorrect argument value frustum", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator\nrequired: length width height\noptional: type digits\nVolumeCalculator.java: error: argument type: invalid value: frustum", e.getMessage());
     	}
 		
 	}
@@ -861,7 +861,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("Incorrect argument value 6", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator\nrequired: length width height number\noptional: type digits\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
     	}
 		
 	}
