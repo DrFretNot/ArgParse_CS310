@@ -44,3 +44,9 @@ if(hasProperty("Xlint:unchecked")) {
         options.compilerArgs << "-Xlint:unchecked" 
     }
 }
+apply plugin: 'java'
+
+	javadoc {
+	source = sourceSets.main.allJava
+	classpath = configurations.compile
+}
