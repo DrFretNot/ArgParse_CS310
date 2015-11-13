@@ -505,7 +505,7 @@ public class ArgumentParser {
 						}
 						errorValue = Integer.toString(intValue);
 					}
-					else if(currentArg.getType().equals("integer")){
+					else if(currentArg.getType().equals("float")){
 						float floatValue = (Float)currentArg.getValue();
 						if(valueSet[j].equals(Float.toString(floatValue))){
 							valueSetContainsArgValue = true;

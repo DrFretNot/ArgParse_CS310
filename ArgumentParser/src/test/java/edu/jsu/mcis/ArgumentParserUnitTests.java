@@ -871,8 +871,136 @@ public class ArgumentParserUnitTests {
         NamedArgument type = new NamedArgument("type", testValues);
         assertEquals(testValues, type.getValueSet());
     }
-    //need more tests like this
-	
+    
+    @Test
+    public void NamedArgumentConstructorWithValuesandDataType() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING,testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void NamedArgumentConstructorWithValuesandDataTypeandArgumentDescription() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, "different types of calculations", testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void NamedArgumentConstructorWithNameDefaultValueAndValueSet() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", "cube", testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void NamedArgumentConstructorWithNameDefaultValueandDescriptioinAndValueSet() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", "cube", "different types of calculations", testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void NamedArgumentConstructorWithNameValueTypeAndDefaultValueandDescriptioinAndValueSet() {
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", "cube", Argument.ArgType.STRING, "different types of calculations", testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSet(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type",'t',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithValueSetWithDefaultValueAndDataType(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", "cube", Argument.ArgType.STRING,testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSetWithDescription(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type","this is a description", 't',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSetWithDataType(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, 't',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSetWithDefaultValueAndDataType(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", "cube", Argument.ArgType.STRING, 't',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSetWithDefaultValueAndDescription(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type","cube", "this is a decription", 't',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentWithShortFormAndValueSetWithDataTypeAndDescription(){
+        String[] testValues = {"cube", "ellipsoid", "pyramid"};
+        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, "this is a decription", 't',testValues);
+        assertEquals(testValues, type.getValueSet());
+    }
+    
+    @Test
+    public void TestNamedArgumentDefaultBoolean(){
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, "This is the description");
+        assertEquals("boolean", help.getType());
+    }
+    
+    @Test
+    public void TestNamedArgumentsWithEachDifferentValue(){
+        String[] args = {"1.0", "1", "2", "--type", "box", "--digits", "2", "--blah", "--shoe", "3.0" };
+		ArgumentParser lib = new ArgumentParser();
+		lib.addProgramName("VolumeCalculator");
+		lib.addProgramDescription("Calculate the volume of an object.");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.INTEGER, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.STRING, "the height of the object");
+    	String[] rainySet = {"true", "false", "True", "False"};
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	String[] typeValues = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValues);
+    	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
+    	NamedArgument blah = new NamedArgument("blah", Argument.ArgType.BOOLEAN);
+        NamedArgument shoe = new NamedArgument("shoe", Argument.ArgType.FLOAT);
+        
+        lib.addNamedArgument(type);
+    	lib.addNamedArgument(digits); 
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		
+    	}
+        assertEquals("float", length.getType());
+        assertEquals("integer", width.getType());
+        assertEquals("string", height.getType());
+        assertEquals("string", type.getType());
+        assertEquals("integer", digits.getType());
+        assertEquals("boolean", blah.getType());
+        assertEquals("float", shoe.getType());
+    }
+    
+    
+    
+    
 }
 
     
