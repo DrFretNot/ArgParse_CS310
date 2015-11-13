@@ -693,38 +693,13 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
 			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
             //for andrew's only
-            ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
-			
-			/*
-			//This section should work, but gives initialization issues or other issues 
-			//checks if the XML File exists
-			
-			ArgumentParser lib = new ArgumentParser();
-			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			boolean exists = varTempDir.exists();
-			if (varTempDir.isDirectory()){
-				//Katie
-				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			}
-			varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			exists = varTempDir.exists();
-			
-			if (varTempDir.isDirectory()){
-				//Trent
-				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
-			}
-			
-			else{ArgumentParser lib = new ArgumentParser();}
-			*/
-			
-			
-			
+            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
 			
 			try{
 				lib.parse(args);
@@ -758,7 +733,8 @@ public class ArgumentParserUnitTests {
 		ArgumentParser lib = new ArgumentParser();
 		lib.addProgramName("VolumeCalculator");
 		lib.addProgramDescription("Calculate the volume of an object.");
-    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+		String[] lengthValueSet = {"7.0", "8.0", "9.0"};
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object", lengthValueSet);
     	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
     	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
     	lib.addPositionalArgument(length);
@@ -769,11 +745,11 @@ public class ArgumentParserUnitTests {
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
     	
-    	//lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    	lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    	lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	//lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     	try{
-    		//ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
-    		ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    		//ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     		try{
     			newLib.parse(args);
     		}
@@ -785,6 +761,7 @@ public class ArgumentParserUnitTests {
 			PositionalArgument newLength = newLib.getPositionalArgument(0);
 			PositionalArgument newWidth = newLib.getPositionalArgument(1);
 			PositionalArgument newHeight = newLib.getPositionalArgument(2);
+			assertEquals(lengthValueSet, newLength.getValueSet());
 			assertEquals((float)7.0, newLength.getValue());
 			assertEquals((float)5.0, newWidth.getValue());
 			assertEquals((float)2.0, newHeight.getValue());
@@ -997,10 +974,56 @@ public class ArgumentParserUnitTests {
         assertEquals("boolean", blah.getType());
         assertEquals("float", shoe.getType());
     }
-    
-    
-    
-    
+
+	
+	@Test//XML file location specific to individual computer
+	public void testImportingXMLFileWithValueSetStoresCorrectInfoForEachArgumentFromOutsideOfArgumentParser(){
+		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		try{
+			//XMLReader xml = new XMLReader();
+			
+			
+			
+			
+			//for Katie's only
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentsWithValueSet.xml");
+			
+			//for Trent's only
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			
+            //for andrew's only
+            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
+			
+			try{
+				lib.parse(args);
+			}
+			catch(Exception e){
+				assertEquals("", e);
+			}
+			assertEquals("VolumeCalculator", lib.getProgramName());
+			assertEquals("Calculate the volume of a specified object.", lib.getProgramDescription());
+			PositionalArgument length = lib.getPositionalArgument(0);
+			PositionalArgument width = lib.getPositionalArgument(1);
+			PositionalArgument height = lib.getPositionalArgument(2);
+			String[] lengthValueSet = {"6.0", "7.0", "8.0"};
+			assertEquals(lengthValueSet, length.getValueSet());
+			assertEquals((float)7.0, length.getValue());
+			assertEquals((float)5.0, width.getValue());
+			assertEquals(2, height.getValue());
+			assertEquals("the height of the object", height.getDescription());
+			NamedArgument type = lib.getNamedArgument('t');
+			String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
+			assertEquals("pyramid", type.getValue());
+			assertEquals(typeValueSet, type.getValueSet());
+			NamedArgument digits = lib.getNamedArgument('d');
+			assertEquals(4, digits.getValue());
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+	
+	}
+
 }
 
     
