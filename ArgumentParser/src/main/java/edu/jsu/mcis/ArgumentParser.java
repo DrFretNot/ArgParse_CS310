@@ -505,7 +505,7 @@ public class ArgumentParser {
 						}
 						errorValue = Integer.toString(intValue);
 					}
-					else if(currentArg.getType().equals("integer")){
+					else if(currentArg.getType().equals("float")){
 						float floatValue = (Float)currentArg.getValue();
 						if(valueSet[j].equals(Float.toString(floatValue))){
 							valueSetContainsArgValue = true;
@@ -550,7 +550,7 @@ public class ArgumentParser {
 						}
 						errorValue = Integer.toString(intValue);
 					}
-					else if(currentArg.getType().equals("integer")){
+					else if(currentArg.getType().equals("float")){
 						float floatValue = (Float)currentArg.getValue();
 						if(valueSet[j].equals(Float.toString(floatValue))){
 							valueSetContainsArgValue = true;
@@ -660,6 +660,16 @@ public class ArgumentParser {
 						outputFileWriter.println("<type>" + posArg.getType() + "</type>");
 						outputFileWriter.println("<description>" + posArg.getDescription() + "</description>");
 						outputFileWriter.println("<position>" + (posArg.getPosition() + 1) + "</position>"); //prints position starting at 1
+						String[] valueSet = posArg.getValueSet();
+						if(!valueSet[0].equals("")){
+							String line = "<valueset>";
+							for(int j = 0; j < valueSet.length; j++){
+								line += valueSet[j] + ",";
+							}
+							line += "</valueset>";	
+							outputFileWriter.println(line);
+						}
+						//outputFileWriter.println(line);
 					outputFileWriter.println("</positional>");
 				}
 				
