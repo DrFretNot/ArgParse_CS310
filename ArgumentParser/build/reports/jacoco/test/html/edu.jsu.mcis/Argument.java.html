@@ -1,70 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Argument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ArgumentParser</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">Argument.java</span></div><h1>Argument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
 
+/**
+ *
+ *Argument This is a parent class to the argument name, description, type value set, and argument type
+ *
+ */
 public abstract class Argument
 {
 	protected String argName;
     protected String description;
     protected ArgType type;
-<span class="pc" id="L8">    protected String[] valueSet = {&quot;&quot;};</span>
-    //protected String value;
-<span class="pc" id="L10">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
+<span class="pc" id="L13">    protected String[] valueSet = {&quot;&quot;};</span>
     
-<span class="nc" id="L12">    public Argument(){</span>
-<span class="nc" id="L13">        argName = null;</span>
-<span class="nc" id="L14">        description = &quot;&quot;;</span>
-<span class="nc" id="L15">        type = null;</span>
-        //value = null;
-        //position = -1;
-<span class="nc" id="L18">    }</span>
+<span class="pc" id="L15">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
     
-<span class="fc" id="L20">    public Argument(String name, ArgType dataType, String argDescription){</span>
-<span class="fc" id="L21">    	argName = name;</span>
-<span class="fc" id="L22">        description = argDescription;</span>
-<span class="fc" id="L23">        type = dataType;</span>
-        //value = null;
-<span class="fc" id="L25">    }</span>
+    /**
+     *
+     *@param Argument initiates argName, description, and type. 
+     *
+     */
+<span class="nc" id="L22">    public Argument(){</span>
+<span class="nc" id="L23">        argName = null;</span>
+<span class="nc" id="L24">        description = &quot;&quot;;</span>
+<span class="nc" id="L25">        type = null;</span>
+        
+<span class="nc" id="L27">    }</span>
     
+    /**
+     *
+     *@param Argument Contructor for different combinations such as &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;ArgType&lt;/b&gt;, &lt;b&gt;dataType&lt;/b&gt;, and &lt;b&gt;argDescription&lt;/b&gt; 
+     *
+     *
+    */
+<span class="fc" id="L35">    public Argument(String name, ArgType dataType, String argDescription){</span>
+<span class="fc" id="L36">    	argName = name;</span>
+<span class="fc" id="L37">        description = argDescription;</span>
+<span class="fc" id="L38">        type = dataType;</span>
+        
+<span class="fc" id="L40">    }</span>
+    
+     /**
+     *
+     *@param Argument Contructor for different combinations such as &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;ArgType&lt;/b&gt;, &lt;b&gt;dataType&lt;/b&gt;, and &lt;b&gt;argDescription&lt;/b&gt; 
+     *
+     *
+    */
     public Argument(String name, ArgType dataType){
-    	/*argName = name;
-        description = &quot;&quot;;
-        type = dataType;
-        value = null;*/
-<span class="fc" id="L32">        this(name, dataType, &quot;&quot;);</span>
-<span class="fc" id="L33">    }</span>
-    
+    	
+<span class="fc" id="L50">        this(name, dataType, &quot;&quot;);</span>
+<span class="fc" id="L51">    }</span>
+     /**
+     *
+     *@param Argument Contructor for different combinations such as &lt;b&gt;name&lt;/b&gt;, and &lt;b&gt;argDescription&lt;/b&gt; 
+     *
+     *
+    */
     public Argument(String name, String argDescription){
-    	/*argName = name;
-        description = argDescription;
-        type = ArgType.STRING;
-        value = null;*/
-<span class="fc" id="L40">        this(name, ArgType.STRING, argDescription);</span>
-<span class="fc" id="L41">    }</span>
+    	
+<span class="fc" id="L60">        this(name, ArgType.STRING, argDescription);</span>
+<span class="fc" id="L61">    }</span>
     
-    
+     /**
+     *
+     *@param Argument Contructor for different combinations such as &lt;b&gt;name&lt;/b&gt;, only.
+     *
+     *
+    */
     public Argument(String name){
-    	/*argName = name;
-        description = &quot;&quot;;
-        type = ArgType.STRING;
-        value = null;*/
-<span class="fc" id="L49">        this(name, ArgType.STRING, &quot;&quot;);</span>
-<span class="fc" id="L50">    }</span>
-    
+    	
+<span class="fc" id="L71">        this(name, ArgType.STRING, &quot;&quot;);</span>
+<span class="fc" id="L72">    }</span>
+    /**
+     *
+     *@param getName Common method which will be defined in child classes
+     *
+     *
+    */
     public abstract String getName();
     
-    /*public abstract void setType(ArgType dataType);*/
-    
+    /**
+     *
+     *@param getType Common method which will be defined in child classes.
+     *
+     *
+    */
     public abstract String getType();
     
+    /**
+     *
+     *@param getDescription Common method which will be defined in child classes.
+     *
+     *
+    */
     public abstract String getDescription();
     
+    /**
+     *
+     *@param getValueSet Common method which will be defined in child classes.
+     *
+     *
+    */
     public abstract String[] getValueSet();
     
-    //public abstract void setValue(String argValue);
-    
-    //public abstract String getValue();
-    
-    
-    //public Argument(){};
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
