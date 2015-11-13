@@ -663,8 +663,9 @@ public class ArgumentParser {
 						String[] valueSet = posArg.getValueSet();
 						if(!valueSet[0].equals("")){
 							String line = "<valueset>";
-							for(int j = 0; j < valueSet.length; j++){
-								line += valueSet[j] + ",";
+							line += valueSet[0];
+							for(int j = 1; j < valueSet.length; j++){
+								line += "," + valueSet[j];
 							}
 							line += "</valueset>";	
 							outputFileWriter.println(line);
@@ -681,6 +682,16 @@ public class ArgumentParser {
 						outputFileWriter.println("<type>" + namedArg.getType() + "</type>");
 						outputFileWriter.println("<description>" + namedArg.getDescription() + "</description>");
 						outputFileWriter.println("<default>" + namedArg.getDefaultValue() + "</default>");
+						String[] valueSet = namedArg.getValueSet();
+						if(!valueSet[0].equals("")){
+							String line = "<valueset>";
+							line += valueSet[0];
+							for(int k = 1; k < valueSet.length; k++){
+								line += "," + valueSet[k];
+							}
+							line += "</valueset>";	
+							outputFileWriter.println(line);
+						}
 					outputFileWriter.println("</named>");
 				}
 				

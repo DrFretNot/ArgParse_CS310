@@ -740,7 +740,8 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't');
+    	String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValueSet);
     	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
@@ -767,6 +768,7 @@ public class ArgumentParserUnitTests {
 			assertEquals((float)2.0, newHeight.getValue());
 			assertEquals("the height of the object", newHeight.getDescription());
 			NamedArgument newType = newLib.getNamedArgument('t');
+			assertEquals(typeValueSet, newType.getValueSet());
 			assertEquals("pyramid", newType.getValue());
 			NamedArgument newDigits = newLib.getNamedArgument('d');
 			assertEquals(4, newDigits.getValue());

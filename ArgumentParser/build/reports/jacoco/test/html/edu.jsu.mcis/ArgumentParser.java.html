@@ -505,7 +505,7 @@ public class ArgumentParser {
 						}
 <span class="nc" id="L506">						errorValue = Integer.toString(intValue);</span>
 <span class="nc" id="L507">					}</span>
-<span class="pc bpc" id="L508" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="pc bpc" id="L508" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
 <span class="nc" id="L509">						float floatValue = (Float)currentArg.getValue();</span>
 <span class="nc bnc" id="L510" title="All 2 branches missed.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
 <span class="nc" id="L511">							valueSetContainsArgValue = true;</span>
@@ -543,20 +543,20 @@ public class ArgumentParser {
 <span class="fc" id="L543">				Boolean valueSetContainsArgValue = false;</span>
 <span class="fc" id="L544">				String errorValue = &quot;&quot;;</span>
 <span class="fc bfc" id="L545" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
-<span class="pc bpc" id="L546" title="1 of 2 branches missed.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc bfc" id="L546" title="All 2 branches covered.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
 <span class="fc" id="L547">						int intValue = (Integer)currentArg.getValue();</span>
-<span class="pc bpc" id="L548" title="1 of 2 branches missed.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
-<span class="nc" id="L549">							valueSetContainsArgValue = true;</span>
+<span class="fc bfc" id="L548" title="All 2 branches covered.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
+<span class="fc" id="L549">							valueSetContainsArgValue = true;</span>
 						}
 <span class="fc" id="L551">						errorValue = Integer.toString(intValue);</span>
 <span class="fc" id="L552">					}</span>
-<span class="nc bnc" id="L553" title="All 2 branches missed.">					else if(currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="nc" id="L554">						float floatValue = (Float)currentArg.getValue();</span>
-<span class="nc bnc" id="L555" title="All 2 branches missed.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
-<span class="nc" id="L556">							valueSetContainsArgValue = true;</span>
+<span class="pc bpc" id="L553" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L554">						float floatValue = (Float)currentArg.getValue();</span>
+<span class="fc bfc" id="L555" title="All 2 branches covered.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
+<span class="fc" id="L556">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L558">						errorValue = Float.toString(floatValue);</span>
-<span class="nc" id="L559">					}</span>
+<span class="fc" id="L558">						errorValue = Float.toString(floatValue);</span>
+<span class="fc" id="L559">					}</span>
 <span class="nc bnc" id="L560" title="All 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
 <span class="nc" id="L561">						String stringValue = (String)currentArg.getValue();</span>
 <span class="nc bnc" id="L562" title="All 2 branches missed.">						if(valueSet[j].equals(stringValue)){</span>
@@ -573,7 +573,7 @@ public class ArgumentParser {
 					}
 					
 				}
-<span class="pc bpc" id="L576" title="1 of 2 branches missed.">				if(!valueSetContainsArgValue){</span>
+<span class="fc bfc" id="L576" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
 <span class="fc" id="L577">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
 				}
 			}
@@ -660,29 +660,50 @@ public class ArgumentParser {
 <span class="fc" id="L660">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + posArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
 <span class="fc" id="L661">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + posArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
 <span class="fc" id="L662">						outputFileWriter.println(&quot;&lt;position&gt;&quot; + (posArg.getPosition() + 1) + &quot;&lt;/position&gt;&quot;); //prints position starting at 1</span>
-<span class="fc" id="L663">					outputFileWriter.println(&quot;&lt;/positional&gt;&quot;);</span>
+<span class="fc" id="L663">						String[] valueSet = posArg.getValueSet();</span>
+<span class="fc bfc" id="L664" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L665">							String line = &quot;&lt;valueset&gt;&quot;;</span>
+<span class="fc" id="L666">							line += valueSet[0];</span>
+<span class="fc bfc" id="L667" title="All 2 branches covered.">							for(int j = 1; j &lt; valueSet.length; j++){</span>
+<span class="fc" id="L668">								line += &quot;,&quot; + valueSet[j];</span>
+							}
+<span class="fc" id="L670">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
+<span class="fc" id="L671">							outputFileWriter.println(line);</span>
+						}
+						//outputFileWriter.println(line);
+<span class="fc" id="L674">					outputFileWriter.println(&quot;&lt;/positional&gt;&quot;);</span>
 				}
 				
-<span class="fc bfc" id="L666" title="All 2 branches covered.">				for (int j = 0; j &lt; namedArgumentList.size(); j++){</span>
-<span class="fc" id="L667">					NamedArgument namedArg = namedArgumentList.get(j);</span>
-<span class="fc" id="L668">					outputFileWriter.println(&quot;&lt;named&gt;&quot;);</span>
-<span class="fc" id="L669">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + namedArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
-<span class="fc" id="L670">						outputFileWriter.println(&quot;&lt;shortname&gt;&quot; + namedArg.getShortFormName() + &quot;&lt;/shortname&gt;&quot;);</span>
-<span class="fc" id="L671">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + namedArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
-<span class="fc" id="L672">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + namedArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
-<span class="fc" id="L673">						outputFileWriter.println(&quot;&lt;default&gt;&quot; + namedArg.getDefaultValue() + &quot;&lt;/default&gt;&quot;);</span>
-<span class="fc" id="L674">					outputFileWriter.println(&quot;&lt;/named&gt;&quot;);</span>
+<span class="fc bfc" id="L677" title="All 2 branches covered.">				for (int j = 0; j &lt; namedArgumentList.size(); j++){</span>
+<span class="fc" id="L678">					NamedArgument namedArg = namedArgumentList.get(j);</span>
+<span class="fc" id="L679">					outputFileWriter.println(&quot;&lt;named&gt;&quot;);</span>
+<span class="fc" id="L680">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + namedArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
+<span class="fc" id="L681">						outputFileWriter.println(&quot;&lt;shortname&gt;&quot; + namedArg.getShortFormName() + &quot;&lt;/shortname&gt;&quot;);</span>
+<span class="fc" id="L682">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + namedArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
+<span class="fc" id="L683">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + namedArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
+<span class="fc" id="L684">						outputFileWriter.println(&quot;&lt;default&gt;&quot; + namedArg.getDefaultValue() + &quot;&lt;/default&gt;&quot;);</span>
+<span class="fc" id="L685">						String[] valueSet = namedArg.getValueSet();</span>
+<span class="fc bfc" id="L686" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L687">							String line = &quot;&lt;valueset&gt;&quot;;</span>
+<span class="fc" id="L688">							line += valueSet[0];</span>
+<span class="fc bfc" id="L689" title="All 2 branches covered.">							for(int k = 1; k &lt; valueSet.length; k++){</span>
+<span class="fc" id="L690">								line += &quot;,&quot; + valueSet[k];</span>
+							}
+<span class="fc" id="L692">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
+<span class="fc" id="L693">							outputFileWriter.println(line);</span>
+						}
+<span class="fc" id="L695">					outputFileWriter.println(&quot;&lt;/named&gt;&quot;);</span>
 				}
 				
-<span class="fc" id="L677">				outputFileWriter.println(&quot;&lt;/arguments&gt;&quot;);</span>
-<span class="fc" id="L678">			outputFileWriter.println(&quot;&lt;/program&gt;&quot;);</span>
+<span class="fc" id="L698">				outputFileWriter.println(&quot;&lt;/arguments&gt;&quot;);</span>
+<span class="fc" id="L699">			outputFileWriter.println(&quot;&lt;/program&gt;&quot;);</span>
 			
-<span class="fc" id="L680">			outputFileWriter.close();</span>
+<span class="fc" id="L701">			outputFileWriter.close();</span>
 		}
-<span class="nc" id="L682">		catch(Exception e){</span>
-<span class="nc" id="L683">		System.out.println(e.getMessage());</span>
-<span class="fc" id="L684">		}</span>
-<span class="fc" id="L685">	}</span>
+<span class="nc" id="L703">		catch(Exception e){</span>
+<span class="nc" id="L704">		System.out.println(e.getMessage());</span>
+<span class="fc" id="L705">		}</span>
+<span class="fc" id="L706">	}</span>
 }
 
 
