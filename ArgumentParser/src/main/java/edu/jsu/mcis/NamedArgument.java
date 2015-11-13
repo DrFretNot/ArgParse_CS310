@@ -1,5 +1,10 @@
 package edu.jsu.mcis;
 
+/**
+ *
+ *Class description: Generics class which extends Arugument class. Allows for the calling of short form named arguments and or sets default values. 
+ *
+*/
 public class NamedArgument<T> extends Argument{
     
    private T value;
@@ -7,11 +12,20 @@ public class NamedArgument<T> extends Argument{
    private String defaultvalue = "";
 
 //**************************************************************************************
-
+    /**
+     *
+     *@param NamedArgument 
+     *
+    */
     public NamedArgument(String name){
         super(name);  
     }
     
+    /**
+     *
+     *@NamedArgument
+     *
+    */
     public NamedArgument(String name, ArgType dataType){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -22,6 +36,12 @@ public class NamedArgument<T> extends Argument{
         } 
     }  
     
+    /**
+     *
+     *@param NamedArgument
+     *
+     *
+    */
     public NamedArgument(String name, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
@@ -32,23 +52,45 @@ public class NamedArgument<T> extends Argument{
         }   
     } 
     
+    /**
+     *
+     *@param NamedArgument
+     *
+     *
+    */
     public NamedArgument(String name, String defaultValue){
         super(name);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue; 
     }          
 	
+    /**
+     *
+     *@param NamedArgument
+     *
+    */
     public NamedArgument(String name, String defaultValue, ArgType dataType){
         super(name, dataType);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;   
     }  
+    
+    /**
+     *
+     *@param NamedArgument
+     *
+     */
     public NamedArgument(String name, String defaultValue, String argDescription){
         super(name, argDescription);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;    
     }    	
 	
+    /**
+     *
+     *@param NamedArgument
+     *
+     */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
         value = (T)defaultValue;
@@ -56,17 +98,34 @@ public class NamedArgument<T> extends Argument{
     }
     
     
-    //These take shortForm
+    
+    /**
+     *
+     *@param NamedArgument takes shortForm
+     *
+     */
 	public NamedArgument(String name, char shortForm){
         super(name);
         shortFormName = shortForm;
 	}	
+    
+    /**
+     *
+     *@param NamedArgument
+     *
+     */
 	public NamedArgument(String name, String defaultValue, char shortForm){
         super(name);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;  
     }  
+    
+    /**
+     *
+     *@NamedArgument
+     *
+     */
 	public NamedArgument(String name, ArgType dataType, char shortForm){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -77,18 +136,36 @@ public class NamedArgument<T> extends Argument{
         }   
         shortFormName = shortForm;
     }  
+    
+    /**
+     *
+     *@NamedArgument
+     *
+    */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
         super(name, dataType);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;  
         shortFormName = shortForm;  
     }  
+    
+    /**
+     *
+     *@NamedArgument
+     *
+     */
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
         super(name, argDescription);
         value = (T)defaultValue; 
         this.defaultvalue =  defaultValue;  
         shortFormName = shortForm; 
     }    	
+    
+     /**
+      *
+      *@NamedArgument
+      *
+      */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
@@ -99,6 +176,11 @@ public class NamedArgument<T> extends Argument{
         }   
         shortFormName = shortForm;
     }
+     /**
+      *
+      *@NamedArgument
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
         super(name, dataType, argDescription);
         value = (T)defaultValue;  
@@ -213,7 +295,16 @@ public class NamedArgument<T> extends Argument{
     }
 
 //*************************************************************************************
+<<<<<<< Updated upstream
 	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
+=======
+     /**
+      *
+      *@NamedArgument
+      *
+      */
+	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues){
+>>>>>>> Stashed changes
         super(name, dataType, argDescription);
         value = (T)defaultValue;  
         this.defaultvalue =  defaultValue;  
@@ -224,11 +315,22 @@ public class NamedArgument<T> extends Argument{
 
 
 //**************************************************************************************
-//methods
+//methods  
+    
+    /**
+     *
+     *@param getShortFormName Gets the short form of an argument when ever there is one.
+     *@return shortFormName return the short form of the argument.
+     */
 	public char getShortFormName(){
 		return shortFormName;
 	}
 	
+    /**
+     *
+     *@param getDefaultValue If for eample --type is not called, the default value will be automatically put in its place. 
+     *@return defaultvalue Returns the default value to the CLI.  
+     */
 	public String getDefaultValue(){
 		return defaultvalue;
 	}

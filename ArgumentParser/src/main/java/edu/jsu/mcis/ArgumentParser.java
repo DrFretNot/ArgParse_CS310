@@ -42,7 +42,7 @@ import java.io.*;
  *
  *@param  url  an absolute URL giving the base location of the image
  *@param  name the location of the image, relative to the url argument
- *@return      the image at the specified URL
+ *
  */
 public class ArgumentParser {
 	
@@ -70,8 +70,8 @@ public class ArgumentParser {
 	
     /**
      *
-     *addProgramName takes in a string program name and adds to a global string program name.
-     *@param     addProgramName Takes in a string program name.
+     *
+     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
      *
      */ 
 	public void addProgramName(String inputProgramName){
@@ -81,9 +81,9 @@ public class ArgumentParser {
     /**
      *
      *
-     *addProgramDescription takes in a string description of a program and adds to a global string program description.
-     *@param addProgramDescription   Takes in a string program description.
-
+     * 
+     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
+     *
     */
     public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription;       
@@ -98,12 +98,12 @@ public class ArgumentParser {
     }
     /** Constructor description of getProgramDescription()
      *@param getProgramDescription recieves a Specified Program Description from CLI
-     *@return Returns the specificed description of the program*/ 
+     *@return programName Returns the specificed description of the program*/ 
     public String getProgramDescription(){
         return programDescription;   
     }
     
-    /** @param addPositionalArgument Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
+    /** @param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
      *<pre>
      *<span style="color:#80BFFF">
      *{@code
@@ -159,7 +159,7 @@ public class ArgumentParser {
      *<pre>
      *<span style="color:#80BFFF">
      *{@code
-     *  Set<Something> s;
+     *
      *  
      *}
      *</pre>
@@ -168,8 +168,13 @@ public class ArgumentParser {
     public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
     	namedArgumentList.add(arg);
     }
+    
     /** Constructor description of PositionalArgument getPositionalArgument(String argName) 
-     *@param PositionalArgument */
+     *@param PositionalArgument getPositionalArgument 
+     *@return Returns the current argument name
+     *
+     *
+     */
     public PositionalArgument getPositionalArgument(String argName){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
@@ -182,6 +187,12 @@ public class ArgumentParser {
     }
     
     //position starts at 0
+    /**
+     *@Param PositionalArgument getPositionalArgument 
+     *@return returnArg
+     *
+     *
+     */
     public PositionalArgument getPositionalArgument(int argPosition){
     	PositionalArgument returnArg = null;
     	for(int i = 0; i < positionalArgumentList.size(); i++){
@@ -193,6 +204,10 @@ public class ArgumentParser {
     	return returnArg;
     }
     
+    /**
+     *@param NamedArgument From the Command line this recieves a specified named argument, as a string, to be added to the library.
+     *@return returnArg Returns the string form of the named Argument.
+     */
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
     	for(int i = 0; i < namedArgumentList.size(); i++){
@@ -204,6 +219,25 @@ public class ArgumentParser {
     	return returnArg;
     }
     
+    /**
+     *@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
+     *@return returnArg returns the short-form name to the library.
+     *
+     *<h2> 
+     *Use Cases: 
+     *</h2>
+     *Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. Assume that it also allows two optional    named arguments called type (short-form t) and digits (short-form d). The following calls would be equivalent:
+     **<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     * java VolumeCalculator --type ellipsoid 7 3 --digits 1 2 
+     *java VolumeCalculator 7 -t ellipsoid 3 --digits 1 2 
+     *java VolumeCalculator 7 3 --type ellipsoid -d 1 2 
+     *java VolumeCalculator 7 -d 1 3 -t ellipsoid 2 
+     *}
+     *</pre>
+     *
+     */
     public NamedArgument getNamedArgument(char argShortFormName){
     	NamedArgument returnArg = null;
     	for(int i = 0; i < namedArgumentList.size(); i++){
@@ -217,6 +251,7 @@ public class ArgumentParser {
  
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
+    
     
     private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
         
@@ -300,7 +335,7 @@ public class ArgumentParser {
 		}  	
     }
    
-    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
+   private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
    		int numOfArgs = positionalArgumentList.size();
    		if(argList.size() < numOfArgs){
             String message = "usage: java " + programName;
@@ -339,21 +374,15 @@ public class ArgumentParser {
     private String helpMessage(){ //update the help message to print out all options, not just positional
 		String helpMessage = "usage: java " + programName;
 		for(int i = 0; i < positionalArgumentList.size(); i++) {
-            PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += " [" + currentArg.getName() + "]";   
+			PositionalArgument currentArg = positionalArgumentList.get(i);
+			helpMessage += " " + currentArg.getName();   
 		}
         
-        for(int i = 0; i < namedArgumentList.size(); i++) {
-            NamedArgument namedArg = namedArgumentList.get(i);
-            helpMessage += " [" + namedArg.getName() + "] ";
-        }
-  
-        
-        helpMessage += "\n" + programDescription + "\npositional arguments:";
+		helpMessage += "\n" + programDescription + "\npositional arguments:";
 		
         for(int i = 0; i < positionalArgumentList.size(); i++) {
 			PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += "\n[" + currentArg.getName() + "] " + currentArg.getDescription();   
+			helpMessage += "\n" + currentArg.getName() + " " + currentArg.getDescription();   
 		}
 
 		return helpMessage;
@@ -492,43 +521,37 @@ public class ArgumentParser {
 	private void parseNamedArgumentValues(List<NamedArgument> namedArgList) throws IncorrectArgumentValueException{
 		for(int i = 0; i < namedArgList.size(); i++){
 			NamedArgument currentArg = namedArgList.get(i);
-			String errorArg = currentArg.getName();
 			String[] valueSet = currentArg.getValueSet();
 			if(!valueSet[0].equals("")){
 				Boolean valueSetContainsArgValue = false;
-				String errorValue = "";
 				for(int j = 0; j < valueSet.length; j++){
 					if(currentArg.getType().equals("integer")){
 						int intValue = (Integer)currentArg.getValue();
 						if(valueSet[j].equals(Integer.toString(intValue))){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Integer.toString(intValue);
 					}
 					else if(currentArg.getType().equals("float")){
 						float floatValue = (Float)currentArg.getValue();
 						if(valueSet[j].equals(Float.toString(floatValue))){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Float.toString(floatValue);
 					}
 					else if(currentArg.getType().equals("string")){
 						String stringValue = (String)currentArg.getValue();
 						if(valueSet[j].equals(stringValue)){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = stringValue;
 					}
 					else{
 						Boolean boolValue = (Boolean)currentArg.getValue();
 						if(valueSet[j].equals(boolValue)){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Boolean.toString(boolValue);
 					}
 				}
 				if(!valueSetContainsArgValue){
-					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));
+					throw new IncorrectArgumentValueException("Incorrect argument value frustum");
 				}
 			}
 		}
@@ -537,64 +560,41 @@ public class ArgumentParser {
 	private void parsePositionalArgumentValues(List<PositionalArgument> posArgList) throws IncorrectArgumentValueException{
 		for(int i = 0; i < posArgList.size(); i++){
 			PositionalArgument currentArg = posArgList.get(i);
-			String errorArg = currentArg.getName();
 			String[] valueSet = currentArg.getValueSet();
 			if(!valueSet[0].equals("")){
 				Boolean valueSetContainsArgValue = false;
-				String errorValue = "";
 				for(int j = 0; j < valueSet.length; j++){
 					if(currentArg.getType().equals("integer")){
 						int intValue = (Integer)currentArg.getValue();
 						if(valueSet[j].equals(Integer.toString(intValue))){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Integer.toString(intValue);
 					}
 					else if(currentArg.getType().equals("float")){
 						float floatValue = (Float)currentArg.getValue();
 						if(valueSet[j].equals(Float.toString(floatValue))){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Float.toString(floatValue);
 					}
 					else if(currentArg.getType().equals("string")){
 						String stringValue = (String)currentArg.getValue();
 						if(valueSet[j].equals(stringValue)){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = stringValue;
 					}
 					else{
 						Boolean boolValue = (Boolean)currentArg.getValue();
-						if(valueSet[j].equals(Boolean.toString(boolValue))){
+						if(valueSet[j].equals(boolValue)){
 							valueSetContainsArgValue = true;
 						}
-						errorValue = Boolean.toString(boolValue);
 					}
 					
 				}
 				if(!valueSetContainsArgValue){
-					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));
+					throw new IncorrectArgumentValueException("Incorrect argument value 6");
 				}
 			}
 		}
-	}
-	//usage: java VolumeCalculator length width height
-    //VolumeCalculator.java: error: argument width: invalid float value: something
-	private String incorrectArgumentValueMessage(String argName, String argValue){
-		String message = "usage: java " + programName;
-		message += "\nrequired:";
-		for(int i = 0; i < positionalArgumentList.size(); i++){
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-			message += " " + currentArg.getName();
-		}
-		message += "\noptional:";
-		for(int j = 0; j < namedArgumentList.size(); j++){
-			NamedArgument currentArg = namedArgumentList.get(j);
-			message += " " + currentArg.getName();
-		}
-		message += "\n" + programName + ".java: error: argument " + argName + ": invalid value: " + argValue;
-		return message;
 	}
 	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
@@ -608,7 +608,34 @@ public class ArgumentParser {
         
     	return message;
 	}
-	
+    
+	/**
+     *
+     *@param parse Collects input data from CLI and parses each argument to the Library.
+     *<pre>
+     *<span style="color:#80BFFF">
+     *{@code
+     *java VolumeCalculator 7 --myarg myval 3 2
+     *
+     *}
+     *</pre>
+     *could produce the following output:
+     *{@code
+     *usage: java VolumeCalculator length width height
+     *VolumeCalculator.java: error: argument myarg does not exist
+     *
+     *}
+     *</pre>
+     *
+     *@thorows helpexception displays a help message to the user 
+     *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
+     *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
+     *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
+     *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
+     *<pre>
+     *
+     */
+    
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
 		
@@ -642,6 +669,23 @@ public class ArgumentParser {
 			parsePositionalArgumentValues(positionalArgumentList); //throws IncorrectArgumentValueException
 		}	
 	}
+    
+    /**
+     *@param writeToXMLFile Allow argument information to be saved to an XML file. 
+     *<pre>
+     *<h2>
+     * Use Cases:
+     *</h2>
+     *Assume VolumeCalculator.java allows for three positional arguments, named <b><font color = "#80BFFF">length</font></b>, <b><font color= 
+     *"#80BFFF">width</font></b>, and <b><font color = "#80BFFF">height</font></b>, respectively, 
+     *each representing float values. Assume that it also allows two optional named arguments: type, 
+     *a string that defaults to "box" with short-form t, and digits, an integer that defaults to 4 
+     *with short-form d.
+     *
+     *
+     </pre>
+     *
+     */
 	
 	public void writeToXMLFile(String fileName){
 		File outputFile = new File(fileName);

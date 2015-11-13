@@ -10,7 +10,11 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ *
+ * Class description: XMLReader allows for reading of an XML file which holds arguments.
+ *
+*/
 public class XMLReader{
 
 	/*private ArgumentParser lib;
@@ -19,6 +23,14 @@ public class XMLReader{
 		lib = new ArgumentParser();
 	}*/
 
+    /**
+     *
+     *@param ArgumentParser This method allows for parsing through an XML file to search for specific arguments within it. 
+     *@throws ParserConfigurationException
+     *@throws SAXException
+     *@throws IOException
+     *@return lib 
+     */
 	public static ArgumentParser readXMLFile(String fileName) throws ParserConfigurationException, SAXException, IOException{
 		
 		ArgumentParser lib = new ArgumentParser();
