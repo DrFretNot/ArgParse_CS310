@@ -77,7 +77,8 @@ public class XMLReader{
 					NodeList positionNL = el.getElementsByTagName("position");
 					Element positionEL = (Element)positionNL.item(0);
 					String position = positionEL.getTextContent();
-				
+					
+					
 					
 					Argument.ArgType dataType;
 					if(type.equals("integer")){
@@ -95,10 +96,25 @@ public class XMLReader{
 					else{
 						dataType = Argument.ArgType.STRING;
 					}
-					PositionalArgument newArg = new PositionalArgument(name, dataType, description);
+					
+					//String[] valueSetArray;
+					NodeList valueSetNL = el.getElementsByTagName("valueset");
+					if(valueSetNL.getLength() > 0){
+						Element valueSetEL = (Element)valueSetNL.item(0);
+						String valueSet = valueSetEL.getTextContent();
+						String[] valueSetArray = valueSet.split(",");
+						lib.addPositionalArgument(new PositionalArgument(name, dataType, description, valueSetArray));
+					}
+					
+					/*if(valueSetNL.getLength() > 0){
+						lib.addPositionalArgument(new PositionalArgument(name, dataType, description, valueSetArray));
+					}*/
+					else{
+						lib.addPositionalArgument(new PositionalArgument(name, dataType, description));
+					}
 					//newArg.addElements(name, dataType);
 			
-					lib.addPositionalArgument(newArg); 
+					//lib.addPositionalArgument(newArg); 
 				}
 			}
 		
@@ -124,11 +140,18 @@ public class XMLReader{
 					Element shortnameEL = (Element)shortnameNL.item(0);
 					String shortname = shortnameEL.getTextContent();
 					char shortFormName = shortname.charAt(0);
+					
+					NodeList descriptionNL = el.getElementsByTagName("description");
+					Element descriptionEL = (Element)descriptionNL.item(0);
+					String description = descriptionEL.getTextContent();
+					//String[] valueSetArray = valueSet.split(",");
 				
 					NodeList defaultNL = el.getElementsByTagName("default");
 					Element defaultEL = (Element)defaultNL.item(0);
 					String defaultValue = defaultEL.getTextContent();
-				
+					
+					
+					
 					//Argument newArg = new Argument();
 					Argument.ArgType dataType;
 					if(type.equals("integer")){
@@ -146,9 +169,23 @@ public class XMLReader{
 					else{
 						dataType = Argument.ArgType.STRING;
 					}
-			
+					
+					//String[] valueSetArray;
+					NodeList valueSetNL = el.getElementsByTagName("valueset");
+					if(valueSetNL.getLength() > 0){
+						Element valueSetEL = (Element)valueSetNL.item(0);
+						String valueSet = valueSetEL.getTextContent();
+						String[] valueSetArray = valueSet.split(",");
+						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName, valueSetArray));
+					}
+					
 					//newArg.addElements(name, dataType);
-					lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, shortFormName));
+					/*if(valueSetNL.getLength() > 0){
+						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName, valueSetArray));
+					}*/
+					else{
+						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName));
+					}
 					//addArgument(newArg); 
 				}
 			}

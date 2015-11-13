@@ -29,7 +29,7 @@
 |                                        | Should Be Equal                       | 3.5                | ${bathrooms} |            |            |
 
 | *Variable*   | *Value*                                                                                                   |
-| ${expected2} | usage: java Volume Calculator length width height\nCalculate the volume of a box.\npositional arguments:\n   length the length of the box (float)\n   width the width of the box (float)\n   height the height of the box (float) |
+| ${expected2} | usage: java Volume Calculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n   [length] the length of the box (float)\n   [width] the width of the box (float)\n   [height] the height of the box (float) |
     
 | *Test Case*        | *Action*                     | *Argument*         | *Argument*  |
 | Test Usage Message | Start Program With Arguments | -h                 |             |
@@ -93,7 +93,7 @@
 |                              | Should Be Equal                       | 1                  | ${digits}    |            |            |            |            |            |
 
 | *Variable*  | *Value*                                                                                                                                                                                                                                   |
-| ${expected4} | usage: java Volume Calculator length width height\nCalculate the volume of a box.\npositional arguments:\n   length the length of the box (float)\n   width the width of the box (float)\n   height the height of the box (float) |
+| ${expected4} | usage: java Volume Calculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n   [length] the length of the box (float)\n   [width] the width of the box (float)\n   [height] the height of the box (float) |
     
 | *Test Case*        | *Action*                     | *Argument*         | *Argument*  | *Argument*  | *Argument*  |
 | Test Help Flag     | Start Program With Arguments | 7                  | --help      | 3           | 2           |
