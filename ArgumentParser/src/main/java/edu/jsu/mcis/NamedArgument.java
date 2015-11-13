@@ -14,7 +14,7 @@ public class NamedArgument<T> extends Argument{
 //**************************************************************************************
     /**
      *
-     *@param NamedArgument 
+     *@param NamedArgument Takes Name
      *
     */
     public NamedArgument(String name){
@@ -23,7 +23,7 @@ public class NamedArgument<T> extends Argument{
     
     /**
      *
-     *@NamedArgument
+     *@param NamedArgument takes Name, and DataType
      *
     */
     public NamedArgument(String name, ArgType dataType){
@@ -38,7 +38,7 @@ public class NamedArgument<T> extends Argument{
     
     /**
      *
-     *@param NamedArgument
+     *@param NamedArgument takes Name, Data Type, and Description
      *
      *
     */
@@ -54,7 +54,7 @@ public class NamedArgument<T> extends Argument{
     
     /**
      *
-     *@param NamedArgument
+     *@param NamedArgument takes Name, and Default Value
      *
      *
     */
@@ -64,33 +64,33 @@ public class NamedArgument<T> extends Argument{
         this.defaultvalue =  defaultValue; 
     }          
 	
-    /**
-     *
-     *@param NamedArgument
-     *
-    */
+     /**
+      *
+      *@param NamedArgument takes Name, Default Value, and Argument Type)
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType){
         super(name, dataType);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;   
     }  
     
-    /**
-     *
-     *@param NamedArgument
-     *
-     */
+     /**
+      *
+      *@param NamedArgument takes Name, Default Value, and Description)
+      *
+      */
     public NamedArgument(String name, String defaultValue, String argDescription){
         super(name, argDescription);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;    
     }    	
 	
-    /**
-     *
-     *@param NamedArgument
-     *
-     */
+     /**
+      *
+      *@param NamedArgument takes Name, Default Value, Argument Type, Description)
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
         value = (T)defaultValue;
@@ -101,7 +101,7 @@ public class NamedArgument<T> extends Argument{
     
     /**
      *
-     *@param NamedArgument takes shortForm
+     *@param NamedArgument takes Name, and Short Form)
      *
      */
 	public NamedArgument(String name, char shortForm){
@@ -110,10 +110,10 @@ public class NamedArgument<T> extends Argument{
 	}	
     
     /**
-     *
-     *@param NamedArgument
-     *
-     */
+      *
+      *@param NamedArgument takes Name, Default Value, and Short Form)
+      *
+      */
 	public NamedArgument(String name, String defaultValue, char shortForm){
         super(name);
         value = (T)defaultValue;
@@ -122,10 +122,10 @@ public class NamedArgument<T> extends Argument{
     }  
     
     /**
-     *
-     *@NamedArgument
-     *
-     */
+      *
+      *@param NamedArgument takes Name, Argument Type, and Short Form)
+      *
+      */
 	public NamedArgument(String name, ArgType dataType, char shortForm){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -138,10 +138,10 @@ public class NamedArgument<T> extends Argument{
     }  
     
     /**
-     *
-     *@NamedArgument
-     *
-    */
+      *
+      *@param NamedArgument takes Name, Default Value, Argument Type, and Short Form)
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
         super(name, dataType);
         value = (T)defaultValue;
@@ -150,10 +150,10 @@ public class NamedArgument<T> extends Argument{
     }  
     
     /**
-     *
-     *@NamedArgument
-     *
-     */
+      *
+      *@param NamedArgument takes Name, Default Value, Description, and Short Form)
+      *
+      */
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
         super(name, argDescription);
         value = (T)defaultValue; 
@@ -163,7 +163,7 @@ public class NamedArgument<T> extends Argument{
     
      /**
       *
-      *@NamedArgument
+      *@param NamedArgument takes Name, Argument Type, Description, and Short Form)
       *
       */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
@@ -178,7 +178,7 @@ public class NamedArgument<T> extends Argument{
     }
      /**
       *
-      *@NamedArgument
+      *@param NamedArgument takes Name, Default Value, Argument Type, Description, and Short Form)
       *
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
@@ -188,12 +188,17 @@ public class NamedArgument<T> extends Argument{
         shortFormName = shortForm;
     }
     
-    /*******************************With set of values*********************************/
+    /*******************************With sets of values*********************************/
     public NamedArgument(String name, String[] setOfValues){
         super(name);
         valueSet = setOfValues;
     }
     
+    /**
+      *
+      *@param NamedArgument takes Name, Argument Type, and a Set of Values
+      *
+      */
     public NamedArgument(String name, ArgType dataType, String[] setOfValues){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -205,6 +210,11 @@ public class NamedArgument<T> extends Argument{
         valueSet = setOfValues;
     }  
     
+    /**
+      *
+      *@param NamedArgument takes Name, Argument Type, Description, and a Set of Values
+      *
+      */
     public NamedArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
@@ -216,19 +226,35 @@ public class NamedArgument<T> extends Argument{
         valueSet = setOfValues;
     } 
     
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, and a Set of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, String[] setOfValues){
         super(name);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue; 
         valueSet = setOfValues;
-    }          
-	
+    }   
+    
+	/**
+      *
+      *@param NamedArgument takes Name, Default Value, Argument Type, and a Set of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String[] setOfValues){
         super(name, dataType);
         value = (T)defaultValue;
         this.defaultvalue =  defaultValue;  
         valueSet = setOfValues;
     }  
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Description, and a Set of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, String argDescription,String[] setOfValues){
         super(name, argDescription);
         value = (T)defaultValue;
@@ -236,6 +262,11 @@ public class NamedArgument<T> extends Argument{
         valueSet = setOfValues;
     }    	
 	
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Argument Type, Description, and a Set of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription,String[] setOfValues){
         super(name, dataType, argDescription);
         value = (T)defaultValue;
@@ -244,12 +275,22 @@ public class NamedArgument<T> extends Argument{
     }
     
     
-    //These take shortForm
+    /**
+      *
+      *@param NamedArgument takes Name, Short Form name and, a Set Of Values
+      *
+      */
 	public NamedArgument(String name, char shortForm,String[] setOfValues){
         super(name);
         shortFormName = shortForm;
         valueSet = setOfValues;
 	}	
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Short Form name and, a Set Of Values
+      *
+      */
 	public NamedArgument(String name, String defaultValue, char shortForm,String[] setOfValues){
         super(name);
         value = (T)defaultValue;
@@ -257,6 +298,12 @@ public class NamedArgument<T> extends Argument{
         shortFormName = shortForm; 
         valueSet = setOfValues;        
     }  
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Data Type, Short Form name and, a Set Of Values
+      *
+      */
 	public NamedArgument(String name, ArgType dataType, char shortForm,String[] setOfValues){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -267,7 +314,13 @@ public class NamedArgument<T> extends Argument{
         }   
         shortFormName = shortForm;
         valueSet = setOfValues;
-    }  
+    } 
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Data Type, Short Form name and, a Set Of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm,String[] setOfValues){
         super(name, dataType);
         value = (T)defaultValue;
@@ -275,6 +328,12 @@ public class NamedArgument<T> extends Argument{
         shortFormName = shortForm;
         valueSet = setOfValues; 
     }  
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Argument Description, Short Form name and, a Set Of Values
+      *
+      */
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm,String[] setOfValues){
         super(name, argDescription);
         value = (T)defaultValue; 
@@ -282,6 +341,12 @@ public class NamedArgument<T> extends Argument{
         shortFormName = shortForm;
         valueSet = setOfValues; 
     }    	
+    
+    /**
+      *
+      *@param NamedArgument takes Name, Default Value, Data Type, Argument Description, Short Form name and, a Set Of Values
+      *
+      */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm,String[] setOfValues){
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
@@ -295,16 +360,12 @@ public class NamedArgument<T> extends Argument{
     }
 
 //*************************************************************************************
-<<<<<<< Updated upstream
-	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
-=======
      /**
       *
-      *@NamedArgument
+      *@param NamedArgument takes Name, Default Value, Data Type, Argument Description, Short Form name and, a Set Of Values
       *
       */
-	public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues){
->>>>>>> Stashed changes
+    public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
         super(name, dataType, argDescription);
         value = (T)defaultValue;  
         this.defaultvalue =  defaultValue;  
