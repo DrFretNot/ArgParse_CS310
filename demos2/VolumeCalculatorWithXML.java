@@ -10,33 +10,14 @@ public class VolumeCalculatorWithXML
         float z = 0;
           
         try{
-			
-			/*AddXMLArguments xml = new AddXMLArguments();//XML File path is different for each computer
-			
-			//checks if the XML File exists
-			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			boolean exists = varTempDir.exists();
-			if (varTempDir.isDirectory()){
-				//Katie
-				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			}
-			File varTempDir = new File("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
-			boolean exists = varTempDir.exists();
-			
-			if (varTempDir.isDirectory()){
-				//Trent
-				ArgumentParser lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
-			}
-			*/
-			
-			
-			AddXMLArguments xml = new AddXMLArguments();
+        	ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/ArgumentsDemo.xml");
+			/*AddXMLArguments xml = new AddXMLArguments();
 		
 			//Katie Location
 			//Library lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 		
 			//Trent Location
-			Library lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			Library lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");*/
 			
 			
 			
@@ -46,14 +27,14 @@ public class VolumeCalculatorWithXML
 			
 			try{
 				lib.parse(args);
-				Argument length = lib.getArgument(0);
-				Argument width = lib.getArgument(1);
-				Argument height = lib.getArgument(2);
+				PositionalArgument<Float> length = lib.getPositionalArgument(0);
+				PositionalArgument<Float> width = lib.getPositionalArgument(1);
+				PositionalArgument<Integer> height = lib.getPositionalArgument(2);
 			
-				x = Float.parseFloat(length.getValue());
-				y = Float.parseFloat(width.getValue());
-				z = Float.parseFloat(height.getValue());
-				NamedArgument type = lib.getNamedArgument("type");
+				x = length.getValue();
+				y = width.getValue();
+				z = height.getValue();
+				NamedArgument<String> type = lib.getNamedArgument("type");
 				if(type.getValue().equals("box")){
 					System.out.println( String.valueOf(x * y * z) );
 				}

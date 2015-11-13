@@ -21,14 +21,15 @@ public class VolumeCalculatorWithXMLWriteFunction
         lib.addPositionalArgument(width);
         lib.addPositionalArgument(height);
 		
-        lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+		String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
+        lib.addNamedArgument(new NamedArgument("type", "box", Argument.ArgType.STRING, 't', typeValueSet));
         lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
         lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN, 'h'));
 		//Sinh
-		lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
+		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
 		
 		//Katie
-		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
+		lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/KatieArgumentParser.xml");
 		
 		//Rob
 		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
