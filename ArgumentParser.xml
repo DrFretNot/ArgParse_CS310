@@ -28,6 +28,7 @@
 <type>string</type>
 <description>the shape of the object</description>
 <default>box</default>
+<valueset>box,pyramid,ellipsoid</valueset>
 </named>
 <named>
 <name>digits</name>

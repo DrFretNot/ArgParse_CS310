@@ -740,7 +740,8 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't');
+    	String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValueSet);
     	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
@@ -767,6 +768,7 @@ public class ArgumentParserUnitTests {
 			assertEquals((float)2.0, newHeight.getValue());
 			assertEquals("the height of the object", newHeight.getDescription());
 			NamedArgument newType = newLib.getNamedArgument('t');
+			assertEquals(typeValueSet, newType.getValueSet());
 			assertEquals("pyramid", newType.getValue());
 			NamedArgument newDigits = newLib.getNamedArgument('d');
 			assertEquals(4, newDigits.getValue());
@@ -1022,8 +1024,58 @@ public class ArgumentParserUnitTests {
 			assertEquals("", e);
 		}
 	
+
 	}
 
+
+	@Test//XML file location specific to individual computer
+	public void testImportingXMLFileWithValueSetStoresCorrectInfoForEachArgumentFromOutsideOfArgumentParser(){
+		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		try{
+			//XMLReader xml = new XMLReader();
+			
+			
+			
+			
+			//for Katie's only
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentsWithValueSet.xml");
+			
+			//for Trent's only
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			
+            //for andrew's only
+            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
+			
+			try{
+				lib.parse(args);
+			}
+			catch(Exception e){
+				assertEquals("", e);
+			}
+			assertEquals("VolumeCalculator", lib.getProgramName());
+			assertEquals("Calculate the volume of a specified object.", lib.getProgramDescription());
+			PositionalArgument length = lib.getPositionalArgument(0);
+			PositionalArgument width = lib.getPositionalArgument(1);
+			PositionalArgument height = lib.getPositionalArgument(2);
+			String[] lengthValueSet = {"6.0", "7.0", "8.0"};
+			assertEquals(lengthValueSet, length.getValueSet());
+			assertEquals((float)7.0, length.getValue());
+			assertEquals((float)5.0, width.getValue());
+			assertEquals(2, height.getValue());
+			assertEquals("the height of the object", height.getDescription());
+			NamedArgument type = lib.getNamedArgument('t');
+			String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
+			assertEquals("pyramid", type.getValue());
+			assertEquals(typeValueSet, type.getValueSet());
+			NamedArgument digits = lib.getNamedArgument('d');
+			assertEquals(4, digits.getValue());
+		}
+		catch(Exception e){
+			assertEquals("", e);
+		}
+	
+	}
+	
 }
 
     
