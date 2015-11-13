@@ -77,82 +77,119 @@ import java.io.IOException;
 <span class="fc" id="L77">					NodeList positionNL = el.getElementsByTagName(&quot;position&quot;);</span>
 <span class="fc" id="L78">					Element positionEL = (Element)positionNL.item(0);</span>
 <span class="fc" id="L79">					String position = positionEL.getTextContent();</span>
-				
+					
+					
 					
 					Argument.ArgType dataType;
-<span class="pc bpc" id="L83" title="1 of 2 branches missed.">					if(type.equals(&quot;integer&quot;)){</span>
-<span class="nc" id="L84">						dataType = Argument.ArgType.INTEGER;</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">					if(type.equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L85">						dataType = Argument.ArgType.INTEGER;</span>
 					}
-<span class="pc bpc" id="L86" title="1 of 2 branches missed.">					else if(type.equals(&quot;float&quot;)){</span>
-<span class="fc" id="L87">						dataType = Argument.ArgType.FLOAT;</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">					else if(type.equals(&quot;float&quot;)){</span>
+<span class="fc" id="L88">						dataType = Argument.ArgType.FLOAT;</span>
 					}
-<span class="nc bnc" id="L89" title="All 2 branches missed.">					else if(type.equals(&quot;string&quot;)){</span>
-<span class="nc" id="L90">						dataType = Argument.ArgType.STRING;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">					else if(type.equals(&quot;string&quot;)){</span>
+<span class="nc" id="L91">						dataType = Argument.ArgType.STRING;</span>
 					}
-<span class="nc bnc" id="L92" title="All 2 branches missed.">					else if(type.equals(&quot;boolean&quot;)){</span>
-<span class="nc" id="L93">						dataType = Argument.ArgType.BOOLEAN;</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">					else if(type.equals(&quot;boolean&quot;)){</span>
+<span class="nc" id="L94">						dataType = Argument.ArgType.BOOLEAN;</span>
 					}
 					else{
-<span class="nc" id="L96">						dataType = Argument.ArgType.STRING;</span>
+<span class="nc" id="L97">						dataType = Argument.ArgType.STRING;</span>
 					}
-<span class="fc" id="L98">					PositionalArgument newArg = new PositionalArgument(name, dataType, description);</span>
+					
+					//String[] valueSetArray;
+<span class="fc" id="L101">					NodeList valueSetNL = el.getElementsByTagName(&quot;valueset&quot;);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">					if(valueSetNL.getLength() &gt; 0){</span>
+<span class="fc" id="L103">						Element valueSetEL = (Element)valueSetNL.item(0);</span>
+<span class="fc" id="L104">						String valueSet = valueSetEL.getTextContent();</span>
+<span class="fc" id="L105">						String[] valueSetArray = valueSet.split(&quot;,&quot;);</span>
+<span class="fc" id="L106">						lib.addPositionalArgument(new PositionalArgument(name, dataType, description, valueSetArray));</span>
+<span class="fc" id="L107">					}</span>
+					
+					/*if(valueSetNL.getLength() &gt; 0){
+						lib.addPositionalArgument(new PositionalArgument(name, dataType, description, valueSetArray));
+					}*/
+					else{
+<span class="fc" id="L113">						lib.addPositionalArgument(new PositionalArgument(name, dataType, description));</span>
+					}
 					//newArg.addElements(name, dataType);
 			
-<span class="fc" id="L101">					lib.addPositionalArgument(newArg); </span>
+					//lib.addPositionalArgument(newArg); 
 				}
 			}
 		
 			//get another nodelist of elements
-<span class="fc" id="L106">			NodeList nlNamed = arguments.getElementsByTagName(&quot;named&quot;);</span>
+<span class="fc" id="L122">			NodeList nlNamed = arguments.getElementsByTagName(&quot;named&quot;);</span>
 		
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			if(nlNamed.getLength() &gt; 0) {</span>
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">			if(nlNamed.getLength() &gt; 0) {</span>
 			
-<span class="fc bfc" id="L110" title="All 2 branches covered.">				for(int i = 0 ; i &lt; nlNamed.getLength();i++) {</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">				for(int i = 0 ; i &lt; nlNamed.getLength();i++) {</span>
 				 
 					//get the argument element
-<span class="fc" id="L113">					Element el = (Element)nlNamed.item(i);</span>
+<span class="fc" id="L129">					Element el = (Element)nlNamed.item(i);</span>
 				
-<span class="fc" id="L115">					NodeList nameNL = el.getElementsByTagName(&quot;name&quot;);</span>
-<span class="fc" id="L116">					Element nameEL = (Element)nameNL.item(0);</span>
-<span class="fc" id="L117">					String name = nameEL.getTextContent();</span>
+<span class="fc" id="L131">					NodeList nameNL = el.getElementsByTagName(&quot;name&quot;);</span>
+<span class="fc" id="L132">					Element nameEL = (Element)nameNL.item(0);</span>
+<span class="fc" id="L133">					String name = nameEL.getTextContent();</span>
 				
-<span class="fc" id="L119">					NodeList typeNL = el.getElementsByTagName(&quot;type&quot;);</span>
-<span class="fc" id="L120">					Element typeEL = (Element)typeNL.item(0);</span>
-<span class="fc" id="L121">					String type = typeEL.getTextContent();</span>
+<span class="fc" id="L135">					NodeList typeNL = el.getElementsByTagName(&quot;type&quot;);</span>
+<span class="fc" id="L136">					Element typeEL = (Element)typeNL.item(0);</span>
+<span class="fc" id="L137">					String type = typeEL.getTextContent();</span>
 				
-<span class="fc" id="L123">					NodeList shortnameNL = el.getElementsByTagName(&quot;shortname&quot;);</span>
-<span class="fc" id="L124">					Element shortnameEL = (Element)shortnameNL.item(0);</span>
-<span class="fc" id="L125">					String shortname = shortnameEL.getTextContent();</span>
-<span class="fc" id="L126">					char shortFormName = shortname.charAt(0);</span>
+<span class="fc" id="L139">					NodeList shortnameNL = el.getElementsByTagName(&quot;shortname&quot;);</span>
+<span class="fc" id="L140">					Element shortnameEL = (Element)shortnameNL.item(0);</span>
+<span class="fc" id="L141">					String shortname = shortnameEL.getTextContent();</span>
+<span class="fc" id="L142">					char shortFormName = shortname.charAt(0);</span>
+					
+<span class="fc" id="L144">					NodeList descriptionNL = el.getElementsByTagName(&quot;description&quot;);</span>
+<span class="fc" id="L145">					Element descriptionEL = (Element)descriptionNL.item(0);</span>
+<span class="fc" id="L146">					String description = descriptionEL.getTextContent();</span>
+					//String[] valueSetArray = valueSet.split(&quot;,&quot;);
 				
-<span class="fc" id="L128">					NodeList defaultNL = el.getElementsByTagName(&quot;default&quot;);</span>
-<span class="fc" id="L129">					Element defaultEL = (Element)defaultNL.item(0);</span>
-<span class="fc" id="L130">					String defaultValue = defaultEL.getTextContent();</span>
-				
+<span class="fc" id="L149">					NodeList defaultNL = el.getElementsByTagName(&quot;default&quot;);</span>
+<span class="fc" id="L150">					Element defaultEL = (Element)defaultNL.item(0);</span>
+<span class="fc" id="L151">					String defaultValue = defaultEL.getTextContent();</span>
+					
+					
+					
 					//Argument newArg = new Argument();
 					Argument.ArgType dataType;
-<span class="fc bfc" id="L134" title="All 2 branches covered.">					if(type.equals(&quot;integer&quot;)){</span>
-<span class="fc" id="L135">						dataType = Argument.ArgType.INTEGER;</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">					if(type.equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L158">						dataType = Argument.ArgType.INTEGER;</span>
 					}
-<span class="pc bpc" id="L137" title="1 of 2 branches missed.">					else if(type.equals(&quot;float&quot;)){</span>
-<span class="nc" id="L138">						dataType = Argument.ArgType.FLOAT;</span>
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">					else if(type.equals(&quot;float&quot;)){</span>
+<span class="nc" id="L161">						dataType = Argument.ArgType.FLOAT;</span>
 					}
-<span class="pc bpc" id="L140" title="1 of 2 branches missed.">					else if(type.equals(&quot;string&quot;)){</span>
-<span class="fc" id="L141">						dataType = Argument.ArgType.STRING;</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">					else if(type.equals(&quot;string&quot;)){</span>
+<span class="fc" id="L164">						dataType = Argument.ArgType.STRING;</span>
 					}
-<span class="nc bnc" id="L143" title="All 2 branches missed.">					else if(type.equals(&quot;boolean&quot;)){</span>
-<span class="nc" id="L144">						dataType = Argument.ArgType.BOOLEAN;</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">					else if(type.equals(&quot;boolean&quot;)){</span>
+<span class="nc" id="L167">						dataType = Argument.ArgType.BOOLEAN;</span>
 					}
 					else{
-<span class="nc" id="L147">						dataType = Argument.ArgType.STRING;</span>
+<span class="nc" id="L170">						dataType = Argument.ArgType.STRING;</span>
 					}
-			
+					
+					//String[] valueSetArray;
+<span class="fc" id="L174">					NodeList valueSetNL = el.getElementsByTagName(&quot;valueset&quot;);</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">					if(valueSetNL.getLength() &gt; 0){</span>
+<span class="fc" id="L176">						Element valueSetEL = (Element)valueSetNL.item(0);</span>
+<span class="fc" id="L177">						String valueSet = valueSetEL.getTextContent();</span>
+<span class="fc" id="L178">						String[] valueSetArray = valueSet.split(&quot;,&quot;);</span>
+<span class="fc" id="L179">						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName, valueSetArray));</span>
+<span class="fc" id="L180">					}</span>
+					
 					//newArg.addElements(name, dataType);
-<span class="fc" id="L151">					lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, shortFormName));</span>
+					/*if(valueSetNL.getLength() &gt; 0){
+						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName, valueSetArray));
+					}*/
+					else{
+<span class="fc" id="L187">						lib.addNamedArgument(new NamedArgument(name, defaultValue, dataType, description, shortFormName));</span>
+					}
 					//addArgument(newArg); 
 				}
 			}
-<span class="fc" id="L155">		return lib;</span>
+<span class="fc" id="L192">		return lib;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
