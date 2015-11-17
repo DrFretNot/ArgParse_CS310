@@ -29,7 +29,10 @@ import java.io.*;
 
 /** Description of ArgumentParser:
 /**
+ *
  *<h2> 
+ *<span style="color:#4c6b87">
+ 
  *INTRO TO ArgParse! 
  *</h2>
  *
@@ -55,10 +58,23 @@ public class ArgumentParser {
     
     
 /**
- *the Argument Parser constructor this will instantiate a new instance of the Parser
+ *The Argument Parser constructor, this will instantiate a new instance of the Parser
  *<p>The constructor enters the blanks for the program name and the program description. 
  *Creates a new lists for positional and named arguments. These will be used to hold the 
- *arguments that are created by the user. </p>
+ *arguments that are created by the user. 
+ *<pre>
+ *<span style="color:#4c6b87">
+ *{@code
+ * public ArgumentParser(){
+    this.programName = "";
+    this.programDescription = "";
+    this.positionalArgumentList = new ArrayList<PositionalArgument>();
+    this.namedArgumentList = new ArrayList<NamedArgument>(); 
+    posCount = -1;
+ *}
+ *
+ *}
+ *
  */    
     public ArgumentParser(){
 		this.programName = "";
@@ -72,6 +88,13 @@ public class ArgumentParser {
      *
      *
      *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
+     *<pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     public void addProgramName(String inputProgramName){
+        programName = inputProgramName; 
+}
+     *}
      *
      */ 
 	public void addProgramName(String inputProgramName){
@@ -84,6 +107,15 @@ public class ArgumentParser {
      * 
      *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
      *
+     *<pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     public void addProgramDescription(String inputProgramDescription){
+        programDescription = inputProgramDescription; 
+}
+     
+     
+     *}
     */
     public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription;       
@@ -92,61 +124,47 @@ public class ArgumentParser {
     /** 
      *Constructor description of getProgramName() 
      *@param getProgramName Receives the specified name of the program
+     *<pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     public String getProgramName(){
+        return programName; 
+     
+}
+     *}
      */
     public String getProgramName(){
         return programName;   
     }
     /** Constructor description of getProgramDescription()
      *@param getProgramDescription recieves a Specified Program Description from CLI
-     *@return programName Returns the specificed description of the program*/ 
+     *@return programName Returns the specificed description of the program
+     *<pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     public String getProgramDescription(){
+        return programDescription;   
+    }
+     *}
+     */
+    
     public String getProgramDescription(){
         return programDescription;   
     }
     
     /** @param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
-     *<pre>
-     *<span style="color:#80BFFF">
-     *{@code
-     *  java VolumeCalculator 7 5 2
-     *}
-     *</pre>
      *If a positional argument is not supplied, the program should exit, and the usage information       should be              *displayed along with the error stating the missing argument.
-     *<pre>
-     *<span style="color:#80BFFF">
-     *{@code
-     *  java VolumeCalculator 7 5
-     *}
-     *</pre>
-     *
-     *should produce something like the following:
-     *<pre>
-     *<span style="color:#80BFFF">
-     *{@code
-     *  usage: java VolumeCalculator length width height VolumeCalculator.java: error: 
-     *  the following arguments are required: height
-     *
-     *}
-     *</pre>
-     *
      *If an additional (i.e., one too many) positional argument is specified, then the program should     exit, and the        *usage information should be displayed along with the error stating the additional     argument.
-     *
      *<pre>
-     *<span style="color:#80BFFF">
+     *<span style="color:#4c6b87">
      *{@code
-     *  java VolumeCalculator 7 5 2 43
+     public void addPositionalArgument(PositionalArgument arg){
+    	posCount++;
+    	arg.setPosition(posCount);
+    	positionalArgumentList.add(arg);
+}
      *}
      *</pre>
-     *
-     *should produce the following:
-     * 
-     *<pre>
-     *<span style="color:#80BFFF">
-     *{@code
-     *usage: java VolumeCalculator length width height
-     *VolumeCalculator.java: error: unrecognized arguments: 43
-     *}
-     *</pre>
-     *
      */
     public void addPositionalArgument(PositionalArgument arg){
     	posCount++;
@@ -157,7 +175,7 @@ public class ArgumentParser {
     /**
      *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
      *<pre>
-     *<span style="color:#80BFFF">
+     *<span style="color:#4c6b87">
      *{@code
      *
      *  
@@ -228,7 +246,7 @@ public class ArgumentParser {
      *</h2>
      *Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. Assume that it also allows two optional    named arguments called type (short-form t) and digits (short-form d). The following calls would be equivalent:
      **<pre>
-     *<span style="color:#80BFFF">
+     *<span style="color:#4c6b87">
      *{@code
      * java VolumeCalculator --type ellipsoid 7 3 --digits 1 2 
      *java VolumeCalculator 7 -t ellipsoid 3 --digits 1 2 
@@ -725,7 +743,7 @@ public class ArgumentParser {
      *
      *@param parse Collects input data from CLI and parses each argument to the Library.
      *<pre>
-     *<span style="color:#80BFFF">
+     *<span style="color:#4c6b87">
      *{@code
      *java VolumeCalculator 7 --myarg myval 3 2
      *
@@ -788,8 +806,8 @@ public class ArgumentParser {
      *<h2>
      * Use Cases:
      *</h2>
-     *Assume VolumeCalculator.java allows for three positional arguments, named <b><font color = "#80BFFF">length</font></b>, <b><font color= 
-     *"#80BFFF">width</font></b>, and <b><font color = "#80BFFF">height</font></b>, respectively, 
+     *Assume VolumeCalculator.java allows for three positional arguments, named <b><font color = "#4c6b87">length</font></b>, <b><font color= 
+     *"#4c6b87">width</font></b>, and <b><font color = "#4c6b87">height</font></b>, respectively, 
      *each representing float values. Assume that it also allows two optional named arguments: type, 
      *a string that defaults to "box" with short-form t, and digits, an integer that defaults to 4 
      *with short-form d.
