@@ -1025,6 +1025,32 @@ public class ArgumentParserUnitTests {
 	
 	}
 	
+	@Test
+    public void TestPositionalArgumentWithNameAndTypeAndValueSet(){
+        String[] testValues = {"1", "2", "3"};
+        PositionalArgument length = new PositionalArgument("length", Argument.ArgType.INTEGER,testValues);
+        assertEquals(testValues, length.getValueSet());
+        assertEquals("length", length.getName());
+        assertEquals("integer", length.getType());
+    }
+    
+    @Test
+    public void TestPositionalArgumentWithNameAndValueSet(){
+        String[] testValues = {"1", "2", "3"};
+        PositionalArgument length = new PositionalArgument("length", testValues);
+        assertEquals(testValues, length.getValueSet());
+        assertEquals("length", length.getName());
+    }
+    
+     @Test
+    public void TestPositionalArgumentWithNameAndDescriptionAndValueSet(){
+        String[] testValues = {"1", "2", "3"};
+        PositionalArgument length = new PositionalArgument("length", "the length of the box", testValues);
+        assertEquals(testValues, length.getValueSet());
+        assertEquals("length", length.getName());
+        assertEquals("the length of the box", length.getDescription());
+    }
+	
 }
 
     

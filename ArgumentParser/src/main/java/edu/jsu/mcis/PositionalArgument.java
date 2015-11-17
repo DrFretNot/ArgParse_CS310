@@ -20,12 +20,28 @@ public class PositionalArgument<T> extends Argument{
     public PositionalArgument(String name, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
     } 
-
-//***********************************************************************************
-	public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
+    
+    public PositionalArgument(String name, String[] setOfValues){
+        super(name);
+        valueSet = setOfValues;
+    }
+    
+    public PositionalArgument(String name, ArgType dataType, String[] setOfValues){
+        super(name, dataType);
+        valueSet = setOfValues;
+    }
+    
+    public PositionalArgument(String name, String argDescription, String[] setOfValues){
+        super(name, argDescription);
+        valueSet = setOfValues;
+    }
+    
+    public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
         super(name, dataType, argDescription);
         valueSet = setOfValues;
     } 
+
+
 //***********************************************************************************
 	public void setPosition(int pos){
 		position = pos;
