@@ -540,84 +540,6 @@ public class ArgumentParser {
 		}
 	}
 	
-	/*private void parseNamedArgumentValues(List<NamedArgument> namedArgList) throws IncorrectArgumentValueException{
-		for(int i = 0; i < namedArgList.size(); i++){
-			NamedArgument currentArg = namedArgList.get(i);
-			String[] valueSet = currentArg.getValueSet();
-			if(!valueSet[0].equals("")){
-				Boolean valueSetContainsArgValue = false;
-				for(int j = 0; j < valueSet.length; j++){
-					if(currentArg.getType().equals("integer")){
-						int intValue = (Integer)currentArg.getValue();
-						if(valueSet[j].equals(Integer.toString(intValue))){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else if(currentArg.getType().equals("float")){
-						float floatValue = (Float)currentArg.getValue();
-						if(valueSet[j].equals(Float.toString(floatValue))){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else if(currentArg.getType().equals("string")){
-						String stringValue = (String)currentArg.getValue();
-						if(valueSet[j].equals(stringValue)){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else{
-						Boolean boolValue = (Boolean)currentArg.getValue();
-						if(valueSet[j].equals(boolValue)){
-							valueSetContainsArgValue = true;
-						}
-					}
-				}
-				if(!valueSetContainsArgValue){
-					throw new IncorrectArgumentValueException("Incorrect argument value frustum");
-				}
-			}
-		}
-	}
-	
-	private void parsePositionalArgumentValues(List<PositionalArgument> posArgList) throws IncorrectArgumentValueException{
-		for(int i = 0; i < posArgList.size(); i++){
-			PositionalArgument currentArg = posArgList.get(i);
-			String[] valueSet = currentArg.getValueSet();
-			if(!valueSet[0].equals("")){
-				Boolean valueSetContainsArgValue = false;
-				for(int j = 0; j < valueSet.length; j++){
-					if(currentArg.getType().equals("integer")){
-						int intValue = (Integer)currentArg.getValue();
-						if(valueSet[j].equals(Integer.toString(intValue))){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else if(currentArg.getType().equals("float")){
-						float floatValue = (Float)currentArg.getValue();
-						if(valueSet[j].equals(Float.toString(floatValue))){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else if(currentArg.getType().equals("string")){
-						String stringValue = (String)currentArg.getValue();
-						if(valueSet[j].equals(stringValue)){
-							valueSetContainsArgValue = true;
-						}
-					}
-					else{
-						Boolean boolValue = (Boolean)currentArg.getValue();
-						if(valueSet[j].equals(boolValue)){
-							valueSetContainsArgValue = true;
-						}
-					}
-					
-				}
-				if(!valueSetContainsArgValue){
-					throw new IncorrectArgumentValueException("Incorrect argument value 6");
-				}
-			}
-		}
-	}*/
 	
 	private void parseNamedArgumentValues(List<NamedArgument> namedArgList) throws IncorrectArgumentValueException{
 		for(int i = 0; i < namedArgList.size(); i++){
@@ -709,8 +631,7 @@ public class ArgumentParser {
 			}
 		}
 	}
-	//usage: java VolumeCalculator length width height
-    //VolumeCalculator.java: error: argument width: invalid float value: something
+	
 	private String incorrectArgumentValueMessage(String argName, String argValue){
 		String message = "usage: java " + programName;
 		message += "\nrequired:";
