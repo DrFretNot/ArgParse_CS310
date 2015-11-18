@@ -266,6 +266,20 @@ public class ArgumentParser {
     	}
     	return returnArg;
     }
+    
+    //used in parseDataType 
+    private Boolean parseBool(String arg) throws NumberFormatException{
+    	String newArg = arg.toLowerCase();
+    	if(newArg.equals("true")){
+    		return true;
+    	}
+    	else if(newArg.equals("false")){
+    		return false;
+    	}
+    	else{
+    		throw new NumberFormatException();
+    	}
+    }
  
     int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
     String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
@@ -295,7 +309,7 @@ public class ArgumentParser {
 			}
 			
 			else{
-				Boolean argValue = Boolean.parseBoolean(argList.get(index));
+				Boolean argValue = parseBool(argList.get(index));
 				currentArg.setValue(argValue);
 			}
 		}

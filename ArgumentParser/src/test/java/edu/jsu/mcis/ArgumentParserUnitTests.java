@@ -1050,6 +1050,23 @@ public class ArgumentParserUnitTests {
         assertEquals("length", length.getName());
         assertEquals("the length of the box", length.getDescription());
     }
+    
+    @Test
+    public void testParseDataTypeThrowsCorrectExceptionForIncorrectBooleanValues(){
+    	String[] args = {"something"};
+    	ArgumentParser lib = new ArgumentParser();
+    	lib.addProgramName("VolumeCalculator");
+    	lib.addProgramDescription("Calculate the volume of an object");
+    	PositionalArgument testBool = new PositionalArgument("testBool", Argument.ArgType.BOOLEAN);
+    	lib.addPositionalArgument(testBool);
+    	try{
+    		lib.parse(args);
+    		assertEquals("", testBool.getValue());
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator testBool\nVolumeCalculator.java: error: argument testBool: invalid boolean value: something", e.getMessage());
+    	}
+    }
 	
 }
 
