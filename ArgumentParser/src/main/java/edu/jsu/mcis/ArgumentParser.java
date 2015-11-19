@@ -51,11 +51,7 @@ public class ArgumentParser {
     
     
 /**
- *The Argument Parser constructor, this will instantiate a new instance of the Parser
- *<p>The constructor enters the blanks for the program name and the program description. 
- *Creates a new lists for positional and named arguments. These will be used to hold the 
- *arguments that are created by the user. 
- *<pre>
+  <pre>
  *<span style="color:#4c6b87">
  *{@code
  * public ArgumentParser(){
@@ -65,6 +61,10 @@ public class ArgumentParser {
     this.namedArgumentList = new ArrayList<NamedArgument>(); 
     posCount = -1;
  *}
+ *The Argument Parser constructor, this will instantiate a new instance of the Parser
+ *<p>The constructor enters the blanks for the program name and the program description. 
+ *Creates a new lists for positional and named arguments. These will be used to hold the 
+ *arguments that are created by the user. 
  *
  *}
  *
@@ -78,16 +78,16 @@ public class ArgumentParser {
 	}
 	
     /**
-     *
-     *
-     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
-     *<pre>
+     **<pre>
      *<span style="color:#4c6b87">
      *{@code
      public void addProgramName(String inputProgramName){
         programName = inputProgramName; 
 }
      *}
+     *</pre>
+     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
+     *
      *
      */ 
 	public void addProgramName(String inputProgramName){
@@ -95,29 +95,29 @@ public class ArgumentParser {
     }
     
     /**
-     *
-     *
-     * 
-     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
-     *
      *<pre>
-     *<span style="color:#4c6b87">
-     *{@code
+     {@code
      public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription; 
 }
      
      
      *}
+     *<pre>
+     * 
+     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
+     *
+     *
+     *
+     *
     */
     public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription;       
     }
     
     /** 
-     *Constructor description of getProgramName() 
-     *@param getProgramName Receives the specified name of the program
-     *<pre>
+    Constructor description of getProgramName() 
+      <pre>
      *<span style="color:#4c6b87">
      *{@code
      public String getProgramName(){
@@ -125,30 +125,32 @@ public class ArgumentParser {
      
 }
      *}
+     *</pre>
+     *@param getProgramName Receives the specified name of the program
      */
     public String getProgramName(){
         return programName;   
     }
     /** Constructor description of getProgramDescription()
-     *@param getProgramDescription recieves a Specified Program Description from CLI
-     *@return programName Returns the specificed description of the program
-     *<pre>
+    *<pre>
      *<span style="color:#4c6b87">
      *{@code
      public String getProgramDescription(){
         return programDescription;   
     }
      *}
+     *</pre>
+     *@param getProgramDescription recieves a Specified Program Description from CLI
+     *@return programName Returns the specificed description of the program
+     
      */
     
     public String getProgramDescription(){
         return programDescription;   
     }
     
-    /** @param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
-     *If a positional argument is not supplied, the program should exit, and the usage information       should be              *displayed along with the error stating the missing argument.
-     *If an additional (i.e., one too many) positional argument is specified, then the program should     exit, and the        *usage information should be displayed along with the error stating the additional     argument.
-     *<pre>
+    /** 
+    *<pre>
      *<span style="color:#4c6b87">
      *{@code
      public void addPositionalArgument(PositionalArgument arg){
@@ -158,6 +160,10 @@ public class ArgumentParser {
 }
      *}
      *</pre>
+     *@param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. see code snippit below.
+     *If a positional argument is not supplied, the program should exit, and the usage information should be displayed along with the error stating the missing argument.
+     *If an additional (i.e., one too many) positional argument is specified, then the program should exit, and the usage information should be displayed along with the error stating the additional argument.
+     
      */
     public void addPositionalArgument(PositionalArgument arg){
     	posCount++;
@@ -166,21 +172,37 @@ public class ArgumentParser {
     }
     
     /**
-     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
      *<pre>
      *<span style="color:#4c6b87">
      *{@code
-     *
+     *public void addNamedArgument(NamedArgument arg){ 
+    	namedArgumentList.add(arg);
+    }
      *  
      *}
      *</pre>
+     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
+     *
      *
      */
-    public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
+    public void addNamedArgument(NamedArgument arg){ 
     	namedArgumentList.add(arg);
     }
     
-    /** Constructor description of PositionalArgument getPositionalArgument(String argName) 
+    /** 
+    <pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     public PositionalArgument getPositionalArgument(String argName){
+    	PositionalArgument returnArg = null;
+    	for(int i = 0; i < positionalArgumentList.size(); i++){
+    		PositionalArgument currentArg = positionalArgumentList.get(i);
+    		if(currentArg.getName().equals(argName)){
+    			returnArg = currentArg;
+     *  
+     *}
+     *</pre>
+     *Constructor description of PositionalArgument getPositionalArgument(String argName) 
      *@param PositionalArgument getPositionalArgument 
      *@return Returns the current argument name
      *
@@ -197,8 +219,8 @@ public class ArgumentParser {
     	return returnArg;
     }
     
-    //position starts at 0
     /**
+     *
      *@Param PositionalArgument getPositionalArgument 
      *@return returnArg
      *
@@ -231,23 +253,26 @@ public class ArgumentParser {
     }
     
     /**
-     *@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
-     *@return returnArg returns the short-form name to the library.
      *
      *<h2> 
      *Use Cases: 
      *</h2>
-     *Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. Assume that it also allows two optional    named arguments called type (short-form t) and digits (short-form d). The following calls would be equivalent:
      **<pre>
      *<span style="color:#4c6b87">
      *{@code
-     * java VolumeCalculator --type ellipsoid 7 3 --digits 1 2 
-     *java VolumeCalculator 7 -t ellipsoid 3 --digits 1 2 
-     *java VolumeCalculator 7 3 --type ellipsoid -d 1 2 
-     *java VolumeCalculator 7 -d 1 3 -t ellipsoid 2 
+     *public NamedArgument getNamedArgument(char argShortFormName){
+    	NamedArgument returnArg = null;
+    	for(int i = 0; i < namedArgumentList.size(); i++){
+    		NamedArgument currentArg = namedArgumentList.get(i);
+    		if(currentArg.getShortFormName() == argShortFormName){
+    			returnArg = currentArg;
+    		}
+    	} 
+     
      *}
      *</pre>
-     *
+     **@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
+     *@return returnArg returns the short-form name to the library.
      */
     public NamedArgument getNamedArgument(char argShortFormName){
     	NamedArgument returnArg = null;
@@ -274,8 +299,8 @@ public class ArgumentParser {
     	}
     }
  
-    int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
-    String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
+    int incorrectDataTypeIndex;
+    String incorrectArgumentType; 
     
     
     private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
@@ -429,32 +454,32 @@ public class ArgumentParser {
     			if(!args[i-1].startsWith("-")){ //if the one before it doesn't have a dash, then it's a pos arg
     				posArgList.add(args[i]);
     			}
-    			else{ //the arg before it has a dash
+    			else{ 
     				String[] tempNamedArg = new String[2];
-    				if(args[i-1].startsWith("--")){ //arg before it is in long form
+    				if(args[i-1].startsWith("--")){ 
     					tempNamedArg = args[i-1].split("--");
-    					for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+    					for(int j = 0; j < namedArgumentList.size(); j++){ //g
     						NamedArgument currentNamedArg = namedArgumentList.get(j);
     						if(currentNamedArg.getName().equals(tempNamedArg[1])) {
-								if(currentNamedArg.getType().equals("boolean")){ //if long form arg is boolean, still need to add arg after to pos args
+								if(currentNamedArg.getType().equals("boolean")){  to pos args
 									posArgList.add(args[i]);
 								}
 							}
     					}
     				}
-    				else{ //arg before it is in short form
+    				else{ 
     					tempNamedArg = args[i-1].split("-");
-						if(tempNamedArg[1].length() == 1){ //single char
-							for(int j = 0; j < namedArgumentList.size(); j++){ //go through all named args
+						if(tempNamedArg[1].length() == 1){ 
+							for(int j = 0; j < namedArgumentList.size(); j++){ 
 								NamedArgument currentNamedArg = namedArgumentList.get(j);
 								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {
-									if(currentNamedArg.getType().equals("boolean")){ //if short form arg is boolean, still need to add arg after to pos args
+									if(currentNamedArg.getType().equals("boolean")){ 
 										posArgList.add(args[i]);
 									}
 								}
 							}
 						}
-						else{ //multiple flags in one specification, must be boolean so add arg after it to pos args
+						else{
 							posArgList.add(args[i]);
 						}
     				}
@@ -511,7 +536,7 @@ public class ArgumentParser {
 			}
 		}
 	}
-	String invalidNamedArgument = ""; //used in invalidNamedArgument and argumentDoesNotExistMessage
+	String invalidNamedArgument = "";
 	
 	private void invalidNamedArgument(String[] args) throws ArgumentDoesNotExistException{
 		for(int i = 0; i < args.length; i++){
@@ -534,7 +559,7 @@ public class ArgumentParser {
 						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));
 					}
 				}
-				else{ //multiple flags in one specification
+				else{
 					for(int k = 0; k < splitShortNamedArg[1].length(); k++){
 						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));
 						if(tempArg == null){
@@ -670,27 +695,21 @@ public class ArgumentParser {
 	/**
      *
      *@param parse Collects input data from CLI and parses each argument to the Library.
-     *<pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     *java VolumeCalculator 7 --myarg myval 3 2
-     *
-     *}
-     *</pre>
-     *could produce the following output:
-     *{@code
-     *usage: java VolumeCalculator length width height
-     *VolumeCalculator.java: error: argument myarg does not exist
-     *
-     *}
-     *</pre>
-     *
-     *@thorows helpexception displays a help message to the user 
+     @thorows helpexception displays a help message to the user 
      *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
      *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
      *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
      *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
      *<pre>
+     *<span style="color:#4c6b87">
+     *{@code
+     *if (helpArgValue.equals("true")){
+				throw new HelpException(helpMessage());
+			}
+     *
+     *}
+     
+     *</pre>
      *
      */
     
