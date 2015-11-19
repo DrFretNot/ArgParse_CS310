@@ -19,12 +19,12 @@ public abstract class Argument
      *@param Argument initiates argName, description, and type. 
      *
      */
-    public Argument(){
+    /*public Argument(){
         argName = null;
         description = "";
         type = null;
         
-    }
+    }*/
     
     /**
      *

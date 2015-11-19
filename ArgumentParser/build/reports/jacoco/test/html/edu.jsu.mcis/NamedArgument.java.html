@@ -168,8 +168,8 @@ public class NamedArgument&lt;T&gt; extends Argument{
       */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
 <span class="fc" id="L170">        super(name, dataType, argDescription);</span>
-<span class="pc bpc" id="L171" title="1 of 2 branches missed.">        if(dataType == ArgType.BOOLEAN){</span>
-<span class="nc" id="L172">        	this.setValue((T)String.valueOf(false));</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">        if(dataType == ArgType.BOOLEAN){</span>
+<span class="fc" id="L172">        	this.setValue((T)String.valueOf(false));</span>
         }
         else{
 <span class="fc" id="L175">        	value = null; </span>

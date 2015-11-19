@@ -2,7 +2,7 @@
 | Library   | ArgumentParserKeywords |
 
 | *Variable*   | *Value*                                                                                                   |
-| ${expected1} | usage: java Volume Calculator length width height\nVolume Calculator.java: error: unrecognized arguments: 43 |
+| ${expected1} | usage: java Volume Calculator length width height type digits\nVolume Calculator.java: error: unrecognized arguments: 43 |
 
 
 | *Test Case*                            | *Action*                              | *Argument*         | *Argument*   | *Argument* | *Argument* |
@@ -29,7 +29,7 @@
 |                                        | Should Be Equal                       | 3.5                | ${bathrooms} |            |            |
 
 | *Variable*   | *Value*                                                                                                   |
-| ${expected2} | usage: java Volume Calculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n   [length] the length of the box (float)\n   [width] the width of the box (float)\n   [height] the height of the box (float) |
+| ${expected2} | usage: java Volume Calculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box (float)\n[width] the width of the box (float)\n[height] the height of the box (float)\nnamed arguments:\n[help] [h] usage information |
     
 | *Test Case*        | *Action*                     | *Argument*         | *Argument*  |
 | Test Usage Message | Start Program With Arguments | -h                 |             |
@@ -37,7 +37,7 @@
 |                    | Should Be Equal              | ${expected2}       | ${output}   |
 
 | *Variable*  | *Value*                                                                                                                       |
-| ${expected3} | usage: java Volume Calculator length width height\nVolume Calculator.java: error: argument width: invalid float value: something |
+| ${expected3} | usage: java Volume Calculator length width height help\nVolume Calculator.java: error: argument width: invalid float value: something |
     
 | *Test Case*                     | *Action*                     | *Argument*         | *Argument*  | *Argument*  |
 | Test Incorrect Datatype Message | Start Program With Arguments | 7                  | something   | 2           |
@@ -93,7 +93,7 @@
 |                              | Should Be Equal                       | 1                  | ${digits}    |            |            |            |            |            |
 
 | *Variable*  | *Value*                                                                                                                                                                                                                                   |
-| ${expected4} | usage: java Volume Calculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n   [length] the length of the box (float)\n   [width] the width of the box (float)\n   [height] the height of the box (float) |
+| ${expected4} | usage: java Volume Calculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box (float)\n[width] the width of the box (float)\n[height] the height of the box (float)\nnamed arguments:\n[help] [h] usage information |
     
 | *Test Case*        | *Action*                     | *Argument*         | *Argument*  | *Argument*  | *Argument*  |
 | Test Help Flag     | Start Program With Arguments | 7                  | --help      | 3           | 2           |

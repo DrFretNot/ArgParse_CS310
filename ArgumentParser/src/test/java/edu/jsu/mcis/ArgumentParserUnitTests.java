@@ -250,12 +250,12 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, "usage information", 'h'));
         try{
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
         }
 	}
 	
@@ -300,12 +300,12 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN));
+    	lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN, "usage information", 'h'));
         try{
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
         }
     }
     
@@ -522,12 +522,12 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, "usage information", 'h'));
     	try{
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator [length] [width] [height] [help] \nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
     	}
 	}
 
@@ -551,7 +551,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java Volume Calculator length width height\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
+    		assertEquals("usage: java Volume Calculator length width height help\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
     	}
     }
 	
@@ -658,7 +658,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator type digits\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator length width height type digits\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
     	}
     }
     

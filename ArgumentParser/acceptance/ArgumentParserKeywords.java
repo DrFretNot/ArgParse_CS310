@@ -125,7 +125,7 @@ public class ArgumentParserKeywords
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, 'h'));
+    	lib.addNamedArgument(new NamedArgument("help", "false", Argument.ArgType.BOOLEAN, "usage information", 'h'));
     	try{
     		lib.parse(args);
     	}

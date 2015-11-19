@@ -360,25 +360,24 @@ public class ArgumentParser {
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
-		if (incorrectArgumentType.equals("positional")){
-			String errorMessage = "usage: java " + programName;
-			for(int i = 0; i < positionalArgumentList.size(); i++) {
-				PositionalArgument currentArg = positionalArgumentList.get(i);
-				errorMessage += " " + currentArg.getName();   
-			}
+		
+		String errorMessage = "usage: java " + programName;
+		for(int i = 0; i < positionalArgumentList.size(); i++) {
+			PositionalArgument currentArg = positionalArgumentList.get(i);
+			errorMessage += " " + currentArg.getName();   
+		}
+		
+		for(int i = 0; i < namedArgumentList.size(); i++) {
+			NamedArgument currentArg = namedArgumentList.get(i);
+			errorMessage += " " + currentArg.getName();   
+		}
 			
+		if (incorrectArgumentType.equals("positional")){
 			PositionalArgument currentArg = positionalArgumentList.get(incorrectDataTypeIndex); 
 			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
 			return errorMessage;  
 		}
-		
 		else {
-			String errorMessage = "usage: java " + programName;
-			for(int i = 0; i < namedArgumentList.size(); i++) {
-				NamedArgument currentArg = namedArgumentList.get(i);
-				errorMessage += " " + currentArg.getName();   
-			}
-			
 			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); 
 			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + currentArg.getValue();
 			return errorMessage; 
@@ -391,6 +390,11 @@ public class ArgumentParser {
             String message = "usage: java " + programName;
             for(int i = 0; i < positionalArgumentList.size(); i++) {
             	PositionalArgument currentArg = positionalArgumentList.get(i);
+                message += " " + currentArg.getName();   
+            }
+            
+            for(int i = 0; i < namedArgumentList.size(); i++) {
+            	NamedArgument currentArg = namedArgumentList.get(i);
                 message += " " + currentArg.getName();   
             }
             
@@ -411,6 +415,11 @@ public class ArgumentParser {
             	PositionalArgument currentArg = positionalArgumentList.get(i);
                 message += " " + currentArg.getName();;   
             }
+            
+            for(int i = 0; i < namedArgumentList.size(); i++) {
+            	NamedArgument currentArg = namedArgumentList.get(i);
+                message += " " + currentArg.getName();;   
+            }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
             //int numOfArgsUnrecognized = args.length - numOfArgs;
             
@@ -429,7 +438,7 @@ public class ArgumentParser {
 		}
         for(int i = 0; i < namedArgumentList.size(); i++){
         	NamedArgument namedArg = namedArgumentList.get(i);
-        	helpMessage += " [" + namedArg.getName() + "] ";
+        	helpMessage += " [" + namedArg.getName() + "]";
         }
 		helpMessage += "\n" + programDescription + "\npositional arguments:";
 		
@@ -437,6 +446,13 @@ public class ArgumentParser {
         for(int i = 0; i < positionalArgumentList.size(); i++) {
 			PositionalArgument currentArg = positionalArgumentList.get(i);
 			helpMessage += "\n[" + currentArg.getName() + "] " + currentArg.getDescription();   
+		}
+		
+		helpMessage += "\nnamed arguments:";
+		
+		for(int i = 0; i < namedArgumentList.size(); i++) {
+			NamedArgument currentArg = namedArgumentList.get(i);
+			helpMessage += "\n[" + currentArg.getName() + "] [" + currentArg.getShortFormName() + "] " + currentArg.getDescription();   
 		}
 
 		return helpMessage;
@@ -461,7 +477,7 @@ public class ArgumentParser {
     					for(int j = 0; j < namedArgumentList.size(); j++){ //g
     						NamedArgument currentNamedArg = namedArgumentList.get(j);
     						if(currentNamedArg.getName().equals(tempNamedArg[1])) {
-								if(currentNamedArg.getType().equals("boolean")){  to pos args
+								if(currentNamedArg.getType().equals("boolean")){  //to pos args
 									posArgList.add(args[i]);
 								}
 							}
@@ -669,12 +685,12 @@ public class ArgumentParser {
 		message += "\nrequired:";
 		for(int i = 0; i < positionalArgumentList.size(); i++){
 			PositionalArgument currentArg = positionalArgumentList.get(i);
-			message += " " + currentArg.getName();
+			message += " [" + currentArg.getName() + "]";
 		}
 		message += "\noptional:";
 		for(int j = 0; j < namedArgumentList.size(); j++){
 			NamedArgument currentArg = namedArgumentList.get(j);
-			message += " " + currentArg.getName();
+			message += " [" + currentArg.getName() + "]";
 		}
 		message += "\n" + programName + ".java: error: argument " + argName + ": invalid value: " + argValue;
 		return message;
