@@ -390,12 +390,12 @@ public class ArgumentParser {
             String message = "usage: java " + programName;
             for(int i = 0; i < positionalArgumentList.size(); i++) {
             	PositionalArgument currentArg = positionalArgumentList.get(i);
-                message += " " + currentArg.getName();   
+                message += " [" + currentArg.getName() + "]";   
             }
             
             for(int i = 0; i < namedArgumentList.size(); i++) {
             	NamedArgument currentArg = namedArgumentList.get(i);
-                message += " " + currentArg.getName();   
+                message += " [" + currentArg.getName() + "]";   
             }
             
             message += "\n" + programName + ".java: error: the following arguments are required:";
@@ -413,12 +413,12 @@ public class ArgumentParser {
    			String message = "usage: java " + programName;
             for(int i = 0; i < positionalArgumentList.size(); i++) {
             	PositionalArgument currentArg = positionalArgumentList.get(i);
-                message += " " + currentArg.getName();;   
+                message += " [" + currentArg.getName() + "]";   
             }
             
             for(int i = 0; i < namedArgumentList.size(); i++) {
             	NamedArgument currentArg = namedArgumentList.get(i);
-                message += " " + currentArg.getName();;   
+                message += " [" + currentArg.getName() + "]";   
             }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
             //int numOfArgsUnrecognized = args.length - numOfArgs;

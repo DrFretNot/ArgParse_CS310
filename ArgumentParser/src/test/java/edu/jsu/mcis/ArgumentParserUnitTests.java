@@ -208,7 +208,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height]\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
         }
 	}
 
@@ -231,7 +231,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator [length] [width] [height]\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
         }
 	}
 	
@@ -811,7 +811,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator\nrequired: length width height\noptional: type digits\nVolumeCalculator.java: error: argument type: invalid value: frustum", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator\nrequired: [length] [width] [height]\noptional: [type] [digits]\nVolumeCalculator.java: error: argument type: invalid value: frustum", e.getMessage());
     	}
 		
 	}
@@ -840,7 +840,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator\nrequired: length width height number\noptional: type digits\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator\nrequired: [length] [width] [height] [number]\noptional: [type] [digits]\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
     	}
 		
 	}
