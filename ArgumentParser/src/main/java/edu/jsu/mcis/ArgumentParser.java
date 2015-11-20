@@ -710,13 +710,6 @@ public class ArgumentParser {
     
 	/**
      *
-     *@param parse Collects input data from CLI and parses each argument to the Library.
-     @thorows helpexception displays a help message to the user 
-     *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
-     *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
-     *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
-     *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
-     *<pre>
      *<span style="color:#4c6b87">
      *{@code
      *if (helpArgValue.equals("true")){
@@ -726,7 +719,12 @@ public class ArgumentParser {
      *}
      
      *</pre>
-     *
+     **@param parse Collects input data from CLI and parses each argument to the Library.
+     @thorows helpexception displays a help message to the user 
+     *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
+     *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
+     *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
+     *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
      */
     
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
