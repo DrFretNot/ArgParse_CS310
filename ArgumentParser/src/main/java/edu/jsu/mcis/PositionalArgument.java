@@ -1,8 +1,9 @@
 package edu.jsu.mcis;
 
-public class PositionalArgument<T> extends Argument{
+public class PositionalArgument extends Argument{
 
-	private T value;
+	//private T value;
+	private String value;
 	private int position = -1;
 
     public PositionalArgument(String name){
@@ -75,16 +76,25 @@ public class PositionalArgument<T> extends Argument{
     	return description;
     }
     
-    public void setValue(T argValue){
+    public void setValue(String argValue){
     	value = argValue;
     }
 	
-    public T getValue(){
-    	if(type == ArgType.FLOAT){
-    		return (T)(Float)value;
+    public <T> T getValue(){
+    	if(this.getType().equals("integer")){
+    		int intValue = Integer.parseInt(value);
+    		return (T)(Integer)intValue;
+    	}
+    	else if(this.getType().equals("float")){
+    		float floatValue = Float.parseFloat(value);
+    		return (T)(Float)floatValue;
+    	}
+    	else if(this.getType().equals("boolean")){
+    		Boolean boolValue = Boolean.parseBoolean(value);
+    		return (T)(Boolean)boolValue;
     	}
     	else{
-    		return value;
+    		return (T)value;
     	}
     }
     

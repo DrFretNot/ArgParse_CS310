@@ -312,13 +312,13 @@ public class ArgumentParser {
 			PositionalArgument currentArg = positionalArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
 				int argValue = Integer.parseInt(argList.get(index));
-				currentArg.setValue(argValue);
+				currentArg.setValue(argList.get(index));
 				//currentArg.setValue(argValue);
 			}
             
 			else if (currentArg.getType().equals("float")){
 				float argValue = Float.parseFloat(argList.get(index));
-				currentArg.setValue(argValue);
+				currentArg.setValue(argList.get(index));
 			}
             
 			else if (currentArg.getType().equals("string")){
@@ -328,35 +328,9 @@ public class ArgumentParser {
 			
 			else{
 				Boolean argValue = parseBool(argList.get(index));
-				currentArg.setValue(argValue);
+				currentArg.setValue(argList.get(index));
 			}
 		}
-		
-		//checking named args
-		/*for (int index = 0; index < namedArgumentList.size(); index++){
-			incorrectDataTypeIndex = index;
-			incorrectArgumentType = "named";
-			NamedArgument currentArg = namedArgumentList.get(index);
-			if (currentArg.getType().equals("integer")){
-				int argValue = Integer.parseInt(String.valueOf(currentArg.getValue()));
-				currentArg.setValue(String.valueOf(argValue));
-			}
-            
-			else if (currentArg.getType().equals("float")){
-				float argValue = Float.parseFloat(String.valueOf(currentArg.getValue()));
-				currentArg.setValue(String.valueOf(argValue));
-			}
-            
-			else if (currentArg.getType().equals("string")){
-				String argValue = String.valueOf(currentArg.getValue());
-				currentArg.setValue(argValue);
-			}*/
-			//Boolean values are already set correctly for named arguments
-			/*else{
-				Boolean argValue = parseBool(String.valueOf(currentArg.getValue()));
-				currentArg.setValue(String.valueOf(argValue));
-			}*/
-		//}
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
