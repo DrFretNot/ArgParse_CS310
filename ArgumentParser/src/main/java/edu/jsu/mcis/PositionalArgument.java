@@ -3,7 +3,7 @@ package edu.jsu.mcis;
 public class PositionalArgument extends Argument{
 
 	//private T value;
-	private String value;
+	//private String value;
 	private int position = -1;
 
     public PositionalArgument(String name){

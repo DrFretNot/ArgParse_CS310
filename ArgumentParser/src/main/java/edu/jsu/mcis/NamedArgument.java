@@ -8,7 +8,7 @@ package edu.jsu.mcis;
 public class NamedArgument<T> extends Argument{
     
    //private T value;
-   private String value;
+   //private String value;
    private char shortFormName;
    private String defaultvalue = "";
 

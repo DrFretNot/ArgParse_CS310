@@ -10,6 +10,7 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
+    protected String value;
     protected String[] valueSet = {""};
     
     public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
@@ -103,4 +104,10 @@ public abstract class Argument
     public abstract String[] getValueSet();
     
     
+    
+    public abstract <T> T getValue();
+    
+    
+    
+    public abstract void setValue(String argValue);
 }
