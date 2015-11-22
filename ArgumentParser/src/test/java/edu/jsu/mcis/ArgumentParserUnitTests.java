@@ -381,7 +381,7 @@ public class ArgumentParserUnitTests {
     	}
     	catch(Exception e){}
     	NamedArgument currentArg = lib.getNamedArgument("help");
-    	assertEquals("true", currentArg.getValue());
+    	assertEquals(true, currentArg.getValue());
 	}
 
 	@Test
@@ -500,11 +500,11 @@ public class ArgumentParserUnitTests {
     	assertEquals("5", width.getValue());
     	assertEquals("3", height.getValue());
     	NamedArgument dark = lib.getNamedArgument("dark");
-    	assertEquals("true", dark.getValue());
+    	assertEquals(true, dark.getValue());
     	NamedArgument appropriate = lib.getNamedArgument("appropriate");
-    	assertEquals("true", appropriate.getValue());
+    	assertEquals(true, appropriate.getValue());
     	NamedArgument pink = lib.getNamedArgument("pink");
-    	assertEquals("true", pink.getValue());
+    	assertEquals(true, pink.getValue());
 	}
 	
 	@Test
@@ -1065,6 +1065,25 @@ public class ArgumentParserUnitTests {
     	}
     	catch(Exception e){
     		assertEquals("usage: java VolumeCalculator testBool\nVolumeCalculator.java: error: argument testBool: invalid boolean value: something", e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void testDefaultValuesAreReturnedAsSpecificDataTypes(){
+    	String[] args = {"-t", "pyramid", "5"};
+    	ArgumentParser lib = new ArgumentParser();
+    	lib.addPositionalArgument(new PositionalArgument("length"));
+    	lib.addNamedArgument(new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of digits in the result", 'd'));
+    	try{
+    		lib.parse(args);
+    		NamedArgument digits = lib.getNamedArgument("digits");
+    		NamedArgument type = lib.getNamedArgument("type");
+    		assertEquals(4, digits.getValue());
+    		assertEquals("pyramid", type.getValue());  
+    	}
+    	catch(Exception e){
+    		assertEquals("", e);
     	}
     }
 	

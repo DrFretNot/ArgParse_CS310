@@ -298,7 +298,7 @@ public class ArgumentParser {
     		throw new NumberFormatException();
     	}
     }
- 
+ 	//used in parseDataType, setLongFormNamedArgValues, setShortFormNamedArgValues, and incorrectDataTypeMessage
     int incorrectDataTypeIndex;
     String incorrectArgumentType; 
     
@@ -333,30 +333,30 @@ public class ArgumentParser {
 		}
 		
 		//checking named args
-		for (int index = 0; index < namedArgumentList.size(); index++){
+		/*for (int index = 0; index < namedArgumentList.size(); index++){
 			incorrectDataTypeIndex = index;
 			incorrectArgumentType = "named";
 			NamedArgument currentArg = namedArgumentList.get(index);
 			if (currentArg.getType().equals("integer")){
-				int argValue = Integer.parseInt((String)currentArg.getValue());
-				currentArg.setValue(argValue);
+				int argValue = Integer.parseInt(String.valueOf(currentArg.getValue()));
+				currentArg.setValue(String.valueOf(argValue));
 			}
             
 			else if (currentArg.getType().equals("float")){
-				float argValue = Float.parseFloat((String)currentArg.getValue());
-				currentArg.setValue(argValue);
+				float argValue = Float.parseFloat(String.valueOf(currentArg.getValue()));
+				currentArg.setValue(String.valueOf(argValue));
 			}
             
 			else if (currentArg.getType().equals("string")){
-				String argValue = (String)currentArg.getValue();
+				String argValue = String.valueOf(currentArg.getValue());
 				currentArg.setValue(argValue);
-			}
-			
-			else{
-				Boolean argValue = Boolean.parseBoolean((String)currentArg.getValue());
+			}*/
+			//Boolean values are already set correctly for named arguments
+			/*else{
+				Boolean argValue = parseBool(String.valueOf(currentArg.getValue()));
 				currentArg.setValue(String.valueOf(argValue));
-			}
-		}
+			}*/
+		//}
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
@@ -379,7 +379,7 @@ public class ArgumentParser {
 		}
 		else {
 			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); 
-			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + currentArg.getValue();
+			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + incorrectArgValueForSpecifiedDataType;
 			return errorMessage; 
 		}  	
     }
@@ -505,16 +505,34 @@ public class ArgumentParser {
     	return posArgList;
     }
     
-    private void setLongFormNamedArgValues(String[] args){
+    //used in incorrectDataTypeMessage
+    String incorrectArgValueForSpecifiedDataType;
+    
+    private void setLongFormNamedArgValues(String[] args) throws NumberFormatException{
     	for(int i = 0; i < args.length; i++){
     		String[] tempNamedArg = new String[2];
     		if(args[i].startsWith("--")){
     			tempNamedArg = args[i].split("--");
     			for(int j = 0; j < namedArgumentList.size(); j++){
+    				incorrectDataTypeIndex = j;
+    				incorrectArgumentType = "named";
     				NamedArgument currentArg = namedArgumentList.get(j);
     				if(currentArg.getName().equals(tempNamedArg[1])){
     					if(!currentArg.getType().equals("boolean")){
-    						currentArg.setValue(args[i+1]);
+    						incorrectArgValueForSpecifiedDataType = args[i+1];
+    						if (currentArg.getType().equals("integer")){
+								int argValue = Integer.parseInt(args[i+1]);
+								currentArg.setValue(args[i+1]);
+							}
+			
+							else if (currentArg.getType().equals("float")){
+								float argValue = Float.parseFloat(args[i+1]);
+								currentArg.setValue(args[i+1]);
+							}
+			
+							else if (currentArg.getType().equals("string")){
+								currentArg.setValue(args[i+1]);
+							}
     					}
     					else{
     						currentArg.setValue("true");
@@ -524,17 +542,33 @@ public class ArgumentParser {
     		}
     	}
     }
-    private void setShortFormNamedArgValues(String[] args){
+    private void setShortFormNamedArgValues(String[] args) throws NumberFormatException{
 		for(int i = 0; i < args.length; i++){
 			String[] tempNamedArg = new String[2];
 			if(args[i].startsWith("-")){
 				tempNamedArg = args[i].split("-");
 				for(int k = 0; k < namedArgumentList.size(); k++){
+					incorrectDataTypeIndex = k;
+					incorrectArgumentType = "named";
 					NamedArgument currentNamedArg = namedArgumentList.get(k);
 					if(tempNamedArg[1].length() == 1){ //single char
 						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){
 							if(!currentNamedArg.getType().equals("boolean")){
-								currentNamedArg.setValue(args[i+1]);
+								incorrectArgValueForSpecifiedDataType = args[i+1];	
+								if (currentNamedArg.getType().equals("integer")){
+									int argValue = Integer.parseInt(args[i+1]);
+									currentNamedArg.setValue(args[i+1]);
+								}
+			
+								else if (currentNamedArg.getType().equals("float")){
+									float argValue = Float.parseFloat(args[i+1]);
+									currentNamedArg.setValue(args[i+1]);
+								}
+			
+								else if (currentNamedArg.getType().equals("string")){
+									currentNamedArg.setValue(args[i+1]);
+								}
+    					
 							}
 							else{
 								currentNamedArg.setValue("true");
@@ -730,14 +764,20 @@ public class ArgumentParser {
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
 		ArrayList<String> tempPositionalArgList = getPositionalArgs(args);
 		
-		setLongFormNamedArgValues(args);
-		setShortFormNamedArgValues(args);
+		try{
+			setLongFormNamedArgValues(args);
+			setShortFormNamedArgValues(args);
+		}
+		catch(Exception e){
+			throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));
+		}
+		
 		invalidNamedArgument(args); //throws ArgumentDoesNotExistException
 		
         NamedArgument helpArgument = getNamedArgument("help");
         if (helpArgument != null){
-			String helpArgValue = (String)helpArgument.getValue();
-			if (helpArgValue.equals("true")){
+			Boolean helpArgValue = (Boolean)helpArgument.getValue();
+			if (helpArgValue){
 				throw new HelpException(helpMessage());
 			}
         }
