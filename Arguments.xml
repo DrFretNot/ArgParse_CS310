@@ -9,7 +9,7 @@ this is how to comment
 		<arguments>
 			<positional>
 				<name>length</name>
-				<type>float</type>
+				<type>integer</type>
 				<description>the length of the object</description>
 				<position>1</position>
 			</positional>
@@ -21,9 +21,15 @@ this is how to comment
 			</positional>
 			<positional>
 				<name>height</name>
-				<type>float</type>
+				<type>string</type>
 				<description>the height of the object</description>
 				<position>3</position>
+			</positional>
+			<positional>
+				<name>rainy</name>
+				<type>boolean</type>
+				<description>true if it is rainy</description>
+				<position>4</position>
 			</positional>
 			<named>
 				<name>type</name>

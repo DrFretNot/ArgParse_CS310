@@ -27,9 +27,9 @@ public class VolumeCalculatorWithXML
 			
 			try{
 				lib.parse(args);
-				PositionalArgument length = lib.getPositionalArgument(0);
-				PositionalArgument width = lib.getPositionalArgument(1);
-				PositionalArgument height = lib.getPositionalArgument(2);
+				PositionalArgument length = lib.getPositionalArgument(1);
+				PositionalArgument width = lib.getPositionalArgument(2);
+				PositionalArgument height = lib.getPositionalArgument(3);
 			
 				x = length.getValue();
 				y = width.getValue();

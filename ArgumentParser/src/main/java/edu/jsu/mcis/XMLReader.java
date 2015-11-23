@@ -99,9 +99,6 @@ public class XMLReader{
 					else if(type.equals("float")){
 						dataType = Argument.ArgType.FLOAT;
 					}
-					else if(type.equals("string")){
-						dataType = Argument.ArgType.STRING;
-					}
 					else if(type.equals("boolean")){
 						dataType = Argument.ArgType.BOOLEAN;
 					}
@@ -171,9 +168,6 @@ public class XMLReader{
 					}
 					else if(type.equals("float")){
 						dataType = Argument.ArgType.FLOAT;
-					}
-					else if(type.equals("string")){
-						dataType = Argument.ArgType.STRING;
 					}
 					else if(type.equals("boolean")){
 						dataType = Argument.ArgType.BOOLEAN;

@@ -674,18 +674,18 @@ public class ArgumentParserUnitTests {
     	lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);
-    	PositionalArgument arg1 = lib.getPositionalArgument(0);
+    	PositionalArgument arg1 = lib.getPositionalArgument(1);
     	assertEquals("length", arg1.getName());
-    	PositionalArgument arg2 = lib.getPositionalArgument(1);
+    	PositionalArgument arg2 = lib.getPositionalArgument(2);
     	assertEquals("width", arg2.getName());
-    	PositionalArgument arg3 = lib.getPositionalArgument(2);
+    	PositionalArgument arg3 = lib.getPositionalArgument(3);
     	assertEquals("height", arg3.getName());
     }
 
 	
 	@Test//XML file location specific to individual computer
 	public void testImportingXMLFileStoresCorrectInfoForEachArgumentFromOutsideOfArgumentParser(){
-		String[] args = {"7", "-t", "pyramid", "5", "2"};
+		String[] args = {"7", "-t", "pyramid", "5", "2", "true"};
 		try{
 			//XMLReader xml = new XMLReader();
 			
@@ -709,12 +709,14 @@ public class ArgumentParserUnitTests {
 			}
 			assertEquals("VolumeCalculator", lib.getProgramName());
 			assertEquals("Calculate the volume of a specified object.", lib.getProgramDescription());
-			PositionalArgument length = lib.getPositionalArgument(0);
-			PositionalArgument width = lib.getPositionalArgument(1);
-			PositionalArgument height = lib.getPositionalArgument(2);
-			assertEquals((float)7.0, length.getValue());
+			PositionalArgument length = lib.getPositionalArgument(1);
+			PositionalArgument width = lib.getPositionalArgument(2);
+			PositionalArgument height = lib.getPositionalArgument(3);
+			PositionalArgument rainy = lib.getPositionalArgument(4);
+			assertEquals(7, length.getValue());
 			assertEquals((float)5.0, width.getValue());
-			assertEquals((float)2.0, height.getValue());
+			assertEquals("2", height.getValue());
+			assertEquals(true, rainy.getValue());
 			assertEquals("the height of the object", height.getDescription());
 			NamedArgument type = lib.getNamedArgument('t');
 			assertEquals("pyramid", type.getValue());
@@ -759,9 +761,9 @@ public class ArgumentParserUnitTests {
     		}
     		assertEquals("VolumeCalculator", newLib.getProgramName());
 			assertEquals("Calculate the volume of an object.", newLib.getProgramDescription());
-			PositionalArgument newLength = newLib.getPositionalArgument(0);
-			PositionalArgument newWidth = newLib.getPositionalArgument(1);
-			PositionalArgument newHeight = newLib.getPositionalArgument(2);
+			PositionalArgument newLength = newLib.getPositionalArgument(1);
+			PositionalArgument newWidth = newLib.getPositionalArgument(2);
+			PositionalArgument newHeight = newLib.getPositionalArgument(3);
 			assertEquals(lengthValueSet, newLength.getValueSet());
 			assertEquals((float)7.0, newLength.getValue());
 			assertEquals((float)5.0, newWidth.getValue());
@@ -1003,9 +1005,9 @@ public class ArgumentParserUnitTests {
 			}
 			assertEquals("VolumeCalculator", lib.getProgramName());
 			assertEquals("Calculate the volume of a specified object.", lib.getProgramDescription());
-			PositionalArgument length = lib.getPositionalArgument(0);
-			PositionalArgument width = lib.getPositionalArgument(1);
-			PositionalArgument height = lib.getPositionalArgument(2);
+			PositionalArgument length = lib.getPositionalArgument(1);
+			PositionalArgument width = lib.getPositionalArgument(2);
+			PositionalArgument height = lib.getPositionalArgument(3);
 			String[] lengthValueSet = {"6.0", "7.0", "8.0"};
 			assertEquals(lengthValueSet, length.getValueSet());
 			assertEquals((float)7.0, length.getValue());
