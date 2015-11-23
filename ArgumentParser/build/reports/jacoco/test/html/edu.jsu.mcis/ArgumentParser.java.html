@@ -291,8 +291,8 @@ public class ArgumentParser {
 <span class="fc bfc" id="L291" title="All 2 branches covered.">    	if(newArg.equals(&quot;true&quot;)){</span>
 <span class="fc" id="L292">    		return true;</span>
     	}
-<span class="pc bpc" id="L294" title="1 of 2 branches missed.">    	else if(newArg.equals(&quot;false&quot;)){</span>
-<span class="nc" id="L295">    		return false;</span>
+<span class="fc bfc" id="L294" title="All 2 branches covered.">    	else if(newArg.equals(&quot;false&quot;)){</span>
+<span class="fc" id="L295">    		return false;</span>
     	}
     	else{
 <span class="fc" id="L298">    		throw new NumberFormatException();</span>
@@ -475,10 +475,10 @@ public class ArgumentParser {
 <span class="fc" id="L475">								currentArg.setValue(args[i+1]);</span>
 <span class="fc" id="L476">							}</span>
 			
-<span class="pc bpc" id="L478" title="1 of 2 branches missed.">							else if (currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L479">								float argValue = Float.parseFloat(args[i+1]);</span>
-<span class="nc" id="L480">								currentArg.setValue(args[i+1]);</span>
-<span class="nc" id="L481">							}</span>
+<span class="fc bfc" id="L478" title="All 2 branches covered.">							else if (currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L479">								float argValue = Float.parseFloat(args[i+1]);</span>
+<span class="fc" id="L480">								currentArg.setValue(args[i+1]);</span>
+<span class="fc" id="L481">							}</span>
 			
 <span class="pc bpc" id="L483" title="1 of 2 branches missed.">							else if (currentArg.getType().equals(&quot;string&quot;)){</span>
 <span class="fc" id="L484">								currentArg.setValue(args[i+1]);</span>
@@ -510,10 +510,10 @@ public class ArgumentParser {
 <span class="fc" id="L510">									currentNamedArg.setValue(args[i+1]);</span>
 <span class="fc" id="L511">								}</span>
 			
-<span class="pc bpc" id="L513" title="1 of 2 branches missed.">								else if (currentNamedArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L514">									float argValue = Float.parseFloat(args[i+1]);</span>
-<span class="nc" id="L515">									currentNamedArg.setValue(args[i+1]);</span>
-<span class="nc" id="L516">								}</span>
+<span class="fc bfc" id="L513" title="All 2 branches covered.">								else if (currentNamedArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L514">									float argValue = Float.parseFloat(args[i+1]);</span>
+<span class="fc" id="L515">									currentNamedArg.setValue(args[i+1]);</span>
+<span class="fc" id="L516">								}</span>
 			
 <span class="pc bpc" id="L518" title="1 of 2 branches missed.">								else if (currentNamedArg.getType().equals(&quot;string&quot;)){</span>
 <span class="fc" id="L519">									currentNamedArg.setValue(args[i+1]);</span>
@@ -554,17 +554,17 @@ public class ArgumentParser {
 <span class="fc" id="L554">				splitShortNamedArg = args[i].split(&quot;-&quot;);</span>
 <span class="fc bfc" id="L555" title="All 2 branches covered.">				if(splitShortNamedArg[1].length() == 1){ //single char</span>
 <span class="fc" id="L556">					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(0));</span>
-<span class="pc bpc" id="L557" title="1 of 2 branches missed.">					if(tempArg == null){</span>
-<span class="nc" id="L558">						invalidNamedArgument = splitShortNamedArg[1];</span>
-<span class="nc" id="L559">						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
+<span class="fc bfc" id="L557" title="All 2 branches covered.">					if(tempArg == null){</span>
+<span class="fc" id="L558">						invalidNamedArgument = splitShortNamedArg[1];</span>
+<span class="fc" id="L559">						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
 					}
 <span class="fc" id="L561">				}</span>
 				else{
 <span class="fc bfc" id="L563" title="All 2 branches covered.">					for(int k = 0; k &lt; splitShortNamedArg[1].length(); k++){</span>
 <span class="fc" id="L564">						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));</span>
-<span class="pc bpc" id="L565" title="1 of 2 branches missed.">						if(tempArg == null){</span>
-<span class="nc" id="L566">							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));</span>
-<span class="nc" id="L567">							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
+<span class="fc bfc" id="L565" title="All 2 branches covered.">						if(tempArg == null){</span>
+<span class="fc" id="L566">							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));</span>
+<span class="fc" id="L567">							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
 						}
 					}
 				}
@@ -582,34 +582,34 @@ public class ArgumentParser {
 <span class="fc" id="L582">				Boolean valueSetContainsArgValue = false;</span>
 <span class="fc" id="L583">				String errorValue = &quot;&quot;;</span>
 <span class="fc bfc" id="L584" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
-<span class="pc bpc" id="L585" title="1 of 2 branches missed.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="nc" id="L586">						int intValue = (Integer)currentArg.getValue();</span>
-<span class="nc bnc" id="L587" title="All 2 branches missed.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
-<span class="nc" id="L588">							valueSetContainsArgValue = true;</span>
+<span class="fc bfc" id="L585" title="All 2 branches covered.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L586">						int intValue = (Integer)currentArg.getValue();</span>
+<span class="fc bfc" id="L587" title="All 2 branches covered.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
+<span class="fc" id="L588">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L590">						errorValue = Integer.toString(intValue);</span>
-<span class="nc" id="L591">					}</span>
-<span class="pc bpc" id="L592" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L593">						float floatValue = (Float)currentArg.getValue();</span>
-<span class="nc bnc" id="L594" title="All 2 branches missed.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
-<span class="nc" id="L595">							valueSetContainsArgValue = true;</span>
+<span class="fc" id="L590">						errorValue = Integer.toString(intValue);</span>
+<span class="fc" id="L591">					}</span>
+<span class="fc bfc" id="L592" title="All 2 branches covered.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L593">						float floatValue = (Float)currentArg.getValue();</span>
+<span class="fc bfc" id="L594" title="All 2 branches covered.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
+<span class="fc" id="L595">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L597">						errorValue = Float.toString(floatValue);</span>
-<span class="nc" id="L598">					}</span>
+<span class="fc" id="L597">						errorValue = Float.toString(floatValue);</span>
+<span class="fc" id="L598">					}</span>
 <span class="pc bpc" id="L599" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
 <span class="fc" id="L600">						String stringValue = (String)currentArg.getValue();</span>
 <span class="fc bfc" id="L601" title="All 2 branches covered.">						if(valueSet[j].equals(stringValue)){</span>
 <span class="fc" id="L602">							valueSetContainsArgValue = true;</span>
 						}
 <span class="fc" id="L604">						errorValue = stringValue;</span>
-<span class="fc" id="L605">					}</span>
-					else{
-<span class="nc" id="L607">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
-<span class="nc bnc" id="L608" title="All 2 branches missed.">						if(valueSet[j].equals(boolValue)){</span>
-<span class="nc" id="L609">							valueSetContainsArgValue = true;</span>
-						}
-<span class="nc" id="L611">						errorValue = Boolean.toString(boolValue);</span>
 					}
+					/*else{
+						Boolean boolValue = (Boolean)currentArg.getValue();
+						if(valueSet[j].equals(boolValue)){
+							valueSetContainsArgValue = true;
+						}
+						errorValue = Boolean.toString(boolValue);
+					}*/
 				}
 <span class="fc bfc" id="L614" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
 <span class="fc" id="L615">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
@@ -634,27 +634,27 @@ public class ArgumentParser {
 						}
 <span class="fc" id="L635">						errorValue = Integer.toString(intValue);</span>
 <span class="fc" id="L636">					}</span>
-<span class="pc bpc" id="L637" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc bfc" id="L637" title="All 2 branches covered.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
 <span class="fc" id="L638">						float floatValue = (Float)currentArg.getValue();</span>
 <span class="fc bfc" id="L639" title="All 2 branches covered.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
 <span class="fc" id="L640">							valueSetContainsArgValue = true;</span>
 						}
 <span class="fc" id="L642">						errorValue = Float.toString(floatValue);</span>
 <span class="fc" id="L643">					}</span>
-<span class="nc bnc" id="L644" title="All 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="nc" id="L645">						String stringValue = (String)currentArg.getValue();</span>
-<span class="nc bnc" id="L646" title="All 2 branches missed.">						if(valueSet[j].equals(stringValue)){</span>
-<span class="nc" id="L647">							valueSetContainsArgValue = true;</span>
+<span class="pc bpc" id="L644" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
+<span class="fc" id="L645">						String stringValue = (String)currentArg.getValue();</span>
+<span class="fc bfc" id="L646" title="All 2 branches covered.">						if(valueSet[j].equals(stringValue)){</span>
+<span class="fc" id="L647">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L649">						errorValue = stringValue;</span>
-<span class="nc" id="L650">					}</span>
-					else{
-<span class="nc" id="L652">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
-<span class="nc bnc" id="L653" title="All 2 branches missed.">						if(valueSet[j].equals(Boolean.toString(boolValue))){</span>
-<span class="nc" id="L654">							valueSetContainsArgValue = true;</span>
-						}
-<span class="nc" id="L656">						errorValue = Boolean.toString(boolValue);</span>
+<span class="fc" id="L649">						errorValue = stringValue;</span>
 					}
+					/*else{
+						Boolean boolValue = (Boolean)currentArg.getValue();
+						if(valueSet[j].equals(Boolean.toString(boolValue))){
+							valueSetContainsArgValue = true;
+						}
+						errorValue = Boolean.toString(boolValue);
+					}*/
 					
 				}
 <span class="fc bfc" id="L660" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>

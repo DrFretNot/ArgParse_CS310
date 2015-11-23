@@ -603,13 +603,13 @@ public class ArgumentParser {
 						}
 						errorValue = stringValue;
 					}
-					else{
+					/*else{
 						Boolean boolValue = (Boolean)currentArg.getValue();
 						if(valueSet[j].equals(boolValue)){
 							valueSetContainsArgValue = true;
 						}
 						errorValue = Boolean.toString(boolValue);
-					}
+					}*/
 				}
 				if(!valueSetContainsArgValue){
 					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));
@@ -648,13 +648,13 @@ public class ArgumentParser {
 						}
 						errorValue = stringValue;
 					}
-					else{
+					/*else{
 						Boolean boolValue = (Boolean)currentArg.getValue();
 						if(valueSet[j].equals(Boolean.toString(boolValue))){
 							valueSetContainsArgValue = true;
 						}
 						errorValue = Boolean.toString(boolValue);
-					}
+					}*/
 					
 				}
 				if(!valueSetContainsArgValue){

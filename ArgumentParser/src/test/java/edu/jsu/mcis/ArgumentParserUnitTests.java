@@ -638,6 +638,57 @@ public class ArgumentParserUnitTests {
     }
     
     @Test
+    public void testParseThrowsArgumentDoesNotExistExeptionForShortFormNamedArguments(){
+    	String[] args = {"7", "-m", "myval", "5", "3"};
+    	ArgumentParser lib = new ArgumentParser();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument m does not exist", e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void testParseThrowsArgumentDoesNotExistExeptionForShortFormNamedArgumentFlags(){
+    	String[] args = {"7", "-hm", "5", "3"};
+    	ArgumentParser lib = new ArgumentParser();
+        lib.addProgramName("VolumeCalculator");
+        lib.addProgramDescription("Calculate the volume of a box.");
+        PositionalArgument length = new PositionalArgument("length", "the length of the box");
+    	PositionalArgument width = new PositionalArgument("width", "the width of the box");
+    	PositionalArgument height = new PositionalArgument("height", "the height of the box");
+    	//length.addElements("length", "the length of the box");
+    	//width.addElements("width", "the width of the box");
+    	//height.addElements("height", "the height of the box");
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addNamedArgument(new NamedArgument("type", "box", 't'));
+    	lib.addNamedArgument(new NamedArgument("digits", "0", Argument.ArgType.INTEGER, 'd'));
+    	lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN, 'h'));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument m does not exist", e.getMessage());
+    	}
+    }
+    
+    @Test
     public void testParseThrowsIncorrectArgTypeExceptionForNamedArguments(){
     	String[] args = {"7", "-d", "myval", "5", "3"};
     	ArgumentParser lib = new ArgumentParser();
@@ -850,6 +901,67 @@ public class ArgumentParserUnitTests {
     	}
 		
 	}
+	
+	@Test
+	public void testParseThrowsExceptionWhenGivenIncorrectPositionalArgumentValueWithStringValueSet(){
+		String[] args = {"7", "-t", "pyramid", "5", "2", "6"};
+		ArgumentParser lib = new ArgumentParser();
+		lib.addProgramName("VolumeCalculator");
+		lib.addProgramDescription("Calculate the volume of an object.");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object");
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
+    	String[] numberSet = {"1", "2", "3", "4"};
+    	PositionalArgument number = new PositionalArgument("number", "the number of objects", numberSet);
+    	lib.addPositionalArgument(length);
+    	lib.addPositionalArgument(width);
+    	lib.addPositionalArgument(height);
+    	lib.addPositionalArgument(number);
+    	String[] typeValues = {"box", "pyramid", "ellipsoid"};
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValues);
+    	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
+    	lib.addNamedArgument(type);
+    	lib.addNamedArgument(digits); 
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){
+    		assertEquals("usage: java VolumeCalculator required: length width height number\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
+    	}	
+	}
+	
+	@Test
+	public void testParseAddsCorectValueToPositionalArgumentWithStringValueSet(){
+		String[] args = {"cat"};
+		ArgumentParser lib = new ArgumentParser();
+		String[] animalSet = {"cat", "dog", "bunny"};
+		PositionalArgument animal = new PositionalArgument("animal", "the type of animal", animalSet);
+		lib.addPositionalArgument(animal);
+		try{
+			lib.parse(args);
+		}
+		catch(Exception e){}
+		assertEquals("cat", animal.getValue());
+	}
+	
+	@Test
+	public void testParseAddsCorectValueToNamedArgumentWithValueSet(){
+		String[] args = {"--number", "2", "--decimal", "3.0"};
+		ArgumentParser lib = new ArgumentParser();
+		String[] numberSet = {"1", "2", "3"};
+		String[] decimalSet = {"1.0", "2.0", "3.0"};
+		NamedArgument number = new NamedArgument("number", Argument.ArgType.INTEGER, numberSet);
+		NamedArgument decimal = new NamedArgument("decimal", Argument.ArgType.FLOAT, decimalSet);		
+		lib.addNamedArgument(number);
+		lib.addNamedArgument(decimal);
+		try{
+			lib.parse(args);
+		}
+		catch(Exception e){}
+		assertEquals(2, number.getValue());
+		assertEquals((float)3.0, decimal.getValue());
+	}
+	
     @Test
     public void NamedArgumentConstructorWithValueSetTest() {
         String[] testValues = {"cube", "ellipsoid", "pyramid"};
@@ -948,8 +1060,43 @@ public class ArgumentParserUnitTests {
     }
     
     @Test
+    public void TestBooleanNamedArgumentWithShortForm(){
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, 'h');
+        assertEquals(false, help.getValue());
+    }
+    
+    @Test
+    public void TestBooleanNamedArgumentWithSetOfValues(){
+    	String[] helpValues = {"True", "False"};
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, helpValues);
+        assertEquals(false, help.getValue());
+    }
+    
+     @Test
+    public void TestBooleanNamedArgumentWithDescriptionAndSetOfValues(){
+    	String[] helpValues = {"True", "False"};
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, "usage information", helpValues);
+        assertEquals(false, help.getValue());
+    }
+    
+     @Test
+    public void TestBooleanNamedArgumentWithShortFormAndSetOfValues(){
+    	String[] helpValues = {"True", "False"};
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, 'h', helpValues);
+        assertEquals(false, help.getValue());
+    }
+    
+    @Test
+    public void TestBooleanNamedArgumentWithDescriptionAndShortFormAndSetOfValues(){
+    	String[] helpValues = {"True", "False"};
+        NamedArgument help = new NamedArgument("help", Argument.ArgType.BOOLEAN, "usage information", 'h', helpValues);
+        assertEquals(false, help.getValue());
+    }
+    
+    
+    @Test
     public void TestNamedArgumentsWithEachDifferentValue(){
-        String[] args = {"1.0", "1", "2", "--type", "box", "--digits", "2", "--blah", "--shoe", "3.0" };
+        String[] args = {"1.0", "1", "2", "--type", "box", "--digits", "2", "--blah", "--shoe", "3.0", "-w", "5.0"};
 		ArgumentParser lib = new ArgumentParser();
 		lib.addProgramName("VolumeCalculator");
 		lib.addProgramDescription("Calculate the volume of an object.");
@@ -965,9 +1112,13 @@ public class ArgumentParserUnitTests {
     	NamedArgument digits = new NamedArgument("digits", "4", Argument.ArgType.INTEGER, "the number of decimal digits to truncate at", 'd');
     	NamedArgument blah = new NamedArgument("blah", Argument.ArgType.BOOLEAN);
         NamedArgument shoe = new NamedArgument("shoe", Argument.ArgType.FLOAT);
+        NamedArgument weeks = new NamedArgument("days", Argument.ArgType.FLOAT, 'w');
         
         lib.addNamedArgument(type);
-    	lib.addNamedArgument(digits); 
+    	lib.addNamedArgument(digits);
+    	lib.addNamedArgument(blah);
+    	lib.addNamedArgument(shoe); 
+    	lib.addNamedArgument(weeks);
     	try{
     		lib.parse(args);
     	}
@@ -981,6 +1132,8 @@ public class ArgumentParserUnitTests {
         assertEquals("integer", digits.getType());
         assertEquals("boolean", blah.getType());
         assertEquals("float", shoe.getType());
+        assertEquals((float)3.0, shoe.getValue());
+        assertEquals((float)5.0, weeks.getValue());
     }
 
 	@Test//XML file location specific to individual computer
@@ -1072,6 +1225,19 @@ public class ArgumentParserUnitTests {
     	catch(Exception e){
     		assertEquals("usage: java VolumeCalculator required: testBool\nVolumeCalculator.java: error: argument testBool: invalid boolean value: something", e.getMessage());
     	}
+    }
+    
+    @Test
+    public void testParseBoolReturnsFalseWhenGivenCapitalLettersAsArgumentValue(){
+    	String[] args = {"FalSe"};
+    	ArgumentParser lib = new ArgumentParser();
+    	lib.addPositionalArgument(new PositionalArgument("fun", Argument.ArgType.BOOLEAN));
+    	try{
+    		lib.parse(args);
+    	}
+    	catch(Exception e){}
+    	PositionalArgument fun = lib.getPositionalArgument("fun");
+    	assertEquals(false, fun.getValue());
     }
     
     @Test
