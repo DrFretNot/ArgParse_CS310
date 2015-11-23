@@ -10,9 +10,10 @@ public abstract class Argument
 	protected String argName;
     protected String description;
     protected ArgType type;
-<span class="fc" id="L13">    protected String[] valueSet = {&quot;&quot;};</span>
+    protected String value;
+<span class="fc" id="L14">    protected String[] valueSet = {&quot;&quot;};</span>
     
-<span class="pc" id="L15">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
+<span class="pc" id="L16">    public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};</span>
     
     /**
      *
@@ -32,12 +33,12 @@ public abstract class Argument
      *
      *
     */
-<span class="fc" id="L35">    public Argument(String name, ArgType dataType, String argDescription){</span>
-<span class="fc" id="L36">    	argName = name;</span>
-<span class="fc" id="L37">        description = argDescription;</span>
-<span class="fc" id="L38">        type = dataType;</span>
+<span class="fc" id="L36">    public Argument(String name, ArgType dataType, String argDescription){</span>
+<span class="fc" id="L37">    	argName = name;</span>
+<span class="fc" id="L38">        description = argDescription;</span>
+<span class="fc" id="L39">        type = dataType;</span>
         
-<span class="fc" id="L40">    }</span>
+<span class="fc" id="L41">    }</span>
     
      /**
      *
@@ -47,8 +48,8 @@ public abstract class Argument
     */
     public Argument(String name, ArgType dataType){
     	
-<span class="fc" id="L50">        this(name, dataType, &quot;&quot;);</span>
-<span class="fc" id="L51">    }</span>
+<span class="fc" id="L51">        this(name, dataType, &quot;&quot;);</span>
+<span class="fc" id="L52">    }</span>
      /**
      *
      *@param Argument Contructor for different combinations such as &lt;b&gt;name&lt;/b&gt;, and &lt;b&gt;argDescription&lt;/b&gt; 
@@ -57,8 +58,8 @@ public abstract class Argument
     */
     public Argument(String name, String argDescription){
     	
-<span class="fc" id="L60">        this(name, ArgType.STRING, argDescription);</span>
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L61">        this(name, ArgType.STRING, argDescription);</span>
+<span class="fc" id="L62">    }</span>
     
      /**
      *
@@ -68,8 +69,8 @@ public abstract class Argument
     */
     public Argument(String name){
     	
-<span class="fc" id="L71">        this(name, ArgType.STRING, &quot;&quot;);</span>
-<span class="fc" id="L72">    }</span>
+<span class="fc" id="L72">        this(name, ArgType.STRING, &quot;&quot;);</span>
+<span class="fc" id="L73">    }</span>
     /**
      *
      *@param getName Common method which will be defined in child classes
@@ -103,5 +104,11 @@ public abstract class Argument
     public abstract String[] getValueSet();
     
     
+    
+    public abstract &lt;T&gt; T getValue();
+    
+    
+    
+    public abstract void setValue(String argValue);
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

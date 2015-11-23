@@ -18,9 +18,9 @@ public class VolumeCalculator
         lib.addProgramName("VolumeCalculator");
         lib.addProgramDescription("Calculate the volume of an object");
         String[] lengthValueSet = {"3.0", "4.0", "5.0"};
-    	PositionalArgument<Float> length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object", lengthValueSet);
-    	PositionalArgument<Float> width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
-    	PositionalArgument<Float> height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
+    	PositionalArgument length = new PositionalArgument("length", Argument.ArgType.FLOAT, "the length of the object", lengthValueSet);
+    	PositionalArgument width = new PositionalArgument("width", Argument.ArgType.FLOAT, "the width of the object");
+    	PositionalArgument height = new PositionalArgument("height", Argument.ArgType.FLOAT, "the height of the object");
 		lib.addPositionalArgument(length);
     	lib.addPositionalArgument(width);
     	lib.addPositionalArgument(height);

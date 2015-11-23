@@ -5,10 +5,10 @@ public class VolumeCalculatorWithXMLWriteFunction
 {
 
     public static void main (String args[]) {
-        float x = 0;
+        /*float x = 0;
         float y = 0;
         float z = 0;
-        float total = 0;
+        float total = 0;*/
             
         ArgumentParser lib = new ArgumentParser();
         lib.addProgramName("VolumeCalculator");

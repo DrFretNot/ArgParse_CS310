@@ -7,7 +7,7 @@ public class VolumeCalculatorWithXML
     public static void main (String args[]) {
         float x = 0;
         float y = 0;
-        float z = 0;
+        int z = 0;
           
         try{
         	ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/ArgumentsDemo.xml");
@@ -27,14 +27,14 @@ public class VolumeCalculatorWithXML
 			
 			try{
 				lib.parse(args);
-				PositionalArgument<Float> length = lib.getPositionalArgument(0);
-				PositionalArgument<Float> width = lib.getPositionalArgument(1);
-				PositionalArgument<Integer> height = lib.getPositionalArgument(2);
+				PositionalArgument length = lib.getPositionalArgument(0);
+				PositionalArgument width = lib.getPositionalArgument(1);
+				PositionalArgument height = lib.getPositionalArgument(2);
 			
 				x = length.getValue();
 				y = width.getValue();
 				z = height.getValue();
-				NamedArgument<String> type = lib.getNamedArgument("type");
+				NamedArgument type = lib.getNamedArgument("type");
 				if(type.getValue().equals("box")){
 					System.out.println( String.valueOf(x * y * z) );
 				}

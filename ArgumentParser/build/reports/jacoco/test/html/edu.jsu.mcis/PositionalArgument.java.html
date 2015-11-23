@@ -1,95 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PositionalArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ArgumentParser</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">PositionalArgument.java</span></div><h1>PositionalArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
 
-public class PositionalArgument&lt;T&gt; extends Argument{
+public class PositionalArgument extends Argument{
 
-	private T value;
-<span class="fc" id="L6">	private int position = -1;</span>
+	//private T value;
+	//private String value;
+<span class="fc" id="L7">	private int position = -1;</span>
 
     public PositionalArgument(String name){
-<span class="fc" id="L9">        super(name);</span>
-<span class="fc" id="L10">    }</span>
+<span class="fc" id="L10">        super(name);</span>
+<span class="fc" id="L11">    }</span>
     
     public PositionalArgument(String name, ArgType dataType){
-<span class="fc" id="L13">        super(name, dataType);</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L14">        super(name, dataType);</span>
+<span class="fc" id="L15">    }</span>
     
     public PositionalArgument(String name, String argDescription){
-<span class="fc" id="L17">        super(name, argDescription);</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L18">        super(name, argDescription);</span>
+<span class="fc" id="L19">    }</span>
     
     public PositionalArgument(String name, ArgType dataType, String argDescription){
-<span class="fc" id="L21">        super(name, dataType, argDescription);</span>
-<span class="fc" id="L22">    } </span>
+<span class="fc" id="L22">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L23">    } </span>
     
     public PositionalArgument(String name, String[] setOfValues){
-<span class="fc" id="L25">        super(name);</span>
-<span class="fc" id="L26">        valueSet = setOfValues;</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L26">        super(name);</span>
+<span class="fc" id="L27">        valueSet = setOfValues;</span>
+<span class="fc" id="L28">    }</span>
     
     public PositionalArgument(String name, ArgType dataType, String[] setOfValues){
-<span class="fc" id="L30">        super(name, dataType);</span>
-<span class="fc" id="L31">        valueSet = setOfValues;</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L31">        super(name, dataType);</span>
+<span class="fc" id="L32">        valueSet = setOfValues;</span>
+<span class="fc" id="L33">    }</span>
     
     public PositionalArgument(String name, String argDescription, String[] setOfValues){
-<span class="fc" id="L35">        super(name, argDescription);</span>
-<span class="fc" id="L36">        valueSet = setOfValues;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L36">        super(name, argDescription);</span>
+<span class="fc" id="L37">        valueSet = setOfValues;</span>
+<span class="fc" id="L38">    }</span>
     
     public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
-<span class="fc" id="L40">        super(name, dataType, argDescription);</span>
-<span class="fc" id="L41">        valueSet = setOfValues;</span>
-<span class="fc" id="L42">    } </span>
+<span class="fc" id="L41">        super(name, dataType, argDescription);</span>
+<span class="fc" id="L42">        valueSet = setOfValues;</span>
+<span class="fc" id="L43">    } </span>
 
 
 //***********************************************************************************
 	public void setPosition(int pos){
-<span class="fc" id="L47">		position = pos;</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L48">		position = pos;</span>
+<span class="fc" id="L49">	}</span>
 	
 	public int getPosition(){
-<span class="fc" id="L51">		return position;</span>
+<span class="fc" id="L52">		return position;</span>
 	}
 	
 //****** These are subclassed from the abstract class Argument **************************
 
    
     public String getName(){
-<span class="fc" id="L58">        return this.argName;</span>
+<span class="fc" id="L59">        return this.argName;</span>
     }
     
     public String getType(){
-<span class="fc bfc" id="L62" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
-<span class="fc" id="L63">    		return &quot;integer&quot;;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    	if(type == ArgType.INTEGER){</span>
+<span class="fc" id="L64">    		return &quot;integer&quot;;</span>
     	}
-<span class="fc bfc" id="L65" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L66">    		return &quot;float&quot;;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    	else if(type == ArgType.FLOAT){</span>
+<span class="fc" id="L67">    		return &quot;float&quot;;</span>
     	}
-<span class="fc bfc" id="L68" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
-<span class="fc" id="L69">    		return &quot;string&quot;;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    	else if(type == ArgType.STRING){</span>
+<span class="fc" id="L70">    		return &quot;string&quot;;</span>
     	}
-<span class="fc" id="L71">    	else return &quot;boolean&quot;;</span>
+<span class="fc" id="L72">    	else return &quot;boolean&quot;;</span>
     }
     
     public String getDescription(){
-<span class="fc" id="L75">    	return description;</span>
+<span class="fc" id="L76">    	return description;</span>
     }
     
-    public void setValue(T argValue){
-<span class="fc" id="L79">    	value = argValue;</span>
-<span class="fc" id="L80">    }</span>
+    public void setValue(String argValue){
+<span class="fc" id="L80">    	value = argValue;</span>
+<span class="fc" id="L81">    }</span>
 	
-    public T getValue(){
-<span class="fc bfc" id="L83" title="All 2 branches covered.">    	if(type == ArgType.FLOAT){</span>
-<span class="fc" id="L84">    		return (T)(Float)value;</span>
+    public &lt;T&gt; T getValue(){
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    	if(this.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L85">    		int intValue = Integer.parseInt(value);</span>
+<span class="fc" id="L86">    		return (T)(Integer)intValue;</span>
+    	}
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    	else if(this.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L89">    		float floatValue = Float.parseFloat(value);</span>
+<span class="fc" id="L90">    		return (T)(Float)floatValue;</span>
+    	}
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    	else if(this.getType().equals(&quot;boolean&quot;)){</span>
+<span class="fc" id="L93">    		Boolean boolValue = Boolean.parseBoolean(value);</span>
+<span class="fc" id="L94">    		return (T)(Boolean)boolValue;</span>
     	}
     	else{
-<span class="fc" id="L87">    		return value;</span>
+<span class="fc" id="L97">    		return (T)value;</span>
     	}
     }
     
     public String[] getValueSet(){
-<span class="fc" id="L92">    	return valueSet;</span>
+<span class="fc" id="L102">    	return valueSet;</span>
     }
      
 //**************************************************************************************

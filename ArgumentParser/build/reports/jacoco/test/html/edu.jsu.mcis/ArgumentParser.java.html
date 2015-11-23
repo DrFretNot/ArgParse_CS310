@@ -18,13 +18,6 @@ package edu.jsu.mcis;
 import java.util.*;
 import java.lang.Object.*;
 import java.io.*;
-//import javax.xml.parsers.*;
-//import org.w3c.dom.NodeList;
-//import org.w3c.dom.Element;
-//import org.w3c.dom.Document;
-//import org.xml.sax.SAXException; 
-//import java.io.File;
-//import java.io.IOException;
 
 
 /** Description of ArgumentParser:
@@ -52,17 +45,13 @@ public class ArgumentParser {
 	private List&lt;NamedArgument&gt; namedArgumentList; //hashmap, key would be the name of the argument
 	//if short form is given from CLI, need to search for the name then find it in the map
     private List&lt;PositionalArgument&gt; positionalArgumentList;
-<span class="fc" id="L55">    private String programName = &quot;&quot;;</span>
-<span class="fc" id="L56">    private String programDescription = &quot;&quot;;</span>
+<span class="fc" id="L48">    private String programName = &quot;&quot;;</span>
+<span class="fc" id="L49">    private String programDescription = &quot;&quot;;</span>
     private int posCount;
     
     
 /**
- *The Argument Parser constructor, this will instantiate a new instance of the Parser
- *&lt;p&gt;The constructor enters the blanks for the program name and the program description. 
- *Creates a new lists for positional and named arguments. These will be used to hold the 
- *arguments that are created by the user. 
- *&lt;pre&gt;
+  &lt;pre&gt;
  *&lt;span style=&quot;color:#4c6b87&quot;&gt;
  *{@code
  * public ArgumentParser(){
@@ -72,59 +61,63 @@ public class ArgumentParser {
     this.namedArgumentList = new ArrayList&lt;NamedArgument&gt;(); 
     posCount = -1;
  *}
+ *The Argument Parser constructor, this will instantiate a new instance of the Parser
+ *&lt;p&gt;The constructor enters the blanks for the program name and the program description. 
+ *Creates a new lists for positional and named arguments. These will be used to hold the 
+ *arguments that are created by the user. 
  *
  *}
  *
  */    
-<span class="fc" id="L79">    public ArgumentParser(){</span>
-<span class="fc" id="L80">		this.programName = &quot;&quot;;</span>
-<span class="fc" id="L81">        this.programDescription = &quot;&quot;;</span>
-<span class="fc" id="L82">        this.positionalArgumentList = new ArrayList&lt;PositionalArgument&gt;();</span>
-<span class="fc" id="L83">        this.namedArgumentList = new ArrayList&lt;NamedArgument&gt;(); </span>
-<span class="fc" id="L84">		posCount = -1;</span>
-<span class="fc" id="L85">	}</span>
+<span class="fc" id="L72">    public ArgumentParser(){</span>
+<span class="fc" id="L73">		this.programName = &quot;&quot;;</span>
+<span class="fc" id="L74">        this.programDescription = &quot;&quot;;</span>
+<span class="fc" id="L75">        this.positionalArgumentList = new ArrayList&lt;PositionalArgument&gt;();</span>
+<span class="fc" id="L76">        this.namedArgumentList = new ArrayList&lt;NamedArgument&gt;(); </span>
+<span class="fc" id="L77">		posCount = -1;</span>
+<span class="fc" id="L78">	}</span>
 	
     /**
-     *
-     *
-     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
-     *&lt;pre&gt;
+     **&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
      public void addProgramName(String inputProgramName){
         programName = inputProgramName; 
 }
      *}
+     *&lt;/pre&gt;
+     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
+     *
      *
      */ 
 	public void addProgramName(String inputProgramName){
-<span class="fc" id="L101">        programName = inputProgramName;       </span>
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L94">        programName = inputProgramName;       </span>
+<span class="fc" id="L95">    }</span>
     
     /**
-     *
-     *
-     * 
-     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
-     *
      *&lt;pre&gt;
-     *&lt;span style=&quot;color:#4c6b87&quot;&gt;
-     *{@code
+     {@code
      public void addProgramDescription(String inputProgramDescription){
         programDescription = inputProgramDescription; 
 }
      
      
      *}
+     *&lt;pre&gt;
+     * 
+     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
+     *
+     *
+     *
+     *
     */
     public void addProgramDescription(String inputProgramDescription){
-<span class="fc" id="L121">        programDescription = inputProgramDescription;       </span>
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L115">        programDescription = inputProgramDescription;       </span>
+<span class="fc" id="L116">    }</span>
     
     /** 
-     *Constructor description of getProgramName() 
-     *@param getProgramName Receives the specified name of the program
-     *&lt;pre&gt;
+    Constructor description of getProgramName() 
+      &lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
      public String getProgramName(){
@@ -132,30 +125,32 @@ public class ArgumentParser {
      
 }
      *}
+     *&lt;/pre&gt;
+     *@param getProgramName Receives the specified name of the program
      */
     public String getProgramName(){
-<span class="fc" id="L137">        return programName;   </span>
+<span class="fc" id="L132">        return programName;   </span>
     }
     /** Constructor description of getProgramDescription()
-     *@param getProgramDescription recieves a Specified Program Description from CLI
-     *@return programName Returns the specificed description of the program
-     *&lt;pre&gt;
+    *&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
      public String getProgramDescription(){
         return programDescription;   
     }
      *}
+     *&lt;/pre&gt;
+     *@param getProgramDescription recieves a Specified Program Description from CLI
+     *@return programName Returns the specificed description of the program
+     
      */
     
     public String getProgramDescription(){
-<span class="fc" id="L152">        return programDescription;   </span>
+<span class="fc" id="L149">        return programDescription;   </span>
     }
     
-    /** @param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length,          *width, and height, respectively. see code snippit below.
-     *If a positional argument is not supplied, the program should exit, and the usage information       should be              *displayed along with the error stating the missing argument.
-     *If an additional (i.e., one too many) positional argument is specified, then the program should     exit, and the        *usage information should be displayed along with the error stating the additional     argument.
-     *&lt;pre&gt;
+    /** 
+    *&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
      public void addPositionalArgument(PositionalArgument arg){
@@ -165,72 +160,77 @@ public class ArgumentParser {
 }
      *}
      *&lt;/pre&gt;
+     *@param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. see code snippit below.
+     *If a positional argument is not supplied, the program should exit, and the usage information should be displayed along with the error stating the missing argument.
+     *If an additional (i.e., one too many) positional argument is specified, then the program should exit, and the usage information should be displayed along with the error stating the additional argument.
+     
      */
     public void addPositionalArgument(PositionalArgument arg){
-<span class="fc" id="L170">    	posCount++;</span>
-<span class="fc" id="L171">    	arg.setPosition(posCount);</span>
-<span class="fc" id="L172">    	positionalArgumentList.add(arg);</span>
-<span class="fc" id="L173">    }</span>
+<span class="fc" id="L169">    	posCount++;</span>
+<span class="fc" id="L170">    	arg.setPosition(posCount);</span>
+<span class="fc" id="L171">    	positionalArgumentList.add(arg);</span>
+<span class="fc" id="L172">    }</span>
     
     /**
-     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
      *&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
-     *
+     *public void addNamedArgument(NamedArgument arg){ 
+    	namedArgumentList.add(arg);
+    }
      *  
      *}
      *&lt;/pre&gt;
+     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
+     *
      *
      */
-    public void addNamedArgument(NamedArgument arg){ //needs to be added to a map
-<span class="fc" id="L187">    	namedArgumentList.add(arg);</span>
-<span class="fc" id="L188">    }</span>
+    public void addNamedArgument(NamedArgument arg){ 
+<span class="fc" id="L189">    	namedArgumentList.add(arg);</span>
+<span class="fc" id="L190">    }</span>
     
-    /** Constructor description of PositionalArgument getPositionalArgument(String argName) 
+    /** 
+    &lt;pre&gt;
+     *&lt;span style=&quot;color:#4c6b87&quot;&gt;
+     *{@code
+     public PositionalArgument getPositionalArgument(String argName){
+    	PositionalArgument returnArg = null;
+    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){
+    		PositionalArgument currentArg = positionalArgumentList.get(i);
+    		if(currentArg.getName().equals(argName)){
+    			returnArg = currentArg;
+     *  
+     *}
+     *&lt;/pre&gt;
+     *Constructor description of PositionalArgument getPositionalArgument(String argName) 
      *@param PositionalArgument getPositionalArgument 
      *@return Returns the current argument name
      *
      *
      */
     public PositionalArgument getPositionalArgument(String argName){
-<span class="fc" id="L197">    	PositionalArgument returnArg = null;</span>
-<span class="fc bfc" id="L198" title="All 2 branches covered.">    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
-<span class="fc" id="L199">    		PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="pc bpc" id="L200" title="1 of 2 branches missed.">    		if(currentArg.getName().equals(argName)){</span>
-<span class="fc" id="L201">    			returnArg = currentArg;</span>
+<span class="fc" id="L212">    	PositionalArgument returnArg = null;</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
+<span class="fc" id="L214">    		PositionalArgument currentArg = positionalArgumentList.get(i);</span>
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">    		if(currentArg.getName().equals(argName)){</span>
+<span class="fc" id="L216">    			returnArg = currentArg;</span>
     		}
     	}
-<span class="fc" id="L204">    	return returnArg;</span>
+<span class="fc" id="L219">    	return returnArg;</span>
     }
     
-    //position starts at 0
     /**
+     *
      *@Param PositionalArgument getPositionalArgument 
      *@return returnArg
      *
      *
      */
     public PositionalArgument getPositionalArgument(int argPosition){
-<span class="fc" id="L215">    	PositionalArgument returnArg = null;</span>
-<span class="fc bfc" id="L216" title="All 2 branches covered.">    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
-<span class="fc" id="L217">    		PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc bfc" id="L218" title="All 2 branches covered.">    		if(currentArg.getPosition() == argPosition){</span>
-<span class="fc" id="L219">    			returnArg = currentArg;</span>
-    		}
-    	}
-<span class="fc" id="L222">    	return returnArg;</span>
-    }
-    
-    /**
-     *@param NamedArgument From the Command line this recieves a specified named argument, as a string, to be added to the library.
-     *@return returnArg Returns the string form of the named Argument.
-     */
-    public NamedArgument getNamedArgument(String argName){
-<span class="fc" id="L230">    	NamedArgument returnArg = null;</span>
-<span class="fc bfc" id="L231" title="All 2 branches covered.">    	for(int i = 0; i &lt; namedArgumentList.size(); i++){</span>
-<span class="fc" id="L232">    		NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="fc bfc" id="L233" title="All 2 branches covered.">    		if(currentArg.getName().equals(argName)){</span>
+<span class="fc" id="L230">    	PositionalArgument returnArg = null;</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
+<span class="fc" id="L232">    		PositionalArgument currentArg = positionalArgumentList.get(i);</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">    		if(currentArg.getPosition() == argPosition){</span>
 <span class="fc" id="L234">    			returnArg = currentArg;</span>
     		}
     	}
@@ -238,518 +238,505 @@ public class ArgumentParser {
     }
     
     /**
-     *@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
-     *@return returnArg returns the short-form name to the library.
+     *@param NamedArgument From the Command line this recieves a specified named argument, as a string, to be added to the library.
+     *@return returnArg Returns the string form of the named Argument.
+     */
+    public NamedArgument getNamedArgument(String argName){
+<span class="fc" id="L245">    	NamedArgument returnArg = null;</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">    	for(int i = 0; i &lt; namedArgumentList.size(); i++){</span>
+<span class="fc" id="L247">    		NamedArgument currentArg = namedArgumentList.get(i);</span>
+<span class="fc bfc" id="L248" title="All 2 branches covered.">    		if(currentArg.getName().equals(argName)){</span>
+<span class="fc" id="L249">    			returnArg = currentArg;</span>
+    		}
+    	}
+<span class="fc" id="L252">    	return returnArg;</span>
+    }
+    
+    /**
      *
      *&lt;h2&gt; 
      *Use Cases: 
      *&lt;/h2&gt;
-     *Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. Assume that it also allows two optional    named arguments called type (short-form t) and digits (short-form d). The following calls would be equivalent:
      **&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
-     * java VolumeCalculator --type ellipsoid 7 3 --digits 1 2 
-     *java VolumeCalculator 7 -t ellipsoid 3 --digits 1 2 
-     *java VolumeCalculator 7 3 --type ellipsoid -d 1 2 
-     *java VolumeCalculator 7 -d 1 3 -t ellipsoid 2 
+     *public NamedArgument getNamedArgument(char argShortFormName){
+    	NamedArgument returnArg = null;
+    	for(int i = 0; i &lt; namedArgumentList.size(); i++){
+    		NamedArgument currentArg = namedArgumentList.get(i);
+    		if(currentArg.getShortFormName() == argShortFormName){
+    			returnArg = currentArg;
+    		}
+    	} 
+     
      *}
      *&lt;/pre&gt;
-     *
+     **@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
+     *@return returnArg returns the short-form name to the library.
      */
     public NamedArgument getNamedArgument(char argShortFormName){
-<span class="fc" id="L260">    	NamedArgument returnArg = null;</span>
-<span class="fc bfc" id="L261" title="All 2 branches covered.">    	for(int i = 0; i &lt; namedArgumentList.size(); i++){</span>
-<span class="fc" id="L262">    		NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="fc bfc" id="L263" title="All 2 branches covered.">    		if(currentArg.getShortFormName() == argShortFormName){</span>
-<span class="fc" id="L264">    			returnArg = currentArg;</span>
+<span class="fc" id="L278">    	NamedArgument returnArg = null;</span>
+<span class="fc bfc" id="L279" title="All 2 branches covered.">    	for(int i = 0; i &lt; namedArgumentList.size(); i++){</span>
+<span class="fc" id="L280">    		NamedArgument currentArg = namedArgumentList.get(i);</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">    		if(currentArg.getShortFormName() == argShortFormName){</span>
+<span class="fc" id="L282">    			returnArg = currentArg;</span>
     		}
     	}
-<span class="fc" id="L267">    	return returnArg;</span>
+<span class="fc" id="L285">    	return returnArg;</span>
     }
     
     //used in parseDataType 
     private Boolean parseBool(String arg) throws NumberFormatException{
-<span class="fc" id="L272">    	String newArg = arg.toLowerCase();</span>
-<span class="fc bfc" id="L273" title="All 2 branches covered.">    	if(newArg.equals(&quot;true&quot;)){</span>
-<span class="fc" id="L274">    		return true;</span>
+<span class="fc" id="L290">    	String newArg = arg.toLowerCase();</span>
+<span class="fc bfc" id="L291" title="All 2 branches covered.">    	if(newArg.equals(&quot;true&quot;)){</span>
+<span class="fc" id="L292">    		return true;</span>
     	}
-<span class="pc bpc" id="L276" title="1 of 2 branches missed.">    	else if(newArg.equals(&quot;false&quot;)){</span>
-<span class="nc" id="L277">    		return false;</span>
+<span class="pc bpc" id="L294" title="1 of 2 branches missed.">    	else if(newArg.equals(&quot;false&quot;)){</span>
+<span class="nc" id="L295">    		return false;</span>
     	}
     	else{
-<span class="fc" id="L280">    		throw new NumberFormatException();</span>
+<span class="fc" id="L298">    		throw new NumberFormatException();</span>
     	}
     }
- 
-    int incorrectDataTypeIndex; //used in parseDataType and incorrectDataTypeMessage
-    String incorrectArgumentType; //used in parseDataType and incorrectDataTypeMessage
     
+    private String usageMessage(){
+<span class="fc" id="L303">    	String message = &quot;usage: java &quot; + programName + &quot; required:&quot;;</span>
+<span class="fc bfc" id="L304" title="All 2 branches covered.">		for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
+<span class="fc" id="L305">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
+<span class="fc" id="L306">			message += &quot; &quot; + currentArg.getName();   </span>
+		}
+<span class="fc" id="L308">		return message;</span>
+    }
+    
+ 	//used in parseDataType, setLongFormNamedArgValues, setShortFormNamedArgValues, and incorrectDataTypeMessage
+    int incorrectDataTypeIndex;
+    String incorrectArgumentType; 
     
     private void parseDataType(ArrayList&lt;String&gt; argList) throws NumberFormatException{
         
         //checking positional args
-<span class="fc bfc" id="L291" title="All 2 branches covered.">		for (int index = 0; index &lt; argList.size(); index++){</span>
-<span class="fc" id="L292">			incorrectDataTypeIndex = index;</span>
-<span class="fc" id="L293">			incorrectArgumentType = &quot;positional&quot;;</span>
-<span class="fc" id="L294">			PositionalArgument currentArg = positionalArgumentList.get(index);</span>
-<span class="fc bfc" id="L295" title="All 2 branches covered.">			if (currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="fc" id="L296">				int argValue = Integer.parseInt(argList.get(index));</span>
-<span class="fc" id="L297">				currentArg.setValue(argValue);</span>
-				//currentArg.setValue(argValue);
-<span class="fc" id="L299">			}</span>
-            
-<span class="fc bfc" id="L301" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="fc" id="L302">				float argValue = Float.parseFloat(argList.get(index));</span>
-<span class="fc" id="L303">				currentArg.setValue(argValue);</span>
-<span class="fc" id="L304">			}</span>
-            
-<span class="fc bfc" id="L306" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="fc" id="L307">				String argValue = argList.get(index);</span>
-<span class="fc" id="L308">				currentArg.setValue(argValue);</span>
-<span class="fc" id="L309">			}</span>
-			
-			else{
-<span class="fc" id="L312">				Boolean argValue = parseBool(argList.get(index));</span>
-<span class="fc" id="L313">				currentArg.setValue(argValue);</span>
-			}
-		}
-		
-		//checking named args
-<span class="fc bfc" id="L318" title="All 2 branches covered.">		for (int index = 0; index &lt; namedArgumentList.size(); index++){</span>
+<span class="fc bfc" id="L318" title="All 2 branches covered.">		for (int index = 0; index &lt; argList.size(); index++){</span>
 <span class="fc" id="L319">			incorrectDataTypeIndex = index;</span>
-<span class="fc" id="L320">			incorrectArgumentType = &quot;named&quot;;</span>
-<span class="fc" id="L321">			NamedArgument currentArg = namedArgumentList.get(index);</span>
+<span class="fc" id="L320">			incorrectArgumentType = &quot;positional&quot;;</span>
+<span class="fc" id="L321">			PositionalArgument currentArg = positionalArgumentList.get(index);</span>
 <span class="fc bfc" id="L322" title="All 2 branches covered.">			if (currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="fc" id="L323">				int argValue = Integer.parseInt((String)currentArg.getValue());</span>
-<span class="fc" id="L324">				currentArg.setValue(argValue);</span>
-<span class="fc" id="L325">			}</span>
+<span class="fc" id="L323">				int argValue = Integer.parseInt(argList.get(index));</span>
+<span class="fc" id="L324">				currentArg.setValue(argList.get(index));</span>
+				//currentArg.setValue(argValue);
+<span class="fc" id="L326">			}</span>
             
-<span class="pc bpc" id="L327" title="1 of 2 branches missed.">			else if (currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L328">				float argValue = Float.parseFloat((String)currentArg.getValue());</span>
-<span class="nc" id="L329">				currentArg.setValue(argValue);</span>
-<span class="nc" id="L330">			}</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L329">				float argValue = Float.parseFloat(argList.get(index));</span>
+<span class="fc" id="L330">				currentArg.setValue(argList.get(index));</span>
+<span class="fc" id="L331">			}</span>
             
-<span class="fc bfc" id="L332" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="fc" id="L333">				String argValue = (String)currentArg.getValue();</span>
-<span class="fc" id="L334">				currentArg.setValue(argValue);</span>
-<span class="fc" id="L335">			}</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">			else if (currentArg.getType().equals(&quot;string&quot;)){</span>
+<span class="fc" id="L334">				String argValue = argList.get(index);</span>
+<span class="fc" id="L335">				currentArg.setValue(argValue);</span>
+<span class="fc" id="L336">			}</span>
 			
 			else{
-<span class="fc" id="L338">				Boolean argValue = Boolean.parseBoolean((String)currentArg.getValue());</span>
-<span class="fc" id="L339">				currentArg.setValue(String.valueOf(argValue));</span>
+<span class="fc" id="L339">				Boolean argValue = parseBool(argList.get(index));</span>
+<span class="fc" id="L340">				currentArg.setValue(argList.get(index));</span>
 			}
 		}
-<span class="fc" id="L342">    }</span>
+<span class="fc" id="L343">    }</span>
     
     private String incorrectDataTypeMessage(ArrayList&lt;String&gt; argList){
+<span class="fc" id="L346">		String errorMessage = this.usageMessage();</span>
 		
-<span class="fc" id="L346">		String errorMessage = &quot;usage: java &quot; + programName;</span>
-<span class="fc bfc" id="L347" title="All 2 branches covered.">		for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L348">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L349">			errorMessage += &quot; &quot; + currentArg.getName();   </span>
-		}
-		
-<span class="fc bfc" id="L352" title="All 2 branches covered.">		for(int i = 0; i &lt; namedArgumentList.size(); i++) {</span>
-<span class="fc" id="L353">			NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="fc" id="L354">			errorMessage += &quot; &quot; + currentArg.getName();   </span>
-		}
-			
-<span class="fc bfc" id="L357" title="All 2 branches covered.">		if (incorrectArgumentType.equals(&quot;positional&quot;)){</span>
-<span class="fc" id="L358">			PositionalArgument currentArg = positionalArgumentList.get(incorrectDataTypeIndex); </span>
-<span class="fc" id="L359">			errorMessage += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + currentArg.getName() + &quot;: invalid &quot;+ currentArg.getType() + &quot; value: &quot; + argList.get(incorrectDataTypeIndex);</span>
-<span class="fc" id="L360">			return errorMessage;  </span>
+<span class="fc bfc" id="L348" title="All 2 branches covered.">		if (incorrectArgumentType.equals(&quot;positional&quot;)){</span>
+<span class="fc" id="L349">			PositionalArgument currentArg = positionalArgumentList.get(incorrectDataTypeIndex); </span>
+<span class="fc" id="L350">			errorMessage += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + currentArg.getName() + &quot;: invalid &quot;+ currentArg.getType() + &quot; value: &quot; + argList.get(incorrectDataTypeIndex);</span>
+<span class="fc" id="L351">			return errorMessage;  </span>
 		}
 		else {
-<span class="fc" id="L363">			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); </span>
-<span class="fc" id="L364">			errorMessage += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + currentArg.getName() + &quot;: invalid &quot;+ currentArg.getType() + &quot; value: &quot; + currentArg.getValue();</span>
-<span class="fc" id="L365">			return errorMessage; </span>
+<span class="fc" id="L354">			NamedArgument currentArg = namedArgumentList.get(incorrectDataTypeIndex); </span>
+<span class="fc" id="L355">			errorMessage += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + currentArg.getName() + &quot;: invalid &quot;+ currentArg.getType() + &quot; value: &quot; + incorrectArgValueForSpecifiedDataType;</span>
+<span class="fc" id="L356">			return errorMessage; </span>
 		}  	
     }
    
    private String incorrectNumberOfArgsMessage(ArrayList&lt;String&gt; argList){
-<span class="fc" id="L370">   		int numOfArgs = positionalArgumentList.size();</span>
-<span class="fc bfc" id="L371" title="All 2 branches covered.">   		if(argList.size() &lt; numOfArgs){</span>
-<span class="fc" id="L372">            String message = &quot;usage: java &quot; + programName;</span>
-<span class="fc bfc" id="L373" title="All 2 branches covered.">            for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L374">            	PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L375">                message += &quot; &quot; + currentArg.getName();   </span>
+<span class="fc" id="L361">   		int numOfArgs = positionalArgumentList.size();</span>
+<span class="fc bfc" id="L362" title="All 2 branches covered.">   		if(argList.size() &lt; numOfArgs){</span>
+<span class="fc" id="L363">            String message = this.usageMessage();</span>
+            
+<span class="fc" id="L365">            message += &quot;\n&quot; + programName + &quot;.java: error: the following arguments are required:&quot;;</span>
+            
+<span class="fc bfc" id="L367" title="All 2 branches covered.">            for(int j = argList.size(); j &lt; numOfArgs; j++){</span>
+<span class="fc" id="L368">            	PositionalArgument currentArg = positionalArgumentList.get(j);</span>
+<span class="fc" id="L369">            	message += &quot; &quot; + currentArg.getName();</span>
             }
             
-<span class="pc bpc" id="L378" title="1 of 2 branches missed.">            for(int i = 0; i &lt; namedArgumentList.size(); i++) {</span>
-<span class="nc" id="L379">            	NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="nc" id="L380">                message += &quot; &quot; + currentArg.getName();   </span>
-            }
-            
-<span class="fc" id="L383">            message += &quot;\n&quot; + programName + &quot;.java: error: the following arguments are required:&quot;;</span>
-            //int numOfArgsMissing = numOfArgs - args.length;
-            
-<span class="fc bfc" id="L386" title="All 2 branches covered.">            for(int j = argList.size(); j &lt; numOfArgs; j++){</span>
-<span class="fc" id="L387">            	PositionalArgument currentArg = positionalArgumentList.get(j);</span>
-<span class="fc" id="L388">            	message += &quot; &quot; + currentArg.getName();</span>
-            }
-            
-<span class="fc" id="L391">   			return message;</span>
+<span class="fc" id="L372">   			return message;</span>
    		}
         
    		else {
-<span class="fc" id="L395">   			String message = &quot;usage: java &quot; + programName;</span>
-<span class="fc bfc" id="L396" title="All 2 branches covered.">            for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L397">            	PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L398">                message += &quot; &quot; + currentArg.getName();;   </span>
-            }
+<span class="fc" id="L376">            String message = this.usageMessage();</span>
             
-<span class="pc bpc" id="L401" title="1 of 2 branches missed.">            for(int i = 0; i &lt; namedArgumentList.size(); i++) {</span>
-<span class="nc" id="L402">            	NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="nc" id="L403">                message += &quot; &quot; + currentArg.getName();;   </span>
-            }
-<span class="fc" id="L405">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments:&quot;;</span>
-            //int numOfArgsUnrecognized = args.length - numOfArgs;
+<span class="fc" id="L378">            message += &quot;\n&quot; + programName + &quot;.java: error: unrecognized arguments:&quot;;</span>
             
-<span class="fc bfc" id="L408" title="All 2 branches covered.">            for(int j = numOfArgs; j &lt; argList.size(); j++){</span>
-<span class="fc" id="L409">            	message += &quot; &quot; + argList.get(j);</span>
+<span class="fc bfc" id="L380" title="All 2 branches covered.">            for(int j = numOfArgs; j &lt; argList.size(); j++){</span>
+<span class="fc" id="L381">            	message += &quot; &quot; + argList.get(j);</span>
             }
-<span class="fc" id="L411">   			return message;</span>
+<span class="fc" id="L383">   			return message;</span>
    		}
    }
     
-    private String helpMessage(){ //update the help message to print out all options, not just positional
-<span class="fc" id="L416">		String helpMessage = &quot;usage: java &quot; + programName;</span>
-<span class="fc bfc" id="L417" title="All 2 branches covered.">		for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L418">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L419">			helpMessage += &quot; [&quot; + currentArg.getName() + &quot;]&quot;;   </span>
-		}
-<span class="fc bfc" id="L421" title="All 2 branches covered.">        for(int i = 0; i &lt; namedArgumentList.size(); i++){</span>
-<span class="fc" id="L422">        	NamedArgument namedArg = namedArgumentList.get(i);</span>
-<span class="fc" id="L423">        	helpMessage += &quot; [&quot; + namedArg.getName() + &quot;]&quot;;</span>
-        }
-<span class="fc" id="L425">		helpMessage += &quot;\n&quot; + programDescription + &quot;\npositional arguments:&quot;;</span>
+    private String helpMessage(){
+<span class="fc" id="L388">		String helpMessage = this.usageMessage();</span>
 		
+        /*for(int i = 0; i &lt; namedArgumentList.size(); i++){
+        	NamedArgument namedArg = namedArgumentList.get(i);
+        	helpMessage += &quot; [&quot; + namedArg.getName() + &quot;]&quot;;
+        }*/
+<span class="fc" id="L394">		helpMessage += &quot;\n&quot; + programDescription + &quot;\npositional arguments:&quot;;</span>
 		
-<span class="fc bfc" id="L428" title="All 2 branches covered.">        for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L429">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L430">			helpMessage += &quot;\n[&quot; + currentArg.getName() + &quot;] &quot; + currentArg.getDescription();   </span>
+<span class="fc bfc" id="L396" title="All 2 branches covered.">        for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
+<span class="fc" id="L397">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
+<span class="fc" id="L398">			helpMessage += &quot;\n[&quot; + currentArg.getName() + &quot;] (&quot; + currentArg.getType() + &quot;) &quot; + currentArg.getDescription();   </span>
 		}
 		
-<span class="fc" id="L433">		helpMessage += &quot;\nnamed arguments:&quot;;</span>
+<span class="fc" id="L401">		helpMessage += &quot;\nnamed arguments:&quot;;</span>
 		
-<span class="fc bfc" id="L435" title="All 2 branches covered.">		for(int i = 0; i &lt; namedArgumentList.size(); i++) {</span>
-<span class="fc" id="L436">			NamedArgument currentArg = namedArgumentList.get(i);</span>
-<span class="fc" id="L437">			helpMessage += &quot;\n[&quot; + currentArg.getName() + &quot;] [&quot; + currentArg.getShortFormName() + &quot;] &quot; + currentArg.getDescription();   </span>
+<span class="fc bfc" id="L403" title="All 2 branches covered.">		for(int i = 0; i &lt; namedArgumentList.size(); i++) {</span>
+<span class="fc" id="L404">			NamedArgument currentArg = namedArgumentList.get(i);</span>
+<span class="fc" id="L405">			helpMessage += &quot;\n[--&quot; + currentArg.getName() + &quot;] [-&quot; + currentArg.getShortFormName() + &quot;] (&quot; + currentArg.getType() + &quot;) &quot; + currentArg.getDescription() + &quot; (optional)&quot;;   </span>
 		}
 
-<span class="fc" id="L440">		return helpMessage;</span>
+<span class="fc" id="L408">		return helpMessage;</span>
     }
     
    
     
     private ArrayList&lt;String&gt; getPositionalArgs(String[] args){
-<span class="fc" id="L446">    	ArrayList&lt;String&gt; posArgList = new ArrayList&lt;String&gt;(); </span>
-<span class="fc bfc" id="L447" title="All 2 branches covered.">    	for(int i = 0; i &lt; args.length; i++){ //going through args from CLI</span>
-<span class="fc bfc" id="L448" title="All 4 branches covered.">    		if(!args[i].startsWith(&quot;-&quot;) &amp;&amp; i == 0){ //test if the first arg is a positional arg</span>
-<span class="fc" id="L449">    			posArgList.add(args[i]);</span>
+<span class="fc" id="L414">    	ArrayList&lt;String&gt; posArgList = new ArrayList&lt;String&gt;(); </span>
+<span class="fc bfc" id="L415" title="All 2 branches covered.">    	for(int i = 0; i &lt; args.length; i++){ //going through args from CLI</span>
+<span class="fc bfc" id="L416" title="All 4 branches covered.">    		if(!args[i].startsWith(&quot;-&quot;) &amp;&amp; i == 0){ //test if the first arg is a positional arg</span>
+<span class="fc" id="L417">    			posArgList.add(args[i]);</span>
     		}
-<span class="fc bfc" id="L451" title="All 2 branches covered.">    		else if(!args[i].startsWith(&quot;-&quot;)){ //arg from CLI doesn't have a dash</span>
-<span class="fc bfc" id="L452" title="All 2 branches covered.">    			if(!args[i-1].startsWith(&quot;-&quot;)){ //if the one before it doesn't have a dash, then it's a pos arg</span>
-<span class="fc" id="L453">    				posArgList.add(args[i]);</span>
+<span class="fc bfc" id="L419" title="All 2 branches covered.">    		else if(!args[i].startsWith(&quot;-&quot;)){ //arg from CLI doesn't have a dash</span>
+<span class="fc bfc" id="L420" title="All 2 branches covered.">    			if(!args[i-1].startsWith(&quot;-&quot;)){ //if the one before it doesn't have a dash, then it's a pos arg</span>
+<span class="fc" id="L421">    				posArgList.add(args[i]);</span>
     			}
-    			else{ //the arg before it has a dash
-<span class="fc" id="L456">    				String[] tempNamedArg = new String[2];</span>
-<span class="fc bfc" id="L457" title="All 2 branches covered.">    				if(args[i-1].startsWith(&quot;--&quot;)){ //arg before it is in long form</span>
-<span class="fc" id="L458">    					tempNamedArg = args[i-1].split(&quot;--&quot;);</span>
-<span class="fc bfc" id="L459" title="All 2 branches covered.">    					for(int j = 0; j &lt; namedArgumentList.size(); j++){ //go through all named args</span>
-<span class="fc" id="L460">    						NamedArgument currentNamedArg = namedArgumentList.get(j);</span>
-<span class="fc bfc" id="L461" title="All 2 branches covered.">    						if(currentNamedArg.getName().equals(tempNamedArg[1])) {</span>
-<span class="fc bfc" id="L462" title="All 2 branches covered.">								if(currentNamedArg.getType().equals(&quot;boolean&quot;)){ //if long form arg is boolean, still need to add arg after to pos args</span>
-<span class="fc" id="L463">									posArgList.add(args[i]);</span>
+    			else{ 
+<span class="fc" id="L424">    				String[] tempNamedArg = new String[2];</span>
+<span class="fc bfc" id="L425" title="All 2 branches covered.">    				if(args[i-1].startsWith(&quot;--&quot;)){ </span>
+<span class="fc" id="L426">    					tempNamedArg = args[i-1].split(&quot;--&quot;);</span>
+<span class="fc bfc" id="L427" title="All 2 branches covered.">    					for(int j = 0; j &lt; namedArgumentList.size(); j++){ //g</span>
+<span class="fc" id="L428">    						NamedArgument currentNamedArg = namedArgumentList.get(j);</span>
+<span class="fc bfc" id="L429" title="All 2 branches covered.">    						if(currentNamedArg.getName().equals(tempNamedArg[1])) {</span>
+<span class="fc bfc" id="L430" title="All 2 branches covered.">								if(currentNamedArg.getType().equals(&quot;boolean&quot;)){  //to pos args</span>
+<span class="fc" id="L431">									posArgList.add(args[i]);</span>
 								}
 							}
     					}
     				}
-    				else{ //arg before it is in short form
-<span class="fc" id="L469">    					tempNamedArg = args[i-1].split(&quot;-&quot;);</span>
-<span class="fc bfc" id="L470" title="All 2 branches covered.">						if(tempNamedArg[1].length() == 1){ //single char</span>
-<span class="fc bfc" id="L471" title="All 2 branches covered.">							for(int j = 0; j &lt; namedArgumentList.size(); j++){ //go through all named args</span>
-<span class="fc" id="L472">								NamedArgument currentNamedArg = namedArgumentList.get(j);</span>
-<span class="fc bfc" id="L473" title="All 2 branches covered.">								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {</span>
-<span class="fc bfc" id="L474" title="All 2 branches covered.">									if(currentNamedArg.getType().equals(&quot;boolean&quot;)){ //if short form arg is boolean, still need to add arg after to pos args</span>
-<span class="fc" id="L475">										posArgList.add(args[i]);</span>
+    				else{ 
+<span class="fc" id="L437">    					tempNamedArg = args[i-1].split(&quot;-&quot;);</span>
+<span class="fc bfc" id="L438" title="All 2 branches covered.">						if(tempNamedArg[1].length() == 1){ </span>
+<span class="fc bfc" id="L439" title="All 2 branches covered.">							for(int j = 0; j &lt; namedArgumentList.size(); j++){ </span>
+<span class="fc" id="L440">								NamedArgument currentNamedArg = namedArgumentList.get(j);</span>
+<span class="fc bfc" id="L441" title="All 2 branches covered.">								if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])) {</span>
+<span class="fc bfc" id="L442" title="All 2 branches covered.">									if(currentNamedArg.getType().equals(&quot;boolean&quot;)){ </span>
+<span class="fc" id="L443">										posArgList.add(args[i]);</span>
 									}
 								}
 							}
 						}
-						else{ //multiple flags in one specification, must be boolean so add arg after it to pos args
-<span class="fc" id="L481">							posArgList.add(args[i]);</span>
+						else{
+<span class="fc" id="L449">							posArgList.add(args[i]);</span>
 						}
     				}
     			}
     		}
     	}
-<span class="fc" id="L487">    	return posArgList;</span>
+<span class="fc" id="L455">    	return posArgList;</span>
     }
     
-    private void setLongFormNamedArgValues(String[] args){
-<span class="fc bfc" id="L491" title="All 2 branches covered.">    	for(int i = 0; i &lt; args.length; i++){</span>
-<span class="fc" id="L492">    		String[] tempNamedArg = new String[2];</span>
-<span class="fc bfc" id="L493" title="All 2 branches covered.">    		if(args[i].startsWith(&quot;--&quot;)){</span>
-<span class="fc" id="L494">    			tempNamedArg = args[i].split(&quot;--&quot;);</span>
-<span class="fc bfc" id="L495" title="All 2 branches covered.">    			for(int j = 0; j &lt; namedArgumentList.size(); j++){</span>
-<span class="fc" id="L496">    				NamedArgument currentArg = namedArgumentList.get(j);</span>
-<span class="fc bfc" id="L497" title="All 2 branches covered.">    				if(currentArg.getName().equals(tempNamedArg[1])){</span>
-<span class="fc bfc" id="L498" title="All 2 branches covered.">    					if(!currentArg.getType().equals(&quot;boolean&quot;)){</span>
-<span class="fc" id="L499">    						currentArg.setValue(args[i+1]);</span>
+    //used in incorrectDataTypeMessage
+    String incorrectArgValueForSpecifiedDataType;
+    
+    private void setLongFormNamedArgValues(String[] args) throws NumberFormatException{
+<span class="fc bfc" id="L462" title="All 2 branches covered.">    	for(int i = 0; i &lt; args.length; i++){</span>
+<span class="fc" id="L463">    		String[] tempNamedArg = new String[2];</span>
+<span class="fc bfc" id="L464" title="All 2 branches covered.">    		if(args[i].startsWith(&quot;--&quot;)){</span>
+<span class="fc" id="L465">    			tempNamedArg = args[i].split(&quot;--&quot;);</span>
+<span class="fc bfc" id="L466" title="All 2 branches covered.">    			for(int j = 0; j &lt; namedArgumentList.size(); j++){</span>
+<span class="fc" id="L467">    				incorrectDataTypeIndex = j;</span>
+<span class="fc" id="L468">    				incorrectArgumentType = &quot;named&quot;;</span>
+<span class="fc" id="L469">    				NamedArgument currentArg = namedArgumentList.get(j);</span>
+<span class="fc bfc" id="L470" title="All 2 branches covered.">    				if(currentArg.getName().equals(tempNamedArg[1])){</span>
+<span class="fc bfc" id="L471" title="All 2 branches covered.">    					if(!currentArg.getType().equals(&quot;boolean&quot;)){</span>
+<span class="fc" id="L472">    						incorrectArgValueForSpecifiedDataType = args[i+1];</span>
+<span class="fc bfc" id="L473" title="All 2 branches covered.">    						if (currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L474">								int argValue = Integer.parseInt(args[i+1]);</span>
+<span class="fc" id="L475">								currentArg.setValue(args[i+1]);</span>
+<span class="fc" id="L476">							}</span>
+			
+<span class="pc bpc" id="L478" title="1 of 2 branches missed.">							else if (currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="nc" id="L479">								float argValue = Float.parseFloat(args[i+1]);</span>
+<span class="nc" id="L480">								currentArg.setValue(args[i+1]);</span>
+<span class="nc" id="L481">							}</span>
+			
+<span class="pc bpc" id="L483" title="1 of 2 branches missed.">							else if (currentArg.getType().equals(&quot;string&quot;)){</span>
+<span class="fc" id="L484">								currentArg.setValue(args[i+1]);</span>
+							}
     					}
     					else{
-<span class="fc" id="L502">    						currentArg.setValue(&quot;true&quot;);</span>
+<span class="fc" id="L488">    						currentArg.setValue(&quot;true&quot;);</span>
     					}
     				}
     			}
     		}
     	}
-<span class="fc" id="L508">    }</span>
-    private void setShortFormNamedArgValues(String[] args){
-<span class="fc bfc" id="L510" title="All 2 branches covered.">		for(int i = 0; i &lt; args.length; i++){</span>
-<span class="fc" id="L511">			String[] tempNamedArg = new String[2];</span>
-<span class="fc bfc" id="L512" title="All 2 branches covered.">			if(args[i].startsWith(&quot;-&quot;)){</span>
-<span class="fc" id="L513">				tempNamedArg = args[i].split(&quot;-&quot;);</span>
-<span class="fc bfc" id="L514" title="All 2 branches covered.">				for(int k = 0; k &lt; namedArgumentList.size(); k++){</span>
-<span class="fc" id="L515">					NamedArgument currentNamedArg = namedArgumentList.get(k);</span>
-<span class="fc bfc" id="L516" title="All 2 branches covered.">					if(tempNamedArg[1].length() == 1){ //single char</span>
-<span class="fc bfc" id="L517" title="All 2 branches covered.">						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){</span>
-<span class="fc bfc" id="L518" title="All 2 branches covered.">							if(!currentNamedArg.getType().equals(&quot;boolean&quot;)){</span>
-<span class="fc" id="L519">								currentNamedArg.setValue(args[i+1]);</span>
+<span class="fc" id="L494">    }</span>
+    private void setShortFormNamedArgValues(String[] args) throws NumberFormatException{
+<span class="fc bfc" id="L496" title="All 2 branches covered.">		for(int i = 0; i &lt; args.length; i++){</span>
+<span class="fc" id="L497">			String[] tempNamedArg = new String[2];</span>
+<span class="fc bfc" id="L498" title="All 2 branches covered.">			if(args[i].startsWith(&quot;-&quot;)){</span>
+<span class="fc" id="L499">				tempNamedArg = args[i].split(&quot;-&quot;);</span>
+<span class="fc bfc" id="L500" title="All 2 branches covered.">				for(int k = 0; k &lt; namedArgumentList.size(); k++){</span>
+<span class="fc" id="L501">					incorrectDataTypeIndex = k;</span>
+<span class="fc" id="L502">					incorrectArgumentType = &quot;named&quot;;</span>
+<span class="fc" id="L503">					NamedArgument currentNamedArg = namedArgumentList.get(k);</span>
+<span class="fc bfc" id="L504" title="All 2 branches covered.">					if(tempNamedArg[1].length() == 1){ //single char</span>
+<span class="fc bfc" id="L505" title="All 2 branches covered.">						if(Character.toString(currentNamedArg.getShortFormName()).equals(tempNamedArg[1])){</span>
+<span class="fc bfc" id="L506" title="All 2 branches covered.">							if(!currentNamedArg.getType().equals(&quot;boolean&quot;)){</span>
+<span class="fc" id="L507">								incorrectArgValueForSpecifiedDataType = args[i+1];	</span>
+<span class="fc bfc" id="L508" title="All 2 branches covered.">								if (currentNamedArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L509">									int argValue = Integer.parseInt(args[i+1]);</span>
+<span class="fc" id="L510">									currentNamedArg.setValue(args[i+1]);</span>
+<span class="fc" id="L511">								}</span>
+			
+<span class="pc bpc" id="L513" title="1 of 2 branches missed.">								else if (currentNamedArg.getType().equals(&quot;float&quot;)){</span>
+<span class="nc" id="L514">									float argValue = Float.parseFloat(args[i+1]);</span>
+<span class="nc" id="L515">									currentNamedArg.setValue(args[i+1]);</span>
+<span class="nc" id="L516">								}</span>
+			
+<span class="pc bpc" id="L518" title="1 of 2 branches missed.">								else if (currentNamedArg.getType().equals(&quot;string&quot;)){</span>
+<span class="fc" id="L519">									currentNamedArg.setValue(args[i+1]);</span>
+								}
+    					
 							}
 							else{
-<span class="fc" id="L522">								currentNamedArg.setValue(&quot;true&quot;);</span>
+<span class="fc" id="L524">								currentNamedArg.setValue(&quot;true&quot;);</span>
 							}
 						}
 					}
 					else{ //multiple flags in one specification
-<span class="fc bfc" id="L527" title="All 2 branches covered.">						for(int j = 0; j &lt; tempNamedArg[1].length(); j++){</span>
-<span class="fc bfc" id="L528" title="All 2 branches covered.">							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){</span>
-<span class="fc" id="L529">								currentNamedArg.setValue(&quot;true&quot;);</span>
+<span class="fc bfc" id="L529" title="All 2 branches covered.">						for(int j = 0; j &lt; tempNamedArg[1].length(); j++){</span>
+<span class="fc bfc" id="L530" title="All 2 branches covered.">							if(currentNamedArg.getShortFormName() == tempNamedArg[1].charAt(j)){</span>
+<span class="fc" id="L531">								currentNamedArg.setValue(&quot;true&quot;);</span>
 							}
 						}
 					}
 				}
 			}
 		}
-<span class="fc" id="L536">	}</span>
-<span class="fc" id="L537">	String invalidNamedArgument = &quot;&quot;; //used in invalidNamedArgument and argumentDoesNotExistMessage</span>
+<span class="fc" id="L538">	}</span>
+<span class="fc" id="L539">	String invalidNamedArgument = &quot;&quot;;</span>
 	
 	private void invalidNamedArgument(String[] args) throws ArgumentDoesNotExistException{
-<span class="fc bfc" id="L540" title="All 2 branches covered.">		for(int i = 0; i &lt; args.length; i++){</span>
-<span class="fc bfc" id="L541" title="All 2 branches covered.">			if(args[i].startsWith(&quot;--&quot;)){</span>
-<span class="fc" id="L542">				String[] splitLongNamedArg = new String[2];</span>
-<span class="fc" id="L543">				splitLongNamedArg = args[i].split(&quot;--&quot;);</span>
-<span class="fc" id="L544">				NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);</span>
-<span class="fc bfc" id="L545" title="All 2 branches covered.">				if(tempArg == null){</span>
-<span class="fc" id="L546">					invalidNamedArgument = splitLongNamedArg[1];</span>
-<span class="fc" id="L547">					throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
+<span class="fc bfc" id="L542" title="All 2 branches covered.">		for(int i = 0; i &lt; args.length; i++){</span>
+<span class="fc bfc" id="L543" title="All 2 branches covered.">			if(args[i].startsWith(&quot;--&quot;)){</span>
+<span class="fc" id="L544">				String[] splitLongNamedArg = new String[2];</span>
+<span class="fc" id="L545">				splitLongNamedArg = args[i].split(&quot;--&quot;);</span>
+<span class="fc" id="L546">				NamedArgument tempArg = getNamedArgument(splitLongNamedArg[1]);</span>
+<span class="fc bfc" id="L547" title="All 2 branches covered.">				if(tempArg == null){</span>
+<span class="fc" id="L548">					invalidNamedArgument = splitLongNamedArg[1];</span>
+<span class="fc" id="L549">					throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
 				}
-<span class="fc" id="L549">			}</span>
-<span class="fc bfc" id="L550" title="All 2 branches covered.">			else if(args[i].startsWith(&quot;-&quot;)){</span>
-<span class="fc" id="L551">				String[] splitShortNamedArg = new String[2];</span>
-<span class="fc" id="L552">				splitShortNamedArg = args[i].split(&quot;-&quot;);</span>
-<span class="fc bfc" id="L553" title="All 2 branches covered.">				if(splitShortNamedArg[1].length() == 1){ //single char</span>
-<span class="fc" id="L554">					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(0));</span>
-<span class="pc bpc" id="L555" title="1 of 2 branches missed.">					if(tempArg == null){</span>
-<span class="nc" id="L556">						invalidNamedArgument = splitShortNamedArg[1];</span>
-<span class="nc" id="L557">						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
+<span class="fc" id="L551">			}</span>
+<span class="fc bfc" id="L552" title="All 2 branches covered.">			else if(args[i].startsWith(&quot;-&quot;)){</span>
+<span class="fc" id="L553">				String[] splitShortNamedArg = new String[2];</span>
+<span class="fc" id="L554">				splitShortNamedArg = args[i].split(&quot;-&quot;);</span>
+<span class="fc bfc" id="L555" title="All 2 branches covered.">				if(splitShortNamedArg[1].length() == 1){ //single char</span>
+<span class="fc" id="L556">					NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(0));</span>
+<span class="pc bpc" id="L557" title="1 of 2 branches missed.">					if(tempArg == null){</span>
+<span class="nc" id="L558">						invalidNamedArgument = splitShortNamedArg[1];</span>
+<span class="nc" id="L559">						throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
 					}
-<span class="fc" id="L559">				}</span>
-				else{ //multiple flags in one specification
-<span class="fc bfc" id="L561" title="All 2 branches covered.">					for(int k = 0; k &lt; splitShortNamedArg[1].length(); k++){</span>
-<span class="fc" id="L562">						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));</span>
-<span class="pc bpc" id="L563" title="1 of 2 branches missed.">						if(tempArg == null){</span>
-<span class="nc" id="L564">							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));</span>
-<span class="nc" id="L565">							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
+<span class="fc" id="L561">				}</span>
+				else{
+<span class="fc bfc" id="L563" title="All 2 branches covered.">					for(int k = 0; k &lt; splitShortNamedArg[1].length(); k++){</span>
+<span class="fc" id="L564">						NamedArgument tempArg = getNamedArgument(splitShortNamedArg[1].charAt(k));</span>
+<span class="pc bpc" id="L565" title="1 of 2 branches missed.">						if(tempArg == null){</span>
+<span class="nc" id="L566">							invalidNamedArgument = Character.toString(splitShortNamedArg[1].charAt(k));</span>
+<span class="nc" id="L567">							throw new ArgumentDoesNotExistException(argumentDoesNotExistMessage(invalidNamedArgument));</span>
 						}
 					}
 				}
 			}
 		}
-<span class="fc" id="L571">	}</span>
+<span class="fc" id="L573">	}</span>
 	
 	
 	private void parseNamedArgumentValues(List&lt;NamedArgument&gt; namedArgList) throws IncorrectArgumentValueException{
-<span class="fc bfc" id="L575" title="All 2 branches covered.">		for(int i = 0; i &lt; namedArgList.size(); i++){</span>
-<span class="fc" id="L576">			NamedArgument currentArg = namedArgList.get(i);</span>
-<span class="fc" id="L577">			String errorArg = currentArg.getName();</span>
-<span class="fc" id="L578">			String[] valueSet = currentArg.getValueSet();</span>
-<span class="fc bfc" id="L579" title="All 2 branches covered.">			if(!valueSet[0].equals(&quot;&quot;)){</span>
-<span class="fc" id="L580">				Boolean valueSetContainsArgValue = false;</span>
-<span class="fc" id="L581">				String errorValue = &quot;&quot;;</span>
-<span class="fc bfc" id="L582" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
-<span class="pc bpc" id="L583" title="1 of 2 branches missed.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="nc" id="L584">						int intValue = (Integer)currentArg.getValue();</span>
-<span class="nc bnc" id="L585" title="All 2 branches missed.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
-<span class="nc" id="L586">							valueSetContainsArgValue = true;</span>
+<span class="fc bfc" id="L577" title="All 2 branches covered.">		for(int i = 0; i &lt; namedArgList.size(); i++){</span>
+<span class="fc" id="L578">			NamedArgument currentArg = namedArgList.get(i);</span>
+<span class="fc" id="L579">			String errorArg = currentArg.getName();</span>
+<span class="fc" id="L580">			String[] valueSet = currentArg.getValueSet();</span>
+<span class="fc bfc" id="L581" title="All 2 branches covered.">			if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L582">				Boolean valueSetContainsArgValue = false;</span>
+<span class="fc" id="L583">				String errorValue = &quot;&quot;;</span>
+<span class="fc bfc" id="L584" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
+<span class="pc bpc" id="L585" title="1 of 2 branches missed.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="nc" id="L586">						int intValue = (Integer)currentArg.getValue();</span>
+<span class="nc bnc" id="L587" title="All 2 branches missed.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
+<span class="nc" id="L588">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L588">						errorValue = Integer.toString(intValue);</span>
-<span class="nc" id="L589">					}</span>
-<span class="pc bpc" id="L590" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L591">						float floatValue = (Float)currentArg.getValue();</span>
-<span class="nc bnc" id="L592" title="All 2 branches missed.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
-<span class="nc" id="L593">							valueSetContainsArgValue = true;</span>
+<span class="nc" id="L590">						errorValue = Integer.toString(intValue);</span>
+<span class="nc" id="L591">					}</span>
+<span class="pc bpc" id="L592" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="nc" id="L593">						float floatValue = (Float)currentArg.getValue();</span>
+<span class="nc bnc" id="L594" title="All 2 branches missed.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
+<span class="nc" id="L595">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L595">						errorValue = Float.toString(floatValue);</span>
-<span class="nc" id="L596">					}</span>
-<span class="pc bpc" id="L597" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="fc" id="L598">						String stringValue = (String)currentArg.getValue();</span>
-<span class="fc bfc" id="L599" title="All 2 branches covered.">						if(valueSet[j].equals(stringValue)){</span>
-<span class="fc" id="L600">							valueSetContainsArgValue = true;</span>
+<span class="nc" id="L597">						errorValue = Float.toString(floatValue);</span>
+<span class="nc" id="L598">					}</span>
+<span class="pc bpc" id="L599" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
+<span class="fc" id="L600">						String stringValue = (String)currentArg.getValue();</span>
+<span class="fc bfc" id="L601" title="All 2 branches covered.">						if(valueSet[j].equals(stringValue)){</span>
+<span class="fc" id="L602">							valueSetContainsArgValue = true;</span>
 						}
-<span class="fc" id="L602">						errorValue = stringValue;</span>
-<span class="fc" id="L603">					}</span>
+<span class="fc" id="L604">						errorValue = stringValue;</span>
+<span class="fc" id="L605">					}</span>
 					else{
-<span class="nc" id="L605">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
-<span class="nc bnc" id="L606" title="All 2 branches missed.">						if(valueSet[j].equals(boolValue)){</span>
-<span class="nc" id="L607">							valueSetContainsArgValue = true;</span>
+<span class="nc" id="L607">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
+<span class="nc bnc" id="L608" title="All 2 branches missed.">						if(valueSet[j].equals(boolValue)){</span>
+<span class="nc" id="L609">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L609">						errorValue = Boolean.toString(boolValue);</span>
+<span class="nc" id="L611">						errorValue = Boolean.toString(boolValue);</span>
 					}
 				}
-<span class="fc bfc" id="L612" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
-<span class="fc" id="L613">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
+<span class="fc bfc" id="L614" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
+<span class="fc" id="L615">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
 				}
 			}
 		}
-<span class="fc" id="L617">	}</span>
+<span class="fc" id="L619">	}</span>
 	
 	private void parsePositionalArgumentValues(List&lt;PositionalArgument&gt; posArgList) throws IncorrectArgumentValueException{
-<span class="fc bfc" id="L620" title="All 2 branches covered.">		for(int i = 0; i &lt; posArgList.size(); i++){</span>
-<span class="fc" id="L621">			PositionalArgument currentArg = posArgList.get(i);</span>
-<span class="fc" id="L622">			String errorArg = currentArg.getName();</span>
-<span class="fc" id="L623">			String[] valueSet = currentArg.getValueSet();</span>
-<span class="fc bfc" id="L624" title="All 2 branches covered.">			if(!valueSet[0].equals(&quot;&quot;)){</span>
-<span class="fc" id="L625">				Boolean valueSetContainsArgValue = false;</span>
-<span class="fc" id="L626">				String errorValue = &quot;&quot;;</span>
-<span class="fc bfc" id="L627" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
-<span class="fc bfc" id="L628" title="All 2 branches covered.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
-<span class="fc" id="L629">						int intValue = (Integer)currentArg.getValue();</span>
-<span class="fc bfc" id="L630" title="All 2 branches covered.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
-<span class="fc" id="L631">							valueSetContainsArgValue = true;</span>
+<span class="fc bfc" id="L622" title="All 2 branches covered.">		for(int i = 0; i &lt; posArgList.size(); i++){</span>
+<span class="fc" id="L623">			PositionalArgument currentArg = posArgList.get(i);</span>
+<span class="fc" id="L624">			String errorArg = currentArg.getName();</span>
+<span class="fc" id="L625">			String[] valueSet = currentArg.getValueSet();</span>
+<span class="fc bfc" id="L626" title="All 2 branches covered.">			if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L627">				Boolean valueSetContainsArgValue = false;</span>
+<span class="fc" id="L628">				String errorValue = &quot;&quot;;</span>
+<span class="fc bfc" id="L629" title="All 2 branches covered.">				for(int j = 0; j &lt; valueSet.length; j++){</span>
+<span class="fc bfc" id="L630" title="All 2 branches covered.">					if(currentArg.getType().equals(&quot;integer&quot;)){</span>
+<span class="fc" id="L631">						int intValue = (Integer)currentArg.getValue();</span>
+<span class="fc bfc" id="L632" title="All 2 branches covered.">						if(valueSet[j].equals(Integer.toString(intValue))){</span>
+<span class="fc" id="L633">							valueSetContainsArgValue = true;</span>
 						}
-<span class="fc" id="L633">						errorValue = Integer.toString(intValue);</span>
-<span class="fc" id="L634">					}</span>
-<span class="pc bpc" id="L635" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
-<span class="fc" id="L636">						float floatValue = (Float)currentArg.getValue();</span>
-<span class="fc bfc" id="L637" title="All 2 branches covered.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
-<span class="fc" id="L638">							valueSetContainsArgValue = true;</span>
+<span class="fc" id="L635">						errorValue = Integer.toString(intValue);</span>
+<span class="fc" id="L636">					}</span>
+<span class="pc bpc" id="L637" title="1 of 2 branches missed.">					else if(currentArg.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L638">						float floatValue = (Float)currentArg.getValue();</span>
+<span class="fc bfc" id="L639" title="All 2 branches covered.">						if(valueSet[j].equals(Float.toString(floatValue))){</span>
+<span class="fc" id="L640">							valueSetContainsArgValue = true;</span>
 						}
-<span class="fc" id="L640">						errorValue = Float.toString(floatValue);</span>
-<span class="fc" id="L641">					}</span>
-<span class="nc bnc" id="L642" title="All 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
-<span class="nc" id="L643">						String stringValue = (String)currentArg.getValue();</span>
-<span class="nc bnc" id="L644" title="All 2 branches missed.">						if(valueSet[j].equals(stringValue)){</span>
-<span class="nc" id="L645">							valueSetContainsArgValue = true;</span>
+<span class="fc" id="L642">						errorValue = Float.toString(floatValue);</span>
+<span class="fc" id="L643">					}</span>
+<span class="nc bnc" id="L644" title="All 2 branches missed.">					else if(currentArg.getType().equals(&quot;string&quot;)){</span>
+<span class="nc" id="L645">						String stringValue = (String)currentArg.getValue();</span>
+<span class="nc bnc" id="L646" title="All 2 branches missed.">						if(valueSet[j].equals(stringValue)){</span>
+<span class="nc" id="L647">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L647">						errorValue = stringValue;</span>
-<span class="nc" id="L648">					}</span>
+<span class="nc" id="L649">						errorValue = stringValue;</span>
+<span class="nc" id="L650">					}</span>
 					else{
-<span class="nc" id="L650">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
-<span class="nc bnc" id="L651" title="All 2 branches missed.">						if(valueSet[j].equals(Boolean.toString(boolValue))){</span>
-<span class="nc" id="L652">							valueSetContainsArgValue = true;</span>
+<span class="nc" id="L652">						Boolean boolValue = (Boolean)currentArg.getValue();</span>
+<span class="nc bnc" id="L653" title="All 2 branches missed.">						if(valueSet[j].equals(Boolean.toString(boolValue))){</span>
+<span class="nc" id="L654">							valueSetContainsArgValue = true;</span>
 						}
-<span class="nc" id="L654">						errorValue = Boolean.toString(boolValue);</span>
+<span class="nc" id="L656">						errorValue = Boolean.toString(boolValue);</span>
 					}
 					
 				}
-<span class="fc bfc" id="L658" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
-<span class="fc" id="L659">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
+<span class="fc bfc" id="L660" title="All 2 branches covered.">				if(!valueSetContainsArgValue){</span>
+<span class="fc" id="L661">					throw new IncorrectArgumentValueException(incorrectArgumentValueMessage(errorArg, errorValue));</span>
 				}
 			}
 		}
-<span class="fc" id="L663">	}</span>
+<span class="fc" id="L665">	}</span>
 	
 	private String incorrectArgumentValueMessage(String argName, String argValue){
-<span class="fc" id="L666">		String message = &quot;usage: java &quot; + programName;</span>
-<span class="fc" id="L667">		message += &quot;\nrequired:&quot;;</span>
-<span class="fc bfc" id="L668" title="All 2 branches covered.">		for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
-<span class="fc" id="L669">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L670">			message += &quot; &quot; + currentArg.getName();</span>
-		}
-<span class="fc" id="L672">		message += &quot;\noptional:&quot;;</span>
-<span class="fc bfc" id="L673" title="All 2 branches covered.">		for(int j = 0; j &lt; namedArgumentList.size(); j++){</span>
-<span class="fc" id="L674">			NamedArgument currentArg = namedArgumentList.get(j);</span>
-<span class="fc" id="L675">			message += &quot; &quot; + currentArg.getName();</span>
-		}
-<span class="fc" id="L677">		message += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + argName + &quot;: invalid value: &quot; + argValue;</span>
-<span class="fc" id="L678">		return message;</span>
+<span class="fc" id="L668">		String message = this.usageMessage();</span>
+		
+<span class="fc" id="L670">		message += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + argName + &quot;: invalid value: &quot; + argValue;</span>
+<span class="fc" id="L671">		return message;</span>
 	}
 	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
-<span class="fc" id="L682">		String message = &quot;usage: java &quot; + programName;</span>
-<span class="fc bfc" id="L683" title="All 2 branches covered.">		for(int i = 0; i &lt; positionalArgumentList.size(); i++) {</span>
-<span class="fc" id="L684">			PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L685">            message += &quot; &quot; + currentArg.getName();   </span>
-        }
+<span class="fc" id="L675">        String message = this.usageMessage();</span>
         
-<span class="fc" id="L688">        message += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + invalidNamedArgument + &quot; does not exist&quot;;</span>
+<span class="fc" id="L677">        message += &quot;\n&quot; + programName + &quot;.java: error: argument &quot; + invalidNamedArgument + &quot; does not exist&quot;;</span>
         
-<span class="fc" id="L690">    	return message;</span>
+<span class="fc" id="L679">    	return message;</span>
 	}
     
 	/**
      *
-     *@param parse Collects input data from CLI and parses each argument to the Library.
-     *&lt;pre&gt;
      *&lt;span style=&quot;color:#4c6b87&quot;&gt;
      *{@code
-     *java VolumeCalculator 7 --myarg myval 3 2
+     *if (helpArgValue.equals(&quot;true&quot;)){
+				throw new HelpException(helpMessage());
+			}
      *
      *}
+     
      *&lt;/pre&gt;
-     *could produce the following output:
-     *{@code
-     *usage: java VolumeCalculator length width height
-     *VolumeCalculator.java: error: argument myarg does not exist
-     *
-     *}
-     *&lt;/pre&gt;
-     *
-     *@thorows helpexception displays a help message to the user 
+     **@param parse Collects input data from CLI and parses each argument to the Library.
+     @thorows helpexception displays a help message to the user 
      *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
      *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
      *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
      *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
-     *&lt;pre&gt;
-     *
      */
     
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
-<span class="fc" id="L721">		ArrayList&lt;String&gt; tempPositionalArgList = getPositionalArgs(args);</span>
+<span class="fc" id="L702">		ArrayList&lt;String&gt; tempPositionalArgList = getPositionalArgs(args);</span>
 		
-<span class="fc" id="L723">		setLongFormNamedArgValues(args);</span>
-<span class="fc" id="L724">		setShortFormNamedArgValues(args);</span>
-<span class="fc" id="L725">		invalidNamedArgument(args); //throws ArgumentDoesNotExistException</span>
+		try{
+<span class="fc" id="L705">			setLongFormNamedArgValues(args);</span>
+<span class="fc" id="L706">			setShortFormNamedArgValues(args);</span>
+		}
+<span class="fc" id="L708">		catch(Exception e){</span>
+<span class="fc" id="L709">			throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));</span>
+<span class="fc" id="L710">		}</span>
 		
-<span class="fc" id="L727">        NamedArgument helpArgument = getNamedArgument(&quot;help&quot;);</span>
-<span class="fc bfc" id="L728" title="All 2 branches covered.">        if (helpArgument != null){</span>
-<span class="fc" id="L729">			String helpArgValue = (String)helpArgument.getValue();</span>
-<span class="fc bfc" id="L730" title="All 2 branches covered.">			if (helpArgValue.equals(&quot;true&quot;)){</span>
-<span class="fc" id="L731">				throw new HelpException(helpMessage());</span>
+<span class="fc" id="L712">		invalidNamedArgument(args); //throws ArgumentDoesNotExistException</span>
+		
+<span class="fc" id="L714">        NamedArgument helpArgument = getNamedArgument(&quot;help&quot;);</span>
+<span class="fc bfc" id="L715" title="All 2 branches covered.">        if (helpArgument != null){</span>
+<span class="fc" id="L716">			Boolean helpArgValue = (Boolean)helpArgument.getValue();</span>
+<span class="fc bfc" id="L717" title="All 2 branches covered.">			if (helpArgValue){</span>
+<span class="fc" id="L718">				throw new HelpException(helpMessage());</span>
 			}
         }
         
-<span class="fc bfc" id="L735" title="All 2 branches covered.">		if (positionalArgumentList.size() != tempPositionalArgList.size()){</span>
-<span class="fc" id="L736">				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));</span>
+<span class="fc bfc" id="L722" title="All 2 branches covered.">		if (positionalArgumentList.size() != tempPositionalArgList.size()){</span>
+<span class="fc" id="L723">				throw new IncorrectNumberOfArgsException(incorrectNumberOfArgsMessage(tempPositionalArgList));</span>
 		}
-<span class="pc bpc" id="L738" title="1 of 2 branches missed.">		else if (positionalArgumentList.size() == tempPositionalArgList.size()){</span>
-<span class="fc bfc" id="L739" title="All 2 branches covered.">			for(int i = 0; i &lt; tempPositionalArgList.size(); i++){</span>
-<span class="fc" id="L740">   				PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L741">   				currentArg.setValue(tempPositionalArgList.get(i));</span>
+<span class="pc bpc" id="L725" title="1 of 2 branches missed.">		else if (positionalArgumentList.size() == tempPositionalArgList.size()){</span>
+<span class="fc bfc" id="L726" title="All 2 branches covered.">			for(int i = 0; i &lt; tempPositionalArgList.size(); i++){</span>
+<span class="fc" id="L727">   				PositionalArgument currentArg = positionalArgumentList.get(i);</span>
+<span class="fc" id="L728">   				currentArg.setValue(tempPositionalArgList.get(i));</span>
    			}
 			try{
-<span class="fc" id="L744">				parseDataType(tempPositionalArgList);</span>
+<span class="fc" id="L731">				parseDataType(tempPositionalArgList);</span>
 			}
-<span class="fc" id="L746">			catch (Exception e){</span>
-<span class="fc" id="L747">				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));</span>
-<span class="fc" id="L748">			}</span>
-<span class="fc" id="L749">			parseNamedArgumentValues(namedArgumentList); //throws IncorrectArgumentValueException</span>
-<span class="fc" id="L750">			parsePositionalArgumentValues(positionalArgumentList); //throws IncorrectArgumentValueException</span>
+<span class="fc" id="L733">			catch (Exception e){</span>
+<span class="fc" id="L734">				throw new IncorrectArgTypeException(incorrectDataTypeMessage(tempPositionalArgList));</span>
+<span class="fc" id="L735">			}</span>
+<span class="fc" id="L736">			parseNamedArgumentValues(namedArgumentList); //throws IncorrectArgumentValueException</span>
+<span class="fc" id="L737">			parsePositionalArgumentValues(positionalArgumentList); //throws IncorrectArgumentValueException</span>
 		}	
-<span class="fc" id="L752">	}</span>
+<span class="fc" id="L739">	}</span>
     
     /**
      *@param writeToXMLFile Allow argument information to be saved to an XML file. 
@@ -769,67 +756,67 @@ public class ArgumentParser {
      */
 	
 	public void writeToXMLFile(String fileName){
-<span class="fc" id="L772">		File outputFile = new File(fileName);</span>
+<span class="fc" id="L759">		File outputFile = new File(fileName);</span>
 		try{
-<span class="fc" id="L774">			PrintWriter outputFileWriter = new PrintWriter(outputFile);</span>
-<span class="fc" id="L775">			outputFileWriter.println(&quot;&lt;?xml version=&quot; + &quot;\&quot;1.0\&quot;?&gt;&quot;);</span>
-<span class="fc" id="L776">			outputFileWriter.println(&quot;&lt;program&gt;&quot;);</span>
-<span class="fc" id="L777">				outputFileWriter.println(&quot;&lt;name&gt;&quot; + getProgramName() + &quot;&lt;/name&gt;&quot;);</span>
-<span class="fc" id="L778">				outputFileWriter.println(&quot;&lt;description&gt;&quot; + getProgramDescription() + &quot;&lt;/description&gt;&quot;);</span>
-<span class="fc" id="L779">				outputFileWriter.println(&quot;&lt;arguments&gt;&quot;);</span>
+<span class="fc" id="L761">			PrintWriter outputFileWriter = new PrintWriter(outputFile);</span>
+<span class="fc" id="L762">			outputFileWriter.println(&quot;&lt;?xml version=&quot; + &quot;\&quot;1.0\&quot;?&gt;&quot;);</span>
+<span class="fc" id="L763">			outputFileWriter.println(&quot;&lt;program&gt;&quot;);</span>
+<span class="fc" id="L764">				outputFileWriter.println(&quot;&lt;name&gt;&quot; + getProgramName() + &quot;&lt;/name&gt;&quot;);</span>
+<span class="fc" id="L765">				outputFileWriter.println(&quot;&lt;description&gt;&quot; + getProgramDescription() + &quot;&lt;/description&gt;&quot;);</span>
+<span class="fc" id="L766">				outputFileWriter.println(&quot;&lt;arguments&gt;&quot;);</span>
 			
-<span class="fc bfc" id="L781" title="All 2 branches covered.">				for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
-<span class="fc" id="L782">					PositionalArgument posArg = positionalArgumentList.get(i);</span>
-<span class="fc" id="L783">					outputFileWriter.println(&quot;&lt;positional&gt;&quot;);</span>
-<span class="fc" id="L784">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + posArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
-<span class="fc" id="L785">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + posArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
-<span class="fc" id="L786">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + posArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
-<span class="fc" id="L787">						outputFileWriter.println(&quot;&lt;position&gt;&quot; + (posArg.getPosition() + 1) + &quot;&lt;/position&gt;&quot;); //prints position starting at 1</span>
-<span class="fc" id="L788">						String[] valueSet = posArg.getValueSet();</span>
-<span class="fc bfc" id="L789" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
-<span class="fc" id="L790">							String line = &quot;&lt;valueset&gt;&quot;;</span>
+<span class="fc bfc" id="L768" title="All 2 branches covered.">				for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
+<span class="fc" id="L769">					PositionalArgument posArg = positionalArgumentList.get(i);</span>
+<span class="fc" id="L770">					outputFileWriter.println(&quot;&lt;positional&gt;&quot;);</span>
+<span class="fc" id="L771">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + posArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
+<span class="fc" id="L772">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + posArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
+<span class="fc" id="L773">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + posArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
+<span class="fc" id="L774">						outputFileWriter.println(&quot;&lt;position&gt;&quot; + (posArg.getPosition() + 1) + &quot;&lt;/position&gt;&quot;); //prints position starting at 1</span>
+<span class="fc" id="L775">						String[] valueSet = posArg.getValueSet();</span>
+<span class="fc bfc" id="L776" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L777">							String line = &quot;&lt;valueset&gt;&quot;;</span>
 							
-<span class="fc" id="L792">							line += valueSet[0];</span>
-<span class="fc bfc" id="L793" title="All 2 branches covered.">							for(int j = 1; j &lt; valueSet.length; j++){</span>
-<span class="fc" id="L794">								line += &quot;,&quot; + valueSet[j];</span>
+<span class="fc" id="L779">							line += valueSet[0];</span>
+<span class="fc bfc" id="L780" title="All 2 branches covered.">							for(int j = 1; j &lt; valueSet.length; j++){</span>
+<span class="fc" id="L781">								line += &quot;,&quot; + valueSet[j];</span>
 							}
-<span class="fc" id="L796">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
-<span class="fc" id="L797">							outputFileWriter.println(line);</span>
+<span class="fc" id="L783">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
+<span class="fc" id="L784">							outputFileWriter.println(line);</span>
 						}
 						//outputFileWriter.println(line);
-<span class="fc" id="L800">					outputFileWriter.println(&quot;&lt;/positional&gt;&quot;);</span>
+<span class="fc" id="L787">					outputFileWriter.println(&quot;&lt;/positional&gt;&quot;);</span>
 				}
 				
-<span class="fc bfc" id="L803" title="All 2 branches covered.">				for (int j = 0; j &lt; namedArgumentList.size(); j++){</span>
-<span class="fc" id="L804">					NamedArgument namedArg = namedArgumentList.get(j);</span>
-<span class="fc" id="L805">					outputFileWriter.println(&quot;&lt;named&gt;&quot;);</span>
-<span class="fc" id="L806">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + namedArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
-<span class="fc" id="L807">						outputFileWriter.println(&quot;&lt;shortname&gt;&quot; + namedArg.getShortFormName() + &quot;&lt;/shortname&gt;&quot;);</span>
-<span class="fc" id="L808">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + namedArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
-<span class="fc" id="L809">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + namedArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
-<span class="fc" id="L810">						outputFileWriter.println(&quot;&lt;default&gt;&quot; + namedArg.getDefaultValue() + &quot;&lt;/default&gt;&quot;);</span>
-<span class="fc" id="L811">						String[] valueSet = namedArg.getValueSet();</span>
-<span class="fc bfc" id="L812" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
-<span class="fc" id="L813">							String line = &quot;&lt;valueset&gt;&quot;;</span>
-<span class="fc" id="L814">							line += valueSet[0];</span>
-<span class="fc bfc" id="L815" title="All 2 branches covered.">							for(int k = 1; k &lt; valueSet.length; k++){</span>
-<span class="fc" id="L816">								line += &quot;,&quot; + valueSet[k];</span>
+<span class="fc bfc" id="L790" title="All 2 branches covered.">				for (int j = 0; j &lt; namedArgumentList.size(); j++){</span>
+<span class="fc" id="L791">					NamedArgument namedArg = namedArgumentList.get(j);</span>
+<span class="fc" id="L792">					outputFileWriter.println(&quot;&lt;named&gt;&quot;);</span>
+<span class="fc" id="L793">						outputFileWriter.println(&quot;&lt;name&gt;&quot; + namedArg.getName() + &quot;&lt;/name&gt;&quot;);</span>
+<span class="fc" id="L794">						outputFileWriter.println(&quot;&lt;shortname&gt;&quot; + namedArg.getShortFormName() + &quot;&lt;/shortname&gt;&quot;);</span>
+<span class="fc" id="L795">						outputFileWriter.println(&quot;&lt;type&gt;&quot; + namedArg.getType() + &quot;&lt;/type&gt;&quot;);</span>
+<span class="fc" id="L796">						outputFileWriter.println(&quot;&lt;description&gt;&quot; + namedArg.getDescription() + &quot;&lt;/description&gt;&quot;);</span>
+<span class="fc" id="L797">						outputFileWriter.println(&quot;&lt;default&gt;&quot; + namedArg.getDefaultValue() + &quot;&lt;/default&gt;&quot;);</span>
+<span class="fc" id="L798">						String[] valueSet = namedArg.getValueSet();</span>
+<span class="fc bfc" id="L799" title="All 2 branches covered.">						if(!valueSet[0].equals(&quot;&quot;)){</span>
+<span class="fc" id="L800">							String line = &quot;&lt;valueset&gt;&quot;;</span>
+<span class="fc" id="L801">							line += valueSet[0];</span>
+<span class="fc bfc" id="L802" title="All 2 branches covered.">							for(int k = 1; k &lt; valueSet.length; k++){</span>
+<span class="fc" id="L803">								line += &quot;,&quot; + valueSet[k];</span>
 							}
-<span class="fc" id="L818">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
-<span class="fc" id="L819">							outputFileWriter.println(line);</span>
+<span class="fc" id="L805">							line += &quot;&lt;/valueset&gt;&quot;;	</span>
+<span class="fc" id="L806">							outputFileWriter.println(line);</span>
 						}
-<span class="fc" id="L821">					outputFileWriter.println(&quot;&lt;/named&gt;&quot;);</span>
+<span class="fc" id="L808">					outputFileWriter.println(&quot;&lt;/named&gt;&quot;);</span>
 				}
 				
-<span class="fc" id="L824">				outputFileWriter.println(&quot;&lt;/arguments&gt;&quot;);</span>
-<span class="fc" id="L825">			outputFileWriter.println(&quot;&lt;/program&gt;&quot;);</span>
+<span class="fc" id="L811">				outputFileWriter.println(&quot;&lt;/arguments&gt;&quot;);</span>
+<span class="fc" id="L812">			outputFileWriter.println(&quot;&lt;/program&gt;&quot;);</span>
 			
-<span class="fc" id="L827">			outputFileWriter.close();</span>
+<span class="fc" id="L814">			outputFileWriter.close();</span>
 		}
-<span class="nc" id="L829">		catch(Exception e){</span>
-<span class="nc" id="L830">		System.out.println(e.getMessage());</span>
-<span class="fc" id="L831">		}</span>
-<span class="fc" id="L832">	}</span>
+<span class="nc" id="L816">		catch(Exception e){</span>
+<span class="nc" id="L817">		System.out.println(e.getMessage());</span>
+<span class="fc" id="L818">		}</span>
+<span class="fc" id="L819">	}</span>
 }
 
 
