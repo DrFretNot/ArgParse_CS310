@@ -230,7 +230,7 @@ public class ArgumentParser {
 <span class="fc" id="L230">    	PositionalArgument returnArg = null;</span>
 <span class="fc bfc" id="L231" title="All 2 branches covered.">    	for(int i = 0; i &lt; positionalArgumentList.size(); i++){</span>
 <span class="fc" id="L232">    		PositionalArgument currentArg = positionalArgumentList.get(i);</span>
-<span class="fc bfc" id="L233" title="All 2 branches covered.">    		if(currentArg.getPosition() == argPosition){</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">    		if(currentArg.getPosition() == argPosition - 1){</span>
 <span class="fc" id="L234">    			returnArg = currentArg;</span>
     		}
     	}

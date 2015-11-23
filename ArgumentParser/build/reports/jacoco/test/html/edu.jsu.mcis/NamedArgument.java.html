@@ -5,7 +5,7 @@
  *Class description: Generics class which extends Arugument class. Allows for the calling of short form named arguments and or sets default values. 
  *
 */
-public class NamedArgument&lt;T&gt; extends Argument{
+public class NamedArgument extends Argument{
     
    //private T value;
    //private String value;
@@ -454,9 +454,9 @@ public class NamedArgument&lt;T&gt; extends Argument{
 <span class="fc" id="L454">    		int intValue = Integer.parseInt(value);</span>
 <span class="fc" id="L455">    		return (T)(Integer)intValue;</span>
     	}
-<span class="pc bpc" id="L457" title="1 of 2 branches missed.">    	else if(this.getType().equals(&quot;float&quot;)){</span>
-<span class="nc" id="L458">    		float floatValue = Float.parseFloat(value);</span>
-<span class="nc" id="L459">    		return (T)(Float)floatValue;</span>
+<span class="fc bfc" id="L457" title="All 2 branches covered.">    	else if(this.getType().equals(&quot;float&quot;)){</span>
+<span class="fc" id="L458">    		float floatValue = Float.parseFloat(value);</span>
+<span class="fc" id="L459">    		return (T)(Float)floatValue;</span>
     	}
 <span class="fc bfc" id="L461" title="All 2 branches covered.">    	else if(this.getType().equals(&quot;boolean&quot;)){</span>
 <span class="fc" id="L462">    		Boolean boolValue = Boolean.parseBoolean(value);</span>

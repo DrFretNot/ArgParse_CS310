@@ -5,7 +5,7 @@ package edu.jsu.mcis;
  *Class description: Generics class which extends Arugument class. Allows for the calling of short form named arguments and or sets default values. 
  *
 */
-public class NamedArgument<T> extends Argument{
+public class NamedArgument extends Argument{
     
    //private T value;
    //private String value;

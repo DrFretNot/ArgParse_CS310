@@ -722,6 +722,10 @@ public class ArgumentParserUnitTests {
 			assertEquals("pyramid", type.getValue());
 			NamedArgument digits = lib.getNamedArgument('d');
 			assertEquals(4, digits.getValue());
+			NamedArgument number = lib.getNamedArgument("number");
+			assertEquals((float)1.0, number.getValue());
+			NamedArgument large = lib.getNamedArgument('l');
+			assertEquals(false, large.getValue());
 		}
 		catch(Exception e){
 			assertEquals("", e);

@@ -45,5 +45,19 @@ this is how to comment
 				<description>the number of decimal digits to truncate at</description>
 				<default>4</default>
 			</named>
+			<named>
+				<name>number</name>
+				<shortname>n</shortname>
+				<type>float</type>
+				<description>the number of objects</description>
+				<default>1.0</default>
+			</named>
+			<named>
+				<name>large</name>
+				<shortname>l</shortname>
+				<type>boolean</type>
+				<description>true if the object is large</description>
+				<default>false</default>
+			</named>
 		</arguments>
 	</program>
