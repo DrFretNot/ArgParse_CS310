@@ -208,7 +208,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height]\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: the following arguments are required: height", e.getMessage());
         }
 	}
 
@@ -231,7 +231,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height]\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: unrecognized arguments: 10", e.getMessage());
         }
 	}
 	
@@ -255,7 +255,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator required: length width height\nCalculate the volume of a box.\npositional arguments:\n[length] (string) the length of the box\n[width] (string) the width of the box\n[height] (string) the height of the box\nnamed arguments:\n[--help] [-h] (boolean) usage information (optional)", e.getMessage());
         }
 	}
 	
@@ -278,7 +278,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument width: invalid float value: something", e.getMessage());
         }
 	}
     
@@ -305,7 +305,7 @@ public class ArgumentParserUnitTests {
         	lib.parse(args);
         }
         catch(Exception e){
-        	assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
+        	assertEquals("usage: java VolumeCalculator required: length width height\nCalculate the volume of a box.\npositional arguments:\n[length] (string) the length of the box\n[width] (string) the width of the box\n[height] (string) the height of the box\nnamed arguments:\n[--help] [-h] (boolean) usage information (optional)", e.getMessage());
         }
     }
     
@@ -527,7 +527,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator [length] [width] [height] [help]\nCalculate the volume of a box.\npositional arguments:\n[length] the length of the box\n[width] the width of the box\n[height] the height of the box\nnamed arguments:\n[help] [h] usage information", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: length width height\nCalculate the volume of a box.\npositional arguments:\n[length] (float) the length of the box\n[width] (float) the width of the box\n[height] (float) the height of the box\nnamed arguments:\n[--help] [-h] (boolean) usage information (optional)", e.getMessage());
     	}
 	}
 
@@ -551,7 +551,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java Volume Calculator length width height help\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
+    		assertEquals("usage: java Volume Calculator required: length width height\nVolume Calculator.java: error: argument width: invalid float value: something", e.getMessage());
     	}
     }
 	
@@ -633,7 +633,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator length width height\nVolumeCalculator.java: error: argument myarg does not exist", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument myarg does not exist", e.getMessage());
     	}
     }
     
@@ -658,7 +658,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator length width height type digits\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument digits: invalid integer value: myval", e.getMessage());
     	}
     }
     
@@ -811,7 +811,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator\nrequired: [length] [width] [height]\noptional: [type] [digits]\nVolumeCalculator.java: error: argument type: invalid value: frustum", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: length width height\nVolumeCalculator.java: error: argument type: invalid value: frustum", e.getMessage());
     	}
 		
 	}
@@ -840,7 +840,7 @@ public class ArgumentParserUnitTests {
     		lib.parse(args);
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator\nrequired: [length] [width] [height] [number]\noptional: [type] [digits]\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: length width height number\nVolumeCalculator.java: error: argument number: invalid value: 6", e.getMessage());
     	}
 		
 	}
@@ -1064,7 +1064,7 @@ public class ArgumentParserUnitTests {
     		assertEquals("", testBool.getValue());
     	}
     	catch(Exception e){
-    		assertEquals("usage: java VolumeCalculator testBool\nVolumeCalculator.java: error: argument testBool: invalid boolean value: something", e.getMessage());
+    		assertEquals("usage: java VolumeCalculator required: testBool\nVolumeCalculator.java: error: argument testBool: invalid boolean value: something", e.getMessage());
     	}
     }
     

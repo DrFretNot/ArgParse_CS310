@@ -298,10 +298,19 @@ public class ArgumentParser {
     		throw new NumberFormatException();
     	}
     }
+    
+    private String usageMessage(){
+    	String message = "usage: java " + programName + " required:";
+		for(int i = 0; i < positionalArgumentList.size(); i++) {
+			PositionalArgument currentArg = positionalArgumentList.get(i);
+			message += " " + currentArg.getName();   
+		}
+		return message;
+    }
+    
  	//used in parseDataType, setLongFormNamedArgValues, setShortFormNamedArgValues, and incorrectDataTypeMessage
     int incorrectDataTypeIndex;
     String incorrectArgumentType; 
-    
     
     private void parseDataType(ArrayList<String> argList) throws NumberFormatException{
         
@@ -334,18 +343,8 @@ public class ArgumentParser {
     }
     
     private String incorrectDataTypeMessage(ArrayList<String> argList){
+		String errorMessage = this.usageMessage();
 		
-		String errorMessage = "usage: java " + programName;
-		for(int i = 0; i < positionalArgumentList.size(); i++) {
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-			errorMessage += " " + currentArg.getName();   
-		}
-		
-		for(int i = 0; i < namedArgumentList.size(); i++) {
-			NamedArgument currentArg = namedArgumentList.get(i);
-			errorMessage += " " + currentArg.getName();   
-		}
-			
 		if (incorrectArgumentType.equals("positional")){
 			PositionalArgument currentArg = positionalArgumentList.get(incorrectDataTypeIndex); 
 			errorMessage += "\n" + programName + ".java: error: argument " + currentArg.getName() + ": invalid "+ currentArg.getType() + " value: " + argList.get(incorrectDataTypeIndex);
@@ -361,19 +360,9 @@ public class ArgumentParser {
    private String incorrectNumberOfArgsMessage(ArrayList<String> argList){
    		int numOfArgs = positionalArgumentList.size();
    		if(argList.size() < numOfArgs){
-            String message = "usage: java " + programName;
-            for(int i = 0; i < positionalArgumentList.size(); i++) {
-            	PositionalArgument currentArg = positionalArgumentList.get(i);
-                message += " [" + currentArg.getName() + "]";   
-            }
-            
-            for(int i = 0; i < namedArgumentList.size(); i++) {
-            	NamedArgument currentArg = namedArgumentList.get(i);
-                message += " [" + currentArg.getName() + "]";   
-            }
+            String message = this.usageMessage();
             
             message += "\n" + programName + ".java: error: the following arguments are required:";
-            //int numOfArgsMissing = numOfArgs - args.length;
             
             for(int j = argList.size(); j < numOfArgs; j++){
             	PositionalArgument currentArg = positionalArgumentList.get(j);
@@ -384,18 +373,9 @@ public class ArgumentParser {
    		}
         
    		else {
-   			String message = "usage: java " + programName;
-            for(int i = 0; i < positionalArgumentList.size(); i++) {
-            	PositionalArgument currentArg = positionalArgumentList.get(i);
-                message += " [" + currentArg.getName() + "]";   
-            }
+            String message = this.usageMessage();
             
-            for(int i = 0; i < namedArgumentList.size(); i++) {
-            	NamedArgument currentArg = namedArgumentList.get(i);
-                message += " [" + currentArg.getName() + "]";   
-            }
             message += "\n" + programName + ".java: error: unrecognized arguments:";
-            //int numOfArgsUnrecognized = args.length - numOfArgs;
             
             for(int j = numOfArgs; j < argList.size(); j++){
             	message += " " + argList.get(j);
@@ -404,29 +384,25 @@ public class ArgumentParser {
    		}
    }
     
-    private String helpMessage(){ //update the help message to print out all options, not just positional
-		String helpMessage = "usage: java " + programName;
-		for(int i = 0; i < positionalArgumentList.size(); i++) {
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += " [" + currentArg.getName() + "]";   
-		}
-        for(int i = 0; i < namedArgumentList.size(); i++){
+    private String helpMessage(){
+		String helpMessage = this.usageMessage();
+		
+        /*for(int i = 0; i < namedArgumentList.size(); i++){
         	NamedArgument namedArg = namedArgumentList.get(i);
         	helpMessage += " [" + namedArg.getName() + "]";
-        }
+        }*/
 		helpMessage += "\n" + programDescription + "\npositional arguments:";
-		
 		
         for(int i = 0; i < positionalArgumentList.size(); i++) {
 			PositionalArgument currentArg = positionalArgumentList.get(i);
-			helpMessage += "\n[" + currentArg.getName() + "] " + currentArg.getDescription();   
+			helpMessage += "\n[" + currentArg.getName() + "] (" + currentArg.getType() + ") " + currentArg.getDescription();   
 		}
 		
 		helpMessage += "\nnamed arguments:";
 		
 		for(int i = 0; i < namedArgumentList.size(); i++) {
 			NamedArgument currentArg = namedArgumentList.get(i);
-			helpMessage += "\n[" + currentArg.getName() + "] [" + currentArg.getShortFormName() + "] " + currentArg.getDescription();   
+			helpMessage += "\n[--" + currentArg.getName() + "] [-" + currentArg.getShortFormName() + "] (" + currentArg.getType() + ") " + currentArg.getDescription() + " (optional)";   
 		}
 
 		return helpMessage;
@@ -689,27 +665,14 @@ public class ArgumentParser {
 	}
 	
 	private String incorrectArgumentValueMessage(String argName, String argValue){
-		String message = "usage: java " + programName;
-		message += "\nrequired:";
-		for(int i = 0; i < positionalArgumentList.size(); i++){
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-			message += " [" + currentArg.getName() + "]";
-		}
-		message += "\noptional:";
-		for(int j = 0; j < namedArgumentList.size(); j++){
-			NamedArgument currentArg = namedArgumentList.get(j);
-			message += " [" + currentArg.getName() + "]";
-		}
+		String message = this.usageMessage();
+		
 		message += "\n" + programName + ".java: error: argument " + argName + ": invalid value: " + argValue;
 		return message;
 	}
 	
 	private String argumentDoesNotExistMessage(String invalidNamedArgument){
-		String message = "usage: java " + programName;
-		for(int i = 0; i < positionalArgumentList.size(); i++) {
-			PositionalArgument currentArg = positionalArgumentList.get(i);
-            message += " " + currentArg.getName();   
-        }
+        String message = this.usageMessage();
         
         message += "\n" + programName + ".java: error: argument " + invalidNamedArgument + " does not exist";
         
