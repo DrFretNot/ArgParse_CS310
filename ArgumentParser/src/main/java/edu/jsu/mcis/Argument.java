@@ -2,7 +2,7 @@ package edu.jsu.mcis;
 
 /**
  *
- *Argument This is a parent class to the argument name, description, type value set, and argument type
+ *Argument is an abstract class that includes argument name, description, value set, value and argument type. If not specified, the type defaults to string and description defaults to an empty string. 
  *
  */
 public abstract class Argument
@@ -17,19 +17,7 @@ public abstract class Argument
     
     /**
      *
-     *@param Argument initiates argName, description, and type. 
-     *
-     */
-    /*public Argument(){
-        argName = null;
-        description = "";
-        type = null;
-        
-    }*/
-    
-    /**
-     *
-     *@param Argument Contructor for different combinations such as <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b> 
+     *@param Argument Initializes an argument object with the specified  <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b> 
      *
      *
     */
@@ -42,7 +30,7 @@ public abstract class Argument
     
      /**
      *
-     *@param Argument Contructor for different combinations such as <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b> 
+     *@param Argument Initializes an argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.  
      *
      *
     */
@@ -52,7 +40,7 @@ public abstract class Argument
     }
      /**
      *
-     *@param Argument Contructor for different combinations such as <b>name</b>, and <b>argDescription</b> 
+     *@param Argument Initializes an argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
      *
      *
     */
@@ -63,7 +51,7 @@ public abstract class Argument
     
      /**
      *
-     *@param Argument Contructor for different combinations such as <b>name</b>, only.
+     *@param Argument Initializes an argument object with only the specified <b>name</b>.
      *
      *
     */
@@ -73,7 +61,7 @@ public abstract class Argument
     }
     /**
      *
-     *@param getName Common method which will be defined in child classes
+     *@param getName Returns the name of an argument object. 
      *
      *
     */
@@ -81,7 +69,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getType Common method which will be defined in child classes.
+     *@param getType Returns the type of an argument object.
      *
      *
     */
@@ -89,7 +77,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getDescription Common method which will be defined in child classes.
+     *@param getDescription Returns the description of an argument object.
      *
      *
     */
@@ -97,17 +85,27 @@ public abstract class Argument
     
     /**
      *
-     *@param getValueSet Common method which will be defined in child classes.
+     *@param getValueSet Returns the value set of an argument object.
      *
      *
     */
     public abstract String[] getValueSet();
     
     
-    
+    /**
+     *
+     *@param getValue Returns the value of an argument object.
+     *
+     *
+    */
     public abstract <T> T getValue();
     
     
-    
+    /**
+     *
+     *@param setValue Sets the value of an argument object.
+     *
+     *
+    */
     public abstract void setValue(String argValue);
 }
