@@ -16,9 +16,10 @@ public abstract class Argument
     public enum ArgType {INTEGER, FLOAT, STRING, BOOLEAN};
     
     /**
-     *
-     *@param Argument Initializes an argument object with the specified  <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b> 
-     *
+     *Initializes an argument object with the specified  <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b>
+     *@param name  the name to be set for the argument object
+     *@param dataType the dataType to be set for the argument object
+     *@param argDescription the description for each argument object
      *
     */
     public Argument(String name, ArgType dataType, String argDescription){
@@ -29,8 +30,9 @@ public abstract class Argument
     }
     
      /**
-     *
-     *@param Argument Initializes an argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.  
+     *Initializes an argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption. 
+     *@param name  the name to be set for the argument object
+     *@param dataType the dataType to be set for the argument object
      *
      *
     */
@@ -39,9 +41,9 @@ public abstract class Argument
         this(name, dataType, "");
     }
      /**
-     *
-     *@param Argument Initializes an argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
-     *
+     *Initializes an argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
+     *@param name  the name to be set for the argument object
+     *@param argDescription the description for each argument object
      *
     */
     public Argument(String name, String argDescription){
@@ -50,9 +52,8 @@ public abstract class Argument
     }
     
      /**
-     *
-     *@param Argument Initializes an argument object with only the specified <b>name</b>.
-     *
+     *Initializes an argument object with only the specified <b>name</b>.
+     *@param name  the name to be set for the argument object
      *
     */
     public Argument(String name){
@@ -61,7 +62,7 @@ public abstract class Argument
     }
     /**
      *
-     *@param getName Returns the name of an argument object. 
+     *Returns the name of an argument object. 
      *
      *
     */
@@ -69,7 +70,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getType Returns the type of an argument object.
+     *Returns the type of an argument object.
      *
      *
     */
@@ -77,7 +78,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getDescription Returns the description of an argument object.
+     *Returns the description of an argument object.
      *
      *
     */
@@ -85,7 +86,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getValueSet Returns the value set of an argument object.
+     *Returns the value set of an argument object.
      *
      *
     */
@@ -94,7 +95,7 @@ public abstract class Argument
     
     /**
      *
-     *@param getValue Returns the value of an argument object.
+     *Returns the value of an argument object.
      *
      *
     */
@@ -103,8 +104,8 @@ public abstract class Argument
     
     /**
      *
-     *@param setValue Sets the value of an argument object.
-     *
+     *Sets the value of an argument object.
+     *@param argValue the string representation of the value to be set for the argument object
      *
     */
     public abstract void setValue(String argValue);
