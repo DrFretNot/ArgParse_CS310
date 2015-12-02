@@ -20,9 +20,9 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.
-    *
+    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.
+    *@param name String to be set as <b>name</b>.
+    *@param dataType Correct data type to be set. 
     *
     */
     public PositionalArgument(String name, ArgType dataType){
@@ -30,9 +30,9 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
-    *
+    *Initializes a positional argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
+    *@param name String to be set as <b>name</b>.
+    *@param argDescription
     *
     */
     public PositionalArgument(String name, String argDescription){
