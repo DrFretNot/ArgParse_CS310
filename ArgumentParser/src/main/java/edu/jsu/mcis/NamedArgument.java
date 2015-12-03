@@ -104,6 +104,7 @@ public class NamedArgument extends Argument{
 	
      /**
       *NamedArgument initializes a new namedArgument object with name, default value, dataType, and description. 
+      *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
       *@param dataType The data type that the argument will parse for.
@@ -120,9 +121,10 @@ public class NamedArgument extends Argument{
     
     
     /**
+     *NamedArgument initializes a new namedArgument object with name, and short form name.
      *
-     *@param NamedArgument takes Name, and Short Form)
-     *
+     *@param name The name to be set for the argument object.
+     *@param shortForm The shortend form of the name.  
      */
 	public NamedArgument(String name, char shortForm){
         super(name);
@@ -130,9 +132,11 @@ public class NamedArgument extends Argument{
 	}	
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param shortForm The shortend form of the name.
       */
 	public NamedArgument(String name, String defaultValue, char shortForm){
         super(name);
@@ -143,9 +147,11 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, data type, and short form name.
       *
-      *@param NamedArgument takes Name, Argument Type, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param dataType The data type that the argument will parse for.
+      *@param shortForm The shortend form of the name.
       */
 	public NamedArgument(String name, ArgType dataType, char shortForm){
         super(name, dataType);
@@ -160,9 +166,12 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, data type, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Argument Type, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param shortForm The shortend form of the name.
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm){
         super(name, dataType);
@@ -173,9 +182,12 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Description, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
       */
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm){
         super(name, argDescription);
@@ -185,10 +197,13 @@ public class NamedArgument extends Argument{
         shortFormName = shortForm; 
     }    	
     
-     /**
+    /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Argument Type, Description, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param dataType The data type that the argument will parse for.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
       */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm){
         super(name, dataType, argDescription);
@@ -202,9 +217,13 @@ public class NamedArgument extends Argument{
         shortFormName = shortForm;
     }
      /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Argument Type, Description, and Short Form)
-      *
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm){
         super(name, dataType, argDescription);
@@ -215,16 +234,25 @@ public class NamedArgument extends Argument{
     }
     
     /*******************************With sets of values*********************************/
+    
+    /**
+     *NamedArgument initializes a new namedArgument object with only the name. 
+     *@param name The name to be set for the argument object.
+     *@param setOfValues An array of possible values that the named argumnet will allow. 
+    */
     public NamedArgument(String name, String[] setOfValues){
         super(name);
         valueSet = setOfValues;
     }
     
     /**
-      *
-      *@param NamedArgument takes Name, Argument Type, and a Set of Values
-      *
-      */
+     *NamedArgument initializes a new namedArgument object with Name, dataType, and Description. 
+     *
+     *@param name The name to be set for the argument object.
+     *@param dataType The data type that the argument will parse for.
+     *@param setOfValues An array of possible values that the named argumnet will allow.
+     *
+    */
     public NamedArgument(String name, ArgType dataType, String[] setOfValues){
         super(name, dataType);
         if(dataType == ArgType.BOOLEAN){
@@ -238,10 +266,13 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *
-      *@param NamedArgument takes Name, Argument Type, Description, and a Set of Values
-      *
-      */
+     *NamedArgument initializes a new namedArgument object with Name, dataType, and Description.
+     * 
+     *@param name The name to be set for the argument object.
+     *@param dataType The data type that the argument will parse for.
+     *@param argDescription The description that be set for the argument object.
+     *@param setOfValues An array of possible values that the named argumnet will allow.
+    */
     public NamedArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
         super(name, dataType, argDescription);
         if(dataType == ArgType.BOOLEAN){
@@ -255,10 +286,12 @@ public class NamedArgument extends Argument{
     } 
     
     /**
-      *
-      *@param NamedArgument takes Name, Default Value, and a Set of Values
-      *
-      */
+     *NamedArgument initializes a new namedArgument object with name and default value. 
+     *@param name The name to be set for the argument object.
+     *@param defaultValue The value that the argument will default to unless otherwise stated. 
+     *@param setOfValues An array of possible values that the named argumnet will allow.
+     *
+    */
     public NamedArgument(String name, String defaultValue, String[] setOfValues){
         super(name);
         //value = (T)defaultValue;
@@ -268,8 +301,12 @@ public class NamedArgument extends Argument{
     }   
     
 	/**
-      *
-      *@param NamedArgument takes Name, Default Value, Argument Type, and a Set of Values
+      *NamedArgument initializes a new namedArgument object with name, default value, and dataType.
+      *      
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String[] setOfValues){
@@ -281,8 +318,12 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, and description. 
       *
-      *@param NamedArgument takes Name, Default Value, Description, and a Set of Values
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param argDescription The description that be set for the argument object
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
     public NamedArgument(String name, String defaultValue, String argDescription,String[] setOfValues){
@@ -294,8 +335,13 @@ public class NamedArgument extends Argument{
     }    	
 	
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, dataType, and description. 
       *
-      *@param NamedArgument takes Name, Default Value, Argument Type, Description, and a Set of Values
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param argDescription The description that be set for the argument object
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription,String[] setOfValues){
@@ -308,10 +354,12 @@ public class NamedArgument extends Argument{
     
     
     /**
-      *
-      *@param NamedArgument takes Name, Short Form name and, a Set Of Values
-      *
-      */
+     *NamedArgument initializes a new namedArgument object with name, and short form name.
+     *
+     *@param name The name to be set for the argument object.
+     *@param shortForm The shortend form of the name. 
+     *@param setOfValues An array of possible values that the named argumnet will allow.
+     */
 	public NamedArgument(String name, char shortForm,String[] setOfValues){
         super(name);
         shortFormName = shortForm;
@@ -319,9 +367,12 @@ public class NamedArgument extends Argument{
 	}	
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, data type, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Short Form name and, a Set Of Values
-      *
+      *@param name The name to be set for the argument object.
+      *@param dataType The data type that the argument will parse for.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       */
 	public NamedArgument(String name, String defaultValue, char shortForm,String[] setOfValues){
         super(name);
@@ -333,9 +384,12 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, data type, short form name, and set of values .
       *
-      *@param NamedArgument takes Name, Data Type, Short Form name and, a Set Of Values
-      *
+      *@param name The name to be set for the argument object.
+      *@param dataType The data type that the argument will parse for.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       */
 	public NamedArgument(String name, ArgType dataType, char shortForm,String[] setOfValues){
         super(name, dataType);
@@ -351,9 +405,13 @@ public class NamedArgument extends Argument{
     } 
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, data type, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Data Type, Short Form name and, a Set Of Values
-      *
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm,String[] setOfValues){
         super(name, dataType);
@@ -365,8 +423,13 @@ public class NamedArgument extends Argument{
     }  
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Argument Description, Short Form name and, a Set Of Values
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
     public NamedArgument(String name, String defaultValue, String argDescription, char shortForm,String[] setOfValues){
@@ -379,8 +442,14 @@ public class NamedArgument extends Argument{
     }    	
     
     /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Data Type, Argument Description, Short Form name and, a Set Of Values
+      *@param name The name to be set for the argument object.
+      *@param dataType The data type that the argument will parse for.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
 	public NamedArgument(String name, ArgType dataType, String argDescription, char shortForm,String[] setOfValues){
@@ -398,8 +467,14 @@ public class NamedArgument extends Argument{
 
 //*************************************************************************************
      /**
+      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
       *
-      *@param NamedArgument takes Name, Default Value, Data Type, Argument Description, Short Form name and, a Set Of Values
+      *@param name The name to be set for the argument object.
+      *@param defaultValue The value that the argument will default to unless otherwise stated.
+      *@param dataType The data type that the argument will parse for.
+      *@param argDescription The description that be set for the argument object.
+      *@param shortForm The shortend form of the name.
+      *@param setOfValues An array of possible values that the named argumnet will allow.
       *
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, String argDescription, char shortForm, String[] setOfValues) {
@@ -417,8 +492,9 @@ public class NamedArgument extends Argument{
 //methods  
     
     /**
+     *getShortFormName Gets the short form of an argument when ever there is one.
      *
-     *@param getShortFormName Gets the short form of an argument when ever there is one.
+     *
      *@return shortFormName return the short form of the argument.
      */
 	public char getShortFormName(){
@@ -426,8 +502,8 @@ public class NamedArgument extends Argument{
 	}
 	
     /**
-     *
-     *@param getDefaultValue If for eample --type is not called, the default value will be automatically put in its place. 
+     *getDefaultValue If for eample --type is not called, the default value will be automatically put in its place.
+     * 
      *@return defaultvalue Returns the default value to the CLI.  
      */
 	public String getDefaultValue(){
@@ -435,12 +511,24 @@ public class NamedArgument extends Argument{
 	}
 
 //****** These are subclassed from the abstract class Argument **************************
+    /**
+    * getName Returns the name of the named argument.
+    *
+    *@return String
+    */
+
 
 	public String getName()
     {
         return this.argName;
     }
 
+    
+    /**
+    *getName Returns the type of the named Argument. 
+    *
+    *@return ArgType
+    */
 	public String getType(){
     	if(type == ArgType.INTEGER){
     		return "integer";
@@ -454,14 +542,34 @@ public class NamedArgument extends Argument{
     	else return "boolean";
     }
 
+    
+    /**
+    *getDescription Returns the description of the named argument. 
+    *
+    *@return String 
+    */
 	public String getDescription(){
     	return description;
     }
 	
+    
+    /**
+    *setValue Set the value that the argument will hold
+    *
+    *
+    */
+    
 	public void setValue(String argValue){
     	value = argValue;
     }
     
+    
+    /**
+    *getValue Returns <T> value that is held by the named argument
+    *
+    *
+    *@return<T>
+    */
     public <T> T getValue(){
     	if(this.getType().equals("integer")){
     		int intValue = Integer.parseInt(value);
@@ -480,10 +588,15 @@ public class NamedArgument extends Argument{
     	}
     }
     
+    /**
+    *getValueSet Returns the set of possible values that are allowed by that named argument object. 
+    *
+    *
+    *@return String[]
+    */
     public String[] getValueSet(){
     	return valueSet;
     }
 
-//**************************************************************************************
 
 }
