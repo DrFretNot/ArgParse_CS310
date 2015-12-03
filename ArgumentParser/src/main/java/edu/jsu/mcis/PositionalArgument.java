@@ -134,10 +134,7 @@ public class PositionalArgument extends Argument{
     /**
     *
     *Returns the type of an argument object.
-    *@return integer
-    *@return float
-    *@return string
-    *@return boolean
+    *@return integer, float, string, boolean
     */
     public String getType(){
     	if(type == ArgType.INTEGER){
@@ -155,7 +152,7 @@ public class PositionalArgument extends Argument{
     /**
     *
     *Simply gets the description and returns the description of the argument object.
-    *@return description returns the description
+    *@return description
     *
     */
     public String getDescription(){
