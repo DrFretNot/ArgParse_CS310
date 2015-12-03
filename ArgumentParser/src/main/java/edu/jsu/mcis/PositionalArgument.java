@@ -21,7 +21,7 @@ public class PositionalArgument extends Argument{
     
     /**
     *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.
-    *@param name String to be set as <b>name</b>.
+    *@param name String to be set as <b>name</b>. 
     *@param dataType Correct data type to be set. 
     *
     */
@@ -32,7 +32,7 @@ public class PositionalArgument extends Argument{
     /**
     *Initializes a positional argument object with the specified <b>name</b>, <b>argDescription</b> and the default type.
     *@param name String to be set as <b>name</b>.
-    *@param argDescription
+    *@param argDescription Description of each argument object.
     *
     */
     public PositionalArgument(String name, String argDescription){
@@ -40,19 +40,19 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified  <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b>
-    *
-    *
+    *Initializes a positional argument object with the specified  <b>name</b>, <b>ArgType</b>, <b>dataType</b>, and <b>argDescription</b>
+    *@param name String to be set as <b>name</b>.
+    *@param dataType The data type that the argument will parse for.
+    *@param argDescription Description of each argument object.
     */
     public PositionalArgument(String name, ArgType dataType, String argDescription){
         super(name, dataType, argDescription);
     } 
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b> and <b>setOfValues</b>.
-    *
+    *Initializes a positional argument object with the specified <b>name</b> and <b>setOfValues</b>.
+    *@param name String to be set as <b>name</b>.
+    *@param setOfValues An array of possible values that <b>namedArgument</b> will allow.
     *
     */
     public PositionalArgument(String name, String[] setOfValues){
@@ -61,10 +61,10 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, <b>setOfValues</b> and default desctiption.
-    *
-    *
+    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, <b>setOfValues</b> and default desctiption.
+    *@param name String to be set as <b>name</b>.
+    *@param dataType The data type that the argument will parse for.
+    *@param setOfValues An array of possible values that <b>namedArgument</b> will allow.
     */
     public PositionalArgument(String name, ArgType dataType, String[] setOfValues){
         super(name, dataType);
@@ -72,9 +72,10 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b>, <b>argDescription</b>, <b>setOfValues</b> and the default type.
-    *
+    *Initializes a positional argument object with the specified <b>name</b>, <b>argDescription</b>, <b>setOfValues</b> and the default type.
+    *@param name String to be set as <b>name</b>.
+    *@param argDescription the description for each argument object
+    *@param setOfValues An array of possible values that <b>namedArgument</b> will allow.
     *
     */
     public PositionalArgument(String name, String argDescription, String[] setOfValues){
@@ -83,10 +84,11 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *@param PositionalArgument Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b> <b>, argDescription</b> and <b>setOfValues</b>.
-    *
-    *
+    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b> <b>, argDescription</b> and <b>setOfValues</b>.
+    *@param name String to be set as <b>name</b>.
+    *@param dataType The data type that the argument will parse for. 
+    *@param argDescription the description for each argument object.
+    *@param setOfValues An array of possible values that <b>namedArgument</b> will allow.
     */
     public PositionalArgument(String name, ArgType dataType, String argDescription, String[] setOfValues){
         super(name, dataType, argDescription);
@@ -97,6 +99,7 @@ public class PositionalArgument extends Argument{
 //***********************************************************************************
 	
     /**
+    *
     *
     *@param setPosition Sets the position of the positional argument object.
     *
@@ -109,7 +112,7 @@ public class PositionalArgument extends Argument{
     /**
     *
     *@param getPosition Returns the integer position of the positional argument object. Numbering starts at 0.
-    *@returns position
+    *@return position
     *
     */
 	public int getPosition(){
@@ -120,8 +123,8 @@ public class PositionalArgument extends Argument{
 
    /**
     *
-    *
-    *
+    *Gets the name and returns argName. 
+    *@return this.argName
     *
     */
     public String getName(){
@@ -130,9 +133,11 @@ public class PositionalArgument extends Argument{
     
     /**
     *
-    *
-    *
-    *
+    *Returns the type of an argument object.
+    *@return integer
+    *@return float
+    *@return string
+    *@return boolean
     */
     public String getType(){
     	if(type == ArgType.INTEGER){
@@ -149,8 +154,8 @@ public class PositionalArgument extends Argument{
     
     /**
     *
-    *
-    *
+    *Simply gets the description and returns the description of the argument object.
+    *@return description returns the description
     *
     */
     public String getDescription(){
@@ -158,8 +163,8 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *
-    *
+    *Sets the value of the object.
+    *@param argValue the string representation of the value to be set for the argument object
     *
     *
     */
@@ -168,10 +173,11 @@ public class PositionalArgument extends Argument{
     }
 	
     /**
-    *
-    *
-    *
-    *
+    *getValue Returns <T> value that is held by the named argument.
+    *Returns the value of an argument object
+    *@return intValue
+    *@return floatValue
+    *@return boolValue
     */
     public <T> T getValue(){
     	if(this.getType().equals("integer")){
@@ -193,7 +199,8 @@ public class PositionalArgument extends Argument{
     
     /**
     *
-    *
+    *Returns the set of possible values that are allowed by that named argument object.
+    *@return valueSet 
     *
     *
     */
