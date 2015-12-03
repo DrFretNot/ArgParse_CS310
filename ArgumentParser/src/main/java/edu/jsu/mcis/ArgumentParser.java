@@ -20,13 +20,12 @@ import java.lang.Object.*;
 import java.io.*;
 
 
-/** Description of ArgumentParser:
 /**
  *
  *<h2> 
  *<span style="color:#4c6b87">
  
- *INTRO TO ArgParse! 
+ *
  *</h2>
  *
  *<p>The ArgParse_CS310 module make it easy to write user-friendly 
@@ -53,18 +52,7 @@ public class ArgumentParser {
 /**
   <pre>
  *<span style="color:#4c6b87">
- *{@code
- * public ArgumentParser(){
-    this.programName = "";
-    this.programDescription = "";
-    this.positionalArgumentList = new ArrayList<PositionalArgument>();
-    this.namedArgumentList = new ArrayList<NamedArgument>(); 
-    posCount = -1;
- *}
- *The Argument Parser constructor, this will instantiate a new instance of the Parser
- *<p>The constructor enters the blanks for the program name and the program description. 
- *Creates a new lists for positional and named arguments. These will be used to hold the 
- *arguments that are created by the user. 
+ *Instantiates a new instance of the Argument Parser. 
  *
  *}
  *
@@ -80,12 +68,6 @@ public class ArgumentParser {
     /**
      **<pre>
      *<span style="color:#4c6b87">
-     *{@code
-     public void addProgramName(String inputProgramName){
-        programName = inputProgramName; 
-}
-     *}
-     *</pre>
      *Takes an input string and sets it as the program name
      *@param inputProgramName the string to be set as the program name
      *
@@ -96,15 +78,6 @@ public class ArgumentParser {
     }
     
     /**
-     *<pre>
-     {@code
-     public void addProgramDescription(String inputProgramDescription){
-        programDescription = inputProgramDescription; 
-}
-     
-     
-     *}
-     *<pre>
      *Takes an input string and sets it as the program description
      *@param inputProgramDescription the string to be set as the program description
      *
@@ -117,33 +90,15 @@ public class ArgumentParser {
     }
     
     /** 
-    Constructor description of getProgramName() 
-      <pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     public String getProgramName(){
-        return programName; 
-     
-}
-     *}
-     *</pre>
-     *@param getProgramName Receives the specified name of the program
+     *Return the name of program that was specified by the user
+     *@return programName the name of the program
      */
     public String getProgramName(){
         return programName;   
     }
-    /** Constructor description of getProgramDescription()
-    *<pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     public String getProgramDescription(){
-        return programDescription;   
-    }
-     *}
-     *</pre>
+    /**
      *Returns the description of the program set by the user
-     *@return programDescription Returns the specificed description of the program
-     
+     *@return the specificed string description of the program
      */
     
     public String getProgramDescription(){
@@ -151,17 +106,8 @@ public class ArgumentParser {
     }
     
     /** 
-    *<pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     public void addPositionalArgument(PositionalArgument arg){
-    	posCount++;
-    	arg.setPosition(posCount);
-    	positionalArgumentList.add(arg);
-}
-     *}
-     *</pre>
-     *@param addPositionalArgument(PositionalArgument arg)  Assume VolumeCalculator.java allows for three positional arguments, named length, width, and height, respectively. see code snippit below.
+     *Adds a new positional argument to be parsed from the command line
+     *@param arg a new instance of a positional argument
      *If a positional argument is not supplied, the program should exit, and the usage information should be displayed along with the error stating the missing argument.
      *If an additional (i.e., one too many) positional argument is specified, then the program should exit, and the usage information should be displayed along with the error stating the additional argument.
      
@@ -173,16 +119,8 @@ public class ArgumentParser {
     }
     
     /**
-     *<pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     *public void addNamedArgument(NamedArgument arg){ 
-    	namedArgumentList.add(arg);
-    }
-     *  
-     *}
-     *</pre>
-     *@param addNamedArgument Users have the ability to add a specific named argument, i.e: 
+     *Adds a new named argument to be parsed from the command line
+     *@param arg a new instance of a named argument
      *
      *
      */
@@ -191,21 +129,9 @@ public class ArgumentParser {
     }
     
     /** 
-    <pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     public PositionalArgument getPositionalArgument(String argName){
-    	PositionalArgument returnArg = null;
-    	for(int i = 0; i < positionalArgumentList.size(); i++){
-    		PositionalArgument currentArg = positionalArgumentList.get(i);
-    		if(currentArg.getName().equals(argName)){
-    			returnArg = currentArg;
-     *  
-     *}
-     *</pre>
-     *Constructor description of PositionalArgument getPositionalArgument(String argName) 
-     *@param PositionalArgument getPositionalArgument 
-     *@return Returns the current argument name
+     *Returns the positional argument with the specified string name
+     *@param argName the name of the positional argument to return
+     *@return the positional argument with the specified name
      *
      *
      */
@@ -223,7 +149,7 @@ public class ArgumentParser {
     /**
      *Returns the positional argument at the specified position where argPosition starts at 1
      *@Param argPosition the integer position of the positional argument to find 
-     *@return returnArg the argument with the specified position
+     *@return the positional argument with the specified position, position starts at index 1
      *
      *
      */
@@ -241,7 +167,7 @@ public class ArgumentParser {
     /**
      *Returns the named argument with the specified string name
      *@param argName the specified string name
-     *@return returnArg the named argument with the specified name
+     *@return the named argument with the specified string name
      */
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
@@ -275,7 +201,7 @@ public class ArgumentParser {
      *</pre>
      *Returns the named argument with the specified character short form name
      *@param argShortFormName the specified character short form name
-     *@return returnArg the named argument with the specified short form name
+     *@return the named argument with the specified char short form name
      */
     public NamedArgument getNamedArgument(char argShortFormName){
     	NamedArgument returnArg = null;
