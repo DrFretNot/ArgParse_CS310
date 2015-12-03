@@ -28,12 +28,13 @@ import java.io.*;
  *
  *</h2>
  *
- *<p>The ArgParse_CS310 module make it easy to write user-friendly 
- *command-line interfaces. The program defines what arguments is 
- *requires, and argparse will figure out how to parse those arguments. 
- *The argparse module also automatically generates help and 
- *usage messages and issues error codes when users 
- *give program invalid arguments.</p>
+ *<p>This class parses an object (argument) and stores the value for user purposes. 
+ *ArgumentParser provides a way of storing arguments with different values. </p>
+ *<p>ArgumentParser can check the type of Object (such as String, integer, float, boolean).
+ *ArgumentParser can implement value sets in the abstract class Argument. </p>
+ *<p>NamedArgument and PositionalArgument are child classes of Argument.</p>
+ *<p>ArgumentParser can also give a help message and give appropriate error messages for incorrect data.
+ *</p>
  *
  *@param  url  an absolute URL giving the base location of the image
  *@param  name the location of the image, relative to the url argument
