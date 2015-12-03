@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  *
- * Class description: XMLReader allows for reading of an XML file which holds arguments.
+ *XMLReader allows for reading of an XML file which holds arguments.
  *
 */
 public class XMLReader{

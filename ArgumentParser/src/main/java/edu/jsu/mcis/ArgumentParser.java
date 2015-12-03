@@ -98,7 +98,7 @@ public class ArgumentParser {
     }
     /**
      *Returns the description of the program set by the user
-     *@return programDescription the specificed description of the program
+     *@return the specificed string description of the program
      */
     
     public String getProgramDescription(){
@@ -131,7 +131,7 @@ public class ArgumentParser {
     /** 
      *Returns the positional argument with the specified string name
      *@param argName the name of the positional argument to return
-     *@return returnArg the argument with the specified name
+     *@return the positional argument with the specified name
      *
      *
      */
@@ -149,7 +149,7 @@ public class ArgumentParser {
     /**
      *Returns the positional argument at the specified position where argPosition starts at 1
      *@Param argPosition the integer position of the positional argument to find 
-     *@return returnArg the argument with the specified position
+     *@return the positional argument with the specified position, position starts at index 1
      *
      *
      */
@@ -167,7 +167,7 @@ public class ArgumentParser {
     /**
      *Returns the named argument with the specified string name
      *@param argName the specified string name
-     *@return returnArg the named argument with the specified name
+     *@return the named argument with the specified string name
      */
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
@@ -201,7 +201,7 @@ public class ArgumentParser {
      *</pre>
      *Returns the named argument with the specified character short form name
      *@param argShortFormName the specified character short form name
-     *@return returnArg the named argument with the specified short form name
+     *@return the named argument with the specified char short form name
      */
     public NamedArgument getNamedArgument(char argShortFormName){
     	NamedArgument returnArg = null;
