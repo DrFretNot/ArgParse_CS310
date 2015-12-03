@@ -86,7 +86,8 @@ public class ArgumentParser {
 }
      *}
      *</pre>
-     *@param addProgramName(String inputProgramName) takes in a string program name and adds to a global string program name.
+     *Takes an input string and sets it as the program name
+     *@param inputProgramName the string to be set as the program name
      *
      *
      */ 
@@ -104,8 +105,8 @@ public class ArgumentParser {
      
      *}
      *<pre>
-     * 
-     *@param addProgramDescription takes in a string description of a program and adds to a global string program description.
+     *Takes an input string and sets it as the program description
+     *@param inputProgramDescription the string to be set as the program description
      *
      *
      *
@@ -140,8 +141,8 @@ public class ArgumentParser {
     }
      *}
      *</pre>
-     *@param getProgramDescription recieves a Specified Program Description from CLI
-     *@return programName Returns the specificed description of the program
+     *Returns the description of the program set by the user
+     *@return programDescription Returns the specificed description of the program
      
      */
     
@@ -220,9 +221,9 @@ public class ArgumentParser {
     }
     
     /**
-     *
-     *@Param PositionalArgument getPositionalArgument 
-     *@return returnArg
+     *Returns the positional argument at the specified position where argPosition starts at 1
+     *@Param argPosition the integer position of the positional argument to find 
+     *@return returnArg the argument with the specified position
      *
      *
      */
@@ -238,8 +239,9 @@ public class ArgumentParser {
     }
     
     /**
-     *@param NamedArgument From the Command line this recieves a specified named argument, as a string, to be added to the library.
-     *@return returnArg Returns the string form of the named Argument.
+     *Returns the named argument with the specified string name
+     *@param argName the specified string name
+     *@return returnArg the named argument with the specified name
      */
     public NamedArgument getNamedArgument(String argName){
     	NamedArgument returnArg = null;
@@ -271,8 +273,9 @@ public class ArgumentParser {
      
      *}
      *</pre>
-     **@param NamedArgument getNamedArgument(char argShortFormName) Allow short-form names for named arguments, in addition to long-form names
-     *@return returnArg returns the short-form name to the library.
+     *Returns the named argument with the specified character short form name
+     *@param argShortFormName the specified character short form name
+     *@return returnArg the named argument with the specified short form name
      */
     public NamedArgument getNamedArgument(char argShortFormName){
     	NamedArgument returnArg = null;
@@ -690,12 +693,13 @@ public class ArgumentParser {
      *}
      
      *</pre>
-     **@param parse Collects input data from CLI and parses each argument to the Library.
-     @thorows helpexception displays a help message to the user 
-     *@thorows IncorrectNumberOfArgsException Displays a help message which states the incorrect number of arguments message.
-     *@thorows IncorrectArgTypeException Displays a help message which states that incorrect argument types have been used.
-     *@thorows ArgumentDoesNotExistException Displays a help message which states that a specified argument does not exist or does not have a valid usage.
-     *@thorows IncorrectArgumentValueException Displays a help message which states the incorrect
+     *Parses input data from the command line and throws the correct exceptions if tinput data is an incorrect format
+     *@param args the input data from the command line
+     *@throws HelpException if the help argument is given in the input data 
+     *@throws IncorrectNumberOfArgsException if an incorrect number of positional arguments is given in the input data
+     *@throws IncorrectArgTypeException if an input argument is given as the wrong dataType specified by the user
+     *@throws ArgumentDoesNotExistException if a named argument is given in the input data that has not been created by the user
+     *@throws IncorrectArgumentValueException if the input data is not a possible value for a specified argument
      */
     
 	public void parse(String[] args) throws HelpException, IncorrectNumberOfArgsException, IncorrectArgTypeException, ArgumentDoesNotExistException, IncorrectArgumentValueException{
@@ -739,7 +743,9 @@ public class ArgumentParser {
 	}
     
     /**
-     *@param writeToXMLFile Allow argument information to be saved to an XML file. 
+     *Writes argument parser information to the specified XML file. The program name, program description, positional arguments, and named arguments 
+     *are saved in the file in standard XML format. It also saves each aspect of the arguments such as argument name, description, dataType, defaultValue, and possible value set.
+     *@param fileName the XML file to which all information will be written
      *<pre>
      *<h2>
      * Use Cases:
