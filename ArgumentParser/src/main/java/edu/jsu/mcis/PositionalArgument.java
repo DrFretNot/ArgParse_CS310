@@ -100,8 +100,8 @@ public class PositionalArgument extends Argument{
 	
     /**
     *
-    *
-    *@param setPosition Sets the position of the positional argument object.
+    *Sets the position of the positional argument object.
+    *@param pos position 
     *
     *
     */
@@ -110,8 +110,7 @@ public class PositionalArgument extends Argument{
 	}
 	
     /**
-    *
-    *@param getPosition Returns the integer position of the positional argument object. Numbering starts at 0.
+    *Returns the integer position of the positional argument object. Numbering starts at 0.
     *@return position
     *
     */
