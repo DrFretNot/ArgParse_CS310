@@ -2,17 +2,15 @@ package edu.jsu.mcis;
 
 import java.util.*;
 /**
- *
- *Class description: Exception class for incorrect argument values which extends Exception.
+ *Thrown to indicate that a given argument value is not a possible value for that argument.
  *
  */
 public class IncorrectArgumentValueException extends Exception{
     
     /**
-     *
-     *@param IncorrectArgumentValueException throws exception for an invalid argument to be used. 
-     *
-     */
+	*Constructs an IncorrectArgumentValueException with the specified detail message.
+	*@param message the detail message
+	*/
 	public IncorrectArgumentValueException(String message){
 		super(message);
 	}

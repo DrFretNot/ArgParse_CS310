@@ -149,7 +149,7 @@ public class ArgumentParser {
     
     /**
      *Returns the positional argument at the specified position where argPosition starts at 1
-     *@Param argPosition the integer position of the positional argument to find 
+     *@param argPosition the integer position of the positional argument to find 
      *@return the positional argument with the specified position, position starts at index 1
      *
      *
@@ -182,24 +182,6 @@ public class ArgumentParser {
     }
     
     /**
-     *
-     *<h2> 
-     *Use Cases: 
-     *</h2>
-     **<pre>
-     *<span style="color:#4c6b87">
-     *{@code
-     *public NamedArgument getNamedArgument(char argShortFormName){
-    	NamedArgument returnArg = null;
-    	for(int i = 0; i < namedArgumentList.size(); i++){
-    		NamedArgument currentArg = namedArgumentList.get(i);
-    		if(currentArg.getShortFormName() == argShortFormName){
-    			returnArg = currentArg;
-    		}
-    	} 
-     
-     *}
-     *</pre>
      *Returns the named argument with the specified character short form name
      *@param argShortFormName the specified character short form name
      *@return the named argument with the specified char short form name
