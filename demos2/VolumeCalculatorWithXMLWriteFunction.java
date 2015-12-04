@@ -29,20 +29,8 @@ public class VolumeCalculatorWithXMLWriteFunction
 		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
 		
 		//Katie
-		lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/KatieArgumentParser.xml");
-		
-		//Rob
-		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
-		
+		//lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/KatieArgumentParser.xml");
 		//Trent
-		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
-		
-		//Andrew
-		//lib.writeToXMLFile("C:\\Users\\HP Laptop\\Documents\\GitHub\\ArgParse_CS310\\SinhArgumentParser.xml");
-		
-		
-        	
-			
+		lib.writeToXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/demos2/SampleArgumentParser.xml");
     }
-    
 }

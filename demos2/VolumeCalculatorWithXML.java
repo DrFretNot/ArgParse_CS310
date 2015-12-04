@@ -10,21 +10,17 @@ public class VolumeCalculatorWithXML
         int z = 0;
           
         try{
-        	ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/ArgumentsDemo.xml");
+        	//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/demos2/ArgumentsDemo.xml");
+			
 			/*AddXMLArguments xml = new AddXMLArguments();
-		
+
 			//Katie Location
 			//Library lib = xml.addArgumentsFromXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 		
 			//Trent Location
 			Library lib = xml.addArgumentsFromXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");*/
-			
-			
-			
-			
-			
-			
-			
+		    ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/demos2/ArgumentsDemo.xml");
+		    
 			try{
 				lib.parse(args);
 				PositionalArgument length = lib.getPositionalArgument(1);

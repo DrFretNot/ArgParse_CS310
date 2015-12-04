@@ -744,10 +744,10 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/Arguments.xml");
 			
 			//for Trent's only
-			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
 			
             //for andrew's only
             //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
@@ -803,11 +803,15 @@ public class ArgumentParserUnitTests {
     	lib.addNamedArgument(type);
     	lib.addNamedArgument(digits);
     	
-    	lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	//lib.writeToXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    	lib.writeToXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/ArgumentParser.xml");
+
     	//lib.writeToXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
     	try{
-    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
+    		//ArgumentParser newLib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentParser.xml");
     		//ArgumentParser newLib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentParser.xml");
+    		ArgumentParser newLib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/ArgumentParser.xml");
+
     		try{
     			newLib.parse(args);
     		}
@@ -1042,14 +1046,14 @@ public class ArgumentParserUnitTests {
     @Test
     public void TestNamedArgumentWithShortFormAndValueSetWithDefaultValueAndDescription(){
         String[] testValues = {"cube", "ellipsoid", "pyramid"};
-        NamedArgument type = new NamedArgument("type","cube", "this is a decription", 't',testValues);
+        NamedArgument type = new NamedArgument("type","cube", "this is a description", 't',testValues);
         assertEquals(testValues, type.getValueSet());
     }
     
     @Test
     public void TestNamedArgumentWithShortFormAndValueSetWithDataTypeAndDescription(){
         String[] testValues = {"cube", "ellipsoid", "pyramid"};
-        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, "this is a decription", 't',testValues);
+        NamedArgument type = new NamedArgument("type", Argument.ArgType.STRING, "this is a description", 't',testValues);
         assertEquals(testValues, type.getValueSet());
     }
     
@@ -1146,13 +1150,13 @@ public class ArgumentParserUnitTests {
 			
 			
 			//for Katie's only
-			ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentsWithValueSet.xml");
+			//ArgumentParser lib = XMLReader.readXMLFile("/Users/katiewood/Documents/Software_Engineering/ArgParse_CS310/ArgumentsWithValueSet.xml");
 			
 			//for Trent's only
-			//ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/Arguments.xml");
+			ArgumentParser lib = XMLReader.readXMLFile("/Users/trentford/Documents/Repositories/ArgParse_CS310/ArgumentsWithValueSet.xml");
 			
             //for andrew's only
-            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/Arguments.xml");
+            //ArgumentParser lib = XMLReader.readXMLFile("C:/Users/Andrew/Documents/GitHub/ArgParse_CS310/ArgumentsWithValueSet.xml");
 			
 			try{
 				lib.parse(args);

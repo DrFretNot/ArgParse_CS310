@@ -26,7 +26,7 @@ public class VolumeCalculator
     	lib.addPositionalArgument(height);
     	lib.addNamedArgument(new NamedArgument("help", Argument.ArgType.BOOLEAN, "Prints usage information", 'h'));
     	String[] typeValueSet = {"box", "pyramid", "ellipsoid"};
-    	NamedArgument type = new NamedArgument<String>("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValueSet);
+    	NamedArgument type = new NamedArgument("type", "box", Argument.ArgType.STRING, "the shape of the object", 't', typeValueSet);
     	lib.addNamedArgument(type);
         
         try{
