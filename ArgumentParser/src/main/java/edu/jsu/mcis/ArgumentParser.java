@@ -24,22 +24,61 @@ import java.io.*;
  *This class parses an object (argument) and stores the value for user purposes
  *<p>Argument parser can store the name of the program the user wants to implement and the description of that program. </p>
  *<p>For example, this code allows the user to add the program name and program description.
- *<h2> 
  *<span style="color:#4c6b87">
- *{@codeArgumentParser ap = new ArgumentParser();
- 		ap.addProgramName("This is the program name.");
-  		ap.addProgramDescription("This is the program description.");}
- *The program name and program description will be part of the help message and error messages printed to the command line. </p>
- *
- *</h2>
- *. 
- *<p>ArgumentParser provides a way of storing arguments with different values. </p>
- *<p>ArgumentParser can check the type of Object (such as String, integer, float, boolean).
- *ArgumentParser can implement value sets in the abstract class Argument. </p>
- *<p>NamedArgument and PositionalArgument are child classes of Argument.</p>
- *<p>ArgumentParser can also give a help message and give appropriate error messages for incorrect data.
+ *<br><br>
+ *&nbsp&nbsp&nbsp&nbsp{@code ArgumentParser ap = new ArgumentParser();}
+ *<br>
+ *&nbsp&nbsp&nbsp&nbsp{@code ap.addProgramName("This is the program name.");}
+ *<br>
+ *&nbsp&nbsp&nbsp&nbsp{@code ap.addProgramDescription("This is the program description.");}
+ *<br><br>
+ *<p>The program name and program description will be part of the help message and error messages printed to the command line. </p>
+ *<br><br>
+ *<p>ArgumentParser provides a way of storing arguments with different values. 
+ *ArgumentParser can check the type of Object (such as String, integer, float, boolean).
+ *It can also implement value sets that specify a discrete set of values for each argument. 
+ *When it parses the arguments from the command line, each argument attribute will be checked and an appropriate exception will be thrown.
+ *For example, this code shows how to parse arguments from the command line and print the appropriate error messages.</p>
+ *<span style="color:#4c6b87">
+ *<br><br>
+
+ *<pre>
+ *{@code
+ try{
+	ap.parse(args);
+}
+catch(Exception e){
+	System.out.println(e.getMessage());
+}
+}
+ *</pre>
+ *<p>In the above code, args is the String[] args pulled from the command line when the program runs. </p>
+ *<p>ArgumentParser can also read in information about the program and specific arguments from an XML file.
+ *For example, the following code shows how to read information from an XML file and store it in a new ArgumentParser object.
  *</p>
- *
+ *<span style="color:#4c6b87">
+ *<br><br>
+
+ *<pre>
+ *{@code
+ try{
+	ArgumentParser ap = XMLReader.readXMLFile("filePath");
+}
+catch(Exception e){
+	System.out.println(e.getMessage());
+}
+}
+ *</pre>
+ *<p>ArgumentParser can also store any information in an XML file. The following code show this.</p>
+  *<span style="color:#4c6b87">
+ *<br><br>
+
+ *<pre>
+ *{@code
+ap.writeToXMLFile("filePath");
+
+}
+ *</pre>
  *@param  url  an absolute URL giving the base location of the image
  *@param  name the location of the image, relative to the url argument
  *
@@ -596,16 +635,6 @@ public class ArgumentParser {
 	}
     
 	/**
-     *
-     *<span style="color:#4c6b87">
-     *{@code
-     *if (helpArgValue.equals("true")){
-				throw new HelpException(helpMessage());
-			}
-     *
-     *}
-     
-     *</pre>
      *Parses input data from the command line and throws the correct exceptions if tinput data is an incorrect format
      *@param args the input data from the command line
      *@throws HelpException if the help argument is given in the input data 
@@ -659,19 +688,6 @@ public class ArgumentParser {
      *Writes argument parser information to the specified XML file. The program name, program description, positional arguments, and named arguments 
      *are saved in the file in standard XML format. It also saves each aspect of the arguments such as argument name, description, dataType, defaultValue, and possible value set.
      *@param fileName the XML file to which all information will be written
-     *<pre>
-     *<h2>
-     * Use Cases:
-     *</h2>
-     *Assume VolumeCalculator.java allows for three positional arguments, named <b><font color = "#4c6b87">length</font></b>, <b><font color= 
-     *"#4c6b87">width</font></b>, and <b><font color = "#4c6b87">height</font></b>, respectively, 
-     *each representing float values. Assume that it also allows two optional named arguments: type, 
-     *a string that defaults to "box" with short-form t, and digits, an integer that defaults to 4 
-     *with short-form d.
-     *
-     *
-     </pre>
-     *
      */
 	
 	public void writeToXMLFile(String fileName){

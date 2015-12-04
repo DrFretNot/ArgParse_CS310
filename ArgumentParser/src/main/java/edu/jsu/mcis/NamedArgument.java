@@ -1,8 +1,7 @@
 package edu.jsu.mcis;
 
 /**
- *
- *Class description: Generics class which extends Arugument class. Allows for the calling of short form named arguments and or sets default values. 
+ *Named argument is an argument object that takes a name rather than a position. It can be called with --name or the short form flag -n. 
  *
 */
 public class NamedArgument extends Argument{
@@ -121,7 +120,7 @@ public class NamedArgument extends Argument{
     
     
     /**
-     *initializes a new namedArgument object with name, and short form name.
+     *initializes a new namedArgument object with name and short form name.
      *
      *@param name The string name to be set for the argument object.
      *@param shortForm The shortend form of the name as a character.  
@@ -132,7 +131,7 @@ public class NamedArgument extends Argument{
 	}	
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, and short form name.
+      *initializes a new namedArgument object with name, default value, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -147,7 +146,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, data type, and short form name.
+      *initializes a new namedArgument object with name, data type, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param dataType The data type that the argument will parse for.
@@ -166,7 +165,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, data type, and short form name.
+      *initializes a new namedArgument object with name, default value, data type, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -182,7 +181,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
+      *initializes a new namedArgument object with name, default value, description, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -198,7 +197,7 @@ public class NamedArgument extends Argument{
     }    	
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
+      *initializes a new namedArgument object with name, default value, description, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param dataType The data type that the argument will parse for.
@@ -217,7 +216,7 @@ public class NamedArgument extends Argument{
         shortFormName = shortForm;
     }
      /**
-      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
+      *initializes a new namedArgument object with name, default value, description, and short form name.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -236,7 +235,7 @@ public class NamedArgument extends Argument{
     /*******************************With sets of values*********************************/
     
     /**
-     *NamedArgument initializes a new namedArgument object with only the name. 
+     *initializes a new namedArgument object with the name and set of values. 
      *@param name The name to be set for the argument object.
      *@param setOfValues An array of possible values that the named argumnet will allow. 
     */
@@ -246,7 +245,7 @@ public class NamedArgument extends Argument{
     }
     
     /**
-     *NamedArgument initializes a new namedArgument object with Name, dataType, and Description. 
+     *initializes a new namedArgument object with Name, dataType, Description, and Set of Values. 
      *
      *@param name The name to be set for the argument object.
      *@param dataType The data type that the argument will parse for.
@@ -266,7 +265,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-     *NamedArgument initializes a new namedArgument object with Name, dataType, and Description.
+     *initializes a new namedArgument object with Name, dataType, Description, and Set of Values.
      * 
      *@param name The name to be set for the argument object.
      *@param dataType The data type that the argument will parse for.
@@ -286,7 +285,7 @@ public class NamedArgument extends Argument{
     } 
     
     /**
-     *NamedArgument initializes a new namedArgument object with name and default value. 
+     *initializes a new namedArgument object with name, default value, and set of values. 
      *@param name The name to be set for the argument object.
      *@param defaultValue The value that the argument will default to unless otherwise stated. 
      *@param setOfValues An array of possible values that the named argumnet will allow.
@@ -301,7 +300,7 @@ public class NamedArgument extends Argument{
     }   
     
 	/**
-      *NamedArgument initializes a new namedArgument object with name, default value, and dataType.
+      *initializes a new namedArgument object with name, default value, dataType, and set of values.
       *      
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -318,7 +317,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, and description. 
+      *initializes a new namedArgument object with name, default value, description, and set of values. 
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -335,7 +334,7 @@ public class NamedArgument extends Argument{
     }    	
 	
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, dataType, and description. 
+      *initializes a new namedArgument object with name, default value, dataType, description, and set of values. 
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -354,7 +353,7 @@ public class NamedArgument extends Argument{
     
     
     /**
-     *NamedArgument initializes a new namedArgument object with name, and short form name.
+     *initializes a new namedArgument object with name, short form name, and set of vlaues.
      *
      *@param name The name to be set for the argument object.
      *@param shortForm The shortend form of the name. 
@@ -367,11 +366,11 @@ public class NamedArgument extends Argument{
 	}	
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, short form name, and set of values.
+      *initializes a new namedArgument object with name, default value, short form name, and set of values.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
-      *@param shortForm The char shortend form of the name.
+      *@param shortForm The char shortened form of the name.
       *@param setOfValues An array of possible values that the named argument will allow.
       */
 	public NamedArgument(String name, String defaultValue, char shortForm,String[] setOfValues){
@@ -384,11 +383,11 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, data type, short form name, and set of values .
+      *initializes a new namedArgument object with name, data type, short form name, and set of values .
       *
       *@param name The name to be set for the argument object.
       *@param dataType The data type that the argument will parse for.
-      *@param shortForm The shortend form of the name.
+      *@param shortForm The shortened form of the name.
       *@param setOfValues An array of possible values that the named argumnet will allow.
       */
 	public NamedArgument(String name, ArgType dataType, char shortForm,String[] setOfValues){
@@ -405,12 +404,12 @@ public class NamedArgument extends Argument{
     } 
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, data type, and short form name.
+      *NamedArgument initializes a new namedArgument object with name, default value, data type, short form name, and set of values.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
       *@param dataType The data type that the argument will parse for.
-      *@param shortForm The shortend form of the name.
+      *@param shortForm The shortened form of the name.
       *@param setOfValues An array of possible values that the named argumnet will allow.
       */
     public NamedArgument(String name, String defaultValue, ArgType dataType, char shortForm,String[] setOfValues){
@@ -423,7 +422,7 @@ public class NamedArgument extends Argument{
     }  
     
     /**
-      *NamedArgument initializes a new namedArgument object with name, default value, description, and short form name.
+      *NamedArgument initializes a new namedArgument object with name, default value, description, short form name, and set of values.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
@@ -466,7 +465,7 @@ public class NamedArgument extends Argument{
 
 //*************************************************************************************
      /**
-      *initializes a new namedArgument object with name, default value, data type, description, and short form name.
+      *initializes a new namedArgument object with name, default value, data type, description, short form name, and set of values.
       *
       *@param name The name to be set for the argument object.
       *@param defaultValue The value that the argument will default to unless otherwise stated.
