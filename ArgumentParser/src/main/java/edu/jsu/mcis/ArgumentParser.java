@@ -20,7 +20,7 @@ import java.lang.Object.*;
 import java.io.*;
 
 
-/**
+/**This class parses an object (argument) and stores the value for user purposes
  *
  *<h2> 
  *<span style="color:#4c6b87">
@@ -28,8 +28,8 @@ import java.io.*;
  *
  *</h2>
  *
- *<p>This class parses an object (argument) and stores the value for user purposes. 
- *ArgumentParser provides a way of storing arguments with different values. </p>
+ *. 
+ *<p>ArgumentParser provides a way of storing arguments with different values. </p>
  *<p>ArgumentParser can check the type of Object (such as String, integer, float, boolean).
  *ArgumentParser can implement value sets in the abstract class Argument. </p>
  *<p>NamedArgument and PositionalArgument are child classes of Argument.</p>

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  *
- *XMLReader allows for reading of an XML file which holds arguments.
+ *XMLReader allows for reading of an XML file which holds program information and argument information.
  *
 */
 public class XMLReader{
@@ -24,12 +24,12 @@ public class XMLReader{
 	}*/
 
     /**
-     *
-     *@param ArgumentParser This method allows for parsing through an XML file to search for specific arguments within it. 
+     *Reads program information from the specified XML file
+     *@param fileName the XML file from which to read program information
      *@throws ParserConfigurationException
      *@throws SAXException
      *@throws IOException
-     *@return lib 
+     *@return an instance of ArgumentParser containing the information from the XML file 
      */
 	public static ArgumentParser readXMLFile(String fileName) throws ParserConfigurationException, SAXException, IOException{
 		
