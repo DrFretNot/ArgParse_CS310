@@ -20,14 +20,18 @@ import java.lang.Object.*;
 import java.io.*;
 
 
-/**This class parses an object (argument) and stores the value for user purposes
- *
+/**
+ *This class parses an object (argument) and stores the value for user purposes
+ *<p>Argument parser can store the name of the program the user wants to implement and the description of that program. </p>
+ *<p>For example, this code allows the user to add the program name and program description.
  *<h2> 
  *<span style="color:#4c6b87">
- 
+ *{@codeArgumentParser ap = new ArgumentParser();
+ 		ap.addProgramName("This is the program name.");
+  		ap.addProgramDescription("This is the program description.");}
+ *The program name and program description will be part of the help message and error messages printed to the command line. </p>
  *
  *</h2>
- *
  *. 
  *<p>ArgumentParser provides a way of storing arguments with different values. </p>
  *<p>ArgumentParser can check the type of Object (such as String, integer, float, boolean).
