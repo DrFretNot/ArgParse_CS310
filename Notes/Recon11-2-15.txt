@@ -1,2 +1,0 @@
-added the names of the positional arguments to a string and then inserted that string into the help message saves lines of code and works fairly quickly.
-add a string array String[] = str.split("\\s+") 
