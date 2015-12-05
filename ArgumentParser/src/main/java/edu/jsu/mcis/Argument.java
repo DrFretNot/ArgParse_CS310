@@ -30,7 +30,7 @@ public abstract class Argument
     }
     
      /**
-     *Initializes an argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption. 
+     *Initializes an argument object with the specified <b>name</b>, <b>dataType</b>, and default description. 
      *@param name  the name to be set for the argument object
      *@param dataType the dataType to be set for the argument object
      *
