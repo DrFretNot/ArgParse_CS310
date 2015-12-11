@@ -10,3 +10,4 @@ Sinh Nguyen
 Robert S. Warren Jr.
 
 All Collaborators can access repository
+Documentation here: http://drfretnot.github.io/ArgParse_CS310

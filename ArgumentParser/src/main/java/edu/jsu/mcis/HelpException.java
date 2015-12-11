@@ -3,7 +3,7 @@ package edu.jsu.mcis;
 import java.util.*;
 
 /**
-*Thrown to display a list of availbale options for the user.
+*Thrown to display a list of available options for the user.
 *
 */
 

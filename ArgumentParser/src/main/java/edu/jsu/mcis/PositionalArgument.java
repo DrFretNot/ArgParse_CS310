@@ -20,7 +20,7 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, and default desctiption.
+    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, and default description.
     *@param name String to be set as <b>name</b>. 
     *@param dataType Correct data type to be set. 
     *
@@ -61,7 +61,7 @@ public class PositionalArgument extends Argument{
     }
     
     /**
-    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, <b>setOfValues</b> and default desctiption.
+    *Initializes a positional argument object with the specified <b>name</b>, <b>dataType</b>, <b>setOfValues</b> and default description.
     *@param name String to be set as <b>name</b>.
     *@param dataType The data type that the argument will parse for.
     *@param setOfValues An array of possible values that <b>namedArgument</b> will allow.
