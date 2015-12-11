@@ -24,25 +24,37 @@ import java.io.*;
  *This class parses an object (argument) and stores the value for user purposes
  *<p>Argument parser can store the name of the program the user wants to implement and the description of that program. </p>
  *<p>For example, this code allows the user to add the program name and program description.
- *<span style="color:#4c6b87">
+ *
  *<br><br>
- *&nbsp&nbsp&nbsp&nbsp{@code ArgumentParser ap = new ArgumentParser();}
- *<br>
- *&nbsp&nbsp&nbsp&nbsp{@code ap.addProgramName("This is the program name.");}
- *<br>
- *&nbsp&nbsp&nbsp&nbsp{@code ap.addProgramDescription("This is the program description.");}
+ *<pre><span style="color:#4c6b87">
+ *{@code
+ ArgumentParser ap = new ArgumentParser();
+ ap.addProgramName("This is the program name.");
+ ap.addProgramDescription("This is the program description.");}
+ *</pre>
+ *</span style>
  *<br><br>
  *<p>The program name and program description will be part of the help message and error messages printed to the command line. </p>
  *<br><br>
- *<p>ArgumentParser provides a way of storing arguments with different values. 
+ *<p>ArgumentParser provides a way of storing arguments with different values. For example, this code allows the user to add a positional
+ *argument with a name length, data type float, and description which will take a value from the command line. It also allows the user to
+ *add a named argument with a name type, default value box, data type String, and description which will take arguments from the command line 
+ * if --type is called.</p>
+ *<br><br>
+ *<pre><span style="color:#4c6b87">
+ *{@code
+ ap.addPositionalArgument(new PositionalArgument("length", Argument.ArgType.FLOAT, "This is a description"));
+ ap.addNamedArgument(new NamedArgument("type", "box", Argument.ArgType.String, "This is a description."));}
+ *</pre>
+ *</span style>
+ *<br><br>
  *ArgumentParser can check the type of Object (such as String, integer, float, boolean).
  *It can also implement value sets that specify a discrete set of values for each argument. 
  *When it parses the arguments from the command line, each argument attribute will be checked and an appropriate exception will be thrown.
  *For example, this code shows how to parse arguments from the command line and print the appropriate error messages.</p>
- *<span style="color:#4c6b87">
  *<br><br>
 
- *<pre>
+ *<pre><span style="color:#4c6b87">
  *{@code
  try{
 	ap.parse(args);
@@ -52,14 +64,14 @@ catch(Exception e){
 }
 }
  *</pre>
+ *</span style>
  *<p>In the above code, args is the String[] args pulled from the command line when the program runs. </p>
  *<p>ArgumentParser can also read in information about the program and specific arguments from an XML file.
  *For example, the following code shows how to read information from an XML file and store it in a new ArgumentParser object.
  *</p>
- *<span style="color:#4c6b87">
  *<br><br>
 
- *<pre>
+ *<pre><span style="color:#4c6b87">
  *{@code
  try{
 	ArgumentParser ap = XMLReader.readXMLFile("filePath");
@@ -69,16 +81,18 @@ catch(Exception e){
 }
 }
  *</pre>
+ *</span style>
  *<p>ArgumentParser can also store any information in an XML file. The following code show this.</p>
-  *<span style="color:#4c6b87">
+ *
  *<br><br>
 
- *<pre>
+ *<pre><span style="color:#4c6b87">
  *{@code
 ap.writeToXMLFile("filePath");
 
 }
  *</pre>
+ *</span style>
  *@param  url  an absolute URL giving the base location of the image
  *@param  name the location of the image, relative to the url argument
  *
